@@ -8,7 +8,7 @@ namespace Ponito.Ease
     /// <seealso cref="InSine"/>
     /// <seealso cref="OutSine"/>
     /// <seealso cref="InOutSine"/>
-    public static class EaseFunctions
+    public static class EasingEquations
     {
         /// <summary>
         ///     f(0) = 0, f(1) = 1

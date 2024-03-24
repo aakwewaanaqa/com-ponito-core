@@ -22,36 +22,24 @@ namespace Ponito.Core
         protected abstract bool isDontDestroyOnLoad { get; }
 
         /// <summary>
-        ///     Stores the instance of this
+        ///     Can be accessed anywhere.
         /// </summary>
-        protected static T instance;
-
+        public static Lazy<T> Instance = new(CreateInstance);
+        
         /// <summary>
         ///     Use this often to ensure their is always one <see cref="MonoBehaviour"/> <see cref="T"/> 
         /// </summary>
         /// <returns><see cref="MonoBehaviour"/> <see cref="T"/></returns>
-        public static T GetInstance()
+        private static T CreateInstance()
         {
-            if (instance.IsObject()) return instance;
-
             new GameObject()
-               .EnsureComponent(out instance)
+               .EnsureComponent(out T instance)
                .Rename(instance.GetType().Name);
 
+            if (instance.isDontDestroyOnLoad) DontDestroyOnLoad(instance);
+            if (!instance.isInitialized) instance.Initialize();
+            
             return instance;
-        }
-
-        /// <summary>
-        ///     Be sure to call when overriden
-        /// </summary>
-        protected virtual void Awake()
-        {
-            if (instance.IsObject()) Destroy(instance);
-
-            instance = (T)this;
-
-            if (isDontDestroyOnLoad) DontDestroyOnLoad(this);
-            if (!isInitialized) Initialize();
         }
 
         /// <summary>
@@ -59,11 +47,11 @@ namespace Ponito.Core
         /// </summary>
         protected void OnDestroy()
         {
-            if (ReferenceEquals(instance, this)) instance = null;
+            if (ReferenceEquals(Instance.Value, this)) Instance = null;
         }
 
         /// <summary>
-        ///     To initialize on <see cref="Awake"/> 
+        ///     To initialize in <see cref="CreateInstance"/> 
         /// </summary>
         protected abstract void Initialize();
     }
