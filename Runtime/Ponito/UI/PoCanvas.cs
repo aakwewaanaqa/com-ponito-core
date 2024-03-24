@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,6 +49,9 @@ namespace Ponito.UI
         }
         
 #if UNITY_EDITOR
+        /// <summary>
+        ///     This will active when something change in <see cref="Editor"/>
+        /// </summary>
         private void OnValidate()
         {
             name = $"{id} ({screenMatchMode} Canvas)";

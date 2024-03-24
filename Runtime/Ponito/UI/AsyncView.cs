@@ -10,17 +10,17 @@ namespace Ponito.UI
     public interface AsyncView
     {
         /// <summary>
-        ///     Smart manage your <see cref="Show"/> 
+        ///     Smart manage your <see cref="AsyncView"/> to <see cref="Show"/>
         /// </summary>
         /// <param name="args">any arguments you wish to pass into</param>
-        /// <returns>UniTask of itself</returns>
+        /// <returns><see cref="UniTask"/> of itself</returns>
         UniTask Show(object args);
         
         /// <summary>
-        ///     Smart manage your <see cref="Hide"/> 
+        ///     Smart manage your <see cref="AsyncView"/> to <see cref="Show"/>
         /// </summary>
         /// <param name="args">any arguments you wish to pass into</param>
-        /// <returns>UniTask of itself</returns>
+        /// <returns><see cref="UniTask"/> of itself</returns>
         UniTask Hide(object args);
     }
 }
