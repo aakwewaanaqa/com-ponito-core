@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Ponito.UI
+namespace Ponito.Core.UI
 {
     /// <summary>
     ///     How to match the current content of the <see cref="PoCanvas"/> with <see cref="Canvas"/>

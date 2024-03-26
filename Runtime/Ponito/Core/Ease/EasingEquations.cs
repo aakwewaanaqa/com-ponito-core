@@ -1,6 +1,7 @@
+using System.ComponentModel;
 using UnityEngine;
 
-namespace Ponito.Ease
+namespace Ponito.Core.Ease
 {
     /// <summary>
     ///     Contains all ease functions.
@@ -159,6 +160,44 @@ namespace Ponito.Ease
             return t < 0.5f
                        ? (1f - OutBounce(1f - 2f * t))      / 2f
                        : (1f + OutBounce(2f      * t - 1f)) / 2f;
+        }
+
+        /// <summary>
+        ///     From ease type to get <see cref="EaseFunction"/>
+        /// </summary>
+        /// <param name="type">the ease type</param>
+        /// <returns>just like <see cref="EaseFunction"/></returns>
+        /// <exception cref="InvalidEnumArgumentException">when <see cref="type"/> doesn't meet</exception>
+        public static EaseFunction GetFunction(EaseType type)
+        {
+            return type switch
+            {
+                EaseType.InSine       => InSine,
+                EaseType.OutSine      => OutSine,
+                EaseType.InOutSine    => InOutSine,
+                EaseType.InQuad       => InQuad,
+                EaseType.OutQuad      => OutQuad,
+                EaseType.InOutQuad    => InOutQuad,
+                EaseType.InCubic      => InCubic,
+                EaseType.OutCubic     => OutCubic,
+                EaseType.InOutCubic   => InOutCubic,
+                EaseType.InQuart      => InQuart,
+                EaseType.OutQuart     => OutQuart,
+                EaseType.InOutQuart   => InOutQuart,
+                EaseType.InExpo       => InExpo,
+                EaseType.OutExpo      => OutExpo,
+                EaseType.InOutExpo    => InOutExpo,
+                EaseType.InCirc       => InCirc,
+                EaseType.OutCirc      => OutCirc,
+                EaseType.InOutCirc    => InOutCirc,
+                EaseType.InElastic    => InElastic,
+                EaseType.OutElastic   => OutElastic,
+                EaseType.InOutElastic => InOutElastic,
+                EaseType.InBounce     => InBounce,
+                EaseType.OutBounce    => OutBounce,
+                EaseType.InOutBounce  => InOutBounce,
+                _ => throw new InvalidEnumArgumentException(nameof(type)),
+            };
         }
     }
 }

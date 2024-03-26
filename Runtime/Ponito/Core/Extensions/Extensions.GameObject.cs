@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using UnityEngine;
 
-namespace Ponito.Extensions
+namespace Ponito.Core.Extensions
 {
     /// <summary>
     ///     This is a class to contain all extension methods.

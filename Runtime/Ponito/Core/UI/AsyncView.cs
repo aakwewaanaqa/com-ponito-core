@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 
-namespace Ponito.UI
+namespace Ponito.Core.UI
 {
     /// <summary>
     ///     If you wish to manage your UI through async MVC system, inherit this by your class.

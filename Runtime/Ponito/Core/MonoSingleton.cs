@@ -1,5 +1,5 @@
 using System;
-using Ponito.Extensions;
+using Ponito.Core.Extensions;
 using UnityEngine;
 
 namespace Ponito.Core
