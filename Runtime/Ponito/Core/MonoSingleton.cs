@@ -22,10 +22,15 @@ namespace Ponito.Core
         protected abstract bool isDontDestroyOnLoad { get; }
 
         /// <summary>
+        ///     <see cref="Lazy{T}"/> calls <see cref="CreateInstance"/> before accessing value
+        /// </summary>
+        protected static Lazy<T> instance { get; set; } = new(CreateInstance);
+
+        /// <summary>
         ///     Can be accessed anywhere.
         /// </summary>
-        public static Lazy<T> Instance = new(CreateInstance);
-        
+        public static T Instance => instance.Value;
+
         /// <summary>
         ///     Use this often to ensure their is always one <see cref="MonoBehaviour"/> <see cref="T"/> 
         /// </summary>
@@ -47,7 +52,7 @@ namespace Ponito.Core
         /// </summary>
         protected void OnDestroy()
         {
-            if (ReferenceEquals(Instance.Value, this)) Instance = null;
+            if (this.SameReference(Instance)) instance = new Lazy<T>(CreateInstance);
         }
 
         /// <summary>

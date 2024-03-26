@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
 
 namespace Ponito.Core.Extensions
 {
@@ -29,6 +33,7 @@ namespace Ponito.Core.Extensions
         /// <summary>
         ///     Same as <see cref="object.ReferenceEquals"/>
         /// </summary>
+        [DebuggerHidden]
         public static bool SameReference(this object self, object target)
         {
             return ReferenceEquals(self, target);
