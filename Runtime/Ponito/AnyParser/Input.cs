@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Ponito.AnyParser
 {
     public readonly struct Input
@@ -6,6 +10,17 @@ namespace Ponito.AnyParser
 
         public int Length => string.IsNullOrEmpty(source) ? 0 : source.Length;
 
+        public Result<IEnumerable<Input>> Split(params string[] strings)
+        {
+            var splits = source
+               .Split(strings, StringSplitOptions.RemoveEmptyEntries)
+               .Select(s => (Input)s)
+               .ToArray();
+            return !splits.Any()
+                       ? Result<IEnumerable<Input>>.Fail(source)
+                       : Result<IEnumerable<Input>>.Passed(splits, default);
+        }
+        
         public Result<char> Match(char c)
         {
             return Length    == 0 ? Result<char>.Fail(string.Empty) :
