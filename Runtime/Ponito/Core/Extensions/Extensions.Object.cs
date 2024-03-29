@@ -38,5 +38,40 @@ namespace Ponito.Core.Extensions
         {
             return ReferenceEquals(self, target);
         }
+
+        /// <summary>
+        ///     Tries to cast <see cref="self"/> to <see cref="T"/>
+        /// </summary>
+        /// <param name="self">the cast source</param>
+        /// <param name="result">the cast result</param>
+        /// <typeparam name="T">type of <see cref="result"/></typeparam>
+        [DebuggerHidden]
+        public static void OfType<T>(this object self, out T result)
+        {
+            if (self is T t) result = t;
+            result = (T)self;
+        }
+
+        /// <summary>
+        ///     Tries to cast <see cref="self"/> to <see cref="T"/>
+        /// </summary>
+        /// <param name="self">the cast source</param>
+        /// <param name="result">the cast result</param>
+        /// <typeparam name="T">type of <see cref="result"/></typeparam>
+        /// <returns>passed or failed</returns>
+        [DebuggerHidden]
+        public static bool TryCast<T>(this object self, out T result)
+        {
+            try
+            {
+                self.OfType(out result);
+                return true;
+            }
+            catch
+            {
+                result = default;
+                return false;
+            }
+        }
     }
 }
