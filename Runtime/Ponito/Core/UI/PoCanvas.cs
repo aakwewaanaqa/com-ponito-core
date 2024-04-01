@@ -7,8 +7,6 @@ namespace Ponito.Core.UI
     ///     If you wish to manage your UI by separate them by <see cref="Canvas"/>, use <see cref="PoCanvas"/> instead.
     ///     'Cause this help you name your <see cref="Canvas"/> and scale your <see cref="Canvas"/>.
     /// </summary>
-    /// <seealso cref="id"/>
-    /// <seealso cref="screenMatchMode"/>
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(Canvas))]
     [RequireComponent(typeof(CanvasScaler))]
@@ -47,7 +45,7 @@ namespace Ponito.Core.UI
                 raycaster.enabled = isInteractable;
             }
         }
-        
+
 #if UNITY_EDITOR
         /// <summary>
         ///     This will active when something change in <see cref="Editor"/>
