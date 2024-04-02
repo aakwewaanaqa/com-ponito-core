@@ -1,5 +1,6 @@
 using System.Reflection;
 using Cysharp.Threading.Tasks;
+using Ponito.Core.Ease;
 using Ponito.Core.Extensions;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -16,6 +17,7 @@ namespace Ponito.Core.Samples
 
         protected override bool isInitialized => music.IsObject() && fx.IsObject() &&
                                                  voice.IsObject() && ui.IsObject();
+
         protected override bool isDontDestroyOnLoad => true;
 
         protected override void Initialize()
@@ -38,6 +40,41 @@ namespace Ponito.Core.Samples
                 field.SetValue(this, source);
                 source.outputAudioMixerGroup = mixer.FindMatchingGroups(field.Name)[0];
             }
+        }
+
+        public AudioSource GetSource(AudioPlayType type = AudioPlayType.Music)
+        {
+            return type switch
+            {
+                AudioPlayType.Music => music,
+                AudioPlayType.FX    => fx,
+                AudioPlayType.Voice => voice,
+                AudioPlayType.UI    => ui,
+                _                   => music,
+            };
+        }
+
+        public async UniTask Stop(AudioPlayType type = AudioPlayType.Music, float duration = 0.2f)
+        {
+            var source = GetSource(type);
+            if (source.isPlaying)
+            {
+                var from   = source.volume;
+                var setter = new Setter<float>(v => source.volume = v);
+                await DoEase.Create(from, 0f, setter, duration);
+                source.clip = null;
+            }
+
+            source.Stop();
+        }
+
+        public async UniTask Play(AudioClip clip, AudioPlayType type = AudioPlayType.Music, bool isOneShot = false)
+        {
+            var source = GetSource(type);
+            if (!isOneShot) source.Stop();
+            source.clip = clip;
+            source.Play();
+            while (source.isPlaying) await UniTask.Yield();
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -7,98 +9,37 @@ namespace Ponito.Core.Ease
     /// <summary>
     ///     Provides ease functions of <see cref="UniTask"/> for interpolating values and performing easing animations.
     /// </summary>
-    /// <seealso cref="To{T}"/>
+    /// <seealso cref="Create{T}"/>
     public static class DoEase
     {
         /// <summary>
-        ///     Delegate for interpolation value <see cref="T"/> 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        public delegate T Lerp<T>(T a, T b, float t);
-
-        /// <inheritdoc cref="Mathf.Lerp"/>
-        public static Lerp<float> LerpOfFloat => Mathf.Lerp;
-
-        /// <inheritdoc cref="Vector2.Lerp"/>
-        public static Lerp<Vector2> LerpOfVector2 => Vector2.Lerp;
-
-        /// <inheritdoc cref="Vector3.Lerp"/>
-        public static Lerp<Vector3> LerpOfVector3 => Vector3.Lerp;
-
-        /// <inheritdoc cref="Quaternion.Lerp"/>
-        public static Lerp<Quaternion> LerpOfQuaternion => Quaternion.Lerp;
-
-        /// <summary>
-        ///     Eases to and manually setting up a <see cref="Lerp{T}"/>
+        ///     Eases to a value using the specified ease type.
         /// </summary>
         /// <param name="start">start value of <see cref="easeType"/></param>
         /// <param name="end">end value of <see cref="easeType"/></param>
         /// <param name="setter">the value setter</param>
-        /// <param name="lerp">the interpolator</param>
         /// <param name="duration">the ease duration</param>
         /// <param name="easeType">the type of the ease</param>
         /// <typeparam name="T">the value <see cref="Type"/></typeparam>
-        public static async UniTask To<T>(
+        public static EaseAnimation Create<T>(
             T start,
             T end,
             Setter<T> setter,
-            Lerp<T> lerp,
             float duration,
             EaseType easeType = EaseType.InSine)
         {
-            var time = 0f;
-            var ease = EasingEquations.GetFunction(easeType);
-            while (time < duration)
+            return start switch
             {
-                var p = ease(time / duration);
-                var v = lerp(start, end, p);
-                setter(v);
-
-                time += Time.deltaTime;
-                await UniTask.Yield();
-            }
-
-            setter(end);
-        }
-
-        public static async UniTask To(
-            float start,
-            float end,
-            Setter<float> setter,
-            float duration,
-            EaseType easeType = EaseType.InSine)
-        {
-            await To(start, end, setter, LerpOfFloat, duration);
-        }
-
-        public static async UniTask To(
-            Vector2 start,
-            Vector2 end,
-            Setter<Vector2> setter,
-            float duration,
-            EaseType easeType = EaseType.InSine)
-        {
-            await To(start, end, setter, LerpOfVector2, duration);
-        }
-
-        public static async UniTask To(
-            Vector3 start,
-            Vector3 end,
-            Setter<Vector3> setter,
-            float duration,
-            EaseType easeType = EaseType.InSine)
-        {
-            await To(start, end, setter, LerpOfVector3, duration);
-        }
-
-        public static async UniTask To(
-            Quaternion start,
-            Quaternion end,
-            Setter<Quaternion> setter,
-            float duration,
-            EaseType easeType = EaseType.InSine)
-        {
-            await To(start, end, setter, LerpOfQuaternion, duration);
+                float s1 when end is float e1 && setter is Setter<float> set1 =>
+                    EaseEnumerator<T>.Float(s1, e1, set1, duration, easeType),
+                Vector2 s2 when end is Vector2 e2 && setter is Setter<Vector2> set2 =>
+                    EaseEnumerator<T>.Vector2(s2, e2, set2, duration, easeType),
+                Vector3 s3 when end is Vector3 e3 && setter is Setter<Vector3> set3 =>
+                    EaseEnumerator<T>.Vector3(s3, e3, set3, duration, easeType),
+                Quaternion s4 when end is Quaternion e4 && setter is Setter<Quaternion> set4 =>
+                    EaseEnumerator<T>.Quaternion(s4, e4, set4, duration, easeType),
+                _ => throw new ArgumentException($"Unsupported type {typeof(T).Name} for DoEase.To")
+            };
         }
     }
 }

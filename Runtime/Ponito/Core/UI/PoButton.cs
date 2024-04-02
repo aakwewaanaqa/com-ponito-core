@@ -2,6 +2,7 @@
 using Cysharp.Threading.Tasks;
 using Ponito.Core.Ease;
 using Ponito.Core.Extensions;
+using Ponito.Core.Samples;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,10 +12,11 @@ namespace Ponito.Core.UI
     [AddComponentMenu("Ponito/Core/UI/PoButton")]
     public class PoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
-        [SerializeField] private bool       isInteractable = true;
-        [SerializeField] private Graphic    image;
-        [SerializeField] private SoundEvent pointerDownSound;
-        [SerializeField] private SoundEvent pointerUpSound;
+        [SerializeField] private bool      isInteractable = true;
+        [SerializeField] private Graphic   image;
+        [SerializeField] private AnimationType animationType = AnimationType.Scale;
+        [SerializeField] private AudioClip pointerDownSound;
+        [SerializeField] private AudioClip pointerUpSound;
 
         public Action onPointerDownEvent;
         public Action onPointerUpEvent;
@@ -63,16 +65,34 @@ namespace Ponito.Core.UI
             ScaleAnimation(false);
         }
 
-        private Vector3 originalScale;
+        private Vector3       originalScale;
+        private EaseAnimation ease;
 
-        private async void ScaleAnimation(bool isPressed)
+        private async void Audio(bool isPressed)
+        {
+            var clip = isPressed? pointerDownSound : pointerUpSound;
+            await PoAudioManager.Instance.Play(clip);
+        }
+        
+        private async void Animation(bool isPressed)
+        {
+            ease?.Kill();
+            ease?.Dispose();
+            ease = animationType switch
+            {
+                AnimationType.None => null, 
+                AnimationType.Scale => ScaleAnimation(isPressed),
+                _ => null,
+            };
+        }
+        
+        private EaseAnimation ScaleAnimation(bool isPressed)
         {
             var from   = rectTransform.localScale;
             var to     = isPressed ? originalScale * 0.8f : originalScale;
             var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
             var type   = isPressed ? EaseType.InSine : EaseType.OutBounce;
-            var task   = DoEase.To(from, to, setter, 0.2f, type);
-            UniTask.t(task);
+            return DoEase.Create(from, to, setter, 0.2f, type);
         }
 
 #if UNITY_EDITOR
