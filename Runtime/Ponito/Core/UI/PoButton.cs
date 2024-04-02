@@ -1,25 +1,22 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
-using Ponito.Core.Ease;
+﻿using System.ComponentModel;
 using Ponito.Core.Extensions;
-using Ponito.Core.Samples;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Ponito.Core.UI
 {
-    [AddComponentMenu("Ponito/Core/UI/PoButton")]
-    public class PoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
+    [HasEvent(nameof(onClick))]
+    [AddComponentMenu("Ponito/Core/UI/Po Button")]
+    public partial class PoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
-        [SerializeField] private bool      isInteractable = true;
-        [SerializeField] private Graphic   image;
+        [SerializeField] private bool          isInteractable = true;
+        [SerializeField] private Graphic       image;
         [SerializeField] private AnimationType animationType = AnimationType.Scale;
-        [SerializeField] private AudioClip pointerDownSound;
-        [SerializeField] private AudioClip pointerUpSound;
-
-        public Action onPointerDownEvent;
-        public Action onPointerUpEvent;
+        [SerializeField] private AudioClip     pointerDown;
+        [SerializeField] private AudioClip     pointerUp;
+        [SerializeField] public  UnityEvent    onClick;
 
         private RectTransform rectTransform;
 
@@ -46,54 +43,26 @@ namespace Ponito.Core.UI
         public void OnPointerDown(PointerEventData eventData)
         {
             if (!isInteractable) return;
+
+            PlayAudio(true);
+            PlayAnimation(true);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             if (!isInteractable) return;
 
-            UniTask.RunOnThreadPool(async () =>
-            {
-                await UniTask.SwitchToMainThread();
-                await SoundMusicManager.GetInstance().PlayFXAsync(pointerUpSound);
-            });
-
-            onPointerUpEvent?.Invoke();
-
-            if (DOTween.IsTweening(rectTransform)) return;
-
-            ScaleAnimation(false);
+            PlayAudio(true);
+            PlayAnimation(false);
         }
 
-        private Vector3       originalScale;
-        private EaseAnimation ease;
-
-        private async void Audio(bool isPressed)
+        public void OnPointerClick(PointerEventData eventData)
         {
-            var clip = isPressed? pointerDownSound : pointerUpSound;
-            await PoAudioManager.Instance.Play(clip);
+            if (!isInteractable) return;
+
+            onClick?.Invoke();
         }
-        
-        private async void Animation(bool isPressed)
-        {
-            ease?.Kill();
-            ease?.Dispose();
-            ease = animationType switch
-            {
-                AnimationType.None => null, 
-                AnimationType.Scale => ScaleAnimation(isPressed),
-                _ => null,
-            };
-        }
-        
-        private EaseAnimation ScaleAnimation(bool isPressed)
-        {
-            var from   = rectTransform.localScale;
-            var to     = isPressed ? originalScale * 0.8f : originalScale;
-            var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
-            var type   = isPressed ? EaseType.InSine : EaseType.OutBounce;
-            return DoEase.Create(from, to, setter, 0.2f, type);
-        }
+
 
 #if UNITY_EDITOR
         private void Reset()

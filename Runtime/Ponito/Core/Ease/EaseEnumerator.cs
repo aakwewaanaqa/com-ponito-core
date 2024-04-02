@@ -47,6 +47,9 @@ namespace Ponito.Core.Ease
                 time += Time.deltaTime;
                 await UniTask.Yield();
             }
+
+            setter?.Invoke(end);
+            Dispose();
         }
 
         public void Dispose()
