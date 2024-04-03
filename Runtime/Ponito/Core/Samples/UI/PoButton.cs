@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace Ponito.Core.Samples.UI
 {
     [HasEvent(nameof(onClick))]
-    [AddComponentMenu("Ponito/Core/UI/Po Button")]
+    [AddComponentMenu("Ponito/Core/Samples/UI/Po Button")]
     public partial class PoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
         [SerializeField] private bool          isInteractable = true;
@@ -39,6 +39,13 @@ namespace Ponito.Core.Samples.UI
             originalScale = rectTransform.localScale;
         }
 
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (!isInteractable) return;
+            if (PoButtonBlockScope.IsBlock) return;
+            onClick?.Invoke();
+        }
+
         public void OnPointerDown(PointerEventData eventData)
         {
             if (!isInteractable) return;
@@ -53,13 +60,6 @@ namespace Ponito.Core.Samples.UI
             if (PoButtonBlockScope.IsBlock) return;
             PlayAudio(true);
             PlayAnimation(false);
-        }
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            if (!isInteractable) return;
-            if (PoButtonBlockScope.IsBlock) return;
-            onClick?.Invoke();
         }
 
 

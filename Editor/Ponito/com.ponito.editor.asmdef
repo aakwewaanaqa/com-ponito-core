@@ -1,0 +1,18 @@
+{
+  "name": "com.ponito.editor",
+  "rootNamespace": "",
+  "references": [
+    "GUID:8d5598f4471549a2bec9b6d0c2d6630b"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

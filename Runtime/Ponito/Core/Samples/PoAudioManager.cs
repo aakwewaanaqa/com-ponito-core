@@ -7,7 +7,10 @@ using UnityEngine.Audio;
 
 namespace Ponito.Core.Samples
 {
-    [AddComponentMenu("Ponito/Core/Samples/Audio Manager")]
+    /// <summary>
+    ///     Manages <see cref="AudioSource" /> by splitting into <see cref="AudioPlayType" />
+    /// </summary>
+    [AddComponentMenu("Ponito/Core/Samples/Po Audio Manager")]
     public class PoAudioManager : MonoSingleton<PoAudioManager>
     {
         [SerializeField] private AudioSource music;
@@ -15,11 +18,14 @@ namespace Ponito.Core.Samples
         [SerializeField] private AudioSource voice;
         [SerializeField] private AudioSource ui;
 
+        /// <inheritdoc />
         protected override bool isInitialized => music.IsObject() && fx.IsObject() &&
                                                  voice.IsObject() && ui.IsObject();
 
+        /// <inheritdoc />
         protected override bool isDontDestroyOnLoad => true;
 
+        /// <inheritdoc />
         protected override void Initialize()
         {
             var mixer = Resources.Load<AudioMixer>(nameof(PoAudioManager));
@@ -42,6 +48,11 @@ namespace Ponito.Core.Samples
             }
         }
 
+        /// <summary>
+        ///     Gets <see cref="AudioSource" /> by <see cref="type" />
+        /// </summary>
+        /// <param name="type">the type of managed <see cref="AudioSource" />s</param>
+        /// <returns>source</returns>
         public AudioSource GetSource(AudioPlayType type = AudioPlayType.Music)
         {
             return type switch
@@ -50,10 +61,15 @@ namespace Ponito.Core.Samples
                 AudioPlayType.FX    => fx,
                 AudioPlayType.Voice => voice,
                 AudioPlayType.UI    => ui,
-                _                   => music,
+                _                   => music
             };
         }
 
+        /// <summary>
+        ///     Stops the <see cref="AudioSource" /> in <see cref="duration" /> of seconds
+        /// </summary>
+        /// <param name="type">the type of managed <see cref="AudioSource" />s</param>
+        /// <param name="duration">delay in seconds</param>
         public async UniTask Stop(AudioPlayType type = AudioPlayType.Music, float duration = 0.2f)
         {
             var source = GetSource(type);
