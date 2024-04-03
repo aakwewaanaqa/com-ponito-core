@@ -8,23 +8,21 @@ namespace Ponito.Core.Extensions
 {
     public static partial class Extensions
     {
-        private static BindingFlags MakeFlags(bool isPublic = default,
-                                              bool isStatic = default)
+        private static BindingFlags MakeFlags(BoolFlag isPublic, BoolFlag isStatic)
         {
-            return isPublic switch
-            {
-                true when isStatic  => BindingFlags.Public    | BindingFlags.Static,
-                true                => BindingFlags.Public    | BindingFlags.Instance,
-                false when isStatic => BindingFlags.NonPublic | BindingFlags.Static,
-                false               => BindingFlags.NonPublic | BindingFlags.Instance,
-            };
+            BindingFlags flag           = BindingFlags.Default;
+            if (isPublic == true) flag  |= BindingFlags.Public;
+            if (isPublic == false) flag |= BindingFlags.NonPublic;
+            if (isStatic == true) flag  |= BindingFlags.Static;
+            if (isStatic == false) flag |= BindingFlags.Instance;
+            return flag;
         }
-        
+
         public static IEnumerable<MemberInfo> GetFields(
             this Type type,
-            string name = default,
-            bool isPublic = default,
-            bool isStatic = default)
+            string name = null,
+            BoolFlag isPublic = default,
+            BoolFlag isStatic = default)
         {
             var binding = MakeFlags(isPublic, isStatic);
             var fields  = type.GetFields(binding);
@@ -39,13 +37,13 @@ namespace Ponito.Core.Extensions
         public static Type Field<T>(
             this Type self,
             out T result,
-            object target,
             string name,
-            bool isPublic = default,
-            bool isStatic = default)
+            object target = null,
+            BoolFlag isPublic = default,
+            BoolFlag isStatic = default)
         {
-            var binding = MakeFlags(isPublic, isStatic);
-            var info = self.GetField(name, binding);
+            var flags = MakeFlags(isPublic, isStatic);
+            var info  = self.GetField(name, flags);
             result = (T)info?.GetValue(target);
             return self;
         }

@@ -32,6 +32,20 @@ namespace Ponito.Core.Extensions
         }
 
         /// <summary>
+        ///     Chains <see cref="Action{T}"/> with null or destroyed checking <see cref="IsObject"/>
+        /// </summary>
+        /// <param name="self">to check and apply</param>
+        /// <param name="apply">the apply <see cref="Action{T}"/></param>
+        /// <typeparam name="T"><see cref="Type"/> of <see cref="self"/></typeparam>
+        /// <returns><see cref="self"/></returns>
+        [DebuggerHidden]
+        public static T Apply<T>(this T self, Action<T> apply)
+        {
+            apply?.Invoke(self);
+            return self;
+        }
+
+        /// <summary>
         ///     Same as <see cref="object.ReferenceEquals"/>
         /// </summary>
         [DebuggerHidden]
