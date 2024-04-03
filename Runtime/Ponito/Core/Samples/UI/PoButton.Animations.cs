@@ -1,8 +1,7 @@
 using Ponito.Core.Ease;
-using Ponito.Core.Samples;
 using UnityEngine;
 
-namespace Ponito.Core.UI
+namespace Ponito.Core.Samples.UI
 {
     public partial class PoButton
     {

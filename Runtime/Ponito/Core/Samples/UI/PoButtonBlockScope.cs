@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Ponito.Core.UI
+namespace Ponito.Core.Samples.UI
 {
     /// <summary>
     ///     Blocks all <see cref="PoButton"/> by using this scope in the scope.
-    ///     Please remember to <see cref="Dispose"/> or all <see cref="PoButton"/> remain disabled. 
+    ///     Please remember to <see cref="Dispose"/> or all <see cref="PoButton"/>s remain disabled. 
     /// </summary>
     public class PoButtonBlockScope : IDisposable
     {

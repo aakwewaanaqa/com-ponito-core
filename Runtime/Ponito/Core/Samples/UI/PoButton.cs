@@ -1,11 +1,10 @@
-﻿using System.ComponentModel;
-using Ponito.Core.Extensions;
+﻿using Ponito.Core.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Ponito.Core.UI
+namespace Ponito.Core.Samples.UI
 {
     [HasEvent(nameof(onClick))]
     [AddComponentMenu("Ponito/Core/UI/Po Button")]
@@ -43,7 +42,7 @@ namespace Ponito.Core.UI
         public void OnPointerDown(PointerEventData eventData)
         {
             if (!isInteractable) return;
-
+            if (PoButtonBlockScope.IsBlock) return;
             PlayAudio(true);
             PlayAnimation(true);
         }
@@ -51,7 +50,7 @@ namespace Ponito.Core.UI
         public void OnPointerUp(PointerEventData eventData)
         {
             if (!isInteractable) return;
-
+            if (PoButtonBlockScope.IsBlock) return;
             PlayAudio(true);
             PlayAnimation(false);
         }
@@ -59,7 +58,7 @@ namespace Ponito.Core.UI
         public void OnPointerClick(PointerEventData eventData)
         {
             if (!isInteractable) return;
-
+            if (PoButtonBlockScope.IsBlock) return;
             onClick?.Invoke();
         }
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Ponito.Core.UI
+namespace Ponito.Core.Samples.UI
 {
     /// <summary>
     ///     If you wish to manage your UI by separate them by <see cref="Canvas"/>, use <see cref="PoCanvas"/> instead.

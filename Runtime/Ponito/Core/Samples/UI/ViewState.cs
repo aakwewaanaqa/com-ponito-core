@@ -1,4 +1,4 @@
-﻿namespace Ponito.Core.UI
+﻿namespace Ponito.Core.Samples.UI
 {
     /// <summary>
     ///     Common states of a <see cref="AsyncView"/>

@@ -1,4 +1,4 @@
-﻿namespace Ponito.Core.UI
+﻿namespace Ponito.Core.Samples.UI
 {
     public enum AnimationType
     {
