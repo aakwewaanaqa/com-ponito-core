@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Ponito.Core.Extensions
@@ -28,7 +29,7 @@ namespace Ponito.Core.Extensions
         }
 
         /// <summary>
-        ///     Chains <see cref="Action{T}" /> with null or destroyed checking <see cref="IsObject" />
+        ///     Chains <see cref="Action{T}" />
         /// </summary>
         /// <param name="self">to check and apply</param>
         /// <param name="apply">the apply <see cref="Action{T}" /></param>
@@ -39,7 +40,7 @@ namespace Ponito.Core.Extensions
         [DebuggerHidden]
         public static T Apply<T>(this T self, Action<T> apply)
         {
-            if (self.IsObject()) apply?.Invoke(self);
+            apply?.Invoke(self);
             return self;
         }
 
