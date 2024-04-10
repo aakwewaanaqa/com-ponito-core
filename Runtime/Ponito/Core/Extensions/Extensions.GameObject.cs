@@ -10,29 +10,40 @@ namespace Ponito.Core.Extensions
     public static partial class Extensions
     {
         /// <summary>
-        ///     Ensures to get or add <see cref="Component"/> <see cref="T"/> from <see cref="GameObject"/> <see cref="self"/>
+        ///     Ensures to get or add <see cref="Component"/> <see cref="TComp"/> from <see cref="GameObject"/> <see cref="self"/>
         /// </summary>
         /// <param name="self"><see cref="GameObject"/> itself</param>
-        /// <param name="comp">the result</param>
-        /// <param name="apply"><see cref="Action{T}"/> to passed the <see cref="comp"/></param>
+        /// <param name="result">the result</param>
+        /// <param name="apply"><see cref="Action{T}"/> to passed the <see cref="result"/></param>
         /// <param name="ifNullAdd">if comp is not attached to <see cref="self"/> add one</param>
-        /// <typeparam name="T">type of component</typeparam>
+        /// <typeparam name="TObj">type of <see cref="self"/></typeparam>
+        /// <typeparam name="TComp">type of <see cref="Component"/> <see cref="result"/></typeparam>
         /// <returns><see cref="GameObject"/> itself</returns>
         /// <exception cref="NullReferenceException"><see cref="self"/> is null</exception>
         [DebuggerHidden]
-        public static GameObject EnsureComponent<T>(
-            this GameObject self,
-            out T comp,
-            Action<T> apply = null,
-            bool ifNullAdd = true) where T : Component
+        public static TObj EnsureComponent<TObj, TComp>(
+            this TObj self,
+            out TComp result,
+            Action<TComp> apply = null,
+            bool ifNullAdd = true) where TComp : Component
         {
             if (self.IsNull()) throw new NullReferenceException(nameof(self));
-            
-            if (self.TryGetComponent(out comp)) return self;
-            if (ifNullAdd) comp = self.AddComponent<T>();
-            apply?.Invoke(comp);
-            
+
+            result = self switch
+            {
+                GameObject gameObject   => Ensure(gameObject),
+                Component selfComponent => Ensure(selfComponent.gameObject),
+                _ => throw new InvalidOperationException(nameof(EnsureComponent)),
+            };
             return self;
+
+            TComp Ensure(GameObject gameObject)
+            {
+                bool has                    = gameObject.TryGetComponent(out TComp comp);
+                if (ifNullAdd && !has) comp = gameObject.AddComponent<TComp>();
+                apply?.Invoke(comp);
+                return comp;
+            }
         }
 
         /// <summary>

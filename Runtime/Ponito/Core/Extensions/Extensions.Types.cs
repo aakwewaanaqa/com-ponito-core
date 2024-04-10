@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Unity.Profiling.LowLevel;
+using UnityEngine;
 
 namespace Ponito.Core.Extensions
 {
@@ -45,6 +46,21 @@ namespace Ponito.Core.Extensions
             var flags = MakeFlags(isPublic, isStatic);
             var info  = self.GetField(name, flags);
             result = (T)info?.GetValue(target);
+            return self;
+        }
+
+        public static Type Method<T>(
+            this Type self,
+            out T result,
+            string name,
+            object target = null,
+            object[] args = null,
+            BoolFlag isPublic = default,
+            BoolFlag isStatic = default)
+        {
+            var flags  = MakeFlags(isPublic, isStatic);
+            var info   = self.GetMethod(name, flags);
+            result = (T)info?.Invoke(target, args ?? Array.Empty<object>());
             return self;
         }
 
