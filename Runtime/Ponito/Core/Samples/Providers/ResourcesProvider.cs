@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Ponito.Core.AssetProvide;
+using Ponito.Core.Extensions;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-namespace Ponito.Core.Samples
+namespace Ponito.Core.Samples.Providers
 {
     [AddComponentMenu("Ponito/Core/Samples/Resources Provider")]
     public class ResourcesProvider : MonoSingleton<ResourcesProvider>, AsyncProvider
@@ -19,18 +18,28 @@ namespace Ponito.Core.Samples
         protected override bool isDontDestroyOnLoad => false;
 
         /// <inheritdoc />
-        public async UniTask<T> ProvideAsync<T>(object subKey) where T : Object
+        public async UniTask<T> ProvideAsync<T>(object subKey)
         {
             if (tables.TryGetValue(subKey, out var request))
             {
                 await request;
-                return (T)request.asset;
-            }
 
-            request = Resources.LoadAsync<T>(subKey.ToString());
-            tables.Add(subKey, request);
-            await request;
-            return (T)request.asset;
+                if (!request.asset.IsObject() || request.asset is not T t)
+                    throw new InvalidCastException(nameof(ProvideAsync));
+
+                return t;
+            }
+            else
+            {
+                request = Resources.LoadAsync(subKey.ToString(), typeof(T));
+                await request;
+
+                if (!request.asset.IsObject() || request.asset is not T t)
+                    throw new InvalidCastException(nameof(ProvideAsync));
+
+                tables.Add(subKey, request);
+                return t;
+            }
         }
 
         /// <inheritdoc />

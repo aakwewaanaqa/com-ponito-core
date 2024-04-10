@@ -1,4 +1,5 @@
-﻿using Ponito.Core.Extensions;
+﻿using System.ComponentModel;
+using Ponito.Core.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Ponito.Core.Samples.UI
 {
-    [HasEvent(nameof(onClick))]
+    [DefaultEvent(nameof(onClick))]
     [AddComponentMenu("Ponito/Core/Samples/UI/Po Button")]
     public partial class PoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
@@ -35,8 +36,10 @@ namespace Ponito.Core.Samples.UI
 
         private void OnEnable()
         {
-            gameObject.EnsureComponent(out rectTransform);
-            originalScale = rectTransform.localScale;
+            this.EnsureComponent(out rectTransform, it =>
+            {
+                originalScale = it.localScale;
+            });
         }
 
         public void OnPointerClick(PointerEventData eventData)

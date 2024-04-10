@@ -47,8 +47,10 @@ namespace Ponito.Core.Samples.UI
             set
             {
                 isInteractable = value;
-                TryGetComponent(out GraphicRaycaster raycaster);
-                raycaster.enabled = isInteractable;
+                this.EnsureComponent(out GraphicRaycaster _, it =>
+                {
+                    it.enabled = isInteractable;
+                });
             }
         }
 

@@ -11,23 +11,23 @@ namespace Ponito.Core
     /// <seealso cref="GetClamp" />
     /// <seealso cref="FloatMapper" />
     [Serializable]
-    public partial struct FloatRange
+    public readonly partial struct FloatRange
     {
-        /// <summary>
-        ///     minimum
-        /// </summary>
-        public float min;
-
         /// <summary>
         ///     maximum
         /// </summary>
-        public float max;
+        public readonly float max;
 
         /// <summary>
-        ///     constructs a <see cref="FloatRange"/>
+        ///     minimum
         /// </summary>
-        /// <param name="min">minimum <see cref="min"/></param>
-        /// <param name="max">maximum <see cref="max"/></param>
+        public readonly float min;
+
+        /// <summary>
+        ///     constructs a <see cref="FloatRange" />
+        /// </summary>
+        /// <param name="min">minimum <see cref="min" /></param>
+        /// <param name="max">maximum <see cref="max" /></param>
         public FloatRange(float min, float max)
         {
             if (min > max)
@@ -43,7 +43,7 @@ namespace Ponito.Core
         }
 
         /// <summary>
-        ///     magnitude of the <see cref="FloatRange"/>
+        ///     magnitude of the <see cref="FloatRange" />
         /// </summary>
         public float Length => max - min;
 
@@ -62,7 +62,7 @@ namespace Ponito.Core
         }
 
         /// <summary>
-        ///     clamps the input in the <see cref="FloatRange"/>
+        ///     clamps the input in the <see cref="FloatRange" />
         /// </summary>
         /// <param name="input">the source value</param>
         /// <returns>the clamped result</returns>

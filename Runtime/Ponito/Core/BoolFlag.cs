@@ -3,27 +3,29 @@
 namespace Ponito.Core
 {
     [Serializable]
-    public struct BoolFlag : IEquatable<bool>, IEquatable<BoolFlag>
+    public readonly struct BoolFlag : IEquatable<bool>, IEquatable<BoolFlag>
     {
-        private enum FlagType
-        {
-            Nether = -1,
-            Both   = 0,
-            True   = 1,
-            False  = 2,
-        }
-
-        private FlagType flag;
+        private readonly FlagType flag;
 
         private BoolFlag(FlagType flag = FlagType.Both)
         {
             this.flag = flag;
         }
 
-        public static BoolFlag True   => new BoolFlag(FlagType.True);
-        public static BoolFlag False  => new BoolFlag(FlagType.False);
-        public static BoolFlag Both   => new BoolFlag(FlagType.Both);
-        public static BoolFlag Nether => new BoolFlag(FlagType.Nether);
+        public static BoolFlag True   => new(FlagType.True);
+        public static BoolFlag False  => new(FlagType.False);
+        public static BoolFlag Both   => new(FlagType.Both);
+        public static BoolFlag Nether => new(FlagType.Nether);
+
+        public bool Equals(bool other)
+        {
+            return other ? flag is FlagType.True or FlagType.Both : flag is FlagType.False or FlagType.Both;
+        }
+
+        public bool Equals(BoolFlag other)
+        {
+            return flag == other.flag;
+        }
 
         public static bool operator ==(BoolFlag f, bool b)
         {
@@ -50,16 +52,6 @@ namespace Ponito.Core
             return b ? True : False;
         }
 
-        public bool Equals(bool other)
-        {
-            return other ? flag is FlagType.True or FlagType.Both : flag is FlagType.False or FlagType.Both;
-        }
-
-        public bool Equals(BoolFlag other)
-        {
-            return flag == other.flag;
-        }
-
         public override bool Equals(object obj)
         {
             return obj is BoolFlag other && Equals(other);
@@ -68,6 +60,14 @@ namespace Ponito.Core
         public override int GetHashCode()
         {
             return (int)flag;
+        }
+
+        private enum FlagType
+        {
+            Nether = -1,
+            Both   = 0,
+            True   = 1,
+            False  = 2
         }
     }
 }

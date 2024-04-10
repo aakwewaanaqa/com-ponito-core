@@ -1,0 +1,2 @@
+AnyParser is a package based on knowledge of Nicholas' presentation on NDC conference.
+Url of the video https://www.youtube.com/watch?v=klHyc9HQnNQ.

@@ -8,20 +8,30 @@ namespace Ponito.Core
     /// <seealso cref="LinearMap" />
     /// <seealso cref="FloatRange" />
     [Serializable]
-    public struct FloatMapper
+    public readonly struct FloatMapper
     {
         /// <summary>
         ///     input range
         /// </summary>
-        public FloatRange from;
+        public readonly FloatRange from;
 
         /// <summary>
         ///     output range
         /// </summary>
-        public FloatRange to;
+        public readonly FloatRange to;
 
         /// <summary>
-        ///     Linearly maps the <see cref="input"/>
+        ///     Constructs a <see cref="FloatMapper" /> by <see cref="FloatRange" />s
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        public FloatMapper(FloatRange a, FloatRange b)
+        {
+            (from, to) = (a, b);
+        }
+
+        /// <summary>
+        ///     Linearly maps the <see cref="input" />
         /// </summary>
         /// <param name="input">input value</param>
         /// <returns>mapped result</returns>
