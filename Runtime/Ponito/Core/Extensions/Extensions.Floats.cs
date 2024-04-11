@@ -4,9 +4,10 @@ namespace Ponito.Core.Extensions
 {
     public static partial class Extensions
     {
-        public static bool Approx(this float a, float b)
+        public static bool Approx(this float a, float b, float epsilon = 1E-8F)
         {
-            return Mathf.Approximately(a, b);
+            var abs = Mathf.Abs(b - a);
+            return abs < epsilon;
         }
     }
 }

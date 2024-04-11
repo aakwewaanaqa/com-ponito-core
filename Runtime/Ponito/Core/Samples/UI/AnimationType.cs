@@ -3,6 +3,6 @@
     public enum AnimationType
     {
         None,
-        Scale,
+        Scale
     }
 }

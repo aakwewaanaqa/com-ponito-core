@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
 
 namespace Ponito.Core.Extensions
@@ -146,7 +148,7 @@ namespace Ponito.Core.Extensions
         public static T Apply<T>(this T self, Action<T> apply, bool stopNull = true)
         {
             if (stopNull && self.IsNull()) return self;
-            
+
             apply?.Invoke(self);
             return self;
         }
@@ -167,10 +169,11 @@ namespace Ponito.Core.Extensions
         /// <param name="result">the cast result</param>
         /// <typeparam name="T">type of <see cref="result" /></typeparam>
         [DebuggerHidden]
-        public static void OfType<T>(this object self, out T result)
+        public static T OfType<T>(this object self)
         {
-            if (self is T t) result = t;
-            result = (T)self;
+            if (self.IsNull()) return default;
+            if (self is T t) return t;
+            return (T)(self ?? default);
         }
 
         /// <summary>
@@ -185,7 +188,7 @@ namespace Ponito.Core.Extensions
         {
             try
             {
-                self.OfType(out result);
+                result = self.OfType<T>();
                 return true;
             }
             catch
