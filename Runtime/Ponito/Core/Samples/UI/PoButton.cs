@@ -16,7 +16,7 @@ namespace Ponito.Core.Samples.UI
         [SerializeField] private AnimationType animationType = AnimationType.Scale;
         [SerializeField] private AudioClip     pointerDown;
         [SerializeField] private AudioClip     pointerUp;
-        [SerializeField] public  UnityEvent    onClick;
+        [SerializeField] public  UnityEvent    onClick = new();
 
         private RectTransform rectTransform;
 
