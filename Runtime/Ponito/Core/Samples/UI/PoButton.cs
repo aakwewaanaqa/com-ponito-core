@@ -61,7 +61,7 @@ namespace Ponito.Core.Samples.UI
         {
             if (!isInteractable) return;
             if (PoButtonBlockScope.IsBlock) return;
-            PlayAudio(true);
+            PlayAudio(false);
             PlayAnimation(false);
         }
 

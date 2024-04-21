@@ -86,8 +86,8 @@ namespace Ponito.Core.Samples
 
         public async UniTask Play(AudioClip clip, AudioPlayType type = AudioPlayType.Music, bool isOneShot = false)
         {
+            if (!isOneShot) await Stop(type);
             var source = GetSource(type);
-            if (!isOneShot) source.Stop();
             source.clip = clip;
             source.Play();
             while (source.isPlaying) await UniTask.Yield();

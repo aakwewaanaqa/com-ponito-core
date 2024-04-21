@@ -69,5 +69,11 @@ namespace Ponito.Core.Extensions
             result = (T)self.GetCustomAttribute(typeof(T));
             return self;
         }
+
+        public static MemberInfo Attribute<T>(this MemberInfo self, out T result) where T : Attribute
+        {
+            result = self.GetCustomAttribute<T>();
+            return self;
+        }
     }
 }

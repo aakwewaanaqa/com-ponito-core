@@ -35,7 +35,7 @@ namespace Ponito.Core.Extensions
             apply?.Invoke(result);
             return self;
         }
-
+        
         /// <summary>
         ///     Ensures there is <see cref="Component" /> <see cref="TComp" /> on the <see cref="self" />
         /// </summary>
@@ -44,7 +44,7 @@ namespace Ponito.Core.Extensions
         /// <typeparam name="TObj"><see cref="self" />'s <see cref="Type" /></typeparam>
         /// <typeparam name="TComp">return's <see cref="Type" /></typeparam>
         /// <returns></returns>
-        private static TComp Ensure<TObj, TComp>(this TObj self, bool ifNullAdd) where TComp : Component
+        internal static TComp Ensure<TObj, TComp>(this TObj self, bool ifNullAdd) where TComp : Component
         {
             var grab = self.Grab();
             var has  = grab.TryGetComponent(out TComp comp);
@@ -59,7 +59,7 @@ namespace Ponito.Core.Extensions
         /// <typeparam name="T"><see cref="Type" /> of <see cref="self" /></typeparam>
         /// <returns><see cref="self" />'s <see cref="GameObject" /></returns>
         /// <exception cref="InvalidOperationException">not <see cref="GameObject" /> or <see cref="Component" /></exception>
-        private static GameObject Grab<T>(this T self)
+        internal static GameObject Grab<T>(this T self)
         {
             return self switch
             {
@@ -108,10 +108,7 @@ namespace Ponito.Core.Extensions
             self.Grab().name = name;
             return self;
         }
-    }
 
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks whether <see cref="object" /> is null or not, also knows a destroyed one is null too.
         /// </summary>

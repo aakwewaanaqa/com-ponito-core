@@ -2,7 +2,8 @@
     "name": "com.ponito.editor",
     "rootNamespace": "",
     "references": [
-        "GUID:8d5598f4471549a2bec9b6d0c2d6630b"
+        "GUID:8d5598f4471549a2bec9b6d0c2d6630b",
+        "GUID:a41f2d27c79440738cf5638c3a813f9d"
     ],
     "includePlatforms": [
         "Editor"
