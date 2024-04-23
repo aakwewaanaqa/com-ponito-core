@@ -1,6 +1,7 @@
 ﻿{
   "name": "com.ponito.core.ease",
   "references": [
-    "UniTask"
+    "UniTask",
+    "com.ponito.core"
   ]
 }

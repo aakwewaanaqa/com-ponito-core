@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Reflection;
 using Cysharp.Threading.Tasks;
+using Ponito.Core.Asyncronized;
 using Ponito.Core.Ease;
 using Ponito.Core.Extensions;
 using UnityEngine;
@@ -43,7 +44,6 @@ namespace Ponito.Core.Samples
         protected override void Initialize()
         {
             var mixer = Resources.Load<AudioMixer>(nameof(PoAudioManager));
-            if (mixer.IsNull()) return;
 
             foreach (var info in GetFields())
             {
@@ -52,6 +52,7 @@ namespace Ponito.Core.Samples
                    .SetParent(transform, true);
 
                 info.SetValue(this, source);
+                if (mixer.IsNull()) continue;
                 source.outputAudioMixerGroup = mixer.FindMatchingGroups(info.Name)[0];
             }
         }
@@ -78,7 +79,7 @@ namespace Ponito.Core.Samples
         /// </summary>
         /// <param name="type">the type of managed <see cref="AudioSource" />s</param>
         /// <param name="duration">delay in seconds</param>
-        public async UniTask Stop(AudioPlayType type = AudioPlayType.Music, float duration = 0.2f)
+        public async PoTask Stop(AudioPlayType type = AudioPlayType.Music, float duration = 0.2f)
         {
             var source = GetSource(type);
             if (source.isPlaying)
@@ -92,7 +93,7 @@ namespace Ponito.Core.Samples
             source.Stop();
         }
 
-        public async UniTask Play(AudioClip clip, AudioPlayType type = AudioPlayType.Music, bool isOneShot = false)
+        public async PoTask Play(AudioClip clip, AudioPlayType type = AudioPlayType.Music, bool isOneShot = false)
         {
             if (!isOneShot) await Stop(type);
             var source = GetSource(type);

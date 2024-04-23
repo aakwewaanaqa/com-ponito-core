@@ -1,4 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Collections;
+using Cysharp.Threading.Tasks;
+using Ponito.Core.Asyncronized;
 using UnityEngine;
 
 namespace Ponito.Core.Ease
@@ -8,7 +10,7 @@ namespace Ponito.Core.Ease
         private readonly float        duration;
         private readonly T            end;
         private readonly T            start;
-        private readonly UniTask      task;
+        private readonly PoTask       task;
         private          EaseFunction easeFunction;
         private          EaseType     easeType;
         private          bool         isPlaying;
@@ -35,7 +37,7 @@ namespace Ponito.Core.Ease
             easeFunction  = EasingEquations.GetFunction(easeType);
 
             isPlaying = true;
-            task      = EnumerateAsync();
+            task      = new PoTask(EnumerateAsync());
         }
 
         public void Dispose()
@@ -57,18 +59,15 @@ namespace Ponito.Core.Ease
 
         public float Progress => time / duration;
 
-        public UniTask.Awaiter GetAwaiter()
-        {
-            return task.GetAwaiter();
-        }
+        public PoTask.Awaiter GetAwaiter() => task.GetAwaiter();
 
-        public async UniTask EnumerateAsync()
+        public IEnumerator EnumerateAsync()
         {
             while (isPlaying && time < duration)
             {
                 setter(lerper(start, end, easeFunction(time / duration)));
                 time += Time.deltaTime;
-                await UniTask.Yield();
+                yield return new WaitForEndOfFrame();
             }
 
             setter?.Invoke(end);

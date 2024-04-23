@@ -1,5 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using Ponito.Core.Asyncronized;
 
 namespace Ponito.Core.Ease
 {
@@ -8,6 +9,6 @@ namespace Ponito.Core.Ease
         float           Progress { get; }
         void            Kill();
         bool            IsPlaying();
-        UniTask.Awaiter GetAwaiter();
+        PoTask.Awaiter GetAwaiter();
     }
 }

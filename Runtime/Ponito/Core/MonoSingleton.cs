@@ -1,5 +1,4 @@
 using System;
-using Ponito.Core.Extensions;
 using UnityEngine;
 
 namespace Ponito.Core
@@ -36,7 +35,7 @@ namespace Ponito.Core
         /// </summary>
         protected void OnDestroy()
         {
-            if (this.SameReference(Instance)) instance = new Lazy<T>(CreateInstance);
+            if (ReferenceEquals(this, Instance)) instance = new Lazy<T>(CreateInstance);
         }
 
         /// <summary>
@@ -47,10 +46,10 @@ namespace Ponito.Core
         /// </returns>
         private static T CreateInstance()
         {
-            new GameObject()
-               .EnsureComponent(out T instance)
-               .Rename(instance.GetType().Name);
+            var gObj     = new GameObject();
+            var instance = gObj.AddComponent<T>();
 
+            gObj.name = instance.GetType().Name; 
             if (instance.isDontDestroyOnLoad) DontDestroyOnLoad(instance);
             if (!instance.isInitialized) instance.Initialize();
 
