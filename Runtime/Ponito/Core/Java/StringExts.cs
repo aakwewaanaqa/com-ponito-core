@@ -1,10 +1,9 @@
-using System;
-using Ponito.Core.Java;
+﻿using System;
 using UnityEngine;
 
-namespace Ponito.Core.Extensions
+namespace Ponito.Core.Java
 {
-    public static partial class Extensions
+    public static class StringExts
     {
         public static void Toast(this string msg)
         {

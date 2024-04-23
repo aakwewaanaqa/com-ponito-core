@@ -2,7 +2,7 @@
 
 namespace Ponito.Core.Extensions
 {
-    public static partial class Extensions
+    public static class RectTransformExts
     {
         public static RectTransform SetMinX(this RectTransform self, float x)
         {

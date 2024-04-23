@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Reflection;
 using Cysharp.Threading.Tasks;
 using Ponito.Core.Ease;
@@ -25,26 +26,33 @@ namespace Ponito.Core.Samples
         /// <inheritdoc />
         protected override bool isDontDestroyOnLoad => true;
 
+        /// <summary>
+        ///     Gets every field of [<see cref="SerializeField"/>]s
+        /// </summary>
+        /// <returns></returns>
+        protected IQueryable<FieldInfo> GetFields()
+        {
+            BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance;
+            return typeof(PoAudioManager)
+               .GetFields(flags)
+               .Where(f => f.GetCustomAttribute<SerializeField>() is object)
+               .AsQueryable();
+        }
+        
         /// <inheritdoc />
         protected override void Initialize()
         {
             var mixer = Resources.Load<AudioMixer>(nameof(PoAudioManager));
             if (mixer.IsNull()) return;
 
-            var fields = GetType()
-               .GetFields(isPublic: false, isStatic: false)
-               .WithAttributes<SerializeField>();
-
-            foreach (var info in fields)
+            foreach (var info in GetFields())
             {
-                var field = info as FieldInfo;
-
-                new GameObject(field.Name)
+                new GameObject(info.Name)
                    .EnsureComponent(out AudioSource source)
                    .SetParent(transform, true);
 
-                field.SetValue(this, source);
-                source.outputAudioMixerGroup = mixer.FindMatchingGroups(field.Name)[0];
+                info.SetValue(this, source);
+                source.outputAudioMixerGroup = mixer.FindMatchingGroups(info.Name)[0];
             }
         }
 
