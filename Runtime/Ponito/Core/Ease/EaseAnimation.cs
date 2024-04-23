@@ -6,9 +6,9 @@ namespace Ponito.Core.Ease
 {
     public interface EaseAnimation : IDisposable
     {
-        float           Progress { get; }
-        void            Kill();
-        bool            IsPlaying();
-        PoTask.Awaiter GetAwaiter();
+        float  Progress { get; }
+        void   Kill();
+        bool   IsPlaying();
+        PoTask GetAwaiter();
     }
 }

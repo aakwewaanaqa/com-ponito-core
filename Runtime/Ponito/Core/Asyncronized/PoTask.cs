@@ -2,69 +2,41 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 
+namespace System.Runtime.CompilerServices
+{
+}
+
 namespace Ponito.Core.Asyncronized
 {
-    [AsyncMethodBuilder(typeof(PoTaskBuilder))]
-    public readonly struct PoTask : ICriticalNotifyCompletion
+    [AsyncMethodBuilderAttribute(typeof(PoTaskBuilder))]
+    public struct PoTask : INotifyCompletion
     {
-        private Awaiter awaiter { get; }
+        public bool IsCompleted { get; private set; }
 
-        public bool IsCompleted => awaiter.IsCompleted;
-        
+        private IEnumerator Run(IEnumerator ie)
+        {
+            yield return PoTaskRunner.Instance.StartCoroutine(ie);
+            IsCompleted = true;
+        }
+
         public PoTask(IEnumerator ie)
         {
-            awaiter = new Awaiter(ie);
+            IsCompleted = false;
+            PoTaskRunner.Instance.StartCoroutine(Run(ie));
         }
-        
-        public Awaiter GetAwaiter()
+
+        public PoTask GetAwaiter()
         {
-            return awaiter;
+            return this;
         }
 
         public void GetResult()
         {
-            awaiter.GetResult();
         }
-        
+
         public void OnCompleted(Action continuation)
         {
-            awaiter.OnCompleted(continuation);
-        }
-
-        public void UnsafeOnCompleted(Action continuation)
-        {
-            awaiter.UnsafeOnCompleted(continuation);
-        }
-
-        public struct Awaiter : ICriticalNotifyCompletion
-        {
-            public bool IsCompleted { get; private set; }
-
-            public Awaiter(IEnumerator ie)
-            {
-                IsCompleted = false;
-                PoTaskRunner.Instance.StartCoroutine(RunIEnumerator(ie));
-            }
-
-            private IEnumerator RunIEnumerator(IEnumerator ie)
-            {
-                yield return PoTaskRunner.Instance.StartCoroutine(ie);
-                IsCompleted = true;
-            }
-
-            public void OnCompleted(Action continuation)
-            {
-                if (IsCompleted) continuation?.Invoke();
-            }
-
-            public void UnsafeOnCompleted(Action continuation)
-            {
-                if (IsCompleted) continuation?.Invoke();
-            }
-
-            public void GetResult()
-            {
-            }
+            continuation?.Invoke();
         }
     }
 }

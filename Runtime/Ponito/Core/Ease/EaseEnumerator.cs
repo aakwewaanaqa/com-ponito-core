@@ -59,7 +59,7 @@ namespace Ponito.Core.Ease
 
         public float Progress => time / duration;
 
-        public PoTask.Awaiter GetAwaiter() => task.GetAwaiter();
+        public PoTask GetAwaiter() => new(EnumerateAsync());
 
         public IEnumerator EnumerateAsync()
         {
