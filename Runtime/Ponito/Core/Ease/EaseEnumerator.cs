@@ -1,16 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Runtime.CompilerServices;
 using Cysharp.Threading.Tasks;
 using Ponito.Core.Asyncronized;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace Ponito.Core.Ease
 {
-    public partial class EaseEnumerator<T> : EaseAnimation
+    internal partial class EaseEnumerator<T> : EaseAnimation
     {
         private readonly float        duration;
         private readonly T            end;
         private readonly T            start;
-        private readonly PoTask       task;
         private          EaseFunction easeFunction;
         private          EaseType     easeType;
         private          bool         isPlaying;
@@ -18,6 +20,10 @@ namespace Ponito.Core.Ease
         private Lerper<T> lerper;
         private Setter<T> setter;
         private float     time;
+
+        public float Progress => time / duration;
+
+        public bool IsPlaying => isPlaying;
 
         public EaseEnumerator(
             T start,
@@ -33,11 +39,10 @@ namespace Ponito.Core.Ease
             this.setter   = setter;
             this.duration = duration;
             this.easeType = easeType;
-            time          = 0f;
-            easeFunction  = EasingEquations.GetFunction(easeType);
 
-            isPlaying = true;
-            task      = new PoTask(EnumerateAsync());
+            time         = 0f;
+            easeFunction = EasingEquations.GetFunction(easeType);
+            isPlaying    = true;
         }
 
         public void Dispose()
@@ -52,25 +57,18 @@ namespace Ponito.Core.Ease
             isPlaying = false;
         }
 
-        public bool IsPlaying()
-        {
-            return isPlaying;
-        }
-
-        public float Progress => time / duration;
-
-        public PoTask GetAwaiter() => new(EnumerateAsync());
-
-        public IEnumerator EnumerateAsync()
+        public async void Play()
         {
             while (isPlaying && time < duration)
             {
                 setter(lerper(start, end, easeFunction(time / duration)));
                 time += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
+                await UniTask.Yield();
             }
 
-            setter?.Invoke(end);
+            isPlaying = false;
+            setter.Invoke(end);
+
             Dispose();
         }
     }

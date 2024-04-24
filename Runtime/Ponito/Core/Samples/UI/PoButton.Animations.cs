@@ -11,7 +11,7 @@ namespace Ponito.Core.Samples.UI
         private async void PlayAudio(bool isPressed)
         {
             var clip = isPressed? pointerDown : pointerUp;
-            await PoAudioManager.Instance.Play(clip);
+            await PoAudioManager.Instance.Play(clip, AudioPlayType.UI, true);
         }
         
         private async void PlayAnimation(bool isPressed)

@@ -39,7 +39,7 @@ namespace Ponito.Core.Samples
                .Where(f => f.GetCustomAttribute<SerializeField>() is object)
                .AsQueryable();
         }
-        
+
         /// <inheritdoc />
         protected override void Initialize()
         {
@@ -98,8 +98,8 @@ namespace Ponito.Core.Samples
             if (!isOneShot) await Stop(type);
             var source = GetSource(type);
             source.clip = clip;
-            source.Play();
-            while (source.isPlaying) await UniTask.Yield();
+            if (isOneShot) source.PlayOneShot(clip);
+            else source.Play();
         }
     }
 }

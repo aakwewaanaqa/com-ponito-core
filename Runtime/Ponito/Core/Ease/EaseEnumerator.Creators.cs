@@ -2,7 +2,7 @@
 
 namespace Ponito.Core.Ease
 {
-    public partial class EaseEnumerator<T>
+    internal partial class EaseEnumerator<T>
     {
         public static EaseEnumerator<float> Float(
             float start,
