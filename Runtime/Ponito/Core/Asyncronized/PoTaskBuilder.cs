@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -33,6 +34,7 @@ namespace Ponito.Core.Asyncronized
             where TStateMachine : IAsyncStateMachine
         {
             awaiter.OnCompleted(stateMachine.MoveNext);
+            // PoTaskRunner.Instance.Enqueue(new RunnerItem(awaiter, stateMachine));
         }
 
         public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(
@@ -42,11 +44,11 @@ namespace Ponito.Core.Asyncronized
             where TStateMachine : IAsyncStateMachine
         {
             awaiter.OnCompleted(stateMachine.MoveNext);
+            // PoTaskRunner.Instance.Enqueue(new RunnerItem(awaiter, stateMachine));
         }
 
         public void SetStateMachine(IAsyncStateMachine stateMachine)
         {
-            Debug.Log(nameof(SetStateMachine));
         }
     }
 
