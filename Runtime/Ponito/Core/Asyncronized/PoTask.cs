@@ -1,45 +1,53 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using Ponito.Core.Asyncronized.Interfaces;
 
 namespace Ponito.Core.Asyncronized
 {
-    [AsyncMethodBuilderAttribute(typeof(PoTaskBuilder))]
-    public struct PoTask : Awaiter
+    [AsyncMethodBuilder(typeof(PoTaskBuilder))]
+    public struct PoTask : Awaitable
     {
-        public bool IsCompleted { get; set; }
+        public bool IsCompleted => true;
 
-        public PoTask GetAwaiter()
+        public void OnCompleted(Action continuation)
         {
-            return this;
+            continuation();
         }
 
         public void GetResult()
         {
         }
 
-        public void OnCompleted(Action continuation)
+        public PoTask GetAwaiter()
         {
-            continuation?.Invoke();
+            return this;
         }
     }
 
-    [AsyncMethodBuilderAttribute(typeof(PoTaskBuilder<>))]
-    public struct PoTask<TResult> : INotifyCompletion
+    [AsyncMethodBuilder(typeof(PoTaskBuilder<>))]
+    public struct PoTask<TResult> : Awaitable<TResult>
     {
         private TResult result      { get; set; }
-        public  bool    IsCompleted { get; }
+        public  bool    IsCompleted => true;
+
+        public TResult GetResult()
+        {
+            return result;
+        }
+
+        public void OnCompleted(Action continuation)
+        {
+            continuation();
+        }
 
         public PoTask<TResult> GetAwaiter()
         {
             return this;
         }
 
-        public void    SetResult(TResult result) => this.result = result;
-        public TResult GetResult()               => result;
-
-        public void OnCompleted(Action continuation)
+        public void SetResult(TResult result)
         {
-            continuation?.Invoke();
+            this.result = result;
         }
     }
 }
