@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using Ponito.Core.Asyncronized.Interfaces;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncronized
@@ -11,7 +12,7 @@ namespace Ponito.Core.Asyncronized
             return new AsyncOperationAwaiter(op);
         }
 
-        public readonly struct AsyncOperationAwaiter : Awaiter
+        public readonly struct AsyncOperationAwaiter : Awaitable
         {
             private AsyncOperation op { get; }
             

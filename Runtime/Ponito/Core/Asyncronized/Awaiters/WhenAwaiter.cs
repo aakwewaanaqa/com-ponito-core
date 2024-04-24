@@ -1,47 +1,37 @@
 using System;
 using System.Threading;
 using JetBrains.Annotations;
+using Ponito.Core.Asyncronized.Interfaces;
+using Ponito.Core.Asyncronized.Runner;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncronized.Awaiters
 {
-    public class WhenAwaiter : Awaiter, IDisposable
+    public class WhenAwaiter : Awaitable, IDisposable
     {
-        private WhenPredicate predicate    { get; set; }
-        private Action        continuation { get; set; }
+        private WhenPredicate predicate { get; set; }
 
         public WhenAwaiter([NotNull] WhenPredicate predicate)
         {
             this.predicate = predicate;
         }
-        
+
         public void OnCompleted([NotNull] Action continuation)
         {
-            this.continuation = continuation;
-            PoTaskRunner.Instance.Enqueue(this);
+            continuation();
         }
 
-        public bool IsCompleted
-        {
-            get
-            {
-                var isCompleted = predicate();
-                if (isCompleted) continuation();
-                return isCompleted;
-            }
-        }
+        public bool IsCompleted => predicate();
 
         public void GetResult()
         {
-            
         }
 
         public void Dispose()
         {
-            predicate    = null;
-            continuation = null;
+            predicate = null;
         }
 
-        public Awaiter GetAwaiter() => this;
+        public Awaitable GetAwaiter() => this;
     }
 }

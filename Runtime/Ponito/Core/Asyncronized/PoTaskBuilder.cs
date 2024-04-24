@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Runtime.CompilerServices;
+using Ponito.Core.Asyncronized.Interfaces;
+using Ponito.Core.Asyncronized.Runner;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncronized
@@ -8,7 +9,7 @@ namespace Ponito.Core.Asyncronized
     public struct PoTaskBuilder
     {
         private Exception ex   { get; set; }
-        private PoTask    task { get; set; }
+        private PoTask    task { get; }
 
         public static PoTaskBuilder Create()
         {
@@ -17,7 +18,10 @@ namespace Ponito.Core.Asyncronized
 
         public PoTask Task => task;
 
-        public void SetException(Exception ex) => this.ex = ex;
+        public void SetException(Exception ex)
+        {
+            this.ex = ex;
+        }
 
         public void Start<TStateMachine>(ref TStateMachine stateMachine)
             where TStateMachine : IAsyncStateMachine
@@ -30,21 +34,21 @@ namespace Ponito.Core.Asyncronized
         }
 
         public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
-            where TAwaiter : Awaiter
+            where TAwaiter : Completable
             where TStateMachine : IAsyncStateMachine
         {
-            awaiter.OnCompleted(stateMachine.MoveNext);
-            // PoTaskRunner.Instance.Enqueue(new RunnerItem(awaiter, stateMachine));
+            // awaiter.OnCompleted(stateMachine.MoveNext);
+            PoTaskRunner.Instance.Enqueue(awaiter, stateMachine.MoveNext);
         }
 
         public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(
             ref TAwaiter awaiter,
             ref TStateMachine stateMachine)
-            where TAwaiter : Awaiter
+            where TAwaiter : Completable
             where TStateMachine : IAsyncStateMachine
         {
-            awaiter.OnCompleted(stateMachine.MoveNext);
-            // PoTaskRunner.Instance.Enqueue(new RunnerItem(awaiter, stateMachine));
+            // awaiter.OnCompleted(stateMachine.MoveNext);
+            PoTaskRunner.Instance.Enqueue(awaiter, stateMachine.MoveNext);
         }
 
         public void SetStateMachine(IAsyncStateMachine stateMachine)
@@ -55,7 +59,7 @@ namespace Ponito.Core.Asyncronized
     public struct PoTaskBuilder<TResult>
     {
         private Exception       ex   { get; set; }
-        private PoTask<TResult> task { get; set; }
+        private PoTask<TResult> task { get; }
 
         public static PoTaskBuilder<TResult> Create()
         {
@@ -64,7 +68,10 @@ namespace Ponito.Core.Asyncronized
 
         public PoTask<TResult> Task => task;
 
-        public void SetException(Exception ex) => this.ex = ex;
+        public void SetException(Exception ex)
+        {
+            this.ex = ex;
+        }
 
         public void Start<TStateMachine>(ref TStateMachine stateMachine)
             where TStateMachine : IAsyncStateMachine
@@ -78,19 +85,21 @@ namespace Ponito.Core.Asyncronized
         }
 
         public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
-            where TAwaiter : Awaiter
+            where TAwaiter : Completable
             where TStateMachine : IAsyncStateMachine
         {
-            awaiter.OnCompleted(stateMachine.MoveNext);
+            // awaiter.OnCompleted(stateMachine.MoveNext);
+            PoTaskRunner.Instance.Enqueue(awaiter, stateMachine.MoveNext);
         }
 
         public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(
             ref TAwaiter awaiter,
             ref TStateMachine stateMachine)
-            where TAwaiter : Awaiter
+            where TAwaiter : Completable
             where TStateMachine : IAsyncStateMachine
         {
-            awaiter.OnCompleted(stateMachine.MoveNext);
+            // awaiter.OnCompleted(stateMachine.MoveNext);
+            PoTaskRunner.Instance.Enqueue(awaiter, stateMachine.MoveNext);
         }
 
         public void SetStateMachine(IAsyncStateMachine stateMachine)

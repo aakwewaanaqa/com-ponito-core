@@ -1,29 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEngine;
+using Ponito.Core.Asyncronized.Interfaces;
 
-namespace Ponito.Core.Asyncronized
+namespace Ponito.Core.Asyncronized.Runner
 {
     public class PoTaskRunner : MonoSingleton<PoTaskRunner>
     {
         protected override bool isInitialized       => true;
         protected override bool isDontDestroyOnLoad => true;
+
         protected override void Initialize()
         {
         }
 
-        private readonly Queue<Awaiter> queue = new ();
-        
-        public void Enqueue(Awaiter item)
+        private readonly Queue<Item> queue = new();
+
+        private struct Item
         {
-            queue.Enqueue(item);
+            [NonSerialized] public Completable awaitable;
+            [NonSerialized] public Action    continuation;
+
+            public bool IsCompleted   => awaitable.IsCompleted;
+            public void OnCompleted() => awaitable.OnCompleted(continuation);
+        }
+
+        public void Enqueue(Completable awaitable, Action continuation)
+        {
+            queue.Enqueue(new Item
+            {
+                awaitable    = awaitable,
+                continuation = continuation,
+            });
         }
 
         private void Update()
         {
             if (!queue.TryPeek(out var item)) return;
             if (!item.IsCompleted) return;
+            item.OnCompleted();
             queue.Dequeue();
         }
     }

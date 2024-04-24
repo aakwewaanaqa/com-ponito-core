@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using Ponito.Core.Asyncronized;
+using Ponito.Core.Asyncronized.Interfaces;
 
 namespace Ponito.Core.Ease
 {
-    public readonly struct EaseAwaiter : Awaiter
+    public readonly struct EaseAwaiter : Awaitable
     {
         private readonly EaseAnimation ease;
 

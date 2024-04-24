@@ -1,3 +1,4 @@
+// the namespace must not be changed...
 namespace System.Runtime.CompilerServices
 {
     internal sealed class AsyncMethodBuilderAttribute : Attribute
