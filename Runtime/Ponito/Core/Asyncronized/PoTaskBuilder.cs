@@ -29,7 +29,7 @@ namespace Ponito.Core.Asyncronized
         }
 
         public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
-            where TAwaiter : INotifyCompletion
+            where TAwaiter : Awaiter
             where TStateMachine : IAsyncStateMachine
         {
             awaiter.OnCompleted(stateMachine.MoveNext);
@@ -38,7 +38,7 @@ namespace Ponito.Core.Asyncronized
         public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(
             ref TAwaiter awaiter,
             ref TStateMachine stateMachine)
-            where TAwaiter : INotifyCompletion
+            where TAwaiter : Awaiter
             where TStateMachine : IAsyncStateMachine
         {
             awaiter.OnCompleted(stateMachine.MoveNext);
@@ -76,7 +76,7 @@ namespace Ponito.Core.Asyncronized
         }
 
         public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
-            where TAwaiter : INotifyCompletion
+            where TAwaiter : Awaiter
             where TStateMachine : IAsyncStateMachine
         {
             awaiter.OnCompleted(stateMachine.MoveNext);
@@ -85,7 +85,7 @@ namespace Ponito.Core.Asyncronized
         public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(
             ref TAwaiter awaiter,
             ref TStateMachine stateMachine)
-            where TAwaiter : INotifyCompletion
+            where TAwaiter : Awaiter
             where TStateMachine : IAsyncStateMachine
         {
             awaiter.OnCompleted(stateMachine.MoveNext);

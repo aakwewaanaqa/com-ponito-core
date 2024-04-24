@@ -11,7 +11,7 @@ namespace Ponito.Core.Asyncronized
             return new AsyncOperationAwaiter(op);
         }
 
-        public readonly struct AsyncOperationAwaiter : INotifyCompletion
+        public readonly struct AsyncOperationAwaiter : Awaiter
         {
             private AsyncOperation op { get; }
             

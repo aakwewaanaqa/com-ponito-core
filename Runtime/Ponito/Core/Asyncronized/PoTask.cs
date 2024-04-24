@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 namespace Ponito.Core.Asyncronized
 {
     [AsyncMethodBuilderAttribute(typeof(PoTaskBuilder))]
-    public struct PoTask : INotifyCompletion
+    public struct PoTask : Awaiter
     {
         public bool IsCompleted { get; set; }
 
