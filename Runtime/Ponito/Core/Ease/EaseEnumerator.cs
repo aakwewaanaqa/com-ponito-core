@@ -67,7 +67,7 @@ namespace Ponito.Core.Ease
             }
 
             isPlaying = false;
-            setter.Invoke(end);
+            setter?.Invoke(end); // Weird bug when animation disposed...
 
             Dispose();
         }

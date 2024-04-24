@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+using Ponito.Core.Asyncronized;
 
 namespace Ponito.Core.Samples.UI
 {
@@ -13,15 +13,15 @@ namespace Ponito.Core.Samples.UI
         ///     Smart manage your <see cref="AsyncView"/> to <see cref="Show"/>
         /// </summary>
         /// <param name="args">any arguments you wish to pass into</param>
-        /// <returns><see cref="UniTask"/> of itself</returns>
-        UniTask Show(object args);
+        /// <returns><see cref="PoTask"/> of itself</returns>
+        PoTask Show(object args);
         
         /// <summary>
         ///     Smart manage your <see cref="AsyncView"/> to <see cref="Hide"/>
         /// </summary>
         /// <param name="args">any arguments you wish to pass into</param>
-        /// <returns><see cref="UniTask"/> of itself</returns>
-        UniTask Hide(object args);
+        /// <returns><see cref="PoTask"/> of itself</returns>
+        PoTask Hide(object args);
         
         /// <summary>
         ///     Gets the state of the <see cref="AsyncView"/>

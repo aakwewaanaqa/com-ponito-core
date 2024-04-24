@@ -1,7 +1,6 @@
 ﻿{
   "name": "com.ponito.core.samples",
   "references": [
-    "UniTask",
     "com.ponito.core",
     "com.ponito.core.exts",
     "com.ponito.core.ease"

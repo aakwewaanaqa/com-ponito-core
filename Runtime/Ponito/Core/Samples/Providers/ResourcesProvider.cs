@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+using Ponito.Core.Asyncronized;
 using Ponito.Core.Extensions;
 using UnityEngine;
 
@@ -18,7 +18,7 @@ namespace Ponito.Core.Samples.Providers
         protected override bool isDontDestroyOnLoad => false;
 
         /// <inheritdoc />
-        public async UniTask<T> ProvideAsync<T>(object subKey)
+        public async PoTask<T> ProvideAsync<T>(object subKey)
         {
             if (tables.TryGetValue(subKey, out var request))
             {
@@ -43,7 +43,7 @@ namespace Ponito.Core.Samples.Providers
         }
 
         /// <inheritdoc />
-        public async UniTask<string> MakePath(object subKey)
+        public async PoTask<string> MakePath(object subKey)
         {
             throw new InvalidOperationException();
         }

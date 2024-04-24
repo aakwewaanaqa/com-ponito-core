@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Reflection;
-using Cysharp.Threading.Tasks;
 using Ponito.Core.Asyncronized;
 using Ponito.Core.Ease;
 using Ponito.Core.Extensions;
@@ -95,9 +94,13 @@ namespace Ponito.Core.Samples
 
         public async PoTask Play(AudioClip clip, AudioPlayType type = AudioPlayType.Music, bool isOneShot = false)
         {
-            if (!isOneShot) await Stop(type);
+            if (clip.IsNull()) return;
+            
+            if (!isOneShot) await Stop(type); // Stops gentally
+            
             var source = GetSource(type);
             source.clip = clip;
+            
             if (isOneShot) source.PlayOneShot(clip);
             else source.Play();
         }
