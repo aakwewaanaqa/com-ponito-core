@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using Ponito.Core.Asyncronized;
+using UnityEngine;
 
 namespace Ponito.Core.Ease
 {
@@ -9,15 +11,10 @@ namespace Ponito.Core.Ease
         private readonly T            start;
         private          EaseFunction easeFunction;
         private          EaseType     easeType;
-        private          bool         isPlaying;
 
         private Lerper<T> lerper;
         private Setter<T> setter;
         private float     time;
-
-        public float Progress => time / duration;
-
-        public bool IsPlaying => isPlaying;
 
         public EaseEnumerator(
             T start,
@@ -36,8 +33,12 @@ namespace Ponito.Core.Ease
 
             time         = 0f;
             easeFunction = EasingEquations.GetFunction(easeType);
-            isPlaying    = true;
+            IsPlaying    = true;
         }
+
+        public float Progress => time / duration;
+
+        public bool IsPlaying { get; private set; }
 
         public void Dispose()
         {
@@ -48,19 +49,19 @@ namespace Ponito.Core.Ease
 
         public void Kill()
         {
-            isPlaying = false;
+            IsPlaying = false;
         }
 
         public async void Play()
         {
-            while (isPlaying && time < duration)
+            while (IsPlaying && time < duration)
             {
                 setter(lerper(start, end, easeFunction(time / duration)));
                 time += Time.deltaTime;
-                await UniTask.Yield();
+                await Task.Delay(1);
             }
 
-            isPlaying = false;
+            IsPlaying = false;
             setter?.Invoke(end); // Weird bug when animation disposed...
 
             Dispose();
