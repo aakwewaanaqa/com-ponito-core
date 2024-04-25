@@ -1,15 +1,28 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 using Ponito.Core.Asyncronized.Interfaces;
+using Ponito.Core.Asyncronized.Runner;
+using Ponito.Core.DebugHelper;
+using UnityEngine;
 
 namespace Ponito.Core.Asyncronized
 {
     [AsyncMethodBuilder(typeof(PoTaskBuilder))]
     public struct PoTask : Awaitable
     {
-        public bool IsCompleted => true;
+        private Completable awaiter { get; set; }
 
-        public void OnCompleted(Action continuation)
+        public bool IsCompleted
+        {
+            get
+            {
+                if (awaiter is null) return true;
+                else return awaiter.IsCompleted;
+            }
+        }
+
+        public void OnCompleted([NotNull] Action continuation)
         {
             continuation();
         }
@@ -22,13 +35,25 @@ namespace Ponito.Core.Asyncronized
         {
             return this;
         }
+
+        public static void Await<TAwaiter>(IAsyncStateMachine machine,
+                                           ref PoTask task,
+                                           ref TAwaiter completable,
+                                           Action continuation)
+            where TAwaiter : Completable
+        {
+            typeof(PoTask).F(nameof(Await));
+            task.awaiter = completable;
+            PoTaskRunner.Instance.Enqueue(completable, continuation);
+        }
     }
 
     [AsyncMethodBuilder(typeof(PoTaskBuilder<>))]
     public struct PoTask<TResult> : Awaitable<TResult>
     {
-        private TResult result      { get; set; }
-        public  bool    IsCompleted => true;
+        private Completable awaiter     { get; set; }
+        private TResult     result      { get; set; }
+        public  bool        IsCompleted => awaiter is null || awaiter.IsCompleted;
 
         public TResult GetResult()
         {
@@ -48,6 +73,12 @@ namespace Ponito.Core.Asyncronized
         public void SetResult(TResult result)
         {
             this.result = result;
+        }
+
+        public void Await(Completable completable, Action continuation)
+        {
+            awaiter = completable;
+            PoTaskRunner.Instance.Enqueue(awaiter, continuation);
         }
     }
 }

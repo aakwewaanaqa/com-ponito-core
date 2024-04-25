@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ponito.Core.Asyncronized.Interfaces;
+using Ponito.Core.DebugHelper;
+using UnityEngine;
 
 namespace Ponito.Core.Asyncronized.Runner
 {
@@ -36,6 +38,7 @@ namespace Ponito.Core.Asyncronized.Runner
         private void Update()
         {
             if (!queue.TryPeek(out var item)) return;
+            typeof(PoTaskRunner).F(nameof(Update));
             if (!item.IsCompleted) return;
             item.OnCompleted();
             queue.Dequeue();

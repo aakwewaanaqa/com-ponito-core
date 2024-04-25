@@ -3,11 +3,12 @@ using System.Threading;
 using JetBrains.Annotations;
 using Ponito.Core.Asyncronized.Interfaces;
 using Ponito.Core.Asyncronized.Runner;
+using Ponito.Core.DebugHelper;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncronized.Awaiters
 {
-    public class WhenAwaiter : Awaitable, IDisposable
+    public struct WhenAwaiter : Awaitable, IDisposable
     {
         private WhenPredicate predicate { get; set; }
 
@@ -21,7 +22,14 @@ namespace Ponito.Core.Asyncronized.Awaiters
             continuation();
         }
 
-        public bool IsCompleted => predicate();
+        public bool IsCompleted
+        {
+            get
+            {
+                typeof(WhenAwaiter).F(nameof(IsCompleted));
+                return predicate();
+            }
+        }
 
         public void GetResult()
         {
