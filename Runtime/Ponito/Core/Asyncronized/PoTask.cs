@@ -43,7 +43,7 @@ namespace Ponito.Core.Asyncronized
             Action continuation)
             where TAwaiter : Completable
         {
-            machine.GetType().F(nameof(Create));
+            // machine.GetType().F(nameof(Create));
             
             task.awaiter = completable;
             PoTaskRunner.Instance.Add(completable, continuation);

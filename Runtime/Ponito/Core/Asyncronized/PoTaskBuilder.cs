@@ -25,7 +25,7 @@ namespace Ponito.Core.Asyncronized
         public void Start<TStateMachine>(ref TStateMachine stateMachine)
             where TStateMachine : IAsyncStateMachine
         {
-            stateMachine.GetType().F(nameof(Start));
+            // stateMachine.GetType().F(nameof(Start));
             stateMachine.MoveNext();
         }
 
