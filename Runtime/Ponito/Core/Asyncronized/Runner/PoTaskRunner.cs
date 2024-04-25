@@ -2,46 +2,64 @@
 using System.Collections.Generic;
 using Ponito.Core.Asyncronized.Interfaces;
 using Ponito.Core.DebugHelper;
-using UnityEngine;
 
 namespace Ponito.Core.Asyncronized.Runner
 {
     public class PoTaskRunner : MonoSingleton<PoTaskRunner>
     {
-        protected override bool isInitialized       => true;
-        protected override bool isDontDestroyOnLoad => true;
+        private readonly   List<Item> list = new();
+        protected override bool       isInitialized       => true;
+        protected override bool       isDontDestroyOnLoad => true;
+
+        private void Update()
+        {
+            if (list.Count == 0) return;
+            
+            // typeof(PoTaskRunner).F(nameof(Update));
+            
+            for (int i = 0; i < list.Count; )
+            {
+                var item = list[i];
+                if (item.awaitable is Runnable runnable)
+                {
+                    runnable.Run();
+                }
+                if (!item.IsCompleted)
+                {
+                    i++;
+                    continue;
+                }
+                
+                item.awaitable.GetType().F(nameof(item.OnCompleted));
+                list.RemoveAt(i);
+                item.OnCompleted();
+            }
+        }
 
         protected override void Initialize()
         {
         }
 
-        private readonly Queue<Item> queue = new();
+        public void Add(Completable awaitable, Action continuation)
+        {
+            list.Add(new Item
+            {
+                awaitable    = awaitable,
+                continuation = continuation
+            });
+        }
 
         private struct Item
         {
             [NonSerialized] public Completable awaitable;
-            [NonSerialized] public Action    continuation;
+            [NonSerialized] public Action      continuation;
 
-            public bool IsCompleted   => awaitable.IsCompleted;
-            public void OnCompleted() => awaitable.OnCompleted(continuation);
-        }
+            public bool IsCompleted => awaitable.IsCompleted;
 
-        public void Enqueue(Completable awaitable, Action continuation)
-        {
-            queue.Enqueue(new Item
+            public void OnCompleted()
             {
-                awaitable    = awaitable,
-                continuation = continuation,
-            });
-        }
-
-        private void Update()
-        {
-            if (!queue.TryPeek(out var item)) return;
-            typeof(PoTaskRunner).F(nameof(Update));
-            if (!item.IsCompleted) return;
-            item.OnCompleted();
-            queue.Dequeue();
+                awaitable.OnCompleted(continuation);
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
 namespace Ponito.Core.Asyncronized.Awaiters
 {
-    public delegate bool WhenPredicate();
+    public delegate bool BoolPredicate();
 }

@@ -1,21 +1,21 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using Ponito.Core.Asyncronized.Interfaces;
 using Ponito.Core.DebugHelper;
 
 namespace Ponito.Core.Asyncronized
 {
-    public struct PoTaskBuilder
+    public struct PoTaskBuilder<TResult>
     {
-        private Exception ex { get; set; }
-        private PoTask    task;
+        private Exception       ex { get; set; }
+        private PoTask<TResult> task;
 
-        public static PoTaskBuilder Create()
+        public static PoTaskBuilder<TResult> Create()
         {
             return default;
         }
 
-        public PoTask Task => task;
+        public PoTask<TResult> Task => task;
 
         public void SetException(Exception ex)
         {
@@ -25,12 +25,12 @@ namespace Ponito.Core.Asyncronized
         public void Start<TStateMachine>(ref TStateMachine stateMachine)
             where TStateMachine : IAsyncStateMachine
         {
-            stateMachine.GetType().F(nameof(Start));
             stateMachine.MoveNext();
         }
 
-        public void SetResult()
+        public void SetResult(TResult result)
         {
+            task.SetResult(result);
         }
 
         public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
@@ -38,8 +38,8 @@ namespace Ponito.Core.Asyncronized
             where TStateMachine : IAsyncStateMachine
         {
             "await".Keyword(awaiter.GetType().Name);
-            // typeof(PoTaskBuilder).F(nameof(AwaitOnCompleted));
-            PoTask.Create(stateMachine, ref task, ref awaiter, stateMachine.MoveNext);
+            typeof(PoTaskBuilder).F(nameof(AwaitOnCompleted));
+            PoTask<TResult>.Create(stateMachine, ref task, ref awaiter, stateMachine.MoveNext);
         }
 
         public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(
