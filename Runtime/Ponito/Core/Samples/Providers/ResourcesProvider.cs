@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ponito.Core.Asyncronized;
+using System.Threading.Tasks;
 using Ponito.Core.Extensions;
 using UnityEngine;
 
@@ -12,17 +12,17 @@ namespace Ponito.Core.Samples.Providers
         private static readonly Dictionary<object, ResourceRequest> tables = new();
 
         /// <inheritdoc />
-        protected override bool isInitialized => true;
+        protected override bool IsInitialized => true;
 
         /// <inheritdoc />
-        protected override bool isDontDestroyOnLoad => false;
+        protected override bool IsDontDestroyOnLoad => false;
 
         /// <inheritdoc />
-        public async PoTask<T> ProvideAsync<T>(object subKey)
+        public async Task<T> ProvideAsync<T>(object subKey)
         {
             if (tables.TryGetValue(subKey, out var request))
             {
-                await request;
+                while (!request.isDone) await Task.Delay(1);
 
                 if (!request.asset.IsObject() || request.asset is not T t)
                     throw new InvalidCastException(nameof(ProvideAsync));
@@ -32,7 +32,7 @@ namespace Ponito.Core.Samples.Providers
             else
             {
                 request = Resources.LoadAsync(subKey.ToString(), typeof(T));
-                await request;
+                while (!request.isDone) await Task.Delay(1);
 
                 if (!request.asset.IsObject() || request.asset is not T t)
                     throw new InvalidCastException(nameof(ProvideAsync));
@@ -43,7 +43,7 @@ namespace Ponito.Core.Samples.Providers
         }
 
         /// <inheritdoc />
-        public async PoTask<string> MakePath(object subKey)
+        public async Task<string> MakePath(object subKey)
         {
             throw new InvalidOperationException();
         }

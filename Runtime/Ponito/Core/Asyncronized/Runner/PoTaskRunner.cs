@@ -8,8 +8,8 @@ namespace Ponito.Core.Asyncronized.Runner
     public class PoTaskRunner : MonoSingleton<PoTaskRunner>
     {
         private readonly   List<Item> list = new();
-        protected override bool       isInitialized       => true;
-        protected override bool       isDontDestroyOnLoad => true;
+        protected override bool       IsInitialized       => true;
+        protected override bool       IsDontDestroyOnLoad => true;
 
         private void Update()
         {

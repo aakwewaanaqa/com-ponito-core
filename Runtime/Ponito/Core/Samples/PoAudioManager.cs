@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Ponito.Core.Asyncronized;
 using Ponito.Core.Ease;
 using Ponito.Core.Extensions;
@@ -20,11 +21,11 @@ namespace Ponito.Core.Samples
         [SerializeField] private AudioSource ui;
 
         /// <inheritdoc />
-        protected override bool isInitialized => music.IsObject() && fx.IsObject() &&
+        protected override bool IsInitialized => music.IsObject() && fx.IsObject() &&
                                                  voice.IsObject() && ui.IsObject();
 
         /// <inheritdoc />
-        protected override bool isDontDestroyOnLoad => true;
+        protected override bool IsDontDestroyOnLoad => true;
 
         /// <summary>
         ///     Gets every field of [<see cref="SerializeField"/>]s
@@ -78,7 +79,7 @@ namespace Ponito.Core.Samples
         /// </summary>
         /// <param name="type">the type of managed <see cref="AudioSource" />s</param>
         /// <param name="duration">delay in seconds</param>
-        public async PoTask Stop(AudioPlayType type = AudioPlayType.Music, float duration = 0.2f)
+        public async Task Stop(AudioPlayType type = AudioPlayType.Music, float duration = 0.2f)
         {
             var source = GetSource(type);
             if (source.isPlaying)
@@ -92,7 +93,7 @@ namespace Ponito.Core.Samples
             source.Stop();
         }
 
-        public async PoTask Play(AudioClip clip, AudioPlayType type = AudioPlayType.Music, bool isOneShot = false)
+        public async Task Play(AudioClip clip, AudioPlayType type = AudioPlayType.Music, bool isOneShot = false)
         {
             if (clip.IsNull()) return;
             

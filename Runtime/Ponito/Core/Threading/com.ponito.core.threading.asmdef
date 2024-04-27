@@ -1,0 +1,6 @@
+{
+  "name": "com.ponito.core.threading",
+  "references": [
+    "com.ponito.core"
+  ]
+}
