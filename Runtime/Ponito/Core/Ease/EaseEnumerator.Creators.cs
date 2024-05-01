@@ -2,46 +2,46 @@
 
 namespace Ponito.Core.Ease
 {
-    internal partial class EaseEnumerator<T>
+    internal partial class Easer<T>
     {
-        public static EaseEnumerator<float> Float(
+        public static Easer<float> Float(
             float start,
             float end,
             Setter<float> setter,
             float duration,
             EaseType easeType = EaseType.InSine)
         {
-            return new EaseEnumerator<float>(start, end, setter, LerperOfFloat, duration);
+            return new Easer<float>(start, end, setter, LerperOfFloat, duration);
         }
 
-        public static EaseEnumerator<Vector2> Vector2(
+        public static Easer<Vector2> Vector2(
             Vector2 start,
             Vector2 end,
             Setter<Vector2> setter,
             float duration,
             EaseType easeType = EaseType.InSine)
         {
-            return new EaseEnumerator<Vector2>(start, end, setter, LerperOfVector2, duration, easeType);
+            return new Easer<Vector2>(start, end, setter, LerperOfVector2, duration, easeType);
         }
 
-        public static EaseEnumerator<Vector3> Vector3(
+        public static Easer<Vector3> Vector3(
             Vector3 start,
             Vector3 end,
             Setter<Vector3> setter,
             float duration,
             EaseType easeType = EaseType.InSine)
         {
-            return new EaseEnumerator<Vector3>(start, end, setter, LerperOfVector3, duration, easeType);
+            return new Easer<Vector3>(start, end, setter, LerperOfVector3, duration, easeType);
         }
 
-        public static EaseEnumerator<Quaternion> Quaternion(
+        public static Easer<Quaternion> Quaternion(
             Quaternion start,
             Quaternion end,
             Setter<Quaternion> setter,
             float duration,
             EaseType easeType = EaseType.InSine)
         {
-            return new EaseEnumerator<Quaternion>(start, end, setter, LerperOfQuaternion, duration, easeType);
+            return new Easer<Quaternion>(start, end, setter, LerperOfQuaternion, duration, easeType);
         }
     }
 }

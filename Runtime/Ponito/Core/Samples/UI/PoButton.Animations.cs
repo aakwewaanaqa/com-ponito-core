@@ -1,20 +1,21 @@
 using Ponito.Core.Ease;
+using Ponito.Core.Promises;
 using UnityEngine;
 
 namespace Ponito.Core.Samples.UI
 {
     public partial class PoButton
     {
-        private Vector3       originalScale;
-        private EaseAnimation ease;
-        
-        private async void PlayAudio(bool isPressed)
+        private Easable ease;
+        private Vector3 originalScale;
+
+        private async PoTask PlayAudio(bool isPressed)
         {
-            var clip = isPressed? pointerDown : pointerUp;
+            var clip = isPressed ? pointerDown : pointerUp;
             await PoAudioManager.Instance.Play(clip, AudioPlayType.UI, true);
         }
-        
-        private async void PlayAnimation(bool isPressed)
+
+        private async PoTask PlayAnimation(bool isPressed)
         {
             ease?.Kill();
             ease?.Dispose();
@@ -22,12 +23,12 @@ namespace Ponito.Core.Samples.UI
             {
                 AnimationType.None  => null,
                 AnimationType.Scale => ScaleAnimation(isPressed),
-                _                   => null,
+                _                   => null
             };
-            if (ease != null) await ease;
+            await ease;
         }
 
-        private EaseAnimation ScaleAnimation(bool isPressed)
+        private Easable ScaleAnimation(bool isPressed)
         {
             var from   = rectTransform.localScale;
             var to     = isPressed ? originalScale * 0.8f : originalScale;

@@ -1,4 +1,4 @@
-using Ponito.Core.Asyncronized;
+using Ponito.Core.Promises;
 
 namespace Ponito.Core.Samples.UI
 {

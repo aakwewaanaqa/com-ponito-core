@@ -1,5 +1,5 @@
 ﻿using System;
-using Ponito.Core.Asyncronized;
+using System.Threading.Tasks;
 using Object = UnityEngine.Object;
 
 namespace Ponito.Core.Samples.Providers
@@ -13,8 +13,8 @@ namespace Ponito.Core.Samples.Providers
         /// <typeparam name="T"><see cref="Object" /> type</typeparam>
         /// <returns>task</returns>
         /// <remarks>make implementation async</remarks>
-        PoTask<T> ProvideAsync<T>(object subKey);
+        Task<T> ProvideAsync<T>(object subKey);
 
-        PoTask<string> MakePath(object subKey);
+        Task<string> MakePath(object subKey);
     }
 }

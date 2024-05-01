@@ -1,8 +1,9 @@
 using System.Linq;
 using System.Reflection;
-using Ponito.Core.Asyncronized;
+using System.Threading.Tasks;
 using Ponito.Core.Ease;
 using Ponito.Core.Extensions;
+using Ponito.Core.Promises;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -20,11 +21,11 @@ namespace Ponito.Core.Samples
         [SerializeField] private AudioSource ui;
 
         /// <inheritdoc />
-        protected override bool isInitialized => music.IsObject() && fx.IsObject() &&
+        protected override bool IsInitialized => music.IsObject() && fx.IsObject() &&
                                                  voice.IsObject() && ui.IsObject();
 
         /// <inheritdoc />
-        protected override bool isDontDestroyOnLoad => true;
+        protected override bool IsDontDestroyOnLoad => true;
 
         /// <summary>
         ///     Gets every field of [<see cref="SerializeField"/>]s
@@ -96,7 +97,7 @@ namespace Ponito.Core.Samples
         {
             if (clip.IsNull()) return;
             
-            if (!isOneShot) await Stop(type); // Stops gentally
+            if (!isOneShot) await Stop(type); // Stops gracefully
             
             var source = GetSource(type);
             source.clip = clip;

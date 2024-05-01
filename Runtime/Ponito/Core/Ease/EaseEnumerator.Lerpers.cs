@@ -2,7 +2,7 @@
 
 namespace Ponito.Core.Ease
 {
-    internal partial class EaseEnumerator<T>
+    internal partial class Easer<T>
     {
         /// <inheritdoc cref="Mathf.Lerp" />
         public static Lerper<float> LerperOfFloat => Mathf.Lerp;
