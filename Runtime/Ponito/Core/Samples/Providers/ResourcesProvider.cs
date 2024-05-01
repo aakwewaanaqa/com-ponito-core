@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Ponito.Core.Asyncronized;
 using Ponito.Core.Extensions;
+using Ponito.Core.Promises;
 using UnityEngine;
 
 namespace Ponito.Core.Samples.Providers
