@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Security;
+using Ponito.Core.Promises.Compilations;
 
 namespace Ponito.Core.Promises
 {
@@ -14,6 +15,8 @@ namespace Ponito.Core.Promises
             return default;
         }
 
+        private StateMachineRunnerPromise runner;
+        
         public PoTask Task
         {
             [DebuggerHidden]
@@ -42,7 +45,8 @@ namespace Ponito.Core.Promises
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            awaiter.OnCompleted(stateMachine.MoveNext);
+            if (runner is null) AsyncPoPoTask<TStateMachine>.SetStateMachine(ref stateMachine, ref runner);
+            awaiter.OnCompleted(runner.MoveNext);
         }
 
         [DebuggerHidden]
@@ -52,7 +56,8 @@ namespace Ponito.Core.Promises
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            awaiter.OnCompleted(stateMachine.MoveNext);
+            if (runner is null) AsyncPoPoTask<TStateMachine>.SetStateMachine(ref stateMachine, ref runner);
+            awaiter.OnCompleted(runner.MoveNext);
         }
 
         [DebuggerHidden]
