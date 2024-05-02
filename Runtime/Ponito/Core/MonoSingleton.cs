@@ -13,12 +13,12 @@ namespace Ponito.Core
         /// <summary>
         ///     Checks whether it needs <see cref="Initialize" /> or not
         /// </summary>
-        protected abstract bool isInitialized { get; }
+        protected abstract bool IsInitialized { get; }
 
         /// <summary>
         ///     Checks whether it needs <see cref="MonoBehaviour.DontDestroyOnLoad" /> or not
         /// </summary>
-        protected abstract bool isDontDestroyOnLoad { get; }
+        protected abstract bool IsDontDestroyOnLoad { get; }
 
         /// <summary>
         ///     <see cref="Lazy{T}" /> calls <see cref="CreateInstance" /> before accessing value
@@ -50,8 +50,8 @@ namespace Ponito.Core
             var instance = gObj.AddComponent<T>();
 
             gObj.name = instance.GetType().Name; 
-            if (instance.isDontDestroyOnLoad) DontDestroyOnLoad(instance);
-            if (!instance.isInitialized) instance.Initialize();
+            if (instance.IsDontDestroyOnLoad) DontDestroyOnLoad(instance);
+            if (!instance.IsInitialized) instance.Initialize();
 
             return instance;
         }

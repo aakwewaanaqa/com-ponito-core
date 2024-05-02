@@ -45,7 +45,7 @@ namespace Ponito.Core.Promises
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            if (runner is null) AsyncPoPoTask<TStateMachine>.SetStateMachine(ref stateMachine, ref runner);
+            if (runner is null) AsyncPoTask<TStateMachine>.SetStateMachine(ref stateMachine, ref runner);
             awaiter.OnCompleted(runner.MoveNext);
         }
 
@@ -56,7 +56,7 @@ namespace Ponito.Core.Promises
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            if (runner is null) AsyncPoPoTask<TStateMachine>.SetStateMachine(ref stateMachine, ref runner);
+            if (runner is null) AsyncPoTask<TStateMachine>.SetStateMachine(ref stateMachine, ref runner);
             awaiter.OnCompleted(runner.MoveNext);
         }
 

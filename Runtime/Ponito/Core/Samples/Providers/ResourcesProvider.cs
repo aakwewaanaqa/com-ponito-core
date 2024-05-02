@@ -12,10 +12,10 @@ namespace Ponito.Core.Samples.Providers
         private static readonly Dictionary<object, ResourceRequest> tables = new();
 
         /// <inheritdoc />
-        protected override bool isInitialized => true;
+        protected override bool IsInitialized => true;
 
         /// <inheritdoc />
-        protected override bool isDontDestroyOnLoad => false;
+        protected override bool IsDontDestroyOnLoad => false;
 
         /// <inheritdoc />
         public async PoTask<T> ProvideAsync<T>(object subKey)
