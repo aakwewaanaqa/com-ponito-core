@@ -1,18 +1,21 @@
 using System;
 using System.Runtime.CompilerServices;
-using CompilerServices;
+using Ponito.Core.Asyncs.Tasks;
 
-namespace Ponito.Core.Promises.Compilations
+namespace Ponito.Core.Asyncs.Compilations
 {
     public class AsyncPoTask<TStateMachine> : StateMachineRunnerPromise,
-                                              PoTaskSource
+                                              PoTaskSource,
+                                              TaskPoolNode<AsyncPoTask<TStateMachine>>
         where TStateMachine : IAsyncStateMachine
     {
-        public  Action                                MoveNext     { get; }
-        private IAsyncStateMachine                    stateMachine { get; set; }
-        private PoTaskCompletionSourceCore<AsyncUnit> core         { get; }
-
-        public PoTask Task => new(this, core.Version);
+        public         Action                                MoveNext     { get; }
+        private        IAsyncStateMachine                    stateMachine { get; set; }
+        private        PoTaskCompletionSourceCore<AsyncUnit> core         { get; }
+        public         PoTask                                Task         => new(this, core.Version);
+        private static TaskPool<AsyncPoTask<TStateMachine>>  pool         { get; }
+        private        AsyncPoTask<TStateMachine>            nextNode;
+        public ref     AsyncPoTask<TStateMachine>            NextNode => ref nextNode;
 
         private AsyncPoTask()
         {
@@ -74,12 +77,16 @@ namespace Ponito.Core.Promises.Compilations
     }
 
     public class AsyncPoTask<TStateMachine, T> : StateMachineRunnerPromise<T>,
-                                                 PoTaskSource<T>
+                                                 PoTaskSource<T>,
+                                                 TaskPoolNode<AsyncPoTask<TStateMachine, T>>
         where TStateMachine : IAsyncStateMachine
     {
-        public  Action                        MoveNext     { get; }
-        private IAsyncStateMachine            stateMachine { get; set; }
-        private PoTaskCompletionSourceCore<T> core         { get; }
+        public         Action                                  MoveNext     { get; }
+        private        IAsyncStateMachine                      stateMachine { get; set; }
+        private        PoTaskCompletionSourceCore<T>           core         { get; }
+        private static TaskPool<AsyncPoTask<TStateMachine, T>> pool         { get; }
+        private        AsyncPoTask<TStateMachine, T>           nextNode;
+        public ref     AsyncPoTask<TStateMachine, T>           NextNode => ref nextNode;
 
         public PoTask<T> Task => new(this, core.Version);
 
@@ -102,8 +109,7 @@ namespace Ponito.Core.Promises.Compilations
             // TaskTracker.RemoveTracking(this);
             core.Reset();
             stateMachine = default;
-            // pool.TryPush(this);
-            return;
+            pool.TryPush(this);
         }
 
         private bool TryReturn()
@@ -111,8 +117,7 @@ namespace Ponito.Core.Promises.Compilations
             // TaskTracker.RemoveTracking(this);
             core.Reset();
             stateMachine = default;
-            // return pool.TryPush(this);
-            return true;
+            return pool.TryPush(this);
         }
 
         private void Run()

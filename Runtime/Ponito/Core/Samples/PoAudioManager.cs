@@ -1,9 +1,9 @@
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.Ease;
 using Ponito.Core.Extensions;
-using Ponito.Core.Promises;
 using UnityEngine;
 using UnityEngine.Audio;
 

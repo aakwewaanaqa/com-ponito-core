@@ -1,8 +1,6 @@
-using System;
-
-namespace Ponito.Core.Promises
+namespace Ponito.Core.Asyncs.Tasks
 {
-    public partial class PoTaskRunner
+    public partial class PlayerLoopRunner
     {
         protected override bool IsInitialized       => true;
         protected override bool IsDontDestroyOnLoad => true;

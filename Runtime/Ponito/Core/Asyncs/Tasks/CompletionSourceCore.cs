@@ -2,9 +2,8 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Ponito.Core.Promises;
 
-namespace CompilerServices
+namespace Ponito.Core.Asyncs.Tasks
 {
     public struct PoTaskCompletionSourceCore<T>
     {
@@ -64,12 +63,12 @@ namespace CompilerServices
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TrySetCancelled(CancellationToken cancellationToken = default)
+        public bool TrySetCanceled(CancellationToken ct = default)
         {
             if (Interlocked.Increment(ref completedCount) != 1) return false;
 
             this.hasUnhandledError = true;
-            this.error             = new OperationCanceledException(cancellationToken);
+            this.error             = new OperationCanceledException(ct);
             Continue();
 
             return true;

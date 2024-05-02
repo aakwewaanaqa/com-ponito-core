@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Ponito.Core.Promises;
+using Ponito.Core.Asyncs.Tasks;
 using Object = UnityEngine.Object;
 
 namespace Ponito.Core.Samples.Providers

@@ -1,6 +1,6 @@
 using System;
 
-namespace Ponito.Core.Promises.Compilations
+namespace Ponito.Core.Asyncs.Compilations
 {
     public readonly struct AsyncUnit : IEquatable<AsyncUnit>
     {

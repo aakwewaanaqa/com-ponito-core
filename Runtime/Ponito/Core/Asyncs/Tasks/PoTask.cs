@@ -1,8 +1,8 @@
 using System;
 using System.Runtime.CompilerServices;
-using Ponito.Core.Promises.Compilations;
+using Ponito.Core.Asyncs.Compilations;
 
-namespace Ponito.Core.Promises
+namespace Ponito.Core.Asyncs.Tasks
 {
     [AsyncMethodBuilder(typeof(PoTaskBuilder))]
     public readonly partial struct PoTask

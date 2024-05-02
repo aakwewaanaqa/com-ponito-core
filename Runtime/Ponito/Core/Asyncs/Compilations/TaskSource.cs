@@ -1,6 +1,7 @@
 using System;
+using Ponito.Core.Asyncs.Tasks;
 
-namespace Ponito.Core.Promises.Compilations
+namespace Ponito.Core.Asyncs.Compilations
 {
     public interface PoTaskSource
     {

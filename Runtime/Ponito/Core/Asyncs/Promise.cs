@@ -1,6 +1,6 @@
 using System;
 
-namespace Ponito.Core.Promises
+namespace Ponito.Core.Asyncs
 {
     public class Promise
     {

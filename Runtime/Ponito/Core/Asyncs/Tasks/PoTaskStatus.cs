@@ -1,4 +1,4 @@
-namespace Ponito.Core.Promises
+namespace Ponito.Core.Asyncs.Tasks
 {
     public enum PoTaskStatus
     {

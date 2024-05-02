@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.Extensions;
-using Ponito.Core.Promises;
 using UnityEngine;
 
 namespace Ponito.Core.Samples.Providers

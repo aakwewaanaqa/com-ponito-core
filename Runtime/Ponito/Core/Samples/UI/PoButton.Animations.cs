@@ -1,5 +1,5 @@
+using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.Ease;
-using Ponito.Core.Promises;
 using UnityEngine;
 
 namespace Ponito.Core.Samples.UI

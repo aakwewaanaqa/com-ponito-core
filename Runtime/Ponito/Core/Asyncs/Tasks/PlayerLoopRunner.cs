@@ -1,27 +1,26 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Ponito.Core.Promises
+namespace Ponito.Core.Asyncs.Tasks
 {
     /// <summary>
     ///     Borrowed from UniTask
     ///     https://github.com/Cysharp/UniTask/blob/master/src/UniTask/Assets/Plugins/UniTask/Runtime/Internal/PlayerLoopRunner.cs
     /// </summary>
-    public partial class PoTaskRunner : MonoSingleton<PoTaskRunner>
+    public partial class PlayerLoopRunner : MonoSingleton<PlayerLoopRunner>
     {
         private const int SIZE = 16;
 
-        private readonly object             lockRunOrQueue = new();
-        private readonly object             lockArray      = new();
-        private readonly Queue<IEnumerator> waits          = new(SIZE);
-        private          IEnumerator[]      items          = new IEnumerator[SIZE];
+        private readonly object            lockRunOrQueue = new();
+        private readonly object            lockArray      = new();
+        private readonly Queue<PlayerLoopItem> waits          = new(SIZE);
+        private          PlayerLoopItem[]      items          = new PlayerLoopItem[SIZE];
 
         private bool isRunning { get; set; } = false;
         private int  tail      { get; set; } = 0;
 
-        public void Add(IEnumerator item)
+        internal void Add(PlayerLoopItem item)
         {
             lock (lockRunOrQueue)
             {
@@ -39,7 +38,7 @@ namespace Ponito.Core.Promises
             }
         }
 
-        public int Clear()
+        internal  int Clear()
         {
             lock (lockArray)
             {

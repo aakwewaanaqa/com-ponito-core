@@ -2,9 +2,9 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Security;
-using Ponito.Core.Promises.Compilations;
+using Ponito.Core.Asyncs.Tasks;
 
-namespace Ponito.Core.Promises
+namespace Ponito.Core.Asyncs.Compilations
 {
     public struct PoTaskBuilder
     {
