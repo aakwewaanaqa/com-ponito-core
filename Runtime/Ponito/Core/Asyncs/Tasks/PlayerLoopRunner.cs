@@ -56,9 +56,9 @@ namespace Ponito.Core.Asyncs.Tasks
         }
 
         /// <summary>
-        ///     Seems to run in front doing <see cref="LoopItem.MoveNext()"/>,
-        ///     if finished as false <see cref="LoopItem"/> found,
-        ///     goes to tail to get not finished <see cref="LoopItem"/> and put it back to front. 
+        ///     Seems to run in front doing <see cref="PlayerLoopItem.MoveNext()"/>,
+        ///     if finished as false <see cref="PlayerLoopItem"/> found,
+        ///     goes to tail to get not finished <see cref="PlayerLoopItem"/> and put it back to front. 
         /// </summary>
         private void Run()
         {

@@ -22,7 +22,7 @@ namespace Ponito.Core.Samples.Providers
         {
             if (tables.TryGetValue(subKey, out var request))
             {
-                await request;
+                while (!request.isDone) await PoTask.Yield();
 
                 if (!request.asset.IsObject() || request.asset is not T t)
                     throw new InvalidCastException(nameof(ProvideAsync));
@@ -32,7 +32,7 @@ namespace Ponito.Core.Samples.Providers
             else
             {
                 request = Resources.LoadAsync(subKey.ToString(), typeof(T));
-                await request;
+                while (!request.isDone) await PoTask.Yield();
 
                 if (!request.asset.IsObject() || request.asset is not T t)
                     throw new InvalidCastException(nameof(ProvideAsync));

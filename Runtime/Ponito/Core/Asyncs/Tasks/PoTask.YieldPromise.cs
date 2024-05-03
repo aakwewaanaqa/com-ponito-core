@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Extensions;
@@ -6,12 +7,13 @@ namespace Ponito.Core.Asyncs.Tasks
 {
     public readonly partial struct PoTask
     {
-        public static PoTaskSource Yield(out short token)
+        public static PoTask Yield()
         {
-            return YieldPromise.Create(PlayerLoopTiming.Update,
-                                       default,
-                                       false,
-                                       out token);
+            var source = YieldPromise.Create(PlayerLoopTiming.Update,
+                                             default,
+                                             false,
+                                             out short token);
+            return new PoTask(source, token);
         }
 
         private sealed class YieldPromise : PoTaskSource, PlayerLoopItem, TaskPoolNode<YieldPromise>
@@ -33,7 +35,7 @@ namespace Ponito.Core.Asyncs.Tasks
             {
                 if (ct.IsCancellationRequested)
                 {
-                    // return AutoResetUniTaskCompletionSource.CreateFromCanceled(cancellationToken, out token);
+                    return AutoResetPoTaskCompletionSource.CreateFromCanceled(ct, out token);
                 }
 
                 if (!pool.TryPop(out var result))
@@ -51,13 +53,57 @@ namespace Ponito.Core.Asyncs.Tasks
                         promise.core.TrySetCanceled(promise.ct);
                     }, result);
                 }
-                
+
                 // TaskTracker.TrackActiveTask(result, 3);
-                
+
                 PlayerLoopHelper.AddAction(timing, result);
-                
+
                 token = result.core.Version;
                 return result;
+            }
+
+            public void GetResult(short token)
+            {
+                try
+                {
+                    core.GetResult(token);
+                }
+                finally
+                {
+                    if (!cancelImmediately && !ct.IsCancellationRequested) TryReturn();
+                }
+            }
+
+            public PoTaskStatus GetStatus(short token)
+            {
+                return core.GetStatus(token);
+            }
+
+            public void OnCompleted(Action<object> continuation, object state, short token)
+            {
+                core.OnCompleted(continuation, state, token);
+            }
+
+            public bool MoveNext()
+            {
+                if (ct.IsCancellationRequested)
+                {
+                    core.TrySetCanceled(ct);
+                    return false;
+                }
+
+                core.TrySetResult(null);
+                return false;
+            }
+
+            bool TryReturn()
+            {
+                // TaskTracker.RemoveTracking(this);
+                core.Reset();
+                ct = default;
+                ctr.Dispose();
+                cancelImmediately = default;
+                return pool.TryPush(this);
             }
         }
     }
