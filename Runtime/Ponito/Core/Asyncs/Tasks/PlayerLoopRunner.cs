@@ -147,7 +147,7 @@ namespace Ponito.Core.Asyncs.Tasks
                 while (waits.Count != 0)
                 {
                     if (items.Length == tail) Array.Resize(ref items, checked(tail * 2));
-                    items[++tail] = waits.Dequeue();
+                    items[tail++] = waits.Dequeue();
                 }
             }
         }
