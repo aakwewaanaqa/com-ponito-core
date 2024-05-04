@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using Ponito.Core.Asyncs.Tasks;
+using Ponito.Core.Asyncs.Tasks.Sources;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
@@ -139,6 +140,11 @@ namespace Ponito.Core.Asyncs.Compilations
             {
                 TryReturn();
             }
+        }
+
+        void PoTaskSource.GetResult(short token)
+        {
+            GetResult(token);
         }
 
         public PoTaskStatus GetStatus(short token) => core.GetStatus(token);

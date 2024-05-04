@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using Ponito.Core.Asyncs.Compilations;
 
 namespace Ponito.Core.Asyncs.Tasks

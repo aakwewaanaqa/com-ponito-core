@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
-namespace Ponito.Core.Asyncs.Tasks
+namespace Ponito.Core.Asyncs.Tasks.Sources
 {
     public struct PoTaskCompletionSourceCore<T>
     {

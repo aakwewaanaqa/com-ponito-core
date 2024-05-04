@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ponito.Core.Asyncs.Tasks
+namespace Ponito.Core.Asyncs.Tasks.Sources
 {
     internal static class PoTaskCompletionSourceCoreShared
     {

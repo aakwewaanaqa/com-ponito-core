@@ -10,10 +10,8 @@ namespace Ponito.Core.Asyncs.Compilations
         void         GetResult(short token);
     }
 
-    public interface PoTaskSource<T>
+    public interface PoTaskSource<out T> : PoTaskSource
     {
-        PoTaskStatus GetStatus(short token);
-        void         OnCompleted(Action<object> continuation, object state, short token);
-        T            GetResult(short token);
+        new T GetResult(short token);
     }
 }
