@@ -12,8 +12,8 @@ namespace Ponito.Core.Asyncs.Tasks
     {
         private const int SIZE = 16;
 
-        private readonly object            lockRunOrQueue = new();
-        private readonly object            lockArray      = new();
+        private readonly object                lockRunOrQueue = new();
+        private readonly object                lockArray      = new();
         private readonly Queue<PlayerLoopItem> waits          = new(SIZE);
         private          PlayerLoopItem[]      items          = new PlayerLoopItem[SIZE];
 
@@ -38,7 +38,7 @@ namespace Ponito.Core.Asyncs.Tasks
             }
         }
 
-        internal  int Clear()
+        internal int Clear()
         {
             lock (lockArray)
             {

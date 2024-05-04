@@ -11,6 +11,7 @@ namespace Ponito.Core.Asyncs.Compilations
         void   SetException(Exception exception);
     }
 
+    // TODO: Does StateMachineRunnerPromise<T> inherits StateMachineRunnerPromise?
     public interface StateMachineRunnerPromise<T>
     {
         Action    MoveNext { get; }

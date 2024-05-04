@@ -10,13 +10,15 @@ namespace Ponito.Core.Asyncs.Compilations
                                               TaskPoolNode<AsyncPoTask<TStateMachine>>
         where TStateMachine : IAsyncStateMachine
     {
-        public         Action                                MoveNext     { get; }
-        private        IAsyncStateMachine                    stateMachine { get; set; }
-        private        PoTaskCompletionSourceCore<AsyncUnit> core         { get; }
-        public         PoTask                                Task         => new(this, core.Version);
-        private static TaskPool<AsyncPoTask<TStateMachine>>  pool         { get; }
+        private        IAsyncStateMachine                    stateMachine;
+        private        PoTaskCompletionSourceCore<AsyncUnit> core;
+        private static TaskPool<AsyncPoTask<TStateMachine>>  pool;
         private        AsyncPoTask<TStateMachine>            nextNode;
-        public ref     AsyncPoTask<TStateMachine>            NextNode => ref nextNode;
+
+        public PoTask Task => new(this, core.Version);
+
+        public     Action                     MoveNext { get; }
+        public ref AsyncPoTask<TStateMachine> NextNode => ref nextNode;
 
         private AsyncPoTask()
         {
@@ -34,20 +36,20 @@ namespace Ponito.Core.Asyncs.Compilations
 
         private void Return()
         {
+            // TODO: Track task
             // TaskTracker.RemoveTracking(this);
             core.Reset();
             stateMachine = default;
-            // pool.TryPush(this);
-            return;
+            pool.TryPush(this);
         }
 
         private bool TryReturn()
         {
+            // TODO: Track task
             // TaskTracker.RemoveTracking(this);
             core.Reset();
             stateMachine = default;
-            // return pool.TryPush(this);
-            return true;
+            return pool.TryPush(this);
         }
 
         private void Run()
@@ -82,14 +84,15 @@ namespace Ponito.Core.Asyncs.Compilations
                                                  TaskPoolNode<AsyncPoTask<TStateMachine, T>>
         where TStateMachine : IAsyncStateMachine
     {
-        public         Action                                  MoveNext     { get; }
-        private        IAsyncStateMachine                      stateMachine { get; set; }
-        private        PoTaskCompletionSourceCore<T>           core         { get; }
-        private static TaskPool<AsyncPoTask<TStateMachine, T>> pool         { get; }
+        private        IAsyncStateMachine                      stateMachine;
+        private        PoTaskCompletionSourceCore<T>           core;
+        private static TaskPool<AsyncPoTask<TStateMachine, T>> pool;
         private        AsyncPoTask<TStateMachine, T>           nextNode;
-        public ref     AsyncPoTask<TStateMachine, T>           NextNode => ref nextNode;
 
         public PoTask<T> Task => new(this, core.Version);
+
+        public     Action                        MoveNext { get; }
+        public ref AsyncPoTask<TStateMachine, T> NextNode => ref nextNode;
 
         private AsyncPoTask()
         {
@@ -107,6 +110,7 @@ namespace Ponito.Core.Asyncs.Compilations
 
         private void Return()
         {
+            // TODO: Track task
             // TaskTracker.RemoveTracking(this);
             core.Reset();
             stateMachine = default;
@@ -115,6 +119,7 @@ namespace Ponito.Core.Asyncs.Compilations
 
         private bool TryReturn()
         {
+            // TODO: Track task
             // TaskTracker.RemoveTracking(this);
             core.Reset();
             stateMachine = default;

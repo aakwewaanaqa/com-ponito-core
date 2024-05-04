@@ -7,6 +7,7 @@ namespace Ponito.Core.Asyncs.Extensions
     {
         public static CancellationTokenRegistration RegisterWithoutCaptureExecutionContext(this CancellationToken ct, Action<object> callback, object state)
         {
+            // TODO: Sorts this thing out?
             // var restoreFlow = false;
             // if (!ExecutionContext.IsFlowSuppressed())
             // {

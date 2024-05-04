@@ -8,8 +8,8 @@ namespace Ponito.Core.Asyncs.Tasks
     [AsyncMethodBuilder(typeof(PoTaskBuilder))]
     public readonly partial struct PoTask
     {
-        private short        token  { get; }
-        private PoTaskSource source { get; }
+        private readonly short        token;
+        private readonly PoTaskSource source;
 
         public PoTask(PoTaskSource source, short token)
         {

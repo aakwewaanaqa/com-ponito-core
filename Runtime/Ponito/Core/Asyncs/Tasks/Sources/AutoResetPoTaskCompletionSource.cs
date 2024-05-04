@@ -22,7 +22,7 @@ namespace Ponito.Core.Asyncs.Tasks.Sources
                 result = new AutoResetPoTaskCompletionSource();
             }
             result.version = result.core.Version;
-            // TODO: Hopes to track this source
+            // TODO: Tracks source
             // TaskTracker.TrackActiveTask(result, 2);
             return result;
         }
@@ -64,7 +64,7 @@ namespace Ponito.Core.Asyncs.Tasks.Sources
 
         private bool TryReturn()
         {
-            // TODO: Hopes to track this source
+            // TODO: Tracks source
             // TaskTracker.RemoveTracking(this);
             core.Reset();
             return pool.TryPush(this);
