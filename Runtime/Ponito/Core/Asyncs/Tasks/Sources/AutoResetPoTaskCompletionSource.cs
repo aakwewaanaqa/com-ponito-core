@@ -5,7 +5,6 @@ using Ponito.Core.Asyncs.Compilations;
 namespace Ponito.Core.Asyncs.Tasks.Sources
 {
     public class AutoResetPoTaskCompletionSource : PoTaskSource,
-                                                   PlayerLoopItem,
                                                    TaskPoolNode<AutoResetPoTaskCompletionSource>
     {
         private static TaskPool<AutoResetPoTaskCompletionSource> pool;
@@ -68,11 +67,6 @@ namespace Ponito.Core.Asyncs.Tasks.Sources
             // TaskTracker.RemoveTracking(this);
             core.Reset();
             return pool.TryPush(this);
-        }
-
-        public bool MoveNext()
-        {
-            throw new NotImplementedException();
         }
     }
 }
