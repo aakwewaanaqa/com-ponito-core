@@ -88,7 +88,7 @@ namespace Ponito.Core.Asyncs.Tasks
 
             public bool IsCompleted => task.Status is not PoTaskStatus.Pending;
 
-            public T GetResult(T result)
+            public T GetResult()
             {
                 if (task.source is null) return task.result;
                 return task.source.GetResult(task.token);
