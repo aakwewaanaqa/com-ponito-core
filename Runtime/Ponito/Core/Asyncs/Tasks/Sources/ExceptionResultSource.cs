@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.ExceptionServices;
 using Ponito.Core.Asyncs.Compilations;
+using Ponito.Core.DebugHelper;
+using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks.Sources
 {
@@ -22,6 +24,8 @@ namespace Ponito.Core.Asyncs.Tasks.Sources
                 GC.SuppressFinalize(this);
             }
             
+            Debug.LogException(exception.SourceException);
+            // BUG: Why this throw does not work?
             exception.Throw();
         }
 
@@ -71,6 +75,8 @@ namespace Ponito.Core.Asyncs.Tasks.Sources
                 GC.SuppressFinalize(this);
             }
             
+            Debug.LogException(exception.SourceException);
+            // BUG: Why this throw does not work?
             exception.Throw();
             return default;
         }
