@@ -16,7 +16,7 @@ namespace Ponito.Core.Ease
         {
         }
 
-        public bool IsCompleted => ease.IsCompleted;
+        public bool IsCompleted => ease?.IsCompleted ?? true;
 
         public void OnCompleted(Action continuation)
         {

@@ -37,7 +37,7 @@ namespace Ponito.Core.Ease
 
         public float  Progress    => time / duration;
         public object Current     => lerper(start, end, easeFunction(time / duration));
-        public bool   IsCompleted => IsPlaying && time >= duration;
+        public bool   IsCompleted => !IsPlaying || time >= duration;
 
         public void Dispose()
         {
@@ -58,7 +58,7 @@ namespace Ponito.Core.Ease
 
         public bool MoveNext()
         {
-            if (!IsCompleted)
+            if (IsCompleted)
             {
                 IsPlaying = false;
                 setter?.Invoke(end); // Weird bug when animation disposed...
@@ -68,7 +68,6 @@ namespace Ponito.Core.Ease
 
             setter((T)Current);
             time += Time.deltaTime;
-
             return true;
         }
 

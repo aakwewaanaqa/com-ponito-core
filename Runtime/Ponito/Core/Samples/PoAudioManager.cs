@@ -2,6 +2,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Ponito.Core.Asyncs.Tasks;
+using Ponito.Core.DebugHelper;
 using Ponito.Core.Ease;
 using Ponito.Core.Extensions;
 using UnityEngine;
@@ -90,6 +91,7 @@ namespace Ponito.Core.Samples
                 source.clip = null;
             }
 
+            source.volume = 1f;
             source.Stop();
         }
 

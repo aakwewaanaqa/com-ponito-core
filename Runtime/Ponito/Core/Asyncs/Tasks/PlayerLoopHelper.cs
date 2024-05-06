@@ -1,10 +1,20 @@
+using System.Threading;
+
 namespace Ponito.Core.Asyncs.Tasks
 {
-    internal static class PlayerLoopHelper
+    internal readonly struct PlayerLoopHelper
     {
-        public static void AddAction(PlayerLoopTiming timing, PlayerLoopItem item)
+        private static readonly int mainThreadId;
+
+        static PlayerLoopHelper()
         {
-            PlayerLoopRunner.Instance.Add(item);
+            mainThreadId = Thread.CurrentThread.ManagedThreadId;
         }
+
+        public static bool IsMainThread => 
+            mainThreadId == Thread.CurrentThread.ManagedThreadId;
+
+        public static void AddAction(PlayerLoopTiming timing, PlayerLoopItem item) => 
+            PlayerLoopRunner.Instance.Add(item);
     }
 }
