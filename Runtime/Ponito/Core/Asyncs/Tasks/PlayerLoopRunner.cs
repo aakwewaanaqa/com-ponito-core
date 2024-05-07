@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Ponito.Core.DebugHelper;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks
@@ -22,6 +23,8 @@ namespace Ponito.Core.Asyncs.Tasks
 
         internal void Add(PlayerLoopItem item)
         {
+            typeof(PlayerLoopRunner).F($"Add({item.GetType()})");
+
             lock (lockRunOrQueue)
             {
                 if (isRunning)
@@ -78,12 +81,15 @@ namespace Ponito.Core.Asyncs.Tasks
                     {
                         try
                         {
+                            typeof(PlayerLoopRunner).F($"Run({fromHead})");
                             if (fromHead.MoveNext())
                             {
+                                Debug.Log($"fromHead = true");
                                 goto NEXT_I;
                             }
                             else
                             {
+                                Debug.Log($"items[i] = null");
                                 items[i] = null;
                                 goto LOOP_FROM_TAIL;
                             }
@@ -104,14 +110,17 @@ namespace Ponito.Core.Asyncs.Tasks
                         {
                             try
                             {
+                                typeof(PlayerLoopRunner).F($"Run({fromTail})");
                                 if (fromTail.MoveNext())
                                 {
+                                    Debug.Log($"fromTail = true");
                                     (items[i], items[j]) = (fromTail, null);
                                     j--;
                                     goto NEXT_I;
                                 }
                                 else
                                 {
+                                    Debug.Log($"items[j] = null");
                                     items[j] = null;
                                     j--;
                                     goto NEXT_J;
