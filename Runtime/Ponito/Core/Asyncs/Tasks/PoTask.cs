@@ -10,48 +10,63 @@ using UnityEngine;
 namespace Ponito.Core.Asyncs.Tasks
 {
     [AsyncMethodBuilder(typeof(PoTaskBuilder))]
-    public readonly partial struct PoTask
+    public partial class PoTask
     {
-        private readonly short   token;
-        private readonly Movable source;
+        internal readonly bool    isFromBuilder;
+        internal readonly short   token;
+        internal          Movable source;
 
-        public PoTask(Movable source, short token)
+        public PoTask(bool isFromBuilder, Movable source = null)
         {
-            this.source = source;
-            this.token  = token;
+            this.isFromBuilder = isFromBuilder;
+            this.source        = source;
+            this.token         = token;
         }
 
         public Awaiter GetAwaiter() => new(this);
 
-        public readonly struct Awaiter : INotifyCompletion
+        public class Awaiter : INotifyCompletion, Movable
         {
             private readonly PoTask task;
+            private          Action continuation;
 
             public Awaiter(in PoTask task)
             {
-                this.task = task;
+                this.task         = task;
+                this.continuation = null;
             }
 
-            public bool IsSource => false;
+            public Action Continuation => continuation;
 
-            public bool IsCompleted => false;
+            public bool IsCompleted => task.source?.IsCompleted ?? false;
 
             public void GetResult()
             {
             }
 
+            public bool MoveNext()
+            {
+                var builder = task.isFromBuilder;
+                var source  = task.source;
+                if (!builder) return source.MoveNext();
+                if (source.IsCompleted) continuation?.Invoke();
+                return false;
+            }
+
             public void OnCompleted(Action continuation)
             {
-                typeof(Awaiter).F(nameof(OnCompleted));
-                if (task.source != null)
+                var builder = task.isFromBuilder;
+                if (task.source is { Continuation: null })
                 {
-                    Debug.Log("task.source.OnCompleted");
+                    typeof(Awaiter).F(nameof(OnCompleted));
                     task.source.OnCompleted(continuation);
+                    MovableRunner.Instance.Queue(this);
                 }
-                else
+                else if (builder && this.continuation == null)
                 {
-                    Debug.Log("continuation()");
-                    continuation();
+                    typeof(Awaiter).F(nameof(OnCompleted));
+                    this.continuation = continuation;
+                    MovableRunner.Instance.Queue(this);
                 }
             }
         }

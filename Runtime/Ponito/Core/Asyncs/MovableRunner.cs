@@ -25,6 +25,7 @@ namespace Ponito.Core.Asyncs
 
         private void Update()
         {
+            typeof(MovableRunner).F(nameof(Update));
             for (int i = 0; i < list.Count; i++)
             {
                 AGAIN:

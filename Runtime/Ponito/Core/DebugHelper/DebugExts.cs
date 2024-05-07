@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Debug = UnityEngine.Debug;
 
@@ -34,6 +35,17 @@ namespace Ponito.Core.DebugHelper
             var typeColor = type.IsValueType ? STRUCT_COLOR : CLASS_COLOR;
             object o = $"{type.Name.Colorize(typeColor)}" +
                        $".{function.Colorize(FUNCTION_COLOR)}()";
+            o.Log();
+        }
+
+        [DebuggerHidden]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void F(this Type type, string function, params object[] args)
+        {
+            var typeColor = type.IsValueType ? STRUCT_COLOR : CLASS_COLOR;
+            var arg       = args.Aggregate((a, b) => $"{a}, {b}");
+            var o = $"{type.Name.Colorize(typeColor)}" +
+                    $".{function.Colorize(FUNCTION_COLOR)}({arg})";
             o.Log();
         }
 

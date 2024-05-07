@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using Ponito.Core.Asyncs.Tasks;
+using Ponito.Core.DebugHelper;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
@@ -17,14 +18,21 @@ namespace Ponito.Core.Asyncs.Compilations
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static PoTaskBuilder Create()
         {
-            return default;
+            return new PoTaskBuilder()
+            {
+                task = new PoTask(true),
+            };
         }
 
         public PoTask Task
         {
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return task; }
+            get
+            {
+                typeof(PoTaskBuilder).Get(nameof(Task));
+                return task;
+            }
         }
 
         [DebuggerHidden]
@@ -45,9 +53,12 @@ namespace Ponito.Core.Asyncs.Compilations
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
-            where TAwaiter : INotifyCompletion
+            where TAwaiter : Movable
             where TStateMachine : IAsyncStateMachine
         {
+            typeof(PoTaskBuilder).F($"{nameof(AwaitOnCompleted)}", awaiter.GetType());
+            
+            task.source = awaiter;
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
 
@@ -57,9 +68,12 @@ namespace Ponito.Core.Asyncs.Compilations
         public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(
             ref TAwaiter awaiter,
             ref TStateMachine stateMachine)
-            where TAwaiter : INotifyCompletion
+            where TAwaiter : Movable
             where TStateMachine : IAsyncStateMachine
         {
+            typeof(PoTaskBuilder).F(nameof(AwaitUnsafeOnCompleted));
+            
+            task.source = awaiter;
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
 

@@ -8,6 +8,9 @@ namespace Ponito.Core.Asyncs.Tasks.Sources
     {
         private bool   yielded;
         private Action continuation;
+
+        public bool   IsCompleted  => yielded;
+        public Action Continuation => continuation;
         
         public bool MoveNext()
         {
@@ -25,10 +28,9 @@ namespace Ponito.Core.Asyncs.Tasks.Sources
 
         public void OnCompleted(Action continuation)
         {
+            if (Continuation != null) return;
+            
             typeof(YieldMovable).F(nameof(OnCompleted));
-            
-            MovableRunner.Instance.Queue(this);
-            
             this.continuation = continuation;
         }
     }

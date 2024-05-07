@@ -3,12 +3,12 @@ using Ponito.Core.DebugHelper;
 
 namespace Ponito.Core.Asyncs.Tasks
 {
-    public readonly partial struct PoTask
+    public partial class PoTask
     {
         public static PoTask Yield()
         {
             typeof(PoTask).F(nameof(Yield));
-            return new PoTask(new YieldMovable(), 0);
+            return new PoTask(false, new YieldMovable());
         }
     }
 }
