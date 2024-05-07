@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ponito.Core.Asyncs.Compilations;
 
 namespace Ponito.Core.Asyncs
 {
-    public class EnumeratorRunner : MonoSingleton<EnumeratorRunner>
+    public class MovableRunner : MonoSingleton<MovableRunner>
     {
         protected override bool IsInitialized       => true;
         protected override bool IsDontDestroyOnLoad => true;
@@ -13,11 +14,11 @@ namespace Ponito.Core.Asyncs
         {
         }
 
-        private List<IEnumerator> list { get; } = new();
+        private List<Movable> list { get; } = new();
 
-        public void Queue(IEnumerator ie)
+        public void Queue(Movable movable)
         {
-            list.Add(ie);
+            list.Add(movable);
         }
 
         private void Update()

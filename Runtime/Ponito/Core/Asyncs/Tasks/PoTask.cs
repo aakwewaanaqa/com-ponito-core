@@ -1,23 +1,24 @@
 using System;
+using System.Collections;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Ponito.Core.Asyncs.Compilations;
+using Ponito.Core.Asyncs.Tasks.Sources;
+using Ponito.Core.DebugHelper;
 
 namespace Ponito.Core.Asyncs.Tasks
 {
     [AsyncMethodBuilder(typeof(PoTaskBuilder))]
     public readonly partial struct PoTask
     {
-        private readonly short        token;
-        private readonly PoTaskSource source;
+        private readonly short   token;
+        private readonly Movable source;
 
-        public PoTask(PoTaskSource source, short token)
+        public PoTask(Movable source, short token)
         {
             this.source = source;
             this.token  = token;
         }
-
-        public PoTaskStatus Status => source?.GetStatus(token) ?? PoTaskStatus.Succeeded;
 
         public Awaiter GetAwaiter() => new(this);
 
@@ -25,29 +26,24 @@ namespace Ponito.Core.Asyncs.Tasks
         {
             private readonly PoTask task;
 
-            public Awaiter(PoTask task)
+            public Awaiter(in PoTask task)
             {
                 this.task = task;
             }
 
-            public bool IsCompleted => task.Status is not PoTaskStatus.Pending;
+            public bool IsSource => false;
+
+            public bool IsCompleted => false;
 
             public void GetResult()
             {
-                if (task.source is null) return;
-                task.source.GetResult(task.token);
             }
 
             public void OnCompleted(Action continuation)
             {
-                if (task.source == null) continuation();
-                task.source!.OnCompleted(AwaiterShared.ContinuationDelegate, continuation, task.token);
-            }
-
-            public void SourceOnCompleted(Action<object> continuation, object state)
-            {
-                if (task.source == null) continuation(state);
-                task.source!.OnCompleted(continuation, state, task.token);
+                typeof(PoTask).F(nameof(OnCompleted));
+                if (task.source != null) task.source.OnCompleted(continuation);
+                else continuation();
             }
         }
     }
@@ -55,55 +51,49 @@ namespace Ponito.Core.Asyncs.Tasks
     [AsyncMethodBuilder(typeof(PoTaskBuilder<>))]
     public readonly partial struct PoTask<T>
     {
-        private readonly short           token;
-        private readonly PoTaskSource<T> source;
-        private readonly T               result;
+        private readonly short   token;
+        private readonly Movable source;
 
-        public PoTask(PoTaskSource<T> source, short token)
+        public PoTask(Movable source, short token)
         {
             this.source = source;
             this.token  = token;
-            result      = default;
         }
-        
-        public PoTask(T result)
-        {
-            this.source = default;
-            this.token  = default;
-            this.result = result;
-        }
-
-        public PoTaskStatus Status => source?.GetStatus(token) ?? PoTaskStatus.Succeeded;
 
         public Awaiter GetAwaiter() => new(this);
 
-        public readonly struct Awaiter : INotifyCompletion
+        public struct Awaiter : INotifyCompletion
         {
             private readonly PoTask<T> task;
+            private          Action    continuation;
 
             public Awaiter(PoTask<T> task)
             {
-                this.task = task;
+                this.task         = task;
+                this.continuation = null;
             }
 
-            public bool IsCompleted => task.Status is not PoTaskStatus.Pending;
+            public bool IsCompleted => false;
 
             public T GetResult()
             {
-                if (task.source is null) return task.result;
-                return task.source.GetResult(task.token);
+                return default;
             }
 
             public void OnCompleted(Action continuation)
             {
-                if (task.source == null) continuation();
-                task.source!.OnCompleted(AwaiterShared.ContinuationDelegate, continuation, task.token);
+                this.continuation = continuation;
             }
 
-            public void SourceOnCompleted(Action<object> continuation, object state)
+            public bool MoveNext()
             {
-                if (task.source == null) continuation(state);
-                task.source!.OnCompleted(continuation, state, task.token);
+                if (task.source is null)
+                {
+                    continuation();
+                    return false;
+                }
+
+                return task.source.MoveNext();
             }
         }
     }

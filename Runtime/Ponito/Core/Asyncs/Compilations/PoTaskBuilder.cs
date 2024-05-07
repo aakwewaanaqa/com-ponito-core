@@ -10,8 +10,8 @@ namespace Ponito.Core.Asyncs.Compilations
     [StructLayout(LayoutKind.Auto)]
     public struct PoTaskBuilder
     {
-        private StateMachineRunnerPromise runnerPromise;
-        private Exception                 ex;
+        private PoTask    task;
+        private Exception ex;
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -24,26 +24,22 @@ namespace Ponito.Core.Asyncs.Compilations
         {
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get
-            {
-                if (runnerPromise != null) return runnerPromise.Task;
-                return ex != null ? PoTask.FromException(ex) : PoTask.CompletedTask;
-            }
+            get { return task; }
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetException(Exception exception)
         {
-            if (runnerPromise == null) ex = exception;
-            else runnerPromise.SetException(exception);
+            // if (runnerPromise == null) ex = exception;
+            // else runnerPromise.SetException(exception);
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetResult()
         {
-            runnerPromise?.SetResult();
+            // runnerPromise?.SetResult();
         }
 
         [DebuggerHidden]
@@ -52,10 +48,7 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            if (runnerPromise is null)
-                AsyncPoTask<TStateMachine>.SetStateMachine(ref stateMachine,
-                                                           ref runnerPromise);
-            awaiter.OnCompleted(runnerPromise.MoveNext);
+            awaiter.OnCompleted(stateMachine.MoveNext);
         }
 
         [DebuggerHidden]
@@ -67,10 +60,7 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            if (runnerPromise is null)
-                AsyncPoTask<TStateMachine>.SetStateMachine(ref stateMachine,
-                                                           ref runnerPromise);
-            awaiter.OnCompleted(runnerPromise.MoveNext);
+            awaiter.OnCompleted(stateMachine.MoveNext);
         }
 
         [DebuggerHidden]
@@ -91,9 +81,9 @@ namespace Ponito.Core.Asyncs.Compilations
 
     public struct PoTaskBuilder<T>
     {
-        private StateMachineRunnerPromise<T> runnerPromise;
-        private Exception                    ex;
-        private T                            result;
+        private PoTask<T> task;
+        private Exception ex;
+        private T         result;
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -108,10 +98,7 @@ namespace Ponito.Core.Asyncs.Compilations
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
-                if (runnerPromise != null) return runnerPromise.Task;
-                return ex is null 
-                           ? PoTask.FromResult(result) 
-                           : PoTask.FromException<T>(ex);
+                return task;
             }
         }
 
@@ -119,16 +106,15 @@ namespace Ponito.Core.Asyncs.Compilations
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetException(Exception exception)
         {
-            if (runnerPromise is null) ex = exception;
-            else runnerPromise.SetException(exception);
+            // if (runnerPromise is null) ex = exception;
+            // else runnerPromise.SetException(exception);
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetResult(T result)
         {
-            if (runnerPromise is null) this.result = result;
-            else runnerPromise.SetResult(result);
+            this.result = result;
         }
 
         [DebuggerHidden]
@@ -137,9 +123,6 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            if (runnerPromise is null)
-                AsyncPoTask<TStateMachine, T>.SetStateMachine(ref stateMachine,
-                                                              ref runnerPromise);
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
 
@@ -152,9 +135,6 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            if (runnerPromise is null)
-                AsyncPoTask<TStateMachine, T>.SetStateMachine(ref stateMachine,
-                                                              ref runnerPromise);
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
 

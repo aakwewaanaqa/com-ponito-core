@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using Ponito.Core.DebugHelper;
-using UnityEngine;
 
 namespace Ponito.Core.Ease
 {
