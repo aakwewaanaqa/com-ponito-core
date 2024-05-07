@@ -9,23 +9,21 @@ namespace Ponito.Core.Samples.UI
         private Easable ease;
         private Vector3 originalScale;
 
-        private async PoTask PlayAudio(bool isPressed)
+        private void PlayAudio(bool isPressed)
         {
             var clip = isPressed ? pointerDown : pointerUp;
-            await PoAudioManager.Instance.Play(clip, AudioPlayType.UI, true);
+            _ = PoAudioManager.Instance.Play(clip, AudioPlayType.UI, true);
         }
 
-        private async PoTask PlayAnimation(bool isPressed)
+        private void PlayAnimation(bool isPressed)
         {
             ease?.Kill();
-            ease?.Dispose();
             ease = animationType switch
             {
                 AnimationType.None  => null,
                 AnimationType.Scale => ScaleAnimation(isPressed),
                 _                   => null
             };
-            await ease;
         }
 
         private Easable ScaleAnimation(bool isPressed)
