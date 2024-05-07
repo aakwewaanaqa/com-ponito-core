@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections;
+using Ponito.Core.Asyncs;
 
 namespace Ponito.Core.Ease
 {
-    public interface Easable : IDisposable, IEnumerator
+    public interface Easable : Awaitable<EaseAwaiter>, IDisposable, IEnumerator
     {
-        public bool        IsCompleted { get; }
-        public float       Progress    { get; }
-        public void        Kill();
-        public EaseAwaiter GetAwaiter();
+        public float Progress { get; }
+        public void  Kill();
     }
 }

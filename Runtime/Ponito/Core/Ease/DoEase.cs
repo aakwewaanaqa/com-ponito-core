@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using Ponito.Core.Asyncs;
+using Ponito.Core.DebugHelper;
 using UnityEngine;
 
 namespace Ponito.Core.Ease
@@ -8,7 +10,7 @@ namespace Ponito.Core.Ease
     ///     Provides ease functions of <see cref="UniTask" /> for interpolating values
     ///     and performing easing animations.
     /// </summary>
-    /// <seealso cref="Create{T}" />
+    /// <seealso cref="To{T}" />
     public static class DoEase
     {
         /// <summary>
@@ -20,13 +22,14 @@ namespace Ponito.Core.Ease
         /// <param name="duration">the ease duration</param>
         /// <param name="easeType">the type of the ease</param>
         /// <typeparam name="T">the value <see cref="Type" /></typeparam>
-        public static Easable Create<T>(
+        public static Easable To<T>(
             T start,
             T end,
             Setter<T> setter,
             float duration,
             EaseType easeType = EaseType.InSine)
         {
+            typeof(DoEase).F(nameof(To));
             Easable easable = start switch
             {
                 float s1 when end is float e1 && setter is Setter<float> set1 =>
@@ -39,7 +42,7 @@ namespace Ponito.Core.Ease
                     Easer<T>.Quaternion(s4, e4, set4, duration, easeType),
                 _ => throw new ArgumentException($"Unsupported type {typeof(T).Name} for DoEase.Create")
             };
-            EasableManager.Instance.Run(easable);
+            EnumeratorRunner.Instance.Queue(easable);
             return easable;
         }
     }

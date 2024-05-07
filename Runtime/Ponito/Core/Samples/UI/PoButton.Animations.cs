@@ -34,7 +34,7 @@ namespace Ponito.Core.Samples.UI
             var to     = isPressed ? originalScale * 0.8f : originalScale;
             var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
             var type   = isPressed ? EaseType.InSine : EaseType.OutBounce;
-            return DoEase.Create(from, to, setter, 0.2f, type);
+            return DoEase.To(from, to, setter, 0.2f, type);
         }
     }
 }

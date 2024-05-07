@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using Ponito.Core.DebugHelper;
+using UnityEngine;
 
 namespace Ponito.Core.Ease
 {
@@ -7,20 +9,14 @@ namespace Ponito.Core.Ease
     {
         private readonly Easable ease;
 
-        public EaseAwaiter(Easable ease)
-        {
-            this.ease = ease;
-        }
+        public EaseAwaiter(Easable ease) => this.ease = ease;
+
+        public void OnCompleted(Action continuation) => ease.OnCompleted(continuation);
 
         public void GetResult()
         {
         }
 
-        public bool IsCompleted => ease?.IsCompleted ?? true;
-
-        public void OnCompleted(Action continuation)
-        {
-            continuation();
-        }
+        public bool IsCompleted => ease?.IsCompleted ?? false;
     }
 }

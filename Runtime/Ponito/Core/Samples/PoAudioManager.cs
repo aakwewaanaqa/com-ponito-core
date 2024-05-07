@@ -87,7 +87,7 @@ namespace Ponito.Core.Samples
             {
                 var from   = source.volume;
                 var setter = new Setter<float>(v => source.volume = v);
-                await DoEase.Create(from, 0f, setter, duration);
+                await DoEase.To(from, 0f, setter, duration);
                 source.clip = null;
             }
 
