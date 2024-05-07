@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Ponito.Core.Asyncs.Compilations;
+using Ponito.Core.DebugHelper;
 
 namespace Ponito.Core.Asyncs
 {
@@ -18,6 +19,7 @@ namespace Ponito.Core.Asyncs
 
         public void Queue(Movable movable)
         {
+            typeof(MovableRunner).F(nameof(Queue));
             list.Add(movable);
         }
 

@@ -5,6 +5,7 @@ using System.Threading;
 using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Tasks.Sources;
 using Ponito.Core.DebugHelper;
+using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks
 {
@@ -41,9 +42,17 @@ namespace Ponito.Core.Asyncs.Tasks
 
             public void OnCompleted(Action continuation)
             {
-                typeof(PoTask).F(nameof(OnCompleted));
-                if (task.source != null) task.source.OnCompleted(continuation);
-                else continuation();
+                typeof(Awaiter).F(nameof(OnCompleted));
+                if (task.source != null)
+                {
+                    Debug.Log("task.source.OnCompleted");
+                    task.source.OnCompleted(continuation);
+                }
+                else
+                {
+                    Debug.Log("continuation()");
+                    continuation();
+                }
             }
         }
     }
