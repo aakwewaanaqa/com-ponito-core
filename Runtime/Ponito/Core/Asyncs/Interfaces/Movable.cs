@@ -4,8 +4,8 @@ namespace Ponito.Core.Asyncs.Interfaces
 {
     public interface Movable : INotifyCompletion
     {
-        bool   MoveNext();
-        bool   IsCompleted  { get; }
-        void   GetResult();
+        bool IsCompleted { get; }
+        bool MoveNext();
+        void GetResult();
     }
 }

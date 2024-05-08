@@ -1,7 +1,5 @@
 ﻿#if UNITY_EDITOR
-using System;
 using System.Collections.Generic;
-using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
 using UnityEditor;
@@ -16,7 +14,7 @@ namespace Ponito.Core.Asyncs
         {
             private MovableRunner runner;
 
-            private List<Movable> movables => runner.movables;
+            private Movable[] movables => runner.movables;
 
             private void OnEnable()
             {
@@ -27,9 +25,7 @@ namespace Ponito.Core.Asyncs
             {
                 foreach (var movable in movables)
                 {
-                    var awaiter    = movable as PoTask.Awaiter;
-                    var stateName  = awaiter.machine.GetType().Name;
-                    var sourceName = awaiter.task.source.GetType().Name;
+                    var sourceName = movable?.GetType().Name;
 
                     var cr   = EditorGUILayout.GetControlRect();
                     var rect = cr;
@@ -37,7 +33,7 @@ namespace Ponito.Core.Asyncs
                         var pos  = rect.position;
                         var size = new Vector2(rect.width, rect.height);
                         rect = new Rect(pos, size);
-                        EditorGUI.TextField(rect, stateName, sourceName);
+                        EditorGUI.TextField(rect, sourceName);
                         rect.x += size.x;
                     }
 

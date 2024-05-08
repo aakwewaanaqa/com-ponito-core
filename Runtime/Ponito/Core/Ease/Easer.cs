@@ -1,4 +1,5 @@
 ﻿using System;
+using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.DebugHelper;
 using UnityEngine;
 
@@ -47,11 +48,5 @@ namespace Ponito.Core.Ease
 
         public void Kill() => isEnded = true;
 
-        public Action Continuation => continuation;
-
-        public void GetResult()
-        {
-            
-        }
     }
 }

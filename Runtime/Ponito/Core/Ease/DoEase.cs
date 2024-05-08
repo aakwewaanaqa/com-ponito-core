@@ -42,7 +42,7 @@ namespace Ponito.Core.Ease
                     Easer<T>.Quaternion(s4, e4, set4, duration, easeType),
                 _ => throw new ArgumentException($"Unsupported type {typeof(T).Name} for DoEase.Create")
             };
-            MovableRunner.Instance.Queue(easable);
+            MovableRunner.Instance.AddToQueue(easable);
             return easable;
         }
     }

@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Interfaces;
-using Ponito.Core.Asyncs.Tasks.Sources;
-using Ponito.Core.DebugHelper;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks
@@ -20,33 +16,21 @@ namespace Ponito.Core.Asyncs.Tasks
             this.source = source;
         }
 
-        public Awaiter GetAwaiter() => new(this);
-
-        public class Awaiter : Movable
+        public Awaiter GetAwaiter()
         {
-            internal PoTask             task         { get; }
-            internal IAsyncStateMachine machine      { get; set; }
-            private  Action             continuation { get; set; }
+            return new Awaiter(this);
+        }
 
+        public class Awaiter : Movable, IDisposable
+        {
             public Awaiter(in PoTask task)
             {
                 this.task    = task;
                 continuation = null;
             }
 
-            public bool IsCompleted => task.source?.IsCompleted ?? true;
-
-            public void GetResult()
-            {
-            }
-
-            public bool MoveNext()
-            {
-                if (!IsCompleted) return true;
-
-                continuation?.Invoke();
-                return false;
-            }
+            internal PoTask task         { get; }
+            private  Action continuation { get; set; }
 
             public void OnCompleted(Action continuation)
             {
@@ -57,13 +41,33 @@ namespace Ponito.Core.Asyncs.Tasks
                 }
 
                 this.continuation = continuation;
-                MovableRunner.Instance.Queue(this);
+                MovableRunner.Instance.AddToQueue(this);
+            }
+
+            public bool IsCompleted => task.source?.IsCompleted ?? true;
+
+            public bool MoveNext()
+            {
+                if (!IsCompleted) return true;
+
+                continuation?.Invoke();
+                return false;
+            }
+
+            public void GetResult()
+            {
+                Dispose();
+            }
+
+            public void Dispose()
+            {
+                continuation = null;
             }
         }
     }
 
     [AsyncMethodBuilder(typeof(PoTaskBuilder<>))]
-    public readonly partial struct PoTask<T>
+    public readonly struct PoTask<T>
     {
         private readonly short   token;
         private readonly Movable source;
@@ -74,7 +78,10 @@ namespace Ponito.Core.Asyncs.Tasks
             this.token  = token;
         }
 
-        public Awaiter GetAwaiter() => new(this);
+        public Awaiter GetAwaiter()
+        {
+            return new Awaiter(this);
+        }
 
         public struct Awaiter : INotifyCompletion
         {
@@ -83,8 +90,8 @@ namespace Ponito.Core.Asyncs.Tasks
 
             public Awaiter(PoTask<T> task)
             {
-                this.task         = task;
-                this.continuation = null;
+                this.task    = task;
+                continuation = null;
             }
 
             public bool IsCompleted => false;

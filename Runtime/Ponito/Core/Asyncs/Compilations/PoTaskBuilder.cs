@@ -5,23 +5,21 @@ using System.Runtime.InteropServices;
 using System.Security;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
-using Ponito.Core.DebugHelper;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
     [StructLayout(LayoutKind.Auto)]
     public struct PoTaskBuilder
     {
-        private PoTask    task;
         private Exception ex;
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static PoTaskBuilder Create()
         {
-            return new PoTaskBuilder()
+            return new PoTaskBuilder
             {
-                task = new PoTask(),
+                Task = new PoTask()
             };
         }
 
@@ -29,7 +27,8 @@ namespace Ponito.Core.Asyncs.Compilations
         {
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => task;
+            get;
+            private set;
         }
 
         [DebuggerHidden]
@@ -53,8 +52,7 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : Movable
             where TStateMachine : IAsyncStateMachine
         {
-            task.source = awaiter;
-            if (awaiter is PoTask.Awaiter a) a.machine = stateMachine;
+            Task.source = awaiter;
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
 
@@ -67,8 +65,7 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : Movable
             where TStateMachine : IAsyncStateMachine
         {
-            task.source = awaiter;
-            if (awaiter is PoTask.Awaiter a) a.machine = stateMachine;
+            Task.source = awaiter;
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
 
@@ -90,7 +87,6 @@ namespace Ponito.Core.Asyncs.Compilations
 
     public struct PoTaskBuilder<T>
     {
-        private PoTask<T> task;
         private Exception ex;
         private T         result;
 
@@ -105,10 +101,7 @@ namespace Ponito.Core.Asyncs.Compilations
         {
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get
-            {
-                return task;
-            }
+            get;
         }
 
         [DebuggerHidden]

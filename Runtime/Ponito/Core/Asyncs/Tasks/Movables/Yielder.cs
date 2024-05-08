@@ -1,29 +1,27 @@
 ﻿using System;
 using Ponito.Core.Asyncs.Interfaces;
-using Ponito.Core.DebugHelper;
 using UnityEngine;
 
-namespace Ponito.Core.Asyncs.Tasks.Sources
+namespace Ponito.Core.Asyncs.Tasks.Movables
 {
-    public class YieldMovable : Movable
+    public class Yielder : Movable, IDisposable
     {
-        private int    yielded;
+        private int    frame;
         private Action continuation;
 
-        public bool   IsCompleted  => yielded == 2;
-        public Action Continuation => continuation;
+        public bool IsCompleted => frame == 2;
 
         public bool MoveNext()
         {
             // typeof(YieldMovable).F(nameof(MoveNext));
-            if (yielded == 0)
+            if (frame == 0)
             {
-                yielded = 1;
-                return true;
+                frame = 1;
+                continuation?.Invoke();
+                frame = 2;
+                return false;
             }
 
-            continuation?.Invoke();
-            yielded = 2;
             return false;
         }
 
@@ -35,16 +33,21 @@ namespace Ponito.Core.Asyncs.Tasks.Sources
                 Debug.LogError("continuation overflown");
                 return;
             }
-            
+
             this.continuation = continuation;
-            MovableRunner.Instance.Queue(this);
+            MovableRunner.Instance.AddToQueue(this);
         }
 
         public Movable GetAwaiter() => this;
 
         public void GetResult()
         {
-            
+            Dispose();
+        }
+
+        public void Dispose()
+        {
+            continuation = null;
         }
     }
 }
