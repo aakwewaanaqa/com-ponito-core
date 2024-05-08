@@ -29,7 +29,7 @@ namespace Ponito.Core.Ease
             float duration,
             EaseType easeType = EaseType.InSine)
         {
-            typeof(DoEase).F(nameof(To));
+            // typeof(DoEase).F(nameof(To));
             Easable easable = start switch
             {
                 float s1 when end is float e1 && setter is Setter<float> set1 =>
