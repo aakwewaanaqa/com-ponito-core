@@ -6,22 +6,16 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
 {
     public class Yielder : Movable, IDisposable
     {
-        private int    frame;
-        private Action continuation;
-
-        public bool IsCompleted => frame == 2;
+        private Action continuation { get; set; }
+        public  bool   IsCompleted  { get; private set; }
 
         public bool MoveNext()
         {
             // typeof(YieldMovable).F(nameof(MoveNext));
-            if (frame == 0)
-            {
-                frame = 1;
-                continuation?.Invoke();
-                frame = 2;
-                return false;
-            }
-
+            if (IsCompleted) return false;
+            
+            continuation?.Invoke(); // Hard logic, has to do continuation first
+            IsCompleted = true;     // then mark completion for PoTask
             return false;
         }
 

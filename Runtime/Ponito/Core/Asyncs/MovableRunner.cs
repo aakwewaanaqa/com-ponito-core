@@ -33,6 +33,7 @@ namespace Ponito.Core.Asyncs
             {
                 if (movables[i] != null) continue;
 
+                // TODO: Tack movable
                 movables[i] = movable;
                 return;
             }
@@ -48,7 +49,11 @@ namespace Ponito.Core.Asyncs
             {
                 var head = movables[i];
                 if (head == null) continue;
-                if (!head.MoveNext()) movables[i] = null;
+                if (!head.MoveNext())
+                {
+                    // TODO: Untrack movable
+                    movables[i] = null;
+                }
             }
 
             while (queue.TryDequeue(out var movable)) AddToMovables(movable);
