@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
+using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.DebugHelper;
 
@@ -20,7 +21,7 @@ namespace Ponito.Core.Asyncs.Compilations
         {
             return new PoTaskBuilder()
             {
-                task = new PoTask(true),
+                task = new PoTask(),
             };
         }
 
@@ -28,11 +29,7 @@ namespace Ponito.Core.Asyncs.Compilations
         {
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get
-            {
-                typeof(PoTaskBuilder).Get(nameof(Task));
-                return task;
-            }
+            get => task;
         }
 
         [DebuggerHidden]
@@ -56,9 +53,8 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : Movable
             where TStateMachine : IAsyncStateMachine
         {
-            typeof(PoTaskBuilder).F($"{nameof(AwaitOnCompleted)}", awaiter.GetType());
-            
             task.source = awaiter;
+            if (awaiter is PoTask.Awaiter a) a.machine = stateMachine;
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
 
@@ -71,9 +67,8 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : Movable
             where TStateMachine : IAsyncStateMachine
         {
-            typeof(PoTaskBuilder).F(nameof(AwaitUnsafeOnCompleted));
-            
             task.source = awaiter;
+            if (awaiter is PoTask.Awaiter a) a.machine = stateMachine;
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
 

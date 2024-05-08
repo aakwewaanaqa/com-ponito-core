@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using Ponito.Core.Asyncs.Compilations;
+using Ponito.Core.Asyncs.Interfaces;
 
 namespace Ponito.Core.Ease
 {
-    public readonly struct EaseAwaiter : INotifyCompletion, Movable
+    public readonly struct EaseAwaiter : Movable
     {
         private readonly Easable ease;
 
@@ -15,8 +16,6 @@ namespace Ponito.Core.Ease
         public bool MoveNext() => ease.MoveNext();
 
         public void OnCompleted(Action continuation) => ease.OnCompleted(continuation);
-
-        public Action Continuation => ease.Continuation;
 
         public void GetResult()
         {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Ponito.Core.Asyncs.Compilations;
+using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks.Sources;
 using Ponito.Core.DebugHelper;
 using UnityEngine;
@@ -12,33 +13,28 @@ namespace Ponito.Core.Asyncs.Tasks
     [AsyncMethodBuilder(typeof(PoTaskBuilder))]
     public partial class PoTask
     {
-        internal readonly bool    isFromBuilder;
-        internal readonly short   token;
-        internal          Movable source;
+        internal Movable source;
 
-        public PoTask(bool isFromBuilder, Movable source = null)
+        public PoTask(Movable source = null)
         {
-            this.isFromBuilder = isFromBuilder;
-            this.source        = source;
-            this.token         = token;
+            this.source = source;
         }
 
         public Awaiter GetAwaiter() => new(this);
 
-        public class Awaiter : INotifyCompletion, Movable
+        public class Awaiter : Movable
         {
-            private readonly PoTask task;
-            private          Action continuation;
+            internal PoTask             task         { get; }
+            internal IAsyncStateMachine machine      { get; set; }
+            private  Action             continuation { get; set; }
 
             public Awaiter(in PoTask task)
             {
-                this.task         = task;
-                this.continuation = null;
+                this.task    = task;
+                continuation = null;
             }
 
-            public Action Continuation => continuation;
-
-            public bool IsCompleted => task.source?.IsCompleted ?? false;
+            public bool IsCompleted => task.source?.IsCompleted ?? true;
 
             public void GetResult()
             {
@@ -46,28 +42,22 @@ namespace Ponito.Core.Asyncs.Tasks
 
             public bool MoveNext()
             {
-                var builder = task.isFromBuilder;
-                var source  = task.source;
-                if (!builder) return source.MoveNext();
-                if (source.IsCompleted) continuation?.Invoke();
+                if (!IsCompleted) return true;
+
+                continuation?.Invoke();
                 return false;
             }
 
             public void OnCompleted(Action continuation)
             {
-                var builder = task.isFromBuilder;
-                if (task.source is { Continuation: null })
+                if (this.continuation != null)
                 {
-                    typeof(Awaiter).F(nameof(OnCompleted));
-                    task.source.OnCompleted(continuation);
-                    MovableRunner.Instance.Queue(this);
+                    Debug.LogError("continuation overflown");
+                    return;
                 }
-                else if (builder && this.continuation == null)
-                {
-                    typeof(Awaiter).F(nameof(OnCompleted));
-                    this.continuation = continuation;
-                    MovableRunner.Instance.Queue(this);
-                }
+
+                this.continuation = continuation;
+                MovableRunner.Instance.Queue(this);
             }
         }
     }

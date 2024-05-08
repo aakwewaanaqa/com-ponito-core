@@ -1,12 +1,11 @@
-﻿using System;
+﻿using System.Runtime.CompilerServices;
 
-namespace Ponito.Core.Asyncs.Compilations
+namespace Ponito.Core.Asyncs.Interfaces
 {
-    public interface Movable
+    public interface Movable : INotifyCompletion
     {
         bool   MoveNext();
-        void   OnCompleted(Action continuation);
-        Action Continuation { get; }
         bool   IsCompleted  { get; }
+        void   GetResult();
     }
 }
