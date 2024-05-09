@@ -41,15 +41,14 @@ namespace Ponito.Core.Asyncs.Tasks
     }
 
     [AsyncMethodBuilder(typeof(PoTaskBuilder<>))]
-    public readonly struct PoTask<T>
+    public class PoTask<T>
     {
-        private readonly short   token;
-        private readonly Movable source;
+        internal Movable source;
+        internal T       result;
 
-        public PoTask(Movable source, short token)
+        public PoTask(Movable source = null)
         {
             this.source = source;
-            this.token  = token;
         }
 
         public Awaiter GetAwaiter()
@@ -57,38 +56,26 @@ namespace Ponito.Core.Asyncs.Tasks
             return new Awaiter(this);
         }
 
-        public struct Awaiter : INotifyCompletion
+        public class Awaiter : MovableBase<T>
         {
-            private readonly PoTask<T> task;
-            private          Action    continuation;
-
             public Awaiter(PoTask<T> task)
             {
-                this.task    = task;
-                continuation = null;
+                this.task = task;
             }
 
-            public bool IsCompleted => false;
+            internal PoTask<T> task { get; }
 
-            public T GetResult()
+            public override T GetResult()
             {
-                return default;
+                Dispose();
+                return task.result;
             }
 
-            public void OnCompleted(Action continuation)
+            public override bool MoveNext()
             {
-                this.continuation = continuation;
-            }
-
-            public bool MoveNext()
-            {
-                if (task.source is null)
-                {
-                    continuation();
-                    return false;
-                }
-
-                return task.source.MoveNext();
+                if (IsCompleted) return false;
+                if (!(task.source?.IsCompleted ?? true)) return true;
+                return FinishMoveNext();
             }
         }
     }

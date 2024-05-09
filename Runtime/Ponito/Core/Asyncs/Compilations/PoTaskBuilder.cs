@@ -35,15 +35,14 @@ namespace Ponito.Core.Asyncs.Compilations
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetException(Exception exception)
         {
-            // if (runnerPromise == null) ex = exception;
-            // else runnerPromise.SetException(exception);
+            ex = exception;
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetResult()
         {
-            // runnerPromise?.SetResult();
+            
         }
 
         [DebuggerHidden]
@@ -94,7 +93,10 @@ namespace Ponito.Core.Asyncs.Compilations
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static PoTaskBuilder<T> Create()
         {
-            return default;
+            return new PoTaskBuilder<T>()
+            {
+                Task = new PoTask<T>(),
+            };
         }
 
         public PoTask<T> Task
@@ -102,29 +104,30 @@ namespace Ponito.Core.Asyncs.Compilations
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get;
+            private set;
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetException(Exception exception)
         {
-            // if (runnerPromise is null) ex = exception;
-            // else runnerPromise.SetException(exception);
+            ex = exception;
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetResult(T result)
         {
-            this.result = result;
+            Task.result = result;
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AwaitOnCompleted<TAwaiter, TStateMachine>(ref TAwaiter awaiter, ref TStateMachine stateMachine)
-            where TAwaiter : INotifyCompletion
+            where TAwaiter : Movable
             where TStateMachine : IAsyncStateMachine
         {
+            Task.source = awaiter;
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
 
@@ -134,9 +137,10 @@ namespace Ponito.Core.Asyncs.Compilations
         public void AwaitUnsafeOnCompleted<TAwaiter, TStateMachine>(
             ref TAwaiter awaiter,
             ref TStateMachine stateMachine)
-            where TAwaiter : INotifyCompletion
+            where TAwaiter : Movable
             where TStateMachine : IAsyncStateMachine
         {
+            Task.source = awaiter;
             awaiter.OnCompleted(stateMachine.MoveNext);
         }
 

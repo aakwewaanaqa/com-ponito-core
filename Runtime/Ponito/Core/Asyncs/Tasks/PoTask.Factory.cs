@@ -14,6 +14,11 @@ namespace Ponito.Core.Asyncs.Tasks
         {
             return new Delayer(milliseconds);
         }
+        
+        public static Delayer Delay(float seconds)
+        {
+            return new Delayer(seconds);
+        }
 
         public static PredicateWaiter WaitWhile(Func<bool> predicate)
         {

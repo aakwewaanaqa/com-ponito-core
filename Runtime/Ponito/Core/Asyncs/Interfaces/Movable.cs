@@ -9,4 +9,12 @@ namespace Ponito.Core.Asyncs.Interfaces
         void    GetResult();
         Movable GetAwaiter();
     }
+
+    public interface Movable<out T> : Movable
+    {
+        bool    IsCompleted { get; }
+        bool    MoveNext();
+        new T   GetResult();
+        Movable GetAwaiter();
+    }
 }
