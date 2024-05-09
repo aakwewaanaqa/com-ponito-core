@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Interfaces;
+using Ponito.Core.Asyncs.Tasks.Movables;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks
@@ -21,47 +22,20 @@ namespace Ponito.Core.Asyncs.Tasks
             return new Awaiter(this);
         }
 
-        public class Awaiter : Movable, IDisposable
+        public class Awaiter : MovableBase, IDisposable
         {
             public Awaiter(in PoTask task)
             {
-                this.task    = task;
-                continuation = null;
+                this.task = task;
             }
 
-            internal PoTask task         { get; }
-            private  Action continuation { get; set; }
+            internal PoTask task { get; }
 
-            public void OnCompleted(Action continuation)
+            public override bool MoveNext()
             {
-                if (this.continuation != null)
-                {
-                    Debug.LogError("continuation overflown");
-                    return;
-                }
-
-                this.continuation = continuation;
-                MovableRunner.Instance.AddToQueue(this);
-            }
-
-            public bool IsCompleted => task.source?.IsCompleted ?? true;
-
-            public bool MoveNext()
-            {
-                if (!IsCompleted) return true;
-
-                continuation?.Invoke();
-                return false;
-            }
-
-            public void GetResult()
-            {
-                Dispose();
-            }
-
-            public void Dispose()
-            {
-                continuation = null;
+                if (IsCompleted) return false;
+                if (!(task.source?.IsCompleted ?? true)) return true;
+                return FinishMoveNext();
             }
         }
     }

@@ -5,7 +5,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
     /// <summary>
     ///     Delays a certain amount of time.
     /// </summary>
-    public class Delayer : MovableSourceBase
+    public class Delayer : MovableBase
     {
         /// <summary>
         ///     By <see cref="milliseconds"/>

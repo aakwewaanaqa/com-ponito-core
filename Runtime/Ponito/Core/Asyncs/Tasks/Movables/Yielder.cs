@@ -3,7 +3,7 @@
     /// <summary>
     ///     Yields a frame.
     /// </summary>
-    public class Yielder : MovableSourceBase
+    public class Yielder : MovableBase
     {
         /// <inheritdoc />
         public override bool MoveNext()

@@ -5,6 +5,7 @@ using System.Linq;
 using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.DebugHelper;
+using UnityEngine;
 
 namespace Ponito.Core.Asyncs
 {
@@ -44,19 +45,28 @@ namespace Ponito.Core.Asyncs
 
         private void Update()
         {
-            // typeof(MovableRunner).F(nameof(Update));
-            for (int i = 0; i < movables.Length; i++)
+            for (int i = 0; i < movables.Length; i++) RunItem(i);
+            while (queue.TryDequeue(out var movable)) AddToMovables(movable);
+        }
+
+        private void RunItem(int i)
+        {
+            var head = movables[i];
+            if (movables[i] == null) return;
+            try
             {
-                var head = movables[i];
-                if (head == null) continue;
                 if (!head.MoveNext())
                 {
                     // TODO: Untrack movable
                     movables[i] = null;
                 }
             }
-
-            while (queue.TryDequeue(out var movable)) AddToMovables(movable);
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                // TODO: Untrack movable
+                movables[i] = null;
+            }
         }
     }
 }

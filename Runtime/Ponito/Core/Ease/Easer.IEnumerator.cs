@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Ponito.Core.Ease
 {
-    internal partial class Easer<T>
+    internal partial class Easer<T> : IEnumerator
     {
         public void   Reset() => time = 0f;
         public object Current => lerper(start, end, easeFunction(time / duration));
 
         public bool MoveNext()
         {
-            if (!IsCompleted)
+            if (!isEnded)
             {
                 setter((T)Current);
                 time += Time.deltaTime;

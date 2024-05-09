@@ -10,6 +10,5 @@ namespace Ponito.Core.Ease
     {
         public float   Progress { get; }
         public void    Kill();
-        public Movable GetAwaiter();
     }
 }

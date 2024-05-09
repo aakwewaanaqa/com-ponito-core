@@ -1,4 +1,5 @@
-﻿using Ponito.Core.Asyncs.Tasks.Movables;
+﻿using System;
+using Ponito.Core.Asyncs.Tasks.Movables;
 
 namespace Ponito.Core.Asyncs.Tasks
 {
@@ -6,13 +7,22 @@ namespace Ponito.Core.Asyncs.Tasks
     {
         public static Yielder Yield()
         {
-            // typeof(PoTask).F(nameof(Yield));
             return new Yielder();
         }
 
         public static Delayer Delay(int milliseconds)
         {
             return new Delayer(milliseconds);
+        }
+
+        public static PredicateWaiter WaitWhile(Func<bool> predicate)
+        {
+            return new PredicateWaiter(predicate, true);
+        }
+
+        public static PredicateWaiter WaitUntil(Func<bool> predicate)
+        {
+            return new PredicateWaiter(predicate, false);
         }
     }
 }

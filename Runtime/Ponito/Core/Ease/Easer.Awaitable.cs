@@ -3,7 +3,7 @@ using Ponito.Core.Asyncs.Interfaces;
 
 namespace Ponito.Core.Ease
 {
-    internal partial class Easer<T>
+    internal partial class Easer<T> : Easable
     {
         public Movable GetAwaiter()                     => this;
         public bool    IsCompleted                      => isEnded || time >= duration;

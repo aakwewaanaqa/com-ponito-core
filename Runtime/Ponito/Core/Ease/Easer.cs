@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Ponito.Core.Ease
 {
-    internal partial class Easer<T> : Easable
+    internal partial class Easer<T>
     {
         private float        duration     { get; }
         private T            end          { get; }

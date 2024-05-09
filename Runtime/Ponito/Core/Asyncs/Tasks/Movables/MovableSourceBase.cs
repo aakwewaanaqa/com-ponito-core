@@ -8,7 +8,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
     /// <summary>
     ///     The <see cref="Movable"/> aysnc unity for <see cref="MovableRunner"/>
     /// </summary>
-    public abstract class MovableSourceBase : Movable
+    public abstract class MovableBase : Movable
     {
         /// <summary>
         ///     Stores the remaining part of the execution
