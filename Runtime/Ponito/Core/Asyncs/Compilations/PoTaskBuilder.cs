@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
+using Debug = UnityEngine.Debug;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
@@ -28,6 +29,8 @@ namespace Ponito.Core.Asyncs.Compilations
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get;
+            [DebuggerHidden]
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             private set;
         }
 
@@ -35,14 +38,14 @@ namespace Ponito.Core.Asyncs.Compilations
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetException(Exception exception)
         {
-            ex = exception;
+            Task.ex = exception;
+            Debug.LogException(exception);
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetResult()
         {
-            
         }
 
         [DebuggerHidden]
@@ -93,9 +96,9 @@ namespace Ponito.Core.Asyncs.Compilations
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static PoTaskBuilder<T> Create()
         {
-            return new PoTaskBuilder<T>()
+            return new PoTaskBuilder<T>
             {
-                Task = new PoTask<T>(),
+                Task = new PoTask<T>()
             };
         }
 
@@ -104,6 +107,8 @@ namespace Ponito.Core.Asyncs.Compilations
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get;
+            [DebuggerHidden]
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             private set;
         }
 
@@ -111,7 +116,8 @@ namespace Ponito.Core.Asyncs.Compilations
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetException(Exception exception)
         {
-            ex = exception;
+            Task.ex = exception;
+            Debug.LogException(exception);
         }
 
         [DebuggerHidden]

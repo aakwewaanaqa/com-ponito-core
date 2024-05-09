@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Ponito.Core.Asyncs;
+using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.DebugHelper;
 using UnityEngine;
 
@@ -40,9 +41,8 @@ namespace Ponito.Core.Ease
                     Easer<T>.Vector3(s3, e3, set3, duration, easeType),
                 Quaternion s4 when end is Quaternion e4 && setter is Setter<Quaternion> set4 =>
                     Easer<T>.Quaternion(s4, e4, set4, duration, easeType),
-                _ => throw new ArgumentException($"Unsupported type {typeof(T).Name} for DoEase.Create")
+                _ => throw new ArgumentException($"Unsupported type {typeof(T).Name} for DoEase")
             };
-            MovableRunner.Instance.AddToQueue(easable);
             return easable;
         }
     }

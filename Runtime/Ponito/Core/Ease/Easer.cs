@@ -1,11 +1,12 @@
 ﻿using System;
 using Ponito.Core.Asyncs.Interfaces;
+using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.DebugHelper;
 using UnityEngine;
 
 namespace Ponito.Core.Ease
 {
-    internal partial class Easer<T>
+    internal partial class Easer<T> : Easable
     {
         private float        duration     { get; }
         private T            end          { get; }
@@ -16,7 +17,7 @@ namespace Ponito.Core.Ease
         private Setter<T>    setter       { get; set; }
         private float        time         { get; set; }
         private bool         isEnded      { get; set; }
-        private Action       continuation { get; set; }
+        private Movable      awaiter      { get; set; }
 
         private Easer(
             T start,
@@ -33,20 +34,21 @@ namespace Ponito.Core.Ease
             this.duration = duration;
             this.easeType = easeType;
             easeFunction  = EasingEquations.GetFunction(easeType);
+            awaiter       = PoTask.Create(this);
         }
 
-        public float  Progress => time / duration;
+        public float Progress => time / duration;
 
         public void Dispose()
         {
             lerper       = null;
             setter       = null;
             easeFunction = null;
-            continuation = null;
+            awaiter      = null;
         }
-
 
         public void Kill() => isEnded = true;
 
+        public Movable GetAwaiter() => awaiter;
     }
 }

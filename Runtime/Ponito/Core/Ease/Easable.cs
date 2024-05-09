@@ -6,9 +6,10 @@ using Ponito.Core.Asyncs.Interfaces;
 
 namespace Ponito.Core.Ease
 {
-    public interface Easable : Movable, IDisposable
+    public interface Easable : IEnumerator, IDisposable
     {
         public float   Progress { get; }
         public void    Kill();
+        public Movable GetAwaiter();
     }
 }

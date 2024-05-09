@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ponito.Core.Ease
 {
-    internal partial class Easer<T> : IEnumerator
+    internal partial class Easer<T>
     {
         public void   Reset() => time = 0f;
         public object Current => lerper(start, end, easeFunction(time / duration));
@@ -19,7 +19,6 @@ namespace Ponito.Core.Ease
 
             isEnded = true;
             setter?.Invoke(end); // Weird bug when animation disposed...
-            continuation?.Invoke();
             Dispose();
             return false;
         }

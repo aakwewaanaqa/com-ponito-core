@@ -5,10 +5,10 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
     /// <summary>
     ///     Delays a certain amount of time.
     /// </summary>
-    public class Delayer : MovableBase
+    internal class Delayer : MovableBase
     {
         /// <summary>
-        ///     By <see cref="milliseconds"/>
+        ///     By <see cref="milliseconds" />
         /// </summary>
         public Delayer(int milliseconds)
         {
@@ -16,7 +16,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         }
 
         /// <summary>
-        ///     By <see cref="seconds"/>
+        ///     By <see cref="seconds" />
         /// </summary>
         public Delayer(float seconds)
         {
@@ -24,7 +24,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         }
 
         /// <summary>
-        ///     Target <see cref="Time"/>.<see cref="Time.time"/>
+        ///     Target <see cref="Time" />.<see cref="Time.time" />
         /// </summary>
         private float targetTime { get; }
 

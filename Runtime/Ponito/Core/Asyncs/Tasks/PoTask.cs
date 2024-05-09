@@ -3,14 +3,14 @@ using System.Runtime.CompilerServices;
 using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks.Movables;
-using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks
 {
     [AsyncMethodBuilder(typeof(PoTaskBuilder))]
     public partial class PoTask
     {
-        internal Movable source;
+        internal Exception ex;
+        internal Movable   source;
 
         public PoTask(Movable source = null)
         {
@@ -20,6 +20,11 @@ namespace Ponito.Core.Asyncs.Tasks
         public Awaiter GetAwaiter()
         {
             return new Awaiter(this);
+        }
+
+        ~PoTask()
+        {
+            source = null;
         }
 
         public class Awaiter : MovableBase, IDisposable
@@ -43,8 +48,9 @@ namespace Ponito.Core.Asyncs.Tasks
     [AsyncMethodBuilder(typeof(PoTaskBuilder<>))]
     public class PoTask<T>
     {
-        internal Movable source;
-        internal T       result;
+        internal Exception ex;
+        internal T         result;
+        internal Movable   source;
 
         public PoTask(Movable source = null)
         {
@@ -54,6 +60,11 @@ namespace Ponito.Core.Asyncs.Tasks
         public Awaiter GetAwaiter()
         {
             return new Awaiter(this);
+        }
+
+        ~PoTask()
+        {
+            source = null;
         }
 
         public class Awaiter : MovableBase<T>

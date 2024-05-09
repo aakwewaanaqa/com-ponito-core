@@ -53,16 +53,16 @@ namespace Ponito.Core.Samples.UI
         {
             if (!isInteractable) return;
             if (PoButtonBlockScope.IsBlock) return;
-            PlayAudio(true);
-            PlayAnimation(true);
+            _ = PlayAudio(true);
+            _ = PlayAnimation(true);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             if (!isInteractable) return;
             if (PoButtonBlockScope.IsBlock) return;
-            PlayAudio(false);
-            PlayAnimation(false);
+            _ = PlayAudio(false);
+            _ = PlayAnimation(false);
         }
 
 

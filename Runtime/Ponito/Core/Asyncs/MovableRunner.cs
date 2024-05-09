@@ -1,27 +1,29 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Interfaces;
-using Ponito.Core.DebugHelper;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncs
 {
-    public partial class MovableRunner : MonoSingleton<MovableRunner>
+    public class MovableRunner : MonoSingleton<MovableRunner>
     {
-        private const int INITIAL_CAPACITY = 16;
+        private const    int            INITIAL_CAPACITY = 16;
+        private readonly Queue<Movable> queue            = new();
+
+        private Movable[] movables = new Movable[INITIAL_CAPACITY];
 
         protected override bool IsInitialized       => true;
         protected override bool IsDontDestroyOnLoad => true;
 
+        private void Update()
+        {
+            for (var i = 0; i < movables.Length; i++) RunItem(i);
+            while (queue.TryDequeue(out var movable)) AddToMovables(movable);
+        }
+
         protected override void Initialize()
         {
         }
-
-        private          Movable[]      movables = new Movable[INITIAL_CAPACITY];
-        private readonly Queue<Movable> queue    = new();
 
         public void AddToQueue(Movable movable)
         {
@@ -30,7 +32,7 @@ namespace Ponito.Core.Asyncs
 
         private void AddToMovables(Movable movable)
         {
-            for (int i = 0; i < movables.Length; i++)
+            for (var i = 0; i < movables.Length; i++)
             {
                 if (movables[i] != null) continue;
 
@@ -43,12 +45,6 @@ namespace Ponito.Core.Asyncs
             AddToMovables(movable);
         }
 
-        private void Update()
-        {
-            for (int i = 0; i < movables.Length; i++) RunItem(i);
-            while (queue.TryDequeue(out var movable)) AddToMovables(movable);
-        }
-
         private void RunItem(int i)
         {
             var head = movables[i];
@@ -56,10 +52,8 @@ namespace Ponito.Core.Asyncs
             try
             {
                 if (!head.MoveNext())
-                {
                     // TODO: Untrack movable
                     movables[i] = null;
-                }
             }
             catch (Exception e)
             {
