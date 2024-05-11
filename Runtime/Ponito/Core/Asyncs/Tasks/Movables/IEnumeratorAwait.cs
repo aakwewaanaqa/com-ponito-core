@@ -2,11 +2,11 @@
 
 namespace Ponito.Core.Asyncs.Tasks.Movables
 {
-    internal class IEnumeratorWaiter : MovableBase 
+    internal class IEnumeratorAwait : MovableBase 
     {
         private IEnumerator ie { get; }
 
-        public IEnumeratorWaiter(IEnumerator ie)
+        public IEnumeratorAwait(IEnumerator ie)
         {
             this.ie = ie;
         }

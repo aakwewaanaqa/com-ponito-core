@@ -145,7 +145,17 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         ///     Used by <see cref="PoTaskBuilder"/> to get <see cref="Movable"/>
         /// </summary>
         /// <returns></returns>
-        public virtual Movable GetAwaiter()
+        Movable Movable.GetAwaiter()
+        {
+            return this;
+        }
+
+        /// <summary>
+        ///     C# compiler automatically calls this function.
+        ///     Used by <see cref="PoTaskBuilder"/> to get <see cref="Movable"/>
+        /// </summary>
+        /// <returns></returns>
+        public Movable<T> GetAwaiter()
         {
             return this;
         }

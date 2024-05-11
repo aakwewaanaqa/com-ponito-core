@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Security;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
@@ -9,22 +8,22 @@ using Debug = UnityEngine.Debug;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
-    [StructLayout(LayoutKind.Auto)]
-    public struct PoTaskBuilder
+    public struct PoTaskBuilder<T>
     {
         private Exception ex;
+        private T         result;
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static PoTaskBuilder Create()
+        public static PoTaskBuilder<T> Create()
         {
-            return new PoTaskBuilder
+            return new PoTaskBuilder<T>
             {
-                Task = new PoTask()
+                Task = new PoTask<T>()
             };
         }
 
-        public PoTask Task
+        public PoTask<T> Task
         {
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -44,8 +43,9 @@ namespace Ponito.Core.Asyncs.Compilations
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetResult()
+        public void SetResult(T result)
         {
+            Task.result = result;
         }
 
         [DebuggerHidden]
@@ -80,13 +80,9 @@ namespace Ponito.Core.Asyncs.Compilations
         }
 
         [DebuggerHidden]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetStateMachine(IAsyncStateMachine stateMachine)
         {
             // don't use boxed stateMachine.
         }
     }
 }
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-#pragma warning disable CS0436

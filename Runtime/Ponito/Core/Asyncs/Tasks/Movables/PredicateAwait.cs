@@ -2,9 +2,9 @@
 
 namespace Ponito.Core.Asyncs.Tasks.Movables
 {
-    internal class PredicateWaiter : MovableBase
+    internal class PredicateAwait : MovableBase
     {
-        public PredicateWaiter(Func<bool> predicate, bool waitForTrue = false)
+        public PredicateAwait(Func<bool> predicate, bool waitForTrue = false)
         {
             this.predicate   = predicate;
             this.waitForTrue = waitForTrue;

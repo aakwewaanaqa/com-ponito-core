@@ -6,9 +6,11 @@ using Ponito.Core.Asyncs.Tasks.Movables;
 
 namespace Ponito.Core.Asyncs.Tasks
 {
-    [AsyncMethodBuilder(typeof(PoTaskBuilder))]
-    public partial class PoTask : PoTaskBase
+    [AsyncMethodBuilder(typeof(PoTaskBuilder<>))]
+    public class PoTask<T> : PoTaskBase
     {
+        internal T result;
+
         public PoTask(Movable source = null)
         {
             this.source = source;
@@ -18,15 +20,21 @@ namespace Ponito.Core.Asyncs.Tasks
         {
             return new Awaiter(this);
         }
-        
-        public class Awaiter : MovableBase, IDisposable
+
+        public class Awaiter : MovableBase<T>
         {
-            public Awaiter(in PoTask task)
+            public Awaiter(PoTask<T> task)
             {
                 this.task = task;
             }
 
-            private PoTask task { get; }
+            internal PoTask<T> task { get; }
+
+            public override T GetResult()
+            {
+                Dispose();
+                return task.result;
+            }
 
             public override bool MoveNext()
             {

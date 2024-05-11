@@ -10,33 +10,33 @@ namespace Ponito.Core.Asyncs.Tasks
     {
         public static Movable Yield()
         {
-            return new Yielder();
+            return new YieldAwait();
         }
 
         public static Movable Delay(int milliseconds)
         {
-            return new Delayer(milliseconds);
+            return new DelayAwait(milliseconds);
         }
 
         public static Movable Delay(float seconds)
         {
-            return new Delayer(seconds);
+            return new DelayAwait(seconds);
         }
 
         public static Movable WaitWhile(Func<bool> predicate)
         {
-            return new PredicateWaiter(predicate, true);
+            return new PredicateAwait(predicate, true);
         }
 
         public static Movable WaitUntil(Func<bool> predicate)
         {
-            return new PredicateWaiter(predicate);
+            return new PredicateAwait(predicate);
         }
 
         [AsyncMethodBuilder(typeof(PoTask))]
         public static Movable Create(IEnumerator ie)
         {
-            return new IEnumeratorWaiter(ie);
+            return new IEnumeratorAwait(ie);
         }
     }
 }

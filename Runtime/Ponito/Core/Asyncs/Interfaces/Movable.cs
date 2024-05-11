@@ -10,11 +10,11 @@ namespace Ponito.Core.Asyncs.Interfaces
         Movable GetAwaiter();
     }
 
-    public interface Movable<out T> : Movable
+    public interface Movable<T> : Movable
     {
-        bool    IsCompleted { get; }
-        bool    MoveNext();
-        new T   GetResult();
-        Movable GetAwaiter();
+        bool           IsCompleted { get; }
+        bool           MoveNext();
+        new T          GetResult();
+        new Movable<T> GetAwaiter();
     }
 }

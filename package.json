@@ -4,10 +4,10 @@
   "author": {
     "name": "ponito"
   },
-  "version": "1.0.0",
+  "version": "1.0.3",
   "unity": "2021.3",
   "unityRelease": "8f1",
-  "description": "Locally contains :\nUniTask\n\nThis is a basic package created by Ponito, which is to used to create some simple project that used for one-time-show-off-event or a basic gameplay.",
+  "description": "Contains :\n- AnyParse\n- Core\n- Ease\n- Extensions\n- Java\n- Samples",
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "1.0.0"
   },
