@@ -18,7 +18,8 @@ namespace Ponito.Core.Samples.UI
         [SerializeField] private AudioClip     pointerUp;
         [SerializeField] public  UnityEvent    onClick = new();
 
-        private RectTransform rectTransform;
+        private RectTransform     rectTransform;
+        private PoButtonDataScope dataScope;
 
         public bool IsInteractable
         {
@@ -46,6 +47,7 @@ namespace Ponito.Core.Samples.UI
         {
             if (!isInteractable) return;
             if (PoButtonBlockScope.IsBlock) return;
+            dataScope?.Dispose();
             onClick?.Invoke();
         }
 
@@ -53,14 +55,16 @@ namespace Ponito.Core.Samples.UI
         {
             if (!isInteractable) return;
             if (PoButtonBlockScope.IsBlock) return;
-            _ = PlayAudio(true);
-            _ = PlayAnimation(true);
+            dataScope = new PoButtonDataScope(this);
+            _         = PlayAudio(true);
+            _         = PlayAnimation(true);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             if (!isInteractable) return;
             if (PoButtonBlockScope.IsBlock) return;
+            dataScope?.Dispose();
             _ = PlayAudio(false);
             _ = PlayAnimation(false);
         }

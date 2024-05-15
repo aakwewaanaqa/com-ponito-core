@@ -8,7 +8,7 @@ namespace Ponito.Core.Samples.UI
     {
         private Easable ease;
         private Vector3 originalScale;
-
+        
         private async PoTask PlayAudio(bool isPressed)
         {
             var clip = isPressed ? pointerDown : pointerUp;
