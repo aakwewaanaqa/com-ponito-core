@@ -1,12 +1,14 @@
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Ponito.Core.Animations;
 using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.DebugHelper;
 using Ponito.Core.Ease;
 using Ponito.Core.Extensions;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UIElements;
 
 namespace Ponito.Core.Samples
 {
@@ -27,7 +29,7 @@ namespace Ponito.Core.Samples
 
         /// <inheritdoc />
         protected override bool IsDontDestroyOnLoad => true;
-
+        
         /// <summary>
         ///     Gets every field of [<see cref="SerializeField"/>]s
         /// </summary>
@@ -40,6 +42,8 @@ namespace Ponito.Core.Samples
                .Where(f => f.GetCustomAttribute<SerializeField>() is object)
                .AsQueryable();
         }
+
+        private TimeState stop { get; set; } = new(); 
 
         /// <inheritdoc />
         protected override void Initialize()
@@ -85,14 +89,17 @@ namespace Ponito.Core.Samples
             var source = GetSource(type);
             if (source.isPlaying)
             {
-                var from   = source.volume;
-                var setter = new Setter<float>(v => source.volume = v);
-                await DoEase.To(from, 0f, setter, duration);
-                source.clip = null;
+                await stop.Play(source.volume, 0f, duration, t =>
+                {
+                    source.volume = t;
+                    if (t == 0f)
+                    {
+                        source.clip = null;
+                        source.Stop();
+                        source.volume = 1f;
+                    }
+                });
             }
-
-            source.volume = 1f;
-            source.Stop();
         }
 
         public async PoTask Play(AudioClip clip, AudioPlayType type = AudioPlayType.Music, bool isOneShot = false)

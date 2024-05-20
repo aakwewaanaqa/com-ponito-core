@@ -1,12 +1,14 @@
+using System;
 using System.Text;
 using System.Threading.Tasks;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.Asyncs.Tasks.Movables;
+using Ponito.Core.DebugHelper;
 
 namespace Ponito.Core.Asyncs.Extensions
 {
-    public static class Exts
+    public static partial class Exts
     {
         public static Movable<T> AsPoTask<T>(this ValueTask<T> vt)
         {
@@ -27,7 +29,7 @@ namespace Ponito.Core.Asyncs.Extensions
         {
             return new TaskAwait(vt);
         }
-        
+
         internal static string Tag(this string str, string tag, string arg = null)
         {
             var builder = new StringBuilder($"<{tag}");

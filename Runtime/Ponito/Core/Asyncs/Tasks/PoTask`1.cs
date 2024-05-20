@@ -28,7 +28,7 @@ namespace Ponito.Core.Asyncs.Tasks
                 this.task = task;
             }
 
-            internal PoTask<T> task { get; }
+            private PoTask<T> task { get; }
 
             public override T GetResult()
             {
