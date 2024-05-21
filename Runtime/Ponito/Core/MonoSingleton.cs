@@ -26,16 +26,16 @@ namespace Ponito.Core
         protected static Lazy<T> instance { get; set; } = new(CreateInstance);
 
         /// <summary>
-        ///     Can be accessed anywhere.
+        ///     The instance of this singleton.
         /// </summary>
-        public static T Instance => instance.Value;
+        public static T Singleton => instance.Value;
 
         /// <summary>
         ///     Destroys instance also, to prevent memory leak of reference on this
         /// </summary>
         protected void OnDestroy()
         {
-            if (ReferenceEquals(this, Instance)) instance = new Lazy<T>(CreateInstance);
+            if (ReferenceEquals(this, Singleton)) instance = new Lazy<T>(CreateInstance);
         }
 
         /// <summary>

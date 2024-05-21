@@ -34,7 +34,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
             }
 
             this.continuation = continuation;
-            MovableRunner.Instance.AddToQueue(this);
+            MovableRunner.Singleton.Enqueue(this);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
             }
 
             this.continuation = continuation;
-            MovableRunner.Instance.AddToQueue(this);
+            MovableRunner.Singleton.Enqueue(this);
         }
 
         /// <summary>

@@ -20,13 +20,12 @@ namespace Ponito.Core.Asyncs.Extensions
 
         public static async PoTask Catch(this PoTask a, Action<Exception> catcher = null)
         {
-            try
+            await a;
+
+            if (a.ex != null)
             {
-                await a;
-            }
-            catch (Exception e)
-            {
-                catcher?.Invoke(e);
+                if (catcher != null) catcher(a.ex);
+                else throw a.ex;
             }
         }
 

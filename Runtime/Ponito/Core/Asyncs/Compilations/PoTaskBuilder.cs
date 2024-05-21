@@ -39,8 +39,6 @@ namespace Ponito.Core.Asyncs.Compilations
         public void SetException(Exception exception)
         {
             Task.ex = exception;
-            Debug.LogException(exception);
-            throw exception;
         }
 
         [DebuggerHidden]
