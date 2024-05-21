@@ -10,8 +10,7 @@ namespace Ponito.Core.Asyncs.Compilations
 {
     public struct PoTaskBuilder<T>
     {
-        private Exception ex;
-        private T         result;
+        private T result;
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
