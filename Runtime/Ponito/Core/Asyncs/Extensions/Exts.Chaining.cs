@@ -18,14 +18,16 @@ namespace Ponito.Core.Asyncs.Extensions
             return value;
         }
 
-        public static async PoTask Catch(this PoTask a, Action<Exception> catcher = null)
+        public static async PoTask Try(this PoTask a, Action<Exception> catcher = null)
         {
-            await a;
-
-            if (a.ex != null)
+            try
             {
-                if (catcher != null) catcher(a.ex);
-                else throw a.ex;
+                await a;
+            }
+            catch (Exception e)
+            {
+                if (catcher != null) catcher(e);
+                else throw;
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Interfaces;
+using Ponito.Core.DebugHelper;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks.Movables
@@ -10,6 +11,11 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
     /// </summary>
     public abstract class MovableBase : Movable
     {
+        /// <summary>
+        ///     Rejects the execution and marks it as an exception.
+        /// </summary>
+        public virtual Exception Exception { get; set; }
+        
         /// <summary>
         ///     Stores the remaining part of the execution
         /// </summary>
@@ -43,6 +49,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         /// </summary>
         public virtual void GetResult()
         {
+            if (Exception != null) throw Exception;
             Dispose();
         }
 
@@ -84,6 +91,11 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
 
     public abstract class MovableBase<T> : Movable<T>
     {
+        /// <summary>
+        ///     Rejects the execution marks it as an exception.
+        /// </summary>
+        public virtual Exception Exception { get; set; }
+        
         /// <summary>
         ///     Stores the remaining part of the execution
         /// </summary>

@@ -9,9 +9,8 @@ namespace Ponito.Core.Asyncs.Tasks
     [AsyncMethodBuilder(typeof(PoTaskBuilder))]
     public partial class PoTask : PoTaskBase
     {
-        public PoTask(Movable source = null)
+        public PoTask(Movable source = null) : base(source)
         {
-            this.source = source;
         }
 
         public Awaiter GetAwaiter()
@@ -28,10 +27,16 @@ namespace Ponito.Core.Asyncs.Tasks
 
             private PoTask task { get; }
 
+            public override Exception Exception
+            {
+                get => task.Exception;
+                set => task.Exception = value;
+            }
+
             public override bool MoveNext()
             {
                 if (IsCompleted) return false;
-                if (!(task.source?.IsCompleted ?? true)) return true;
+                if (!(task.Source?.IsCompleted ?? true)) return true;
                 return FinishMoveNext();
             }
         }

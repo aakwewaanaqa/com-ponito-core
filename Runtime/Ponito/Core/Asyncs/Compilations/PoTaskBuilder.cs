@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using Ponito.Core.Asyncs.Tasks;
+using Ponito.Core.DebugHelper;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
@@ -32,9 +33,10 @@ namespace Ponito.Core.Asyncs.Compilations
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetException(Exception exception)
+        public void SetException(Exception e)
         {
-            Task.ex = exception;
+            // throw exception;
+            Task.Exception = e;
         }
 
         [DebuggerHidden]

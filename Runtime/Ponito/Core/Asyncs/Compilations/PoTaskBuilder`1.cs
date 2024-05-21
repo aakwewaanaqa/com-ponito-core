@@ -31,9 +31,10 @@ namespace Ponito.Core.Asyncs.Compilations
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetException(Exception exception)
+        public void SetException(Exception e)
         {
-            Task.ex = exception;
+            // throw exception;
+            Task.Exception = e;
         }
 
         [DebuggerHidden]

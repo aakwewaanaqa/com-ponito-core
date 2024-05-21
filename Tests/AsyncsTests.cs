@@ -56,32 +56,42 @@ public class AsyncsTests
     }
 
     [UnityTest]
-    public IEnumerator TestPoTaskException()
+    public IEnumerator TestPoTaskInnerException()
     {
         Exception ex = null;
-        yield return PoTaskException()
-           .Catch(exception => ex = exception)
+        yield return PoTaskInnerException()
+           .Try(exception => ex = exception)
            .AsCoroutine();
         Assert.NotNull(ex);
     }
-
-    public async PoTask PoTaskDelay3000()
+    
+    [UnityTest]
+    public IEnumerator TestPoTaskYieldException()
+    {
+        Exception ex = null;
+        yield return PoTaskYieldException()
+           .Try(exception => ex = exception)
+           .AsCoroutine();
+        Assert.NotNull(ex);
+    }
+    
+    private async PoTask PoTaskDelay3000()
     {
         await PoTask.Delay(3000);
     }
 
-    public async PoTask PoTaskYield50Frame()
+    private async PoTask PoTaskYield50Frame()
     {
         for (int i = 0; i < 50; i++) await PoTask.Yield();
     }
 
-    public async PoTask PoTaskYield100Frame()
+    private async PoTask PoTaskYield100Frame()
     {
         await PoTaskYield50Frame();
         await PoTaskYield50Frame();
     }
 
-    public async PoTask PoTaskException()
+    private async PoTask PoTaskYieldException()
     {
         await PoTask.Yield();
         await PoTaskInnerException();

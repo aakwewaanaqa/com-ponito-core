@@ -11,9 +11,8 @@ namespace Ponito.Core.Asyncs.Tasks
     {
         internal T result;
 
-        public PoTask(Movable source = null)
+        public PoTask(Movable source = null) : base(source)
         {
-            this.source = source;
         }
 
         public Awaiter GetAwaiter()
@@ -32,14 +31,21 @@ namespace Ponito.Core.Asyncs.Tasks
 
             public override T GetResult()
             {
+                if (Exception != null) throw Exception;
                 Dispose();
                 return task.result;
+            }
+            
+            public override Exception Exception
+            {
+                get => task.Exception;
+                set => task.Exception = value;
             }
 
             public override bool MoveNext()
             {
                 if (IsCompleted) return false;
-                if (!(task.source?.IsCompleted ?? true)) return true;
+                if (!(task.Source?.IsCompleted ?? true)) return true;
                 return FinishMoveNext();
             }
         }

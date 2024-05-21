@@ -80,17 +80,20 @@ namespace Ponito.Core.Asyncs
         private void RunItems(int i)
         {
             var head = movables[i];
-            if (movables[i] == null) return;
+            if (head == null) return;
             try
             {
                 if (!head.MoveNext())
+                {
                     // TODO: Untrack movable
                     movables[i] = null;
+                }
             }
             catch (Exception e)
             {
-                Debug.LogException(e);
                 // TODO: Untrack movable
+                head.Exception = e;
+                // Debug.LogException(e);
                 movables[i] = null;
             }
         }
