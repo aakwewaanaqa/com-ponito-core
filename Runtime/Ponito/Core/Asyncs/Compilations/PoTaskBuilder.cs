@@ -3,17 +3,13 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
-using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
-using Debug = UnityEngine.Debug;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
     [StructLayout(LayoutKind.Auto)]
     public struct PoTaskBuilder
     {
-        private Exception ex;
-
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static PoTaskBuilder Create()

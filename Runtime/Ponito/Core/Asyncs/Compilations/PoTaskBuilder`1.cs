@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Security;
-using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
 using Debug = UnityEngine.Debug;
 
@@ -10,8 +9,6 @@ namespace Ponito.Core.Asyncs.Compilations
 {
     public struct PoTaskBuilder<T>
     {
-        private T result;
-
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static PoTaskBuilder<T> Create()
@@ -37,7 +34,6 @@ namespace Ponito.Core.Asyncs.Compilations
         public void SetException(Exception exception)
         {
             Task.ex = exception;
-            Debug.LogException(exception);
         }
 
         [DebuggerHidden]
