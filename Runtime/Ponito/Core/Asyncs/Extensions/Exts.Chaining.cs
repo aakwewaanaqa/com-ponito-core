@@ -7,11 +7,6 @@ namespace Ponito.Core.Asyncs.Extensions
 {
     public static partial class Exts
     {
-        public static bool IsFault(this PoTaskBase a)
-        {
-            return a.Exception != null;
-        }
-        
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static async PoTask Inject(this PoTask a, Action act)
