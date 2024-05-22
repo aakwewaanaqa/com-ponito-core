@@ -2,9 +2,8 @@
 {
     public enum PromiseState
     {
-        None   = 0,
-        Doing  = 1,
-        Done   = 2,
+        Doing  = 0,
+        Done   = 1,
         Failed = -1,
     }
 }
