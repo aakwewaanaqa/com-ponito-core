@@ -11,14 +11,14 @@ namespace Ponito.Core.Asyncs.Promises
     /// </summary>
     public partial class Promise
     {
-        public    float        Progress { get; set; }
-        public    PromiseState State    { get; set; } = PromiseState.Doing;
-        public    object       Error    { get; set; }
+        public float        Progress { get; set; }
+        public PromiseState State    { get; set; } = PromiseState.Doing;
+        public object       Error    { get; set; }
 
-        protected Func<Promise, PoTask> caller;
+        protected Func<Promise> caller;
 
         public bool IsDoing => State is PromiseState.Doing;
-        
+
         protected static void ValidateThrow(Promise p)
         {
             if (p.State is not PromiseState.Failed) return;
@@ -29,13 +29,13 @@ namespace Ponito.Core.Asyncs.Promises
 
         public IEnumerator AsCoroutine()
         {
-            while (State is PromiseState.Doing)
+            while (State is not PromiseState.Done)
             {
                 var endOfFrame = new WaitForEndOfFrame();
                 yield return endOfFrame;
             }
         }
-        
+
         public Awaiter GetAwaiter() => new(this);
 
         public class Awaiter : MovableBase

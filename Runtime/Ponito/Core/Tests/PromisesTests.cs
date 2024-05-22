@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using NUnit.Framework;
 using Ponito.Core.Asyncs;
 using Ponito.Core.Asyncs.Promises;
@@ -14,12 +15,28 @@ namespace Ponito.Core.Tests
         [UnityTest]
         public IEnumerator TestWaitFor5()
         {
-            var t = Time.time;
+            var       t = Time.time;
             using var p = new Promise().Run(WaitFor5());
             while (p.IsDoing) yield return new WaitForEndOfFrame();
             Assert.IsTrue(Time.time - t >= 5f);
         }
-        
+
+        [UnityTest]
+        public IEnumerator TestException()
+        {
+            var i = 0;
+            yield return new Promise()
+               .Run(async () =>
+                {
+                    await PoTask.Delay(1f);
+                    Debug.Log(i);
+                    if (i++ < 5) throw new Exception();
+                })
+               .TryAgain(5)
+               .AsCoroutine();
+            Assert.IsTrue(i == 5);
+        }
+
         private IEnumerator WaitFor5()
         {
             yield return new WaitForSeconds(5f);

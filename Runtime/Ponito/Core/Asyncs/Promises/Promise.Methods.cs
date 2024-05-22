@@ -17,7 +17,7 @@ namespace Ponito.Core.Asyncs.Promises
             ValidateThrow(this);
 
             var q = new Promise();
-            q.caller = Call;
+            q.caller = () => this.Run(act);
             _        = Call(q);
             return q;
 
@@ -44,7 +44,7 @@ namespace Ponito.Core.Asyncs.Promises
             ValidateThrow(this);
 
             var q = new Promise();
-            q.caller = Call;
+            q.caller = () => this.Run(act);
             _        = Call(q);
             return q;
 
@@ -66,12 +66,12 @@ namespace Ponito.Core.Asyncs.Promises
         /// <summary>
         ///     Runs new <see cref="Coroutine"/>
         /// </summary>
-        public Promise Run(IEnumerator coroutine)
+        public Promise Run(IEnumerator act)
         {
             ValidateThrow(this);
 
             var q = new Promise();
-            q.caller = Call;
+            q.caller = () => this.Run(act);
             _        = Call(q);
             return q;
 
@@ -79,7 +79,7 @@ namespace Ponito.Core.Asyncs.Promises
             {
                 try
                 {
-                    CoroutineRunner.Singleton.Run(coroutine, out var p);
+                    CoroutineRunner.Singleton.Run(act, out var p);
                     await p;
                     o.State = PromiseState.Done;
                 }
@@ -94,12 +94,12 @@ namespace Ponito.Core.Asyncs.Promises
         /// <summary>
         ///     Runs new <see cref="UnityWebRequest"/>
         /// </summary>
-        public Promise Run(UnityWebRequest req)
+        public Promise Run(UnityWebRequest act)
         {
             ValidateThrow(this);
 
             var q = new Promise();
-            q.caller = Call;
+            q.caller = () => this.Run(act);
             _        = Call(q);
             return q;
 
@@ -107,9 +107,9 @@ namespace Ponito.Core.Asyncs.Promises
             {
                 try
                 {
-                    req.SendWebRequest();
-                    while (!req.isDone) await PoTask.Yield();
-                    if (req.result != UnityWebRequest.Result.Success) throw new Exception(req.error);
+                    act.SendWebRequest();
+                    while (!act.isDone) await PoTask.Yield();
+                    if (act.result != UnityWebRequest.Result.Success) throw new Exception(act.error);
                     o.State = PromiseState.Done;
                 }
                 catch (Exception e)
@@ -126,22 +126,24 @@ namespace Ponito.Core.Asyncs.Promises
         public Promise TryAgain(int count)
         {
             var q = new Promise();
-            _ = Call(q);
+            q.caller = () => this.TryAgain(count);
+            _        = Call(q);
             return q;
 
             async PoTask Call(Promise o)
             {
                 try
                 {
+                    var runner = this;
                     for (int i = 0; i < count; i++)
                     {
-                        await this;
-                        if (State is PromiseState.Failed)
+                        while (runner.IsDoing) await PoTask.Yield();
+                        if (runner.State is PromiseState.Failed)
                         {
-                            State = PromiseState.Doing;
-                            caller(this);
+                            runner.State = PromiseState.Doing;
+                            runner       = caller();
                         }
-                        else if (State is PromiseState.Done)
+                        else if (runner.State is PromiseState.Done)
                         {
                             break;
                         }

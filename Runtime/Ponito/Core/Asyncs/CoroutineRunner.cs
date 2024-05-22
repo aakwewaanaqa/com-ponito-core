@@ -6,10 +6,10 @@ namespace Ponito.Core.Asyncs
     public class CoroutineRunner : MonoSingleton<CoroutineRunner>
     {
         /// <inheritdoc />
-        protected override bool IsInitialized { get; }
+        protected override bool IsInitialized => true;
 
         /// <inheritdoc />
-        protected override bool IsDontDestroyOnLoad { get; }
+        protected override bool IsDontDestroyOnLoad => true;
 
         /// <inheritdoc />
         protected override void Initialize()
