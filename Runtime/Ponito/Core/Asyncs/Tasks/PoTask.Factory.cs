@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks.Movables;
+using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks
 {
@@ -38,6 +40,14 @@ namespace Ponito.Core.Asyncs.Tasks
         public static Movable Create(IEnumerator ie)
         {
             return new IEnumeratorAwait(ie);
+        }
+        
+        [DebuggerHidden]
+        public IEnumerator RunAsCoroutine()
+        {
+            var awaiter = GetAwaiter();
+            MovableRunner.Singleton.Enqueue(awaiter);
+            while (!awaiter.IsCompleted) yield return new WaitForEndOfFrame();
         }
     }
 }

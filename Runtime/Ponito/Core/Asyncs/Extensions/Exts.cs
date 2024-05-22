@@ -38,33 +38,7 @@ namespace Ponito.Core.Asyncs.Extensions
             return new TaskAwait(t);
         }
 
-        [DebuggerHidden]
-        public static IEnumerator RunAsCoroutine(this PoTask t)
-        {
-            var awaiter = t.GetAwaiter();
-            MovableRunner.Singleton.Enqueue(awaiter);
-            while (!awaiter.IsCompleted) yield return new WaitForEndOfFrame();
-        }
 
-        [DebuggerHidden]
-        public static IEnumerator RunAsCoroutine<T>(this PoTask<T> t, Promise<T> promise)
-        {
-            promise.State = PromiseState.Doing;
-            var awaiter = t.GetAwaiter();
-            MovableRunner.Singleton.Enqueue(awaiter);
-            while (!awaiter.IsCompleted) yield return new WaitForEndOfFrame();
-            try
-            {
-                if (awaiter.Exception != null) throw awaiter.Exception;
-                promise.Result = awaiter.GetResult();
-                promise.State = PromiseState.Done;
-            }
-            catch (Exception e)
-            {
-                promise.Error = e;
-                promise.State = PromiseState.Failed;
-            }
-        }
 
         [DebuggerHidden]
         public static IEnumerator RunAsCoroutine(this Movable t)

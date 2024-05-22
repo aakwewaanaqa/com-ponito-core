@@ -23,7 +23,7 @@ public class AsyncsTests
     {
         var before = Time.frameCount;
         yield return PoTask.Yield().RunAsCoroutine();
-        var frameCount = Time.frameCount; 
+        var frameCount = Time.frameCount;
         var frame      = frameCount - before;
         Assert.IsTrue(frame == 1, $"frameCount - before = {frameCount} - {before} = {frame}");
     }
@@ -41,17 +41,17 @@ public class AsyncsTests
     {
         var before = Time.frameCount;
         yield return PoTaskYield50Frame().RunAsCoroutine();
-        var frameCount = Time.frameCount; 
+        var frameCount = Time.frameCount;
         var frame      = frameCount - before;
         Assert.IsTrue(frame == 50, $"frameCount - before = {frameCount} - {before} = {frame}");
     }
-    
+
     [UnityTest]
     public IEnumerator TestPoTaskYield100Frame()
     {
         var before = Time.frameCount;
         yield return PoTaskYield100Frame().RunAsCoroutine();
-        var frameCount = Time.frameCount; 
+        var frameCount = Time.frameCount;
         var frame      = frameCount - before;
         Assert.IsTrue(frame == 100, $"frameCount - before = {frameCount} - {before} = {frame}");
     }
@@ -65,7 +65,7 @@ public class AsyncsTests
            .RunAsCoroutine();
         Assert.NotNull(ex);
     }
-    
+
     [UnityTest]
     public IEnumerator TestPoTaskYieldException()
     {
@@ -75,7 +75,7 @@ public class AsyncsTests
            .RunAsCoroutine();
         Assert.NotNull(ex);
     }
-    
+
     [UnityTest]
     public IEnumerator TestPoTask5()
     {
@@ -97,14 +97,19 @@ public class AsyncsTests
     {
         var       before = Time.frameCount;
         Exception ex     = null;
-        yield return PoTaskCancel().Try(exception => ex = exception).RunAsCoroutine();
+
+        yield return PoTaskCancel()
+           .Try(exception => ex = exception)
+           .RunAsCoroutine();
+
         Assert.IsTrue(ex is OperationCanceledException);
         Debug.Log(ex.Message);
-        var frameCount = Time.frameCount; 
+
+        var frameCount = Time.frameCount;
         var frame      = frameCount - before;
         Assert.IsTrue(frame == 5, $"frameCount - before = {frameCount} - {before} = {frame}");
     }
-    
+
     private async PoTask PoTaskDelay3000()
     {
         await PoTask.Delay(3000);
