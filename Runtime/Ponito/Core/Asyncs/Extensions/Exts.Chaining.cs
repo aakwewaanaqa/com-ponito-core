@@ -24,6 +24,30 @@ namespace Ponito.Core.Asyncs.Extensions
             return value;
         }
 
+        [DebuggerHidden]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static async PoTask TryAgain(this PoTask a, 
+                                            int count = int.MaxValue, 
+                                            float delay = 0f,
+                                            Action<Exception> catchThenRetry = null)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                try
+                {
+                    await a;
+                    return;
+                }
+                catch (Exception e)
+                {
+                    if (delay > 0) await PoTask.Delay(delay);
+                    catchThenRetry?.Invoke(e);
+                }
+            }
+
+            throw new InvalidOperationException();
+        }
+
         /// <summary>
         ///     Catches when <see cref="PoTask"/> has exception
         /// </summary>
@@ -31,7 +55,7 @@ namespace Ponito.Core.Asyncs.Extensions
         /// <param name="catcher"><see cref="Action{T}"/> invoked after <see cref="Exception"/></param>
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static async PoTask Try(this PoTask a, Action<Exception> catcher = null)
+        public static async PoTask Catch(this PoTask a, Action<Exception> catcher = null)
         {
             try
             {
@@ -52,7 +76,7 @@ namespace Ponito.Core.Asyncs.Extensions
         /// <typeparam name="T">return type</typeparam>
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static async PoTask<T> Try<T>(this PoTask<T> a, Func<Exception, T> catcher = null)
+        public static async PoTask<T> Catch<T>(this PoTask<T> a, Func<Exception, T> catcher = null)
         {
             try
             {

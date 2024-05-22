@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections;
 using NUnit.Framework;
-using Ponito.Core.Asyncs;
 using Ponito.Core.Asyncs.Promises;
 using Ponito.Core.Asyncs.Tasks;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -29,10 +27,9 @@ namespace Ponito.Core.Tests
                .Run(async () =>
                 {
                     await PoTask.Delay(1f);
-                    Debug.Log(i);
-                    if (i++ < 5) throw new Exception();
+                    if (++i < 5) throw new Exception($"i = {i}");
                 })
-               .TryAgain(5)
+               .TryAgain(5, Debug.Log)
                .AsCoroutine();
             Assert.IsTrue(i == 5);
         }

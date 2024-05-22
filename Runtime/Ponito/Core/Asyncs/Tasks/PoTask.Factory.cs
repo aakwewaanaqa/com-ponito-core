@@ -52,7 +52,11 @@ namespace Ponito.Core.Asyncs.Tasks
         {
             var awaiter = GetAwaiter();
             MovableRunner.Singleton.Enqueue(awaiter);
-            while (!awaiter.IsCompleted) yield return new WaitForEndOfFrame();
+            while (!awaiter.IsCompleted)
+            {
+                var endOfFrame = new WaitForEndOfFrame();
+                yield return endOfFrame;
+            }
         }
     }
 }

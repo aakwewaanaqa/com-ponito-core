@@ -123,38 +123,42 @@ namespace Ponito.Core.Asyncs.Promises
         /// <summary>
         ///     Repeats last operation in <see cref="count"/> times.
         /// </summary>
-        public Promise TryAgain(int count)
+        public Promise TryAgain(int count = int.MaxValue, Action<Exception> catcher = null)
         {
             var q = new Promise();
             q.caller = () => this.TryAgain(count);
             _        = Call(q);
             return q;
 
-            async PoTask Call(Promise o)
+            async PoTask Call(Promise output)
             {
                 try
                 {
-                    var runner = this;
+                    var p = this;
+                    
                     for (int i = 0; i < count; i++)
                     {
-                        while (runner.IsDoing) await PoTask.Yield();
-                        if (runner.State is PromiseState.Failed)
+                        while (p.IsDoing) await PoTask.Yield();
+                        
+                        if (p.State is PromiseState.Failed)
                         {
-                            runner.State = PromiseState.Doing;
-                            runner       = caller();
+                            if (p.Error is Exception ex) catcher?.Invoke(ex);
+                            
+                            p.State = PromiseState.Doing;
+                            p       = caller();
                         }
-                        else if (runner.State is PromiseState.Done)
+                        else if (p.State is PromiseState.Done)
                         {
                             break;
                         }
                     }
 
-                    o.State = PromiseState.Done;
+                    output.State = PromiseState.Done;
                 }
                 catch (Exception e)
                 {
-                    o.Error = e;
-                    o.State = PromiseState.Failed;
+                    output.Error = e;
+                    output.State = PromiseState.Failed;
                 }
             }
         }

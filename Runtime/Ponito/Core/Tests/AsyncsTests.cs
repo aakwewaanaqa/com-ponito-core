@@ -63,7 +63,7 @@ namespace Ponito.Core.Tests
         {
             Exception ex = null;
             yield return PoTaskInnerException()
-               .Try(exception => ex = exception)
+               .Catch(exception => ex = exception)
                .RunAsCoroutine();
             Assert.NotNull(ex);
         }
@@ -73,7 +73,7 @@ namespace Ponito.Core.Tests
         {
             Exception ex = null;
             yield return PoTaskYieldException()
-               .Try(exception => ex = exception)
+               .Catch(exception => ex = exception)
                .RunAsCoroutine();
             Assert.NotNull(ex);
         }
@@ -101,7 +101,7 @@ namespace Ponito.Core.Tests
             Exception ex     = null;
 
             yield return PoTaskCancel()
-               .Try(exception => ex = exception)
+               .Catch(exception => ex = exception)
                .RunAsCoroutine();
 
             Assert.IsTrue(ex is OperationCanceledException);
@@ -111,7 +111,7 @@ namespace Ponito.Core.Tests
             var frame      = frameCount - before;
             Assert.IsTrue(frame == 5, $"frameCount - before = {frameCount} - {before} = {frame}");
         }
-
+        
         private async PoTask PoTaskDelay3000()
         {
             await PoTask.Delay(3000);
