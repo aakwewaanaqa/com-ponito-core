@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using Ponito.Core.Asyncs.Tasks;
-using Ponito.Core.DebugHelper;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
@@ -21,6 +20,7 @@ namespace Ponito.Core.Asyncs.Compilations
             };
         }
 
+        // ReSharper disable once MemberCanBePrivate.Global
         public PoTask Task
         {
             [DebuggerHidden]

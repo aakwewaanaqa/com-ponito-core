@@ -1,12 +1,13 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Security;
 using Ponito.Core.Asyncs.Tasks;
-using Debug = UnityEngine.Debug;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
+    [StructLayout(LayoutKind.Auto)]
     public struct PoTaskBuilder<T>
     {
         [DebuggerHidden]
@@ -19,6 +20,7 @@ namespace Ponito.Core.Asyncs.Compilations
             };
         }
 
+        // ReSharper disable once MemberCanBePrivate.Global
         public PoTask<T> Task
         {
             [DebuggerHidden]

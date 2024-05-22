@@ -17,7 +17,7 @@ namespace Ponito.Core.Asyncs.Tasks
             this.source = source;
         }
         
-        public Exception Exception
+        internal Exception Exception
         {
             get
             {
@@ -34,9 +34,9 @@ namespace Ponito.Core.Asyncs.Tasks
             }
         }
 
-        public Movable Source => source;
+        protected Movable Source => source;
         
-        public void TrySetSource(INotifyCompletion awaiter)
+        internal void TrySetSource(INotifyCompletion awaiter)
         {
             source = awaiter as Movable ?? new ReflectAwait(awaiter);
         }
