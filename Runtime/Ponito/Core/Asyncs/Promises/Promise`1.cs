@@ -23,7 +23,7 @@ namespace Ponito.Core.Asyncs.Promises
             return p.Result;
         }
 
-        public void Dispose()
+        public new void Dispose()
         {
             result = default;
         }

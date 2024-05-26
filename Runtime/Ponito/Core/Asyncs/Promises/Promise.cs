@@ -14,8 +14,11 @@ namespace Ponito.Core.Asyncs.Promises
         public float        Progress { get; set; }
         public PromiseState State    { get; set; } = PromiseState.Doing;
         public object       Error    { get; set; }
-
-        protected Func<Promise> caller;
+        
+        /// <summary>
+        ///     The last called factory <see cref="Func{TResult}"/> that creates this <see cref="Promise"/>
+        /// </summary>
+        private Func<Promise> factory { get; set; }
 
         public bool IsDoing => State is PromiseState.Doing;
 

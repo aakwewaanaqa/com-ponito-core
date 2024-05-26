@@ -17,7 +17,7 @@ namespace Ponito.Core.Asyncs.Promises
             ValidateThrow(this);
 
             var q = new Promise();
-            q.caller = () => this.Run(act);
+            q.factory = () => this.Run(act);
             _        = Call(q);
             return q;
 
@@ -44,7 +44,7 @@ namespace Ponito.Core.Asyncs.Promises
             ValidateThrow(this);
 
             var q = new Promise();
-            q.caller = () => this.Run(act);
+            q.factory = () => this.Run(act);
             _        = Call(q);
             return q;
 
@@ -71,7 +71,7 @@ namespace Ponito.Core.Asyncs.Promises
             ValidateThrow(this);
 
             var q = new Promise();
-            q.caller = () => this.Run(act);
+            q.factory = () => this.Run(act);
             _        = Call(q);
             return q;
 
@@ -99,7 +99,7 @@ namespace Ponito.Core.Asyncs.Promises
             ValidateThrow(this);
 
             var q = new Promise();
-            q.caller = () => this.Run(act);
+            q.factory = () => this.Run(act);
             _        = Call(q);
             return q;
 
@@ -126,7 +126,7 @@ namespace Ponito.Core.Asyncs.Promises
         public Promise TryAgain(int count = int.MaxValue, Action<Exception> catcher = null)
         {
             var q = new Promise();
-            q.caller = () => this.TryAgain(count);
+            q.factory = () => this.TryAgain(count);
             _        = Call(q);
             return q;
 
@@ -145,7 +145,7 @@ namespace Ponito.Core.Asyncs.Promises
                             if (p.Error is Exception ex) catcher?.Invoke(ex);
                             
                             p.State = PromiseState.Doing;
-                            p       = caller();
+                            p       = factory();
                         }
                         else if (p.State is PromiseState.Done)
                         {
