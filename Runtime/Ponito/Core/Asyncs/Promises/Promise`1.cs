@@ -52,7 +52,7 @@ namespace Ponito.Core.Asyncs.Promises
                 return promise.State switch
                 {
                     PromiseState.Doing => true,
-                    PromiseState.Done  => FinishMoveNext(),
+                    PromiseState.Done  => ContinueMoveNext(),
                     _                  => throw new ArgumentOutOfRangeException()
                 };
             }

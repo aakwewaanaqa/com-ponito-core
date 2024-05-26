@@ -32,7 +32,7 @@ namespace Ponito.Core.Asyncs.Tasks
         }
     
         /// <summary>
-        ///     傳回 <see cref="exception"/> 或 <see cref="Movable"/> 的 <see cref="Movable.Exception"/>,
+        ///     傳回 <see cref="exception"/> 或 <see cref="Movable"/> 的 <see cref="Movable.Ex"/>,
         ///     手動設置這個值 <see cref="PoTaskBase"/> 可以觸發例外喔。
         /// </summary>
         public Exception Exception
@@ -42,12 +42,12 @@ namespace Ponito.Core.Asyncs.Tasks
                 return source switch
                 {
                     null => exception,
-                    _    => source.Exception,
+                    _    => source.Ex,
                 };
             }
             set
             {
-                if (source != null) source.Exception = value;
+                if (source != null) source.Ex = value;
                 else exception                       = value;
             }
         }

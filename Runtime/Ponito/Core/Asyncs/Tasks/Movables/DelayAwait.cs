@@ -36,7 +36,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
             var timeIsUp = Time.time >= targetTime;
             if (!timeIsUp) return true;
 
-            return FinishMoveNext();
+            return ContinueMoveNext();
         }
     }
 }

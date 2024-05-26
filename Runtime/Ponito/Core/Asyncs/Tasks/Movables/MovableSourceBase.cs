@@ -10,36 +10,32 @@ using UnityEngine;
 namespace Ponito.Core.Asyncs.Tasks.Movables
 {
     /// <summary>
-    ///     The <see cref="Movable"/> aysnc unity for <see cref="MovableRunner"/>
+    ///     <see cref="Movable"/> 異步來源基礎 <see cref="MovableRunner"/>
     /// </summary>
     public abstract class MovableBase : Movable
     {
-        /// <summary>
-        ///     Rejects the execution and marks it as an exception.
-        /// </summary>
-        public virtual Exception Exception { get; set; }
+        /// <inheritdoc />
+        public virtual Exception Ex { get; set; }
 
         /// <summary>
-        ///     Stores a token which can be cancelled and track to the source.
-        ///     Cancels the execution by throwing <see cref="OperationCanceledException"/>.
+        ///     儲存內部取消用旗幟，可以在後續動作取消這個異步任務來源 <see cref="Movable"/>
+        ///     會擲出 <see cref="OperationCanceledException"/>.
         /// </summary>
         protected virtual CancellationToken Ct { get; set; }
 
         /// <summary>
-        ///     Stores the remaining part of the execution
+        ///     後續的執行
         /// </summary>
-        protected Action continuation { get; set; }
+        private Action continuation { get; set; }
 
-        /// <summary>
-        ///     Gives <see cref="PoTask.Awaiter"/> to check it is completed or not.
-        /// </summary>
+        /// <inheritdoc />
         public virtual bool IsCompleted { get; protected set; }
 
         /// <summary>
-        ///     C# compiler automatically calls this function atfter <see cref="GetAwaiter"/>.
-        ///     Passed the <see cref="continuation"/> which is the remaining part of the execution
+        ///     C# 編譯器會自動使用這個函數在 <see cref="GetAwaiter"/> 之後
+        ///     把後續的執行被變成 <see cref="continuation"/>
         /// </summary>
-        /// <param name="continuation"></param>
+        /// <param name="continuation"> C# 編譯器會後續的執行被變成 <see cref="continuation"/> </param>
         public virtual void OnCompleted(Action continuation)
         {
             if (this.continuation != null)
@@ -53,55 +49,47 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         }
 
         /// <summary>
-        ///     C# compiler automatically calls this function.
-        ///     Gets the result of <see cref="Movable"/>
+        ///     C# 編譯器會自動使用這個函數在完成工作之後
         /// </summary>
         public virtual void GetResult()
         {
-            if (Exception != null) throw Exception;
+            if (Ex != null) throw Ex;
             Dispose();
         }
 
-        /// <summary>
-        ///     Moves by <see cref="MovableRunner"/>.
-        /// </summary>
-        /// <returns>keep waiting or not</returns>
+        /// <inheritdoc />
         public abstract bool MoveNext();
 
         /// <summary>
-        ///     Dispose <see cref="continuation"/>
+        ///     標註捨棄
         /// </summary>
         public virtual void Dispose()
         {
-            continuation = null;
+            continuation = null; // 捨棄後續程式碼，不然很佔記憶體空間
         }
 
-        /// <summary>
-        ///     C# compiler automatically calls this function.
-        ///     Used by <see cref="PoTaskBuilder"/> to get <see cref="Movable"/>
-        /// </summary>
-        /// <returns></returns>
+        /// <inheritdoc />
         public virtual Movable GetAwaiter()
         {
             return this;
         }
 
         /// <summary>
-        ///     Continues, marks completed and returns false for <see cref="MovableRunner"/>
+        ///     先完成後續然後為 <see cref="MovableRunner"/> 標註完成 
         /// </summary>
-        /// <returns>always false</returns>
-        protected bool FinishMoveNext()
+        /// <returns>然後永遠傳為 false</returns>
+        protected bool ContinueMoveNext()
         {
-            continuation?.Invoke(); // Hard logic, has to do continuation first
-            IsCompleted = true;     // then mark completion for PoTask
+            continuation?.Invoke(); // 這裡的邏輯設計真的很難，要先往下走才能完成後續
+            IsCompleted = true;     // 然後為 <see cref="MovableRunner"/> 標註完成
             return false;
         }
 
         /// <summary>
-        ///     Cancels the execution by throwing <see cref="OperationCanceledException"/>.
+        ///     檢查 <see cref="ct"/> 是否取消，取消的話擲回 <see cref="OperationCanceledException"/>.
         /// </summary>
-        /// <param name="ct"></param>
-        /// <exception cref="OperationCanceledException"></exception>
+        /// <param name="ct"><see cref="CancellationToken"/></param>
+        /// <exception cref="OperationCanceledException"><see cref="ct"/> 已取消</exception>
         protected void ValidateCancel(CancellationToken ct)
         {
             if (!ct.IsCancellationRequested) return;
@@ -116,16 +104,14 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
     public abstract class MovableBase<T> : MovableBase, Movable<T>
     {
         /// <summary>
-        ///     C# compiler automatically calls this function.
-        ///     Gets the result of <see cref="Movable"/>
+        ///     取得結果！ C# 編譯器會自動使用這個屬性
         /// </summary>
         public new abstract T GetResult();
 
         /// <summary>
-        ///     C# compiler automatically calls this function.
-        ///     Used by <see cref="PoTaskBuilder"/> to get <see cref="Movable"/>
+        ///     取得等待者。
         /// </summary>
-        /// <returns></returns>
+        /// <returns>等待者</returns>
         public new Movable<T> GetAwaiter()
         {
             return this;

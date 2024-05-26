@@ -34,7 +34,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         {
             if (IsCompleted) return false;
             if (!getIsCompleted()) return true;
-            return FinishMoveNext();
+            return ContinueMoveNext();
         }
 
         public override void Dispose()

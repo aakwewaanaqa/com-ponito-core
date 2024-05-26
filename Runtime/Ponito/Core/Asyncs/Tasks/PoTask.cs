@@ -61,7 +61,7 @@ namespace Ponito.Core.Asyncs.Tasks
             private PoTask task { get; }
 
             /// <inheritdoc />
-            public override Exception Exception
+            public override Exception Ex
             {
                 get => task.Exception;
                 set => task.Exception = value;
@@ -72,7 +72,7 @@ namespace Ponito.Core.Asyncs.Tasks
             {
                 if (IsCompleted) return false;
                 if (!(task.Source?.IsCompleted ?? true)) return true;
-                return FinishMoveNext();
+                return ContinueMoveNext();
             }
         }
     }

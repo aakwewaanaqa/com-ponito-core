@@ -17,7 +17,7 @@ namespace Ponito.Core.Asyncs.Tasks
             while (!awaiter.IsCompleted) yield return new WaitForEndOfFrame();
             try
             {
-                if (awaiter.Exception != null) throw awaiter.Exception;
+                if (awaiter.Ex != null) throw awaiter.Ex;
                 promise.Result = awaiter.GetResult();
                 promise.State  = PromiseState.Done;
             }

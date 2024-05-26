@@ -19,7 +19,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         {
             ValidateCancel(Ct);
             if (IsCompleted) return false;
-            return FinishMoveNext();
+            return ContinueMoveNext();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         {
             if (IsCompleted) return false;
             if (ie.MoveNext()) return true;
-            return FinishMoveNext();
+            return ContinueMoveNext();
         }
     }
 }

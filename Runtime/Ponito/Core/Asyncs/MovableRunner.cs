@@ -7,21 +7,24 @@ using UnityEngine;
 
 namespace Ponito.Core.Asyncs
 {
+    /// <summary>
+    ///     運作 <see cref="Movable.MoveNext()"/> 的核心
+    /// </summary>
     public class MovableRunner : MonoSingleton<MovableRunner>
     {
         /// <summary>
-        ///     The initial capacity of <see cref="movables"/>.
+        ///     起始 <see cref="movables"/> 的數量
         /// </summary>
         private const int INITIAL_CAPACITY = 16;
 
         /// <summary>
-        ///     All the <see cref="Movable"/> waits here until next <see cref="MovableRunner.Update()"/>
+        ///     所有 <see cref="Movable"/> 在這裡等直到下一個 <see cref="MovableRunner.Update()"/>
         /// </summary>
         private readonly Queue<Movable> waitings = new();
 
         /// <summary>
-        ///     All the <see cref="Movable"/> running in this array.
-        ///     When <see cref="Movable"/> is completed, it will be set as null.
+        ///     所有 <see cref="Movable"/> 會在這個陣列中暫時儲存，
+        ///     當 <see cref="Movable"/> 完成是會把其位置標註為 null
         /// </summary>
         private Movable[] movables = new Movable[INITIAL_CAPACITY];
 
@@ -37,49 +40,47 @@ namespace Ponito.Core.Asyncs
         }
 
         /// <summary>
-        ///     Enqueues the <see cref="Movable"/> in this frame.
+        ///     先把 <see cref="Movable"/> 加入 <see cref="waitings"/> 後等待
         /// </summary>
-        /// <param name="movable"></param>
-        public void Enqueue(Movable movable)
+        /// <param name="source">要加入的等待來源</param>
+        public void Enqueue(Movable source)
         {
-            waitings.Enqueue(movable);
+            waitings.Enqueue(source);
         }
 
         /// <summary>
-        ///     Runs <see cref="AddToMovables"/>
-        ///     then <see cref="RunItems"/>.
+        ///     執行 <see cref="AddToMovables"/> 後 <see cref="RunItem"/>
         /// </summary>
         private void Update()
         {
             while (waitings.TryDequeue(out var movable)) AddToMovables(movable);
-            for (var i = 0; i < movables.Length; i++) RunItems(i);
+            for (var i = 0; i < movables.Length; i++) RunItem(i);
         }
 
         /// <summary>
-        ///     Adds <see cref="Movable"/> to <see cref="movables"/>
+        ///     將 <see cref="Movable"/> 從 <see cref="waitings"/> 加入 <see cref="movables"/>
         /// </summary>
-        /// <param name="movable"></param>
-        private void AddToMovables(Movable movable)
+        /// <param name="source">要真正加入的等待來源</param>
+        private void AddToMovables(Movable source)
         {
             for (var i = 0; i < movables.Length; i++)
             {
                 if (movables[i] != null) continue;
 
                 // TODO: Tack movable
-                movables[i] = movable;
+                movables[i] = source;
                 return;
             }
 
             Array.Resize(ref movables, movables.Length * 2);
-            AddToMovables(movable);
+            AddToMovables(source);
         }
 
         /// <summary>
-        ///     Runs every <see cref="Movable"/> when finished,
-        ///     marks it null.
+        ///     推移所有 <see cref="Movable"/> 完成後標註其位置為 null
         /// </summary>
-        /// <param name="i"></param>
-        private void RunItems(int i)
+        /// <param name="i">其 <see cref="movables"/> 在中的位置</param>
+        private void RunItem(int i)
         {
             var head = movables[i];
             if (head == null) return;
@@ -94,7 +95,7 @@ namespace Ponito.Core.Asyncs
             catch (Exception e)
             {
                 // TODO: Untrack movable
-                head.Exception = e;
+                head.Ex = e;
                 // Debug.LogException(e);
                 movables[i] = null;
             }

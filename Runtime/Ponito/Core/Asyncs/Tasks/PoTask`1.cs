@@ -72,16 +72,16 @@ namespace Ponito.Core.Asyncs.Tasks
             ///     取的執行結果！
             /// </summary>
             /// <returns>執行結果</returns>
-            /// <exception cref="Exception">當執行結果有例外時擲回</exception>
+            /// <exception cref="Ex">當執行結果有例外時擲回</exception>
             public override T GetResult()
             {
-                if (Exception != null) throw Exception;
+                if (Ex != null) throw Ex;
                 Dispose();
                 return task.result;
             }
 
             /// <inheritdoc />
-            public override Exception Exception
+            public override Exception Ex
             {
                 get => task.Exception;
                 set => task.Exception = value;
@@ -92,7 +92,7 @@ namespace Ponito.Core.Asyncs.Tasks
             {
                 if (IsCompleted) return false;
                 if (!(task.Source?.IsCompleted ?? true)) return true;
-                return FinishMoveNext();
+                return ContinueMoveNext();
             }
         }
     }
