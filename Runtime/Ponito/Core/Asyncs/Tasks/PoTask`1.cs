@@ -11,7 +11,7 @@ using UnityEngine;
 namespace Ponito.Core.Asyncs.Tasks
 {
     [AsyncMethodBuilder(typeof(PoTaskBuilder<>))]
-    public partial class PoTask<T> : PoTaskBase
+    public partial class PoTask<T> : PoTask
     {
         internal T result;
 
@@ -19,12 +19,12 @@ namespace Ponito.Core.Asyncs.Tasks
         {
         }
 
-        public Awaiter GetAwaiter()
+        public new Awaiter GetAwaiter()
         {
             return new Awaiter(this);
         }
 
-        public class Awaiter : MovableBase<T>
+        public new class Awaiter : MovableBase<T>
         {
             public Awaiter(PoTask<T> task)
             {
