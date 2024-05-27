@@ -34,7 +34,7 @@ namespace Ponito.Core.Tests
             Assert.IsTrue(i == 5);
         }
 
-        private IEnumerator WaitFor5()
+        private static IEnumerator WaitFor5()
         {
             yield return new WaitForSeconds(5f);
         }
