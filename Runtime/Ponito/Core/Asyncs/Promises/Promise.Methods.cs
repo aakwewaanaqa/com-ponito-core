@@ -14,11 +14,11 @@ namespace Ponito.Core.Asyncs.Promises
         /// </summary>
         public Promise Run(Action act)
         {
-            ValidateThrow(this);
+            Ex?.TryThrow();
 
             var q = new Promise();
             q.factory = () => this.Run(act);
-            _        = Call(q);
+            _         = Call(q);
             return q;
 
             async PoTask Call(Promise o)
@@ -30,7 +30,7 @@ namespace Ponito.Core.Asyncs.Promises
                 }
                 catch (Exception e)
                 {
-                    o.Error = e;
+                    o.Ex    = new PromiseException(e);
                     o.State = PromiseState.Failed;
                 }
             }
@@ -41,11 +41,11 @@ namespace Ponito.Core.Asyncs.Promises
         /// </summary>
         public Promise Run(Func<PoTask> act)
         {
-            ValidateThrow(this);
+            Ex?.TryThrow();
 
             var q = new Promise();
             q.factory = () => this.Run(act);
-            _        = Call(q);
+            _         = Call(q);
             return q;
 
             async PoTask Call(Promise o)
@@ -57,7 +57,7 @@ namespace Ponito.Core.Asyncs.Promises
                 }
                 catch (Exception e)
                 {
-                    o.Error = e;
+                    o.Ex    = new PromiseException(e);
                     o.State = PromiseState.Failed;
                 }
             }
@@ -68,11 +68,11 @@ namespace Ponito.Core.Asyncs.Promises
         /// </summary>
         public Promise Run(IEnumerator act)
         {
-            ValidateThrow(this);
+            Ex?.TryThrow();
 
             var q = new Promise();
             q.factory = () => this.Run(act);
-            _        = Call(q);
+            _         = Call(q);
             return q;
 
             async PoTask Call(Promise o)
@@ -85,7 +85,7 @@ namespace Ponito.Core.Asyncs.Promises
                 }
                 catch (Exception e)
                 {
-                    o.Error = e;
+                    o.Ex    = new PromiseException(e);
                     o.State = PromiseState.Failed;
                 }
             }
@@ -96,11 +96,11 @@ namespace Ponito.Core.Asyncs.Promises
         /// </summary>
         public Promise Run(UnityWebRequest act)
         {
-            ValidateThrow(this);
+            Ex?.TryThrow();
 
             var q = new Promise();
             q.factory = () => this.Run(act);
-            _        = Call(q);
+            _         = Call(q);
             return q;
 
             async PoTask Call(Promise o)
@@ -114,7 +114,7 @@ namespace Ponito.Core.Asyncs.Promises
                 }
                 catch (Exception e)
                 {
-                    o.Error = e;
+                    o.Ex    = new PromiseException(e);
                     o.State = PromiseState.Failed;
                 }
             }
@@ -126,8 +126,8 @@ namespace Ponito.Core.Asyncs.Promises
         public Promise TryAgain(int count = int.MaxValue, Action<Exception> catcher = null)
         {
             var q = new Promise();
-            q.factory = () => this.TryAgain(count);
-            _        = Call(q);
+            q.factory = () => TryAgain(count);
+            _         = Call(q);
             return q;
 
             async PoTask Call(Promise output)
@@ -135,15 +135,15 @@ namespace Ponito.Core.Asyncs.Promises
                 try
                 {
                     var p = this;
-                    
+
                     for (int i = 0; i < count; i++)
                     {
                         while (p.IsDoing) await PoTask.Yield();
-                        
+
                         if (p.State is PromiseState.Failed)
                         {
-                            if (p.Error is Exception ex) catcher?.Invoke(ex);
-                            
+                            if (p.Ex is Exception ex) catcher?.Invoke(ex);
+
                             p.State = PromiseState.Doing;
                             p       = factory();
                         }
@@ -157,7 +157,7 @@ namespace Ponito.Core.Asyncs.Promises
                 }
                 catch (Exception e)
                 {
-                    output.Error = e;
+                    output.Ex    = new PromiseException(e);
                     output.State = PromiseState.Failed;
                 }
             }
@@ -165,7 +165,7 @@ namespace Ponito.Core.Asyncs.Promises
 
         public void Dispose()
         {
-            Error = null;
+            Ex = null;
         }
     }
 }

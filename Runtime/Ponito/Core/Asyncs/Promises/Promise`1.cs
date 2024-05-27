@@ -12,7 +12,7 @@ namespace Ponito.Core.Asyncs.Promises
         {
             get
             {
-                ValidateThrow(this);
+                Ex?.TryThrow();
                 return result;
             }
             set => result = value;
@@ -36,8 +36,8 @@ namespace Ponito.Core.Asyncs.Promises
 
             internal Awaiter(Promise<T> p)
             {
-                ValidateThrow(p);
                 promise = p;
+                promise?.Ex?.TryThrow();
             }
 
             public override T GetResult()
@@ -47,7 +47,7 @@ namespace Ponito.Core.Asyncs.Promises
 
             public override bool MoveNext()
             {
-                ValidateThrow(promise);
+                promise?.Ex?.TryThrow();
                 if (IsCompleted) return false;
                 return promise.State switch
                 {
