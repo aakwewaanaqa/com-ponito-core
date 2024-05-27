@@ -23,7 +23,7 @@ namespace Ponito.Core.Asyncs.Tasks
             }
             catch (Exception e)
             {
-                promise.Error = e;
+                promise.Ex = new PromiseException(e);
                 promise.State = PromiseState.Failed;
             }
         }

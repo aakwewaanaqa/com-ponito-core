@@ -1,5 +1,5 @@
 {
-    "name": "com.ponito.tests",
+    "name": "com.ponito.core.tests",
     "rootNamespace": "",
     "references": [
         "com.ponito.core",
