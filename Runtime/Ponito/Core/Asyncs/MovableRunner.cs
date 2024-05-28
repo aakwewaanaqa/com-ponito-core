@@ -140,7 +140,7 @@ namespace Ponito.Core.Asyncs
                 var property = source.GetType().GetProperty("IsCompleted");
                 if (property != null)
                 {
-                    moveNext = () => (bool)property.GetValue(source);
+                    moveNext = () => !(bool)property.GetValue(source);
                     return;
                 }
 
