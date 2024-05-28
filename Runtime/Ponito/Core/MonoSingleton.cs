@@ -50,7 +50,7 @@ namespace Ponito.Core
             var instance = gObj.AddComponent<T>();
 
             gObj.name = instance.GetType().Name; 
-            if (instance.IsDontDestroyOnLoad) DontDestroyOnLoad(instance);
+            if (Application.isPlaying && instance.IsDontDestroyOnLoad) DontDestroyOnLoad(instance);
             if (!instance.IsInitialized) instance.Initialize();
 
             return instance;

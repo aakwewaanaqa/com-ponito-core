@@ -6,6 +6,7 @@ using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Promises;
 using Ponito.Core.Asyncs.Tasks.Movables;
+using Ponito.Core.DebugHelper;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks
@@ -36,7 +37,7 @@ namespace Ponito.Core.Asyncs.Tasks
         /// <param name="source">
         ///     任務來源 <see cref="Movable"/>，
         /// </param>
-        public PoTask(Movable source = null) : base(source)
+        public PoTask(INotifyCompletion source = null) : base(source)
         {
         }
 
@@ -80,19 +81,15 @@ namespace Ponito.Core.Asyncs.Tasks
                 return task.result;
             }
 
-            /// <inheritdoc />
-            public override Exception Ex
-            {
-                get => task.Exception;
-                set => task.Exception = value;
-            }
-
+            private bool HasSource => task?.Source != null;
+            
             /// <inheritdoc />
             public override bool MoveNext()
             {
                 if (IsCompleted) return false;
-                if (!(task.Source?.IsCompleted ?? true)) return true;
-                return ContinueMoveNext();
+                if (HasSource) return true;
+                continuation?.Invoke();
+                return IsCompleted = HasSource;
             }
         }
     }

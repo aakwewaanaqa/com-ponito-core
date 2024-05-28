@@ -7,7 +7,7 @@ namespace Ponito.Core.Asyncs.Interfaces
     /// <summary>
     ///     <see cref="MovableRunner"/> 中每個被等待者的核心功能基本單位
     /// </summary>
-    public interface Movable : INotifyCompletion
+    public interface Movable : INotifyCompletion, IDisposable
     {
         /// <summary>
         ///     任何在這個 <see cref="Movable"/> 中存在的 <see cref="Ex"/> 

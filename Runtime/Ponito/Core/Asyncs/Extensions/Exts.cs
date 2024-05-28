@@ -14,6 +14,8 @@ namespace Ponito.Core.Asyncs.Extensions
 {
     public static partial class Exts
     {
+        private static YieldInstruction Eof = new WaitForEndOfFrame();
+
         [DebuggerHidden]
         public static Movable<T> AsPoTask<T>(this ValueTask<T> vt)
         {
@@ -21,7 +23,7 @@ namespace Ponito.Core.Asyncs.Extensions
         }
 
         [DebuggerHidden]
-        public static Movable AsPoTask<T>(this ValueTask vt)
+        public static Movable AsPoTask(this ValueTask vt)
         {
             return new ValueTaskAwait(vt);
         }
@@ -33,18 +35,53 @@ namespace Ponito.Core.Asyncs.Extensions
         }
 
         [DebuggerHidden]
-        public static Movable AsPoTask<T>(this Task t)
+        public static Movable AsPoTask(this Task t)
         {
             return new TaskAwait(t);
         }
 
-
-
-        [DebuggerHidden]
-        public static IEnumerator RunAsCoroutine(this Movable t)
+        public static IEnumerator RunAsCoroutine(this Movable movable, Promise p = null)
         {
-            MovableRunner.Singleton.Enqueue(t);
-            while (!t.IsCompleted) yield return new WaitForEndOfFrame();
+            var dummy        = new PoTask();
+            var dummyAwaiter = dummy.GetAwaiter();
+            MovableRunner.Singleton.AwaitSource(dummy, movable, null);
+            while (!dummyAwaiter.IsCompleted) yield return Eof;
+
+            if (p != null && dummy.Ex != null)
+            {
+                p.Ex = new PromiseException(dummy.Ex);
+                yield break;
+            }
+        }
+
+        public static IEnumerator RunAsCoroutine(this PoTask task, Promise p = null)
+        {
+            var dummy = new PoTask();
+            MovableRunner.Singleton.AwaitSource(dummy, task.GetAwaiter(), null);
+            while (!dummy.GetAwaiter().IsCompleted) yield return Eof;
+
+            if (p != null && dummy.Ex != null)
+            {
+                p.Ex = new PromiseException(dummy.Ex);
+                yield break;
+            }
+        }
+
+        public static IEnumerator RunAsCoroutine<T>(this PoTask<T> task, Promise<T> p = null)
+        {
+            var awaiter      = task.GetAwaiter();
+            var dummy        = new PoTask();
+            var dummyAwaiter = dummy.GetAwaiter();
+            MovableRunner.Singleton.AwaitSource(dummy, awaiter, null);
+            while (!dummyAwaiter.IsCompleted) yield return Eof;
+
+            if (p != null && dummy.Ex != null)
+            {
+                p.Ex = new PromiseException(dummy.Ex);
+                yield break;
+            }
+
+            if (p != null) p.Result = awaiter.GetResult();
         }
 
         internal static string Tag(this string str, string tag, string arg = null)

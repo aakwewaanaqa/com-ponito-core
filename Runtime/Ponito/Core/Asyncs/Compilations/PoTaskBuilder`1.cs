@@ -4,12 +4,16 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using Ponito.Core.Asyncs.Tasks;
+using Ponito.Core.DebugHelper;
+using Debug = UnityEngine.Debug;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
     [StructLayout(LayoutKind.Auto)]
     public struct PoTaskBuilder<T>
     {
+        private PoTask<T> task;
+        
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static PoTaskBuilder<T> Create()
@@ -25,18 +29,18 @@ namespace Ponito.Core.Asyncs.Compilations
         {
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get;
+            get => task;
             [DebuggerHidden]
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            private set;
+            private set => task = value;
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetException(Exception e)
+        public void SetException(Exception ex)
         {
             // throw exception;
-            Task.Exception = e;
+            Task.Ex = ex;
         }
 
         [DebuggerHidden]
@@ -52,8 +56,9 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            Task.TrySetSource(awaiter);
+            task.name = stateMachine;
             awaiter.OnCompleted(stateMachine.MoveNext);
+            MovableRunner.Singleton.AwaitSource(task, awaiter, stateMachine);
         }
 
         [DebuggerHidden]
@@ -65,8 +70,9 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            Task.TrySetSource(awaiter);
+            task.name = stateMachine;
             awaiter.OnCompleted(stateMachine.MoveNext);
+            MovableRunner.Singleton.AwaitSource(task, awaiter, stateMachine);
         }
 
         [DebuggerHidden]

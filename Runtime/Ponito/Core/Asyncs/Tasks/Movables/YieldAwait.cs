@@ -18,8 +18,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         public override bool MoveNext()
         {
             ValidateCancel(Ct);
-            if (IsCompleted) return false;
-            return ContinueMoveNext();
+            return !IsCompleted && ContinueMoveNext();
         }
     }
 }

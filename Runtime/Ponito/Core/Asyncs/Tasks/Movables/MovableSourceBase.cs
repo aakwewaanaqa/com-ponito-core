@@ -26,7 +26,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         /// <summary>
         ///     後續的執行
         /// </summary>
-        private Action continuation { get; set; }
+        protected Action continuation { get; set; }
 
         /// <inheritdoc />
         public virtual bool IsCompleted { get; protected set; }
@@ -45,7 +45,6 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
             }
 
             this.continuation = continuation;
-            MovableRunner.Singleton.Enqueue(this);
         }
 
         /// <summary>
@@ -81,7 +80,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         protected bool ContinueMoveNext()
         {
             continuation?.Invoke(); // 這裡的邏輯設計真的很難，要先往下走才能完成後續
-            IsCompleted = true;     // 然後為 <see cref="MovableRunner"/> 標註完成
+            IsCompleted  = true;     // 然後為 <see cref="MovableRunner"/> 標註完成
             return false;
         }
 

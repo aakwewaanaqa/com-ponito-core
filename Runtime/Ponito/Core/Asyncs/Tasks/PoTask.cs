@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using Ponito.Core.Asyncs.Compilations;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks.Movables;
+using Ponito.Core.DebugHelper;
 
 namespace Ponito.Core.Asyncs.Tasks
 {
@@ -26,9 +27,9 @@ namespace Ponito.Core.Asyncs.Tasks
         ///     <see cref="PoTask"/>
         /// </summary>
         /// <param name="source">
-        ///     任務來源 <see cref="Movable"/>，
+        ///     任務來源 <see cref="INotifyCompletion"/>，
         /// </param>
-        public PoTask(Movable source = null) : base(source)
+        public PoTask(INotifyCompletion source = null) : base(source)
         {
         }
 
@@ -44,7 +45,7 @@ namespace Ponito.Core.Asyncs.Tasks
         /// <summary>
         ///     可以用來表示<see cref="PoTask"/>當前狀態的等待者。
         /// </summary>
-        public class Awaiter : MovableBase, IDisposable
+        public class Awaiter : MovableBase
         {
             /// <summary>
             ///     <see cref="Awaiter"/>
@@ -60,19 +61,15 @@ namespace Ponito.Core.Asyncs.Tasks
             /// </summary>
             private PoTask task { get; }
 
-            /// <inheritdoc />
-            public override Exception Ex
-            {
-                get => task.Exception;
-                set => task.Exception = value;
-            }
-
+            private bool HasSource => task?.Source != null;
+            
             /// <inheritdoc />
             public override bool MoveNext()
             {
                 if (IsCompleted) return false;
-                if (!(task.Source?.IsCompleted ?? true)) return true;
-                return ContinueMoveNext();
+                if (HasSource) return true;
+                continuation?.Invoke();
+                return IsCompleted = HasSource;
             }
         }
     }
