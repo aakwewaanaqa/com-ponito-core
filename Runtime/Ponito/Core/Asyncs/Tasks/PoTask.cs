@@ -61,6 +61,13 @@ namespace Ponito.Core.Asyncs.Tasks
             /// </summary>
             private PoTask task { get; }
 
+            /// <inheritdoc />
+            public override Exception Ex
+            {
+                get => task.Ex;
+                set => task.Ex = value;
+            }
+
             private bool HasSource => task?.Source != null;
             
             /// <inheritdoc />
