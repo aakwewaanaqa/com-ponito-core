@@ -42,46 +42,45 @@ namespace Ponito.Core.Asyncs.Extensions
 
         public static IEnumerator RunAsCoroutine(this Movable movable, Promise p = null)
         {
-            var dummy        = new PoTask();
-            var dummyAwaiter = dummy.GetAwaiter();
-            MovableRunner.Singleton.AwaitSource(dummy, movable, null);
-            while (!dummyAwaiter.IsCompleted) yield return Eof;
-
-            if (p != null && dummy.Ex != null)
-            {
-                p.Ex = new PromiseException(dummy.Ex);
-                yield break;
-            }
+            if (p != null) p.State = PromiseState.Doing;
+            while (movable.MoveNext()) yield return Eof;
+            if (p != null) p.State = PromiseState.Done;
         }
 
         public static IEnumerator RunAsCoroutine(this PoTask task, Promise p = null)
         {
-            var dummy = new PoTask();
-            MovableRunner.Singleton.AwaitSource(dummy, task.GetAwaiter(), null);
-            while (!dummy.GetAwaiter().IsCompleted) yield return Eof;
+            var movable            = task.GetAwaiter();
+            if (p != null) p.State = PromiseState.Doing;
+            while (movable.MoveNext()) yield return Eof;
 
-            if (p != null && dummy.Ex != null)
+            if (p != null && movable.Ex != null)
             {
-                p.Ex = new PromiseException(dummy.Ex);
+                p.State = PromiseState.Failed;
+                p.Ex    = new PromiseException(movable.Ex);
                 yield break;
             }
+
+            if (p != null) p.State = PromiseState.Done;
         }
 
         public static IEnumerator RunAsCoroutine<T>(this PoTask<T> task, Promise<T> p = null)
         {
-            var awaiter      = task.GetAwaiter();
-            var dummy        = new PoTask();
-            var dummyAwaiter = dummy.GetAwaiter();
-            MovableRunner.Singleton.AwaitSource(dummy, awaiter, null);
-            while (!dummyAwaiter.IsCompleted) yield return Eof;
+            var movable            = task.GetAwaiter();
+            if (p != null) p.State = PromiseState.Doing;
+            while (movable.MoveNext()) yield return Eof;
 
-            if (p != null && dummy.Ex != null)
+            if (p != null && movable.Ex != null)
             {
-                p.Ex = new PromiseException(dummy.Ex);
+                p.State = PromiseState.Failed;
+                p.Ex    = new PromiseException(movable.Ex);
                 yield break;
             }
 
-            if (p != null) p.Result = awaiter.GetResult();
+            if (p != null)
+            {
+                p.Result = movable.GetResult();
+                p.State  = PromiseState.Done;
+            }
         }
 
         internal static string Tag(this string str, string tag, string arg = null)

@@ -61,8 +61,8 @@ namespace Ponito.Core.Asyncs
         /// </summary>
         private void Update()
         {
-            for (var i = 0; i < items.Length; i++) RunItem(i);
             while (waitings.TryDequeue(out var movable)) AddToMovables(movable);
+            for (var i = 0; i < items.Length; i++) RunItem(i);
         }
 
         /// <summary>
