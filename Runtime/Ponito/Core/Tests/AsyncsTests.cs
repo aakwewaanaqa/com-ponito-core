@@ -63,7 +63,7 @@ namespace Ponito.Core.Tests
         {
             Exception ex = null;
             yield return PoTaskInnerException()
-               .Catch(exception => ex = exception)
+               .Try(exception => ex = exception)
                .RunAsCoroutine();
             Assert.NotNull(ex);
         }
@@ -73,7 +73,7 @@ namespace Ponito.Core.Tests
         {
             Exception ex = null;
             yield return PoTaskYieldException()
-               .Catch(exception => ex = exception)
+               .Try(exception => ex = exception)
                .RunAsCoroutine();
             Assert.NotNull(ex);
         }
@@ -101,7 +101,7 @@ namespace Ponito.Core.Tests
             Exception ex     = null;
 
             yield return PoTaskCancel()
-               .Catch(exception => ex = exception)
+               .Try(exception => ex = exception)
                .RunAsCoroutine();
 
             Assert.IsTrue(ex is OperationCanceledException);
