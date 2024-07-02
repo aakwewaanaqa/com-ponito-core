@@ -55,7 +55,7 @@ namespace Ponito.Core.DebugHelper
         public static void F(this Type type, string function, params object[] args)
         {
             var typeColor = type.IsValueType ? DebugColors.STRUCT_COLOR : DebugColors.CLASS_COLOR;
-            var arg       = args.Aggregate((a, b) => $"{a}, {b}");
+            var arg       = args.Select(a => $"\n\t{a}");
             var o = $"{type.Name.Colorize(typeColor)}" +
                     $".{function.Colorize(DebugColors.FUNCTION_COLOR)}({arg})";
             o.Log();
