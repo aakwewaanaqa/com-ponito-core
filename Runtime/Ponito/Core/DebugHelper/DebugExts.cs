@@ -13,6 +13,7 @@ namespace Ponito.Core.DebugHelper
         internal const string CLASS_COLOR    = "#07FFD4";
         internal const string KEYWORD_COLOR  = "#6B96F8";
         internal const string WARNING_COLOR  = "#FC8C03";
+        internal const string STRING_COLOR   = "#E6A409";
     }
 
     public static class DebugExts
@@ -54,8 +55,12 @@ namespace Ponito.Core.DebugHelper
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void F(this Type type, string function, params object[] args)
         {
+            var count     = type.Name.Length + function.Length + 2;
+            var indention = new string(' ', count);
             var typeColor = type.IsValueType ? DebugColors.STRUCT_COLOR : DebugColors.CLASS_COLOR;
-            var arg       = args.Select(a => $"\n\t{a}").Aggregate((a, b) => a + b);
+            var arg = args
+               .Select(a => a.ToString().Colorize(DebugColors.STRING_COLOR))
+               .Aggregate((a, b) => $"{a},\n{indention}{b}");
             var o = $"{type.Name.Colorize(typeColor)}" +
                     $".{function.Colorize(DebugColors.FUNCTION_COLOR)}({arg})";
             o.Log();
