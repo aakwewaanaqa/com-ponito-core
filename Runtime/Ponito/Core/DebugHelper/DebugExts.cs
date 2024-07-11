@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -54,6 +55,21 @@ namespace Ponito.Core.DebugHelper
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void F(this Type type, string function, params object[] args)
+        {
+            var count     = type.Name.Length + function.Length + 2;
+            var indention = new string(' ', count);
+            var typeColor = type.IsValueType ? DebugColors.STRUCT_COLOR : DebugColors.CLASS_COLOR;
+            var arg = args
+               .Select(a => a.ToString().Colorize(DebugColors.STRING_COLOR))
+               .Aggregate((a, b) => $"{a},\n{indention}{b}");
+            var o = $"{type.Name.Colorize(typeColor)}" +
+                    $".{function.Colorize(DebugColors.FUNCTION_COLOR)}({arg})";
+            o.Log();
+        }
+
+        [DebuggerHidden]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void F(this Type type, string function, IEnumerable<object> args)
         {
             var count     = type.Name.Length + function.Length + 2;
             var indention = new string(' ', count);
