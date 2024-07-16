@@ -60,7 +60,7 @@ namespace Ponito.Core.DebugHelper
             var indention = new string(' ', count);
             var typeColor = type.IsValueType ? DebugColors.STRUCT_COLOR : DebugColors.CLASS_COLOR;
             var arg = args
-               .Select(a => a.ToString().Colorize(DebugColors.STRING_COLOR))
+               .Select(a => Stringify(a).Colorize(DebugColors.STRING_COLOR))
                .Aggregate((a, b) => $"{a},\n{indention}{b}");
             var o = $"{type.Name.Colorize(typeColor)}" +
                     $".{function.Colorize(DebugColors.FUNCTION_COLOR)}({arg})";
@@ -75,7 +75,7 @@ namespace Ponito.Core.DebugHelper
             var indention = new string(' ', count);
             var typeColor = type.IsValueType ? DebugColors.STRUCT_COLOR : DebugColors.CLASS_COLOR;
             var arg = args
-               .Select(a => a.ToString().Colorize(DebugColors.STRING_COLOR))
+               .Select(a => Stringify(a).Colorize(DebugColors.STRING_COLOR))
                .Aggregate((a, b) => $"{a},\n{indention}{b}");
             var o = $"{type.Name.Colorize(typeColor)}" +
                     $".{function.Colorize(DebugColors.FUNCTION_COLOR)}({arg})";
@@ -100,6 +100,11 @@ namespace Ponito.Core.DebugHelper
             object o = $"{keyWord.Colorize(DebugColors.KEYWORD_COLOR)} " +
                        $"{obj}";
             o.Log();
+        }
+
+        private static string Stringify(object obj)
+        {
+            return obj == null ? string.Empty : obj.ToString();
         }
     }
 }
