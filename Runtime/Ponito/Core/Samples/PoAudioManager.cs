@@ -18,6 +18,8 @@ namespace Ponito.Core.Samples
     [AddComponentMenu("Ponito/Core/Samples/Po Audio Manager")]
     public class PoAudioManager : MonoSingleton<PoAudioManager>
     {
+        public const float DEFAULT_FADE_DURATION = 0.2f;
+        
         [SerializeField] private AudioSource music;
         [SerializeField] private AudioSource fx;
         [SerializeField] private AudioSource voice;
@@ -58,7 +60,8 @@ namespace Ponito.Core.Samples
 
                 info.SetValue(this, source);
                 if (mixer.IsNull()) continue;
-                source.outputAudioMixerGroup = mixer.FindMatchingGroups(info.Name)[0];
+                var groups = mixer.FindMatchingGroups(info.Name);
+                source.outputAudioMixerGroup = groups.Length > 0 ? groups[0] : default;
             }
         }
 
@@ -84,7 +87,7 @@ namespace Ponito.Core.Samples
         /// </summary>
         /// <param name="type">the type of managed <see cref="AudioSource" />s</param>
         /// <param name="duration">delay in seconds</param>
-        public async PoTask Stop(AudioPlayType type = AudioPlayType.Music, float duration = 0.2f)
+        public async PoTask Stop(AudioPlayType type = AudioPlayType.Music, float duration = DEFAULT_FADE_DURATION)
         {
             var source = GetSource(type);
             if (source.isPlaying)
