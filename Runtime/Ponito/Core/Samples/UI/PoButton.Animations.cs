@@ -47,17 +47,17 @@ namespace Ponito.Core.Samples.UI
             if (isPressed) return;
             
             {
-                var from   = rectTransform.localScale;
+                var from   = originalScale;
                 var to     = originalScale * 1.2f;
                 var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
                 await DoEase.To(from, to, setter, 0.1f, InSine, ct);
             }
             
             {
-                var from   = rectTransform.localScale;
+                var from   = originalScale * 1.2f;
                 var to     = originalScale;
                 var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
-                await DoEase.To(from, to, setter, 0.1f, OutSine, ct);
+                await DoEase.To(from, to, setter, 0.1f, InSine, ct);
             }
         }
     }
