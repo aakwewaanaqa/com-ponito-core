@@ -42,9 +42,9 @@ namespace Ponito.Core.Asyncs.Tasks
         }
 
         [DebuggerHidden]
-        public static Movable Create(IEnumerator ie)
+        public static Movable Create(IEnumerator ie, CancellationToken ct = default)
         {
-            return new IEnumeratorAwait(ie);
+            return new IEnumeratorAwait(ie, ct);
         }
     }
 }

@@ -1,13 +1,15 @@
+using System.Threading;
 using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.Ease;
 using UnityEngine;
+using static Ponito.Core.Ease.EaseType;
 
 namespace Ponito.Core.Samples.UI
 {
     public partial class PoButton
     {
-        private Easable ease;
-        private Vector3 originalScale;
+        private Vector3                 originalScale { get; set; }
+        private CancellationTokenSource cts           { get; set; }
         
         private async PoTask PlayAudio(bool isPressed)
         {
@@ -17,23 +19,46 @@ namespace Ponito.Core.Samples.UI
 
         private async PoTask PlayAnimation(bool isPressed)
         {
-            ease?.Kill();
-            ease = animationType switch
+            cts?.Cancel();
+            cts = new CancellationTokenSource();
+            var ct = cts.Token;
+            
+            var task = animationType switch
             {
                 AnimationType.None  => null,
-                AnimationType.Scale => ScaleAnimation(isPressed),
+                AnimationType.Scale => ScaleAnimation(isPressed, ct),
+                AnimationType.Punch => PunchAnimation(isPressed, ct),
                 _                   => null
             };
-            await ease;
+            if (task != null) await task;
         }
 
-        private Easable ScaleAnimation(bool isPressed)
+        private async PoTask ScaleAnimation(bool isPressed, CancellationToken ct)
         {
             var from   = rectTransform.localScale;
             var to     = isPressed ? originalScale * 0.8f : originalScale;
             var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
-            var type   = isPressed ? EaseType.InSine : EaseType.OutBounce;
-            return DoEase.To(from, to, setter, 0.2f, type);
+            var type   = isPressed ? InSine : OutBounce;
+            await DoEase.To(from, to, setter, 0.2f, type, ct);
+        }
+
+        private async PoTask PunchAnimation(bool isPressed, CancellationToken ct)
+        {
+            if (isPressed) return;
+            
+            {
+                var from   = rectTransform.localScale;
+                var to     = originalScale * 1.2f;
+                var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
+                await DoEase.To(from, to, setter, 0.1f, InSine, ct);
+            }
+            
+            {
+                var from   = rectTransform.localScale;
+                var to     = originalScale;
+                var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
+                await DoEase.To(from, to, setter, 0.1f, OutSine, ct);
+            }
         }
     }
 }

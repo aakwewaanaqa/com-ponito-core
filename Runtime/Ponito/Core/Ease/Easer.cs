@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.DebugHelper;
@@ -25,7 +26,8 @@ namespace Ponito.Core.Ease
             Setter<T> setter,
             Lerper<T> lerper,
             float duration,
-            EaseType easeType = EaseType.InSine)
+            EaseType easeType = EaseType.InSine,
+            CancellationToken ct = default)
         {
             this.start    = start;
             this.end      = end;
@@ -34,7 +36,7 @@ namespace Ponito.Core.Ease
             this.duration = duration;
             this.easeType = easeType;
             easeFunction  = EasingEquations.GetFunction(easeType);
-            awaiter       = PoTask.Create(this);
+            awaiter       = PoTask.Create(this, ct);
         }
 
         public float Progress => time / duration;

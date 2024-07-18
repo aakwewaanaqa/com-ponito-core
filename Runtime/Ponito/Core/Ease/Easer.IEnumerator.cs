@@ -13,7 +13,12 @@ namespace Ponito.Core.Ease
             if (!isEnded)
             {
                 setter((T)Current);
-                time += Time.deltaTime;
+                time    += Time.deltaTime;
+                if (time >= duration)
+                {
+                    time    = duration;
+                    isEnded = true;
+                }
                 return true;
             }
 
