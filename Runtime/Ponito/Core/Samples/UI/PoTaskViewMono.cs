@@ -10,7 +10,7 @@ namespace Ponito.Core.Samples.UI
     public class PoTaskViewMono : MonoBehaviour, PoTaskView
     {
         /// <inheritdoc />
-        public async PoTask Show(object args, CancellationToken ct = default)
+        public virtual async PoTask Show(object args, CancellationToken ct = default)
         {
             if (ct.IsCancellationRequested) return;
             gameObject.SetActive(true);
@@ -18,7 +18,7 @@ namespace Ponito.Core.Samples.UI
         }
 
         /// <inheritdoc />
-        public async PoTask Hide(object args, CancellationToken ct = default)
+        public virtual async PoTask Hide(object args, CancellationToken ct = default)
         {
             if (ct.IsCancellationRequested) return;
             gameObject.SetActive(false);
@@ -26,6 +26,6 @@ namespace Ponito.Core.Samples.UI
         }
 
         /// <inheritdoc />
-        public ViewState State { get; private set; }
+        public virtual ViewState State { get; protected set; }
     }
 }
