@@ -1,23 +1,23 @@
 ﻿namespace Ponito.Core.Samples.UI
 {
     /// <summary>
-    ///     Common states of a <see cref="AsyncView"/>
+    ///     常用顯示狀態
     /// </summary>
     public enum ViewState
     {
         /// <summary>
-        ///     The <see cref="AsyncView"/> is on
+        ///     不顯示的狀態
         /// </summary>
-        Showing,
-        
+        Hidden = 0,
+
         /// <summary>
-        ///     The <see cref="AsyncView"/> is in between on and off
+        ///     轉場中
         /// </summary>
-        Transitioning,
-        
+        Transitioning = 1,
+
         /// <summary>
-        ///     The <see cref="AsyncView"/> is off
+        ///     顯示中
         /// </summary>
-        Hidden,
+        Showing = 2,
     }
 }
