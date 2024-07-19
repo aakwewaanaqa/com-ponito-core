@@ -1,9 +1,7 @@
 using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Ponito.Core.Asyncs.Extensions;
 using Ponito.Core.DebugHelper;
-using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks.Movables
 {
@@ -13,13 +11,10 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
                                            BindingFlags.NonPublic |
                                            BindingFlags.Instance;
 
-        private INotifyCompletion awaiter        { get; set; }
-        private Func<bool>        getIsCompleted { get; set; }
-
         public ReflectAwait(INotifyCompletion awaiter)
         {
-            var await       = "await".Colorize(DebugColors.KEYWORD_COLOR);
-            var typeName    = awaiter.GetType().Name.Colorize(DebugColors.CLASS_COLOR);
+            var await    = "await".Colorize(DebugColors.KEYWORD_COLOR);
+            var typeName = awaiter.GetType().Name.Colorize(DebugColors.CLASS_COLOR);
             $"{await} {typeName} by reflection".Warn();
 
             this.awaiter = awaiter;
@@ -30,8 +25,12 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
             getIsCompleted = () => (bool)(method?.Invoke(awaiter, Array.Empty<object>()) ?? true);
         }
 
+        private INotifyCompletion awaiter        { get; set; }
+        private Func<bool>        getIsCompleted { get; set; }
+
         public override bool MoveNext()
         {
+            if (Ct.IsCancellationRequested) return false;
             if (IsCompleted) return false;
             if (!getIsCompleted()) return true;
             return ContinueMoveNext();

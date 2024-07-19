@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 
 namespace Ponito.Core.Asyncs.Tasks.Movables
 {
@@ -11,13 +10,12 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         public YieldAwait(CancellationToken ct = default)
         {
             Ct = ct;
-            ValidateCancel(Ct);
         }
 
         /// <inheritdoc />
         public override bool MoveNext()
         {
-            ValidateCancel(Ct);
+            if (Ct.IsCancellationRequested) return false;
             return !IsCompleted && ContinueMoveNext();
         }
     }

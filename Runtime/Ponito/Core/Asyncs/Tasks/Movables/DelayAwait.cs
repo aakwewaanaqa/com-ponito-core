@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks.Movables
 {
@@ -10,16 +11,18 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         /// <summary>
         ///     By <see cref="milliseconds" />
         /// </summary>
-        public DelayAwait(int milliseconds)
+        public DelayAwait(int milliseconds, CancellationToken ct = default)
         {
+            Ct         = ct;
             targetTime = Time.time + milliseconds / 1000f;
         }
 
         /// <summary>
         ///     By <see cref="seconds" />
         /// </summary>
-        public DelayAwait(float seconds)
+        public DelayAwait(float seconds, CancellationToken ct = default)
         {
+            Ct         = ct;
             targetTime = Time.time + seconds;
         }
 
@@ -31,6 +34,7 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
         /// <inheritdoc />
         public override bool MoveNext()
         {
+            if (Ct.IsCancellationRequested) return false;
             if (IsCompleted) return false;
 
             var timeIsUp = Time.time >= targetTime;
