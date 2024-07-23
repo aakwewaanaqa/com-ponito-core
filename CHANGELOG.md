@@ -1,5 +1,30 @@
 ﻿# CHANGELOG
 
+## 1.1.2 -> 1.1.3 (2024/07/23)
+
+### Added
+
+```csharp
+///                   Copilot 發現這樣用是個好點子
+class Exts.cs ~ async Delay(this float seconds, CancellationToken ct)
+/// 例如
+{
+    var cts = new CancellationTokenSource(); // 建立一個取消標旗
+    await 1.5f.Delay(cts.Token);             // 1.5 秒後執行，或是取消後立即執行
+}
+```
+
+### Changed
+
+```csharp
+///                             Play, Stop 加入 CancellationToken 以取消播放
+class TimeState.cs      ~ async Play(float duration, Action<float> onAnimate, CancellationToken ct)
+                          async Play(float to, float duration, Action<float> onAnimate, CancellationToken ct)
+                          async Play(float from, float to, float duration, Action<float> onAnimate, CancellationToken ct)
+class PoAudioManager.cs ~ async Play(AudioClip clip, AudioPlayType type, bool isOneShot, CancellationToken ct)
+                          async Stop(AudioPlayType type, float duration, CancellationToken ct)
+```
+
 ## 1.1.1 -> 1.1.2 (2024/07/20)
 
 ### Added
@@ -31,7 +56,7 @@ class Exts.cs ~ async AsPoTask   (this ValueTask vt)    => PoTask
 /// 為了序列化 <see cref="PoTaskView"/>
 class PoTaskViewMono.cs
 ```
-  
+
 ### Changed
 
 ```csharp

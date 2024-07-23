@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using NUnit.Framework;
+using Ponito.Core.Asyncs.Extensions;
 using Ponito.Core.Extensions;
 using Ponito.Core.Samples;
 using UnityEditor;
@@ -10,13 +11,13 @@ namespace Ponito.Core.Tests
 {
     public class AudioTests
     {
-        private AudioClip GetAClip()
+        private static AudioClip GetAClip()
         {
             const string PATH = "Assets/ABs/Audios/fx-next-level.mp3";
             return AssetDatabase.LoadAssetAtPath<AudioClip>(PATH);
         }
 
-        private AudioClip GetBClip()
+        private static AudioClip GetBClip()
         {
             const string PATH = "Assets/ABs/Audios/fx-applaud.mp3";
             return AssetDatabase.LoadAssetAtPath<AudioClip>(PATH);
@@ -32,7 +33,7 @@ namespace Ponito.Core.Tests
             
             var sound = PoAudioManager.Singleton;
             _ = sound.Play(aClip);
-            yield return new WaitForSeconds(PoAudioManager.DEFAULT_FADE_DURATION / 2f);
+            yield return (PoAudioManager.DEFAULT_FADE_DURATION / 2f).Delay().RunAsCoroutine();
             
             _ = sound.Play(bClip);
             yield return new WaitForSeconds(PoAudioManager.DEFAULT_FADE_DURATION);
