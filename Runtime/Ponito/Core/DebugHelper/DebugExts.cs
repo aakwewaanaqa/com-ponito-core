@@ -96,7 +96,6 @@ namespace Ponito.Core.DebugHelper
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Keyword(this string keyWord, object obj)
         {
-            var type = obj.GetType();
             object o = $"{keyWord.Colorize(DebugColors.KEYWORD_COLOR)} " +
                        $"{obj}";
             o.Log();

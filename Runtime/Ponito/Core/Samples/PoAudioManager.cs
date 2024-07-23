@@ -1,14 +1,12 @@
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
+using System.Threading;
 using Ponito.Core.Animations;
+using Ponito.Core.Asyncs.Extensions;
 using Ponito.Core.Asyncs.Tasks;
-using Ponito.Core.DebugHelper;
-using Ponito.Core.Ease;
 using Ponito.Core.Extensions;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UIElements;
 
 namespace Ponito.Core.Samples
 {
@@ -87,7 +85,7 @@ namespace Ponito.Core.Samples
         /// </summary>
         /// <param name="type">the type of managed <see cref="AudioSource" />s</param>
         /// <param name="duration">delay in seconds</param>
-        public async PoTask Stop(AudioPlayType type = AudioPlayType.Music, float duration = DEFAULT_FADE_DURATION)
+        public async PoTask Stop(AudioPlayType type = AudioPlayType.Music, float duration = DEFAULT_FADE_DURATION, CancellationToken ct = default)
         {
             var source = GetSource(type);
             if (source.isPlaying)
@@ -101,21 +99,25 @@ namespace Ponito.Core.Samples
                         source.Stop();
                         source.volume = 1f;
                     }
-                });
+                }, ct);
             }
         }
 
-        public async PoTask Play(AudioClip clip, AudioPlayType type = AudioPlayType.Music, bool isOneShot = false)
+        public async PoTask Play(AudioClip clip, AudioPlayType type = AudioPlayType.Music, bool isOneShot = false, CancellationToken ct = default)
         {
+            if (ct.IsCancellationRequested) return;
             if (clip.IsNull()) return;
             
-            if (!isOneShot) await Stop(type); // Stops gracefully
+            if (!isOneShot) await Stop(type, ct: ct); // 慢慢地停止音效
+            if (ct.IsCancellationRequested) return;
             
             var source = GetSource(type);
             source.clip = clip;
             
             if (isOneShot) source.PlayOneShot(clip);
             else source.Play();
+             
+            await clip.length.Delay(ct);
         }
     }
 }

@@ -28,9 +28,9 @@ namespace Ponito.Core.Animations
         /// </summary>
         /// <param name="duration">duration of this play</param>
         /// <param name="onAnimate">the action to invoke passing <see cref="percent"/></param>
-        public async PoTask Play(float duration, Action<float> onAnimate)
+        public async PoTask Play(float duration, Action<float> onAnimate, CancellationToken ct = default)
         {
-            await Play(0f, 1f, duration, onAnimate);
+            await Play(0f, 1f, duration, onAnimate, ct);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Ponito.Core.Animations
         /// <param name="to">the target <see cref="percent"/></param>
         /// <param name="duration">duration of this play</param>
         /// <param name="onAnimate">the action to invoke passing <see cref="percent"/></param>
-        public async PoTask Play(float to, float duration, Action<float> onAnimate)
+        public async PoTask Play(float to, float duration, Action<float> onAnimate, CancellationToken ct = default)
         {
-            await Play(percent, to, duration, onAnimate);
+            await Play(percent, to, duration, onAnimate, ct);
         }
 
         /// <summary>
@@ -51,20 +51,25 @@ namespace Ponito.Core.Animations
         /// <param name="to">the target <see cref="percent"/></param>
         /// <param name="duration">duration of this play</param>
         /// <param name="onAnimate">the action to invoke passing <see cref="percent"/></param>
-        public async PoTask Play(float from, float to, float duration, Action<float> onAnimate)
+        public async PoTask Play(
+            float from,
+            float to,
+            float duration,
+            Action<float> onAnimate,
+            CancellationToken ct = default)
         {
             percent = from;
 
-            cts?.Cancel();                       // if it plays before, cancel it.
-            cts = new CancellationTokenSource(); // make a new cancel source.
+            cts?.Cancel();
+            cts = new CancellationTokenSource();
 
-            var isGoingUp = to > from; // is adding time or subtracting
-            var ct        = cts.Token; // stores the source's token for identification
+            var isGoingUp = to > from;           // 檢查是否是往上
+            ct = ct == default ? cts.Token : ct; // 如果沒有傳入 CancellationToken，就使用自己的
             var isInvoked = false;
             do
             {
-                await PoTask.Yield();           // waits a frame here, so that next frame can be cancelled at from
-                if (ct.IsCancellationRequested) // detects cancellation
+                await PoTask.Yield();           // 等一幀所以被取消的時候還是在 from
+                if (ct.IsCancellationRequested) // 如果被取消
                 {
                     if (!isInvoked) // if it was invoked before, means it was cancelled in middle of the play
                         onAnimate?.Invoke(percent); // exports percent value

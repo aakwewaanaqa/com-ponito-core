@@ -2,6 +2,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Promises;
@@ -99,6 +100,11 @@ namespace Ponito.Core.Asyncs.Extensions
             if (!string.IsNullOrEmpty(arg)) builder.Append($"={arg}");
             builder.Append(">").Append(str).Append($"</{tag}>");
             return builder.ToString();
+        }
+        
+        public static async PoTask Delay(this float seconds, CancellationToken ct = default)
+        {
+            await PoTask.Delay(seconds, ct);
         }
     }
 }
