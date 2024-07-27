@@ -53,7 +53,6 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            task.name = stateMachine;
             awaiter.OnCompleted(stateMachine.MoveNext);
             MovableRunner.Singleton.AwaitSource(task, awaiter, stateMachine);
         }
@@ -67,7 +66,6 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            task.name = stateMachine;
             awaiter.OnCompleted(stateMachine.MoveNext);
             MovableRunner.Singleton.AwaitSource(task, awaiter, stateMachine);
         }

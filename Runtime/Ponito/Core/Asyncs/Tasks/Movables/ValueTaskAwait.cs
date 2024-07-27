@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using Ponito.Core.Asyncs.Interfaces;
 
 namespace Ponito.Core.Asyncs.Tasks.Movables
 {

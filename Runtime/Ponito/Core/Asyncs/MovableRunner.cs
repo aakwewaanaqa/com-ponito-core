@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using Ponito.Core.Asyncs.Interfaces;
-using Ponito.Core.Asyncs.Promises;
 using Ponito.Core.Asyncs.Tasks;
-using Ponito.Core.Asyncs.Tasks.Movables;
 using Ponito.Core.DebugHelper;
-using UnityEngine;
 
 namespace Ponito.Core.Asyncs
 {
     /// <summary>
     ///     運作 <see cref="Movable.MoveNext()"/> 的核心
     /// </summary>
-    public class MovableRunner : MonoSingleton<MovableRunner>
+    public partial class MovableRunner : MonoSingleton<MovableRunner>
     {
         /// <summary>
         ///     起始 <see cref="items"/> 的數量
@@ -39,6 +35,11 @@ namespace Ponito.Core.Asyncs
         /// <inheritdoc />
         protected override bool IsDontDestroyOnLoad => true;
 
+        /// <summary>
+        ///     取得所有 <see cref="RunnerItem"/>
+        /// </summary>
+        public Span<RunnerItem> Items => items;
+        
         /// <inheritdoc />
         protected override void Initialize()
         {
@@ -52,8 +53,7 @@ namespace Ponito.Core.Asyncs
         /// <param name="name"><see cref="PoTask"/>的名字</param>
         public void AwaitSource(PoTask task, INotifyCompletion source, object name)
         {
-            task.name = name;
-            waitings.Enqueue(new RunnerItem(task, source));
+            waitings.Enqueue(new RunnerItem(task, source, name));
         }
 
         /// <summary>
@@ -71,17 +71,19 @@ namespace Ponito.Core.Asyncs
         /// <param name="source">要真正加入的等待來源</param>
         private void AddToMovables(RunnerItem source)
         {
-            for (var i = 0; i < items.Length; i++)
+            while (true)
             {
-                if (items[i] != null) continue;
+                for (var i = 0; i < items.Length; i++)
+                {
+                    if (items[i] != null) continue;
 
-                // TODO: Tack movable
-                items[i] = source;
-                return;
+                    // TODO: Tack movable
+                    items[i] = source;
+                    return;
+                }
+
+                Array.Resize(ref items, items.Length * 2);
             }
-
-            Array.Resize(ref items, items.Length * 2);
-            AddToMovables(source);
         }
 
         /// <summary>
@@ -105,57 +107,6 @@ namespace Ponito.Core.Asyncs
                 // TODO: Untrack movable
                 head.Dispose();
                 head.Ex = e;
-            }
-        }
-
-        private class RunnerItem : IDisposable
-        {
-            private PoTask            task     { get; }
-            private INotifyCompletion source   { get; }
-            private Func<bool>        moveNext { get; set; }
-
-            public Exception Ex
-            {
-                get => task?.Ex;
-                set
-                {
-                    if (task != null) task.Ex = value;
-                }
-            }
-
-            public RunnerItem(PoTask task, INotifyCompletion source)
-            {
-                this.task   = task;
-                this.source = source;
-
-                task.SetSource(source);
-
-                if (source is Movable movable)
-                {
-                    moveNext = () => movable.MoveNext();
-                    return;
-                }
-
-                ("使用反射等待 " + source.GetType().Name).Warn();
-                var property = source.GetType().GetProperty("IsCompleted");
-                if (property != null)
-                {
-                    moveNext = () => !(bool)property.GetValue(source);
-                    return;
-                }
-
-                moveNext = () => true;
-            }
-
-            public bool TryMoveNext()
-            {
-                return moveNext();
-            }
-
-            public void Dispose()
-            {
-                if (source is IDisposable disposable) disposable.Dispose();
-                task?.TryClearSource(source);
             }
         }
     }

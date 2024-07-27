@@ -4,8 +4,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 using Ponito.Core.Asyncs.Tasks;
-using Ponito.Core.DebugHelper;
-using Debug = UnityEngine.Debug;
 
 namespace Ponito.Core.Asyncs.Compilations
 {
@@ -56,7 +54,6 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            task.name = stateMachine;
             awaiter.OnCompleted(stateMachine.MoveNext);
             MovableRunner.Singleton.AwaitSource(task, awaiter, stateMachine);
         }
@@ -70,7 +67,6 @@ namespace Ponito.Core.Asyncs.Compilations
             where TAwaiter : INotifyCompletion
             where TStateMachine : IAsyncStateMachine
         {
-            task.name = stateMachine;
             awaiter.OnCompleted(stateMachine.MoveNext);
             MovableRunner.Singleton.AwaitSource(task, awaiter, stateMachine);
         }

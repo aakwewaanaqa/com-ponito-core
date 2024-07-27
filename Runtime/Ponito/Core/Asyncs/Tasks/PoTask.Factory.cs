@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks.Movables;
-using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Tasks
 {

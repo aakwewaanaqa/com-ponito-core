@@ -26,17 +26,24 @@ namespace Ponito.Core.DebugHelper
             return $"<color={color}>{msg}</color>";
         }
 
+        /// <summary>
+        ///    把物件轉換成字串並且用 <see cref="Debug.Log(object)"/> 顯示
+        /// </summary>
+        /// <param name="obj"></param>
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static void Log(this object obj)
+        public static void Log(this object obj)
         {
             if (DebugHelperScope.IsBlock) return;
             Debug.Log(obj);
         }
 
+        /// <summary>
+        ///     把物件轉換成字串並且用 <see cref="Debug.LogWarning(object)"/> 顯示
+        /// </summary>
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static void Warn(this object obj)
+        public static void Warn(this object obj)
         {
             if (DebugHelperScope.IsBlock) return;
             Debug.LogWarning(obj);

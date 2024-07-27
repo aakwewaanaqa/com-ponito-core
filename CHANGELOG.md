@@ -1,5 +1,14 @@
 ﻿# CHANGELOG
 
+## 1.1.3 -> 1.1.4 (2024/07/27)
+
+### Added
+
+```csharp
+class MovableRunnerEditor.cs
+interface ProgressMovalbe.cs
+```
+
 ## 1.1.2 -> 1.1.3 (2024/07/23)
 
 ### Added

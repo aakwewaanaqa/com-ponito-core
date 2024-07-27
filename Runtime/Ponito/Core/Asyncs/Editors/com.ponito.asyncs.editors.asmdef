@@ -1,0 +1,9 @@
+{
+    "name": "com.ponito.asyncs.editors",
+    "includePlatforms": [
+        "Editor"
+    ],
+    "references": [
+        "com.ponito.core"
+    ]
+}
