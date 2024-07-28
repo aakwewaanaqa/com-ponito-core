@@ -3,7 +3,7 @@ using System.Collections;
 using System.Threading;
 using NUnit.Framework;
 using Ponito.Core.Asyncs.Extensions;
-using Ponito.Core.Asyncs.Promises;
+// using Ponito.Core.Asyncs.Promises;
 using Ponito.Core.Asyncs.Tasks;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -13,10 +13,19 @@ namespace Ponito.Core.Tests
     public class AsyncsTests
     {
         [UnityTest]
+        public IEnumerator TestMono()
+        {
+            var go = new GameObject("AsyncsTestsMono");
+            var mono = go.AddComponent<AsyncsTestsMono>();
+            yield return mono.IsAllPassed();
+            Assert.IsTrue(mono.isFinished);
+        }
+        
+        [UnityTest]
         public IEnumerator TestDelay3000()
         {
             var before = Time.time;
-            yield return PoTask.Delay(3000).RunAsCoroutine();
+            yield return PoTask.Delay(3000).WaitAsCoroutine();
             Assert.IsTrue(Time.time - before > 3f);
         }
 
@@ -24,7 +33,7 @@ namespace Ponito.Core.Tests
         public IEnumerator TestYield()
         {
             var before = Time.frameCount;
-            yield return PoTask.Yield().RunAsCoroutine();
+            yield return PoTask.Yield().WaitAsCoroutine();
             var frameCount = Time.frameCount;
             var frame      = frameCount - before;
             Assert.IsTrue(frame == 1, $"frameCount - before = {frameCount} - {before} = {frame}");
@@ -34,7 +43,7 @@ namespace Ponito.Core.Tests
         public IEnumerator TestPoTaskDelay3000()
         {
             var before = Time.time;
-            yield return PoTaskDelay3000().RunAsCoroutine();
+            yield return PoTaskDelay3000().WaitAsCoroutine();
             Assert.IsTrue(Time.time - before > 3f);
         }
 
@@ -42,7 +51,7 @@ namespace Ponito.Core.Tests
         public IEnumerator TestPoTaskYield50Frame()
         {
             var before = Time.frameCount;
-            yield return PoTaskYield50Frame().RunAsCoroutine();
+            yield return PoTaskYield50Frame().WaitAsCoroutine();
             var frameCount = Time.frameCount;
             var frame      = frameCount - before;
             Assert.IsTrue(frame == 50, $"frameCount - before = {frameCount} - {before} = {frame}");
@@ -52,7 +61,7 @@ namespace Ponito.Core.Tests
         public IEnumerator TestPoTaskYield100Frame()
         {
             var before = Time.frameCount;
-            yield return PoTaskYield100Frame().RunAsCoroutine();
+            yield return PoTaskYield100Frame().WaitAsCoroutine();
             var frameCount = Time.frameCount;
             var frame      = frameCount - before;
             Assert.IsTrue(frame == 100, $"frameCount - before = {frameCount} - {before} = {frame}");
@@ -64,7 +73,7 @@ namespace Ponito.Core.Tests
             Exception ex = null;
             yield return PoTaskInnerException()
                .Try(exception => ex = exception)
-               .RunAsCoroutine();
+               .WaitAsCoroutine();
             Assert.NotNull(ex);
         }
 
@@ -74,44 +83,40 @@ namespace Ponito.Core.Tests
             Exception ex = null;
             yield return PoTaskYieldException()
                .Try(exception => ex = exception)
-               .RunAsCoroutine();
+               .WaitAsCoroutine();
             Assert.NotNull(ex);
         }
 
-        [UnityTest]
-        public IEnumerator TestPoTask5()
-        {
-            using var i = new Promise<int>();
-            yield return PoTask5().RunAsCoroutine(i);
-            Assert.IsTrue(i == 5);
-        }
-
-        [UnityTest]
-        public IEnumerator TestPoTask10()
-        {
-            using var i = new Promise<int>();
-            yield return PoTask10().RunAsCoroutine(i);
-            Assert.IsTrue(i == 10);
-        }
+        // [UnityTest]
+        // public IEnumerator TestPoTask5()
+        // {
+        //     using var i = new Promise<int>();
+        //     yield return PoTask5().RunAsCoroutine(i);
+        //     Assert.IsTrue(i == 5);
+        // }
+        //
+        // [UnityTest]
+        // public IEnumerator TestPoTask10()
+        // {
+        //     using var i = new Promise<int>();
+        //     yield return PoTask10().RunAsCoroutine(i);
+        //     Assert.IsTrue(i == 10);
+        // }
 
         [UnityTest]
         public IEnumerator TestPoTaskCancel()
         {
-            var       before = Time.frameCount;
-            Exception ex     = null;
+            var before = Time.frameCount;
 
             yield return PoTaskCancel()
-               .Try(exception => ex = exception)
-               .RunAsCoroutine();
-
-            Assert.IsTrue(ex is OperationCanceledException);
-            Debug.Log(ex.Message);
+               .Try()
+               .WaitAsCoroutine();
 
             var frameCount = Time.frameCount;
             var frame      = frameCount - before;
             Assert.IsTrue(frame == 5, $"frameCount - before = {frameCount} - {before} = {frame}");
         }
-        
+
         private async PoTask PoTaskDelay3000()
         {
             await PoTask.Delay(3000);

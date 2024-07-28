@@ -33,7 +33,7 @@ namespace Ponito.Core.Tests
             
             var sound = PoAudioManager.Singleton;
             _ = sound.Play(aClip);
-            yield return (PoAudioManager.DEFAULT_FADE_DURATION / 2f).Delay().RunAsCoroutine();
+            yield return (PoAudioManager.DEFAULT_FADE_DURATION / 2f).Delay().WaitAsCoroutine();
             
             _ = sound.Play(bClip);
             yield return new WaitForSeconds(PoAudioManager.DEFAULT_FADE_DURATION);

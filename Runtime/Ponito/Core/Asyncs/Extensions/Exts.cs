@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Ponito.Core.Asyncs.Interfaces;
-using Ponito.Core.Asyncs.Promises;
 using Ponito.Core.Asyncs.Tasks;
 using UnityEngine;
 
@@ -47,59 +46,26 @@ namespace Ponito.Core.Asyncs.Extensions
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IEnumerator RunAsCoroutine(this Movable movable, Promise p = null)
+        public static IEnumerator WaitAsCoroutine(this Movable movable)
         {
-            if (p != null) p.State = PromiseState.Doing;
             while (movable.MoveNext()) yield return eof;
-            if (p != null) p.State = PromiseState.Done;
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IEnumerator RunAsCoroutine(this PoTask task, Promise p = null)
+        public static IEnumerator WaitAsCoroutine(this PoTask task)
         {
-            var movable            = task.GetAwaiter();
-            if (p != null) p.State = PromiseState.Doing;
+            var movable = task.GetAwaiter();
             while (movable.MoveNext()) yield return eof;
-
-            if (p != null && movable.Ex != null)
-            {
-                p.State = PromiseState.Failed;
-                p.Ex    = new PromiseException(movable.Ex);
-                yield break;
-            }
-
-            if (p != null) p.State = PromiseState.Done;
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IEnumerator RunAsCoroutine<T>(this PoTask<T> task, Promise<T> p = null)
+        public static IEnumerator WaitAsCoroutine<T>(this PoTask<T> task, CoroutineResult<T> result = null)
         {
-            var movable            = task.GetAwaiter();
-            if (p != null) p.State = PromiseState.Doing;
+            var movable = task.GetAwaiter();
             while (movable.MoveNext()) yield return eof;
-
-            if (p != null && movable.Ex != null)
-            {
-                p.State = PromiseState.Failed;
-                p.Ex    = new PromiseException(movable.Ex);
-                yield break;
-            }
-
-            if (p != null)
-            {
-                p.Result = movable.GetResult();
-                p.State  = PromiseState.Done;
-            }
-        }
-
-        internal static string Tag(this string str, string tag, string arg = null)
-        {
-            var builder = new StringBuilder($"<{tag}");
-            if (!string.IsNullOrEmpty(arg)) builder.Append($"={arg}");
-            builder.Append(">").Append(str).Append($"</{tag}>");
-            return builder.ToString();
+            if (result != null) result.value = movable.GetResult();
         }
         
         public static async PoTask Delay(this float seconds, CancellationToken ct = default)

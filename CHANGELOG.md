@@ -1,5 +1,35 @@
 ﻿# CHANGELOG
 
+## 1.1.4 -> 1.1.5 (2024/07/28)
+
+### Added
+
+```csharp
+//    給與 WaitAsCoroutine 擁有回傳值的方式
+class CoroutineResult.cs
+//    把測試加入 Monobehaviour 比單純在 Editor 中測試更有說服力
+class AsyncsTestsMono.cs
+```
+
+### Changed
+
+```csharp
+//    把測試加入 Monobehaviour 比單純在 Editor 中測試更有說服力
+class AsyncsTests.cs
+```
+
+### Removed
+
+```csharp
+//        非常明確不再使用的類別
+class     Promise.cs
+class     Promise<T>.cs
+class     PromiseException.cs
+interface PromiseState.cs
+class     UnityWebResponse.cs
+class     CoroutineRunner.cs
+```
+
 ## 1.1.3 -> 1.1.4 (2024/07/27)
 
 ### Added
