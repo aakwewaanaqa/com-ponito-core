@@ -21,7 +21,20 @@ namespace Ponito.Core.Tests
             await Yield5Frame();
             await Yield500Frame();
             await Delay5F();
+
             testResult = await Result();
+
+            {
+                Exception ex1 = null;
+                await Except().Try(ex => ex1 = ex);
+                testExcept = ex1 != null;
+                Assert.IsNotNull(ex1);
+                
+                Exception ex2 = null;
+                await InnerExcept().Try(ex => ex2 = ex);
+                testInnerExcept = ex2 != null;
+                Assert.IsNotNull(ex2);
+            }
 
             StartCoroutine(StartAsCoroutine());
         }
@@ -33,7 +46,7 @@ namespace Ponito.Core.Tests
 
             yield return StartCoroutine(Yield5FrameCoroutine());
             yield return StartCoroutine(Yield5FramePoTaskCoroutine().WaitAsCoroutine());
-            
+
             yield return StartCoroutine(Yield500FrameCoroutine());
             yield return StartCoroutine(Yield500FramePoTaskCoroutine().WaitAsCoroutine());
 
@@ -47,6 +60,18 @@ namespace Ponito.Core.Tests
                 yield return StartCoroutine(ResultPoTaskCoroutine().WaitAsCoroutine(result2));
                 testResultCoroutine       = result1.value;
                 testResultPoTaskCoroutine = result2.value;
+            }
+
+            {
+                Exception ex1 = null;
+                yield return StartCoroutine(ExceptPoTaskCoroutine().Try(ex => ex1 = ex).WaitAsCoroutine());
+                testExceptPoTaskCoroutine = ex1 != null;
+                Assert.IsNotNull(ex1);
+                
+                Exception ex2 = null;
+                yield return StartCoroutine(InnerExceptPoTaskCoroutine().Try(ex => ex2 = ex).WaitAsCoroutine());
+                testInnerExceptPoTaskCoroutine = ex2 != null;
+                Assert.IsNotNull(ex2);
             }
 
             isFinished = true;

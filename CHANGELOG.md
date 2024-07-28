@@ -28,6 +28,11 @@ class     PromiseException.cs
 interface PromiseState.cs
 class     UnityWebResponse.cs
 class     CoroutineRunner.cs
+
+class     ReflectAwait.cs
+class     TaskAwait.cs
+class     ValueTaskAwait.cs
+class     ValueTaskAwait<T>.cs    
 ```
 
 ## 1.1.3 -> 1.1.4 (2024/07/27)
