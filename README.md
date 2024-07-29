@@ -24,6 +24,7 @@
 ```csharp
 var before = Time.frameCount;
 var cts    = new CancellationTokenSource();
+cts.Cancel();
 // 這條程式碼是行不通的，還是會等待一幀，因為 yield return 的緣故
 for (int i = 0; i < 5; i++) yield return PoTask.Yield(cts.Token).WaitAsCoroutine();
 Assert.That(Time.frameCount, Is.EqualTo(before));
