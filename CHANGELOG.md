@@ -1,5 +1,28 @@
 ﻿# CHANGELOG
 
+## 1.1.5 -> 1.1.6 (2024/07/29)
+
+### Added
+
+```csharp
+//    提供預先取消的 Movable
+class CancelAwait.cs
+```
+
+### Changed
+
+```csharp
+README.md                ~ // 更新說明文件
+class AsyncsTests.cs     ~ // 整理不會過的測試
+class AsyncsTestsMono.cs ~ // 新增取消的測試
+class PoTask.Factory.cs  ~ Yield(CancellationToken ct = default)
+                           Delay(int milliseconds, CancellationToken ct = default)
+                           Delay(float seconds, CancellationToken ct = default)
+                           WaitWhile(Func<bool> predicate, CancellationToken ct = default)
+                           WaitUntil(Func<bool> predicate, CancellationToken ct = default)
+                           Create(IEnumerator ie, CancellationToken ct = default)
+```
+
 ## 1.1.4 -> 1.1.5 (2024/07/28)
 
 ### Added

@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
+using Ponito.Core.Asyncs.Tasks.Movables;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Extensions

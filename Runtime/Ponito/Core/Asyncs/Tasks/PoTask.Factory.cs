@@ -15,6 +15,7 @@ namespace Ponito.Core.Asyncs.Tasks
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Movable Yield(CancellationToken ct = default)
         {
+            if (ct.IsCancellationRequested) return new CancelAwait();
             return new YieldAwait(ct);
         }
 
@@ -22,6 +23,7 @@ namespace Ponito.Core.Asyncs.Tasks
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Movable Delay(int milliseconds, CancellationToken ct = default)
         {
+            if (ct.IsCancellationRequested) return new CancelAwait();
             return new DelayAwait(milliseconds, ct);
         }
 
@@ -29,6 +31,7 @@ namespace Ponito.Core.Asyncs.Tasks
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Movable Delay(float seconds, CancellationToken ct = default)
         {
+            if (ct.IsCancellationRequested) return new CancelAwait();
             return new DelayAwait(seconds, ct);
         }
 
@@ -36,6 +39,7 @@ namespace Ponito.Core.Asyncs.Tasks
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Movable WaitWhile(Func<bool> predicate, CancellationToken ct = default)
         {
+            if (ct.IsCancellationRequested) return new CancelAwait();
             return new PredicateAwait(predicate, true, ct);
         }
 
@@ -43,6 +47,7 @@ namespace Ponito.Core.Asyncs.Tasks
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Movable WaitUntil(Func<bool> predicate, CancellationToken ct = default)
         {
+            if (ct.IsCancellationRequested) return new CancelAwait();
             return new PredicateAwait(predicate, false, ct);
         }
 
@@ -50,6 +55,7 @@ namespace Ponito.Core.Asyncs.Tasks
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Movable Create(IEnumerator ie, CancellationToken ct = default)
         {
+            if (ct.IsCancellationRequested) return new CancelAwait();
             return new IEnumeratorAwait(ie, ct);
         }
     }

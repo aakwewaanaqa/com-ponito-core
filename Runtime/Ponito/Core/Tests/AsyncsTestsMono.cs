@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using NUnit.Framework;
 using Ponito.Core.Asyncs;
 using Ponito.Core.Asyncs.Extensions;
@@ -17,10 +18,12 @@ namespace Ponito.Core.Tests
         {
             await PoTask.Delay(1f); // 不要在開始時執行測試，會有開始幀的問題
 
+            await Cancelled();
             await Yield();
             await Yield5Frame();
             await Yield500Frame();
             await Delay5F();
+            await Math();
 
             testResult = await Result();
 
@@ -29,7 +32,7 @@ namespace Ponito.Core.Tests
                 await Except().Try(ex => ex1 = ex);
                 testExcept = ex1 != null;
                 Assert.IsNotNull(ex1);
-                
+
                 Exception ex2 = null;
                 await InnerExcept().Try(ex => ex2 = ex);
                 testInnerExcept = ex2 != null;
@@ -41,6 +44,8 @@ namespace Ponito.Core.Tests
 
         private IEnumerator StartAsCoroutine()
         {
+            yield return StartCoroutine(CancelledPoTaskCoroutine().WaitAsCoroutine());
+            
             yield return StartCoroutine(YieldCoroutine());
             yield return StartCoroutine(YieldPoTaskCoroutine().WaitAsCoroutine());
 
@@ -52,6 +57,9 @@ namespace Ponito.Core.Tests
 
             yield return StartCoroutine(Delay5FCoroutine());
             yield return StartCoroutine(Delay5FPoTaskCoroutine().WaitAsCoroutine());
+
+            yield return StartCoroutine(MathCoroutine());
+            yield return StartCoroutine(MathPoTaskCoroutine().WaitAsCoroutine());
 
             {
                 var result1 = new CoroutineResult<bool>();
@@ -67,7 +75,7 @@ namespace Ponito.Core.Tests
                 yield return StartCoroutine(ExceptPoTaskCoroutine().Try(ex => ex1 = ex).WaitAsCoroutine());
                 testExceptPoTaskCoroutine = ex1 != null;
                 Assert.IsNotNull(ex1);
-                
+
                 Exception ex2 = null;
                 yield return StartCoroutine(InnerExceptPoTaskCoroutine().Try(ex => ex2 = ex).WaitAsCoroutine());
                 testInnerExceptPoTaskCoroutine = ex2 != null;
