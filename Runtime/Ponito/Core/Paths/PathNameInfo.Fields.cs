@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace google_storage_upload_tool.Models
+namespace Ponito.Core.Paths
 {
     public readonly partial struct PathNameInfo
     {

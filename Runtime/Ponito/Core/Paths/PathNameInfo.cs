@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 
-namespace google_storage_upload_tool.Models
+namespace Ponito.Core.Paths
 {
     /// <summary>
     ///     便利的路徑名稱資訊

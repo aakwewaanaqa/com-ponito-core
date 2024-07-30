@@ -21,6 +21,7 @@ class PoTask.Factory.cs  ~ Yield(CancellationToken ct = default)
                            WaitWhile(Func<bool> predicate, CancellationToken ct = default)
                            WaitUntil(Func<bool> predicate, CancellationToken ct = default)
                            Create(IEnumerator ie, CancellationToken ct = default)
+struct PathNameInfo.cs   ~ // 修正命名空間
 ```
 
 ## 1.1.4 -> 1.1.5 (2024/07/28)

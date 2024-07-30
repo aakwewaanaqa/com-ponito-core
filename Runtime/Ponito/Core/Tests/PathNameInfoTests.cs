@@ -1,5 +1,5 @@
-﻿using google_storage_upload_tool.Models;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Ponito.Core.Paths;
 
 namespace Ponito.Core.Tests
 {
