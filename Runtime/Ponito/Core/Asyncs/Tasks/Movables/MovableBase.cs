@@ -81,19 +81,6 @@ namespace Ponito.Core.Asyncs.Tasks.Movables
             IsCompleted = true;     // 然後為 <see cref="MovableRunner"/> 標註完成
             return false;
         }
-
-        /// <summary>
-        ///     檢查 <see cref="ct" /> 是否取消，取消的話擲回 <see cref="OperationCanceledException" />.
-        /// </summary>
-        /// <param name="ct">
-        ///     <see cref="CancellationToken" />
-        /// </param>
-        /// <exception cref="OperationCanceledException"><see cref="ct" /> 已取消</exception>
-        protected bool ValidateCancel(CancellationToken ct)
-        {
-            if (!ct.IsCancellationRequested) return false;
-            return true;
-        }
     }
 
     public abstract class MovableBase<T> : MovableBase, Movable<T>

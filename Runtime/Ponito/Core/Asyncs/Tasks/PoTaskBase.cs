@@ -44,9 +44,12 @@ namespace Ponito.Core.Asyncs.Tasks
             source = awaiter;
         }
 
-        internal void TryClearSource(INotifyCompletion awaiter)
+        internal bool TryClearSource(INotifyCompletion awaiter)
         {
-            if (ReferenceEquals(awaiter, source)) source = null;
+            if (!ReferenceEquals(awaiter, source)) return false;
+            
+            source = null;
+            return true;
         }
 
         ~PoTaskBase()

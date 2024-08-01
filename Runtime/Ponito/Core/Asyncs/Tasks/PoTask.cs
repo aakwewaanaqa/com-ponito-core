@@ -37,7 +37,7 @@ namespace Ponito.Core.Asyncs.Tasks
         /// <returns>可以用來表示<see cref="PoTask"/>當前狀態的等待者。</returns>
         public Awaiter GetAwaiter()
         {
-            return new Awaiter(this);
+            return new(this);
         }
         
         /// <summary>

@@ -12,20 +12,17 @@ namespace Ponito.Core.Asyncs
         {
             private object            state    { get; }
             private PoTask            task     { get; }
-            private INotifyCompletion source   { get; }
-            private Func<bool>        moveNext { get; }
+            private INotifyCompletion source   { get; set; }
+            private Func<bool>        moveNext { get; set; }
 
             /// <summary>
             ///     取得 <see cref="RunnerItem"/> 的名字
             /// </summary>
             public string Name
             {
-                get
-                {
-                    return source.GetType().Name;
-                }
+                get { return source.GetType().Name; }
             }
-            
+
             /// <summary>
             ///     取得 <see cref="RunnerItem"/> 的狀態
             /// </summary>
@@ -79,8 +76,9 @@ namespace Ponito.Core.Asyncs
 
             public void Dispose()
             {
-                if (source is IDisposable disposable) disposable.Dispose();
-                task?.TryClearSource(source);
+                if (source is IDisposable disposable) disposable.Dispose(); // 如果是可丟棄就丟棄
+                if (task?.TryClearSource(source) ?? false) source = null;   // 丟棄使用後的 INotifyCompletion
+                moveNext = null;                                            // 丟棄使用後的委派
             }
         }
     }
