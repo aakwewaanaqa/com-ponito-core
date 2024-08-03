@@ -15,25 +15,25 @@ namespace Ponito.Core.Tests
         
         private async PoTask Except()
         {
-            await PoTask.Yield();
+            await Controls.Yield();
             throw new Exception();
         }
 
         private async PoTask InnerExcept()
         {
-            await PoTask.Yield();
+            await Controls.Yield();
             await Except();
         }
         
         private async PoTask ExceptPoTaskCoroutine()
         {
-            await PoTask.Yield();
+            await Controls.Yield();
             throw new Exception();
         }
         
         private async PoTask InnerExceptPoTaskCoroutine()
         {
-            await PoTask.Yield();
+            await Controls.Yield();
             await InnerExcept();
         }
     }

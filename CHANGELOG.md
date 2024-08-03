@@ -1,5 +1,13 @@
 ﻿# CHANGELOG
 
+## 1.1.6 -> 1.1.7 (2024/08/03)
+
+### Changed
+
+```csharp
+class PoTask.Yield() ~ Controls.Yield()
+```
+
 ## 1.1.5 -> 1.1.6 (2024/07/29)
 
 ### Added

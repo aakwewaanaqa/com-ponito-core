@@ -36,7 +36,7 @@ namespace Ponito.Core.Asyncs.Extensions
                 catch (Exception ex)
                 {
                     catcher(ex);
-                    await PoTask.Delay(delay);
+                    await Controls.Delay(delay);
                 }
         }
 
@@ -53,7 +53,7 @@ namespace Ponito.Core.Asyncs.Extensions
                 catch (Exception ex)
                 {
                     catcher(ex);
-                    await PoTask.Delay(delay);
+                    await Controls.Delay(delay);
                 }
 
             throw new InvalidOperationException(nameof(Retry));

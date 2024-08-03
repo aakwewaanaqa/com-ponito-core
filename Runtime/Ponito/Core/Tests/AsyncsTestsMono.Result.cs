@@ -14,19 +14,19 @@ namespace Ponito.Core.Tests
 
         private async PoTask<bool> Result()
         {
-            await PoTask.Delay(1f);
+            await Controls.Delay(1f);
             return true;
         }
 
         private IEnumerator ResultCoroutine(CoroutineResult<bool> result)
         {
-            yield return PoTask.Delay(1f).WaitAsCoroutine();
+            yield return Controls.Delay(1f).WaitAsCoroutine();
             if (result != null) result.value = true;
         }
 
         private async PoTask<bool> ResultPoTaskCoroutine()
         {
-            await PoTask.Delay(1f);
+            await Controls.Delay(1f);
             return true;
         }
     }

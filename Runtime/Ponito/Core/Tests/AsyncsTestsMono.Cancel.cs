@@ -17,7 +17,7 @@ namespace Ponito.Core.Tests
             var cts = new CancellationTokenSource();
             cts.Cancel();
             var before = Time.frameCount;
-            for (int i = 0; i < 200; i++) await PoTask.Yield(cts.Token);
+            for (int i = 0; i < 200; i++) await Controls.Yield(cts.Token);
             testCancelled = Time.frameCount == before;
             Assert.That(Time.frameCount, Is.EqualTo(before));
         }
@@ -27,7 +27,7 @@ namespace Ponito.Core.Tests
             var cts = new CancellationTokenSource();
             cts.Cancel();
             var before = Time.frameCount;
-            for (int i = 0; i < 200; i++) await PoTask.Yield(cts.Token); // Coroutine can't be cancelled
+            for (int i = 0; i < 200; i++) await Controls.Yield(cts.Token); // Coroutine can't be cancelled
             testCancelledPoTaskCoroutine = Time.frameCount == before;
             Assert.That(Time.frameCount, Is.EqualTo(before));
         }

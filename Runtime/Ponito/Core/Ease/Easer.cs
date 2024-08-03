@@ -36,7 +36,7 @@ namespace Ponito.Core.Ease
             this.duration = duration;
             this.easeType = easeType;
             easeFunction  = EasingEquations.GetFunction(easeType);
-            awaiter       = PoTask.Create(this, ct);
+            awaiter       = Controls.Create(this, ct);
         }
 
         public float Progress => time / duration;

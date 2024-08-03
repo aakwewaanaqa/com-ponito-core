@@ -19,14 +19,14 @@ namespace Ponito.Core.Asyncs.Extensions
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static async PoTask AsPoTask(this ValueTask vt)
         {
-            while (!vt.IsCompleted) await PoTask.Yield();
+            while (!vt.IsCompleted) await Controls.Yield();
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static async PoTask<T> AsPoTask<T>(this ValueTask<T> vt)
         {
-            while (!vt.IsCompleted) await PoTask.Yield();
+            while (!vt.IsCompleted) await Controls.Yield();
             return vt.Result;
         }
 
@@ -34,14 +34,14 @@ namespace Ponito.Core.Asyncs.Extensions
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static async PoTask AsPoTask(this Task t)
         {
-            while (!t.IsCompleted) await PoTask.Yield();
+            while (!t.IsCompleted) await Controls.Yield();
         }
 
         [DebuggerHidden]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static async PoTask<T> AsPoTask<T>(this Task<T> t)
         {
-            while (!t.IsCompleted) await PoTask.Yield();
+            while (!t.IsCompleted) await Controls.Yield();
             return t.Result;
         }
 
@@ -71,7 +71,7 @@ namespace Ponito.Core.Asyncs.Extensions
         
         public static async PoTask Delay(this float seconds, CancellationToken ct = default)
         {
-            await PoTask.Delay(seconds, ct);
+            await Controls.Delay(seconds, ct);
         }
     }
 }

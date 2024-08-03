@@ -15,7 +15,7 @@ namespace Ponito.Core.Tests
     {
         private async PoTask Start()
         {
-            await PoTask.Delay(1f); // 不要在開始時執行測試，會有開始幀的問題
+            await Controls.Delay(1f); // 不要在開始時執行測試，會有開始幀的問題
 
             await Yield();
             await Yield5Frame();

@@ -16,7 +16,7 @@ namespace Ponito.Core.Tests
         private async PoTask Yield()
         {
             var before = Time.frameCount;
-            await PoTask.Yield();
+            await Controls.Yield();
             var frame = Time.frameCount - before;
             testYield = frame == 1;
             Assert.That(frame, Is.EqualTo(1));
@@ -25,7 +25,7 @@ namespace Ponito.Core.Tests
         private IEnumerator YieldCoroutine()
         {
             var before = Time.frameCount;
-            yield return PoTask.Yield().WaitAsCoroutine();
+            yield return Controls.Yield().WaitAsCoroutine();
             var frame = Time.frameCount - before;
             testYieldCoroutine = frame == 1;
             Assert.That(frame, Is.EqualTo(1));
@@ -34,7 +34,7 @@ namespace Ponito.Core.Tests
         private async PoTask YieldPoTaskCoroutine()
         {
             var before = Time.frameCount;
-            await PoTask.Yield();
+            await Controls.Yield();
             var frame = Time.frameCount - before;
             testYieldPoTaskCoroutine = frame == 1;
             Assert.That(frame, Is.EqualTo(1));

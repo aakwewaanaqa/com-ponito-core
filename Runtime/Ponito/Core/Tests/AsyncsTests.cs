@@ -28,7 +28,7 @@ namespace Ponito.Core.Tests
         public IEnumerator TestDelay3000()
         {
             var before = Time.time;
-            yield return PoTask.Delay(3000).WaitAsCoroutine();
+            yield return Controls.Delay(3000).WaitAsCoroutine();
             Assert.IsTrue(Time.time - before > 3f);
         }
 
@@ -36,7 +36,7 @@ namespace Ponito.Core.Tests
         public IEnumerator TestYield()
         {
             var before = Time.frameCount;
-            yield return PoTask.Yield().WaitAsCoroutine();
+            yield return Controls.Yield().WaitAsCoroutine();
             Assert.That(Time.frameCount - before, Is.EqualTo(1));
         }
 
@@ -62,7 +62,7 @@ namespace Ponito.Core.Tests
 
         private async PoTask PoTaskYieldException()
         {
-            await PoTask.Yield();
+            await Controls.Yield();
             await PoTaskInnerException();
         }
 

@@ -68,7 +68,7 @@ namespace Ponito.Core.Animations
             var isInvoked = false;
             do
             {
-                await PoTask.Yield();           // 等一幀所以被取消的時候還是在 from
+                await Controls.Yield();           // 等一幀所以被取消的時候還是在 from
                 if (ct.IsCancellationRequested) // 如果被取消
                 {
                     if (!isInvoked) // if it was invoked before, means it was cancelled in middle of the play

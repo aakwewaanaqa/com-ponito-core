@@ -15,7 +15,7 @@ namespace Ponito.Core.Tests
         private async PoTask Yield500Frame()
         {
             var before = Time.frameCount;
-            for (int i = 0; i < 500; i++) await PoTask.Yield();
+            for (int i = 0; i < 500; i++) await Controls.Yield();
             var frame = Time.frameCount - before;
             testYield500Frame = frame == 500;
             Assert.That(frame, Is.EqualTo(500));
@@ -24,7 +24,7 @@ namespace Ponito.Core.Tests
         private IEnumerator Yield500FrameCoroutine()
         {
             var before = Time.frameCount;
-            for (int i = 0; i < 500; i++) yield return PoTask.Yield().WaitAsCoroutine();
+            for (int i = 0; i < 500; i++) yield return Controls.Yield().WaitAsCoroutine();
             var frame = Time.frameCount - before;
             testYield500FrameCoroutine = frame == 500;
             Assert.That(frame, Is.EqualTo(500));
@@ -33,7 +33,7 @@ namespace Ponito.Core.Tests
         private async PoTask Yield500FramePoTaskCoroutine()
         {
             var before = Time.frameCount;
-            for (int i = 0; i < 500; i++) await PoTask.Yield();
+            for (int i = 0; i < 500; i++) await Controls.Yield();
             var frame = Time.frameCount - before;
             testYield500FramePoTaskCoroutine = frame == 500;
             Assert.That(frame, Is.EqualTo(500));

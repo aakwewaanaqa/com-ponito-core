@@ -15,13 +15,13 @@ namespace Ponito.Core.Tests
 
         private static async PoTask<int> Five()
         {
-            await PoTask.Yield();
+            await Controls.Yield();
             return 5;
         }
 
         private static async PoTask<int> Three()
         {
-            await PoTask.Yield();
+            await Controls.Yield();
             return 3;
         }
 
