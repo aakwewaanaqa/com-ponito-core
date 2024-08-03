@@ -42,11 +42,13 @@ namespace Ponito.Core.Samples.Providers
             }
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         /// <inheritdoc />
         public async PoTask<string> MakePath(object subKey)
         {
             throw new InvalidOperationException();
         }
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 
         /// <inheritdoc />
         public void Dispose()

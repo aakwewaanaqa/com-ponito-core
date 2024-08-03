@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using Ponito.Core.Asyncs.Tasks;
 using UnityEngine;
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 
 namespace Ponito.Core.Samples.UI
 {
