@@ -5,6 +5,7 @@
         "com.ponito.core",
         "com.ponito.core.samples",
         "com.ponito.core.exts",
+        "UnityEditor.TestRunner",
         "UnityEngine.TestRunner"
     ],
     "includePlatforms": [],

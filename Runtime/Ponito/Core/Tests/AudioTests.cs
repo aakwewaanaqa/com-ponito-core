@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using System.Collections;
 using NUnit.Framework;
 using Ponito.Core.Asyncs.Extensions;
 using Ponito.Core.Extensions;
@@ -46,3 +47,4 @@ namespace Ponito.Core.Tests
         }
     }
 }
+#endif

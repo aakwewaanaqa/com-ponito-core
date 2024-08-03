@@ -1,14 +1,13 @@
+#if UNITY_EDITOR
 using System;
 using System.Collections;
-using System.Threading;
 using NUnit.Framework;
 using Ponito.Core.Asyncs.Extensions;
-// using Ponito.Core.Asyncs.Promises;
 using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.Extensions;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEditor;
 
 namespace Ponito.Core.Tests
 {
@@ -17,7 +16,9 @@ namespace Ponito.Core.Tests
         [UnityTest]
         public IEnumerator TestMono()
         {
+#if UNITY_EDITOR
             Selection.activeGameObject = new GameObject("AsyncsTestsMono").EnsureComponent(out AsyncsTestsMono mono);
+#endif
             yield return mono.IsAllPassed();
             Assert.IsTrue(mono.isFinished);
             yield return new WaitForSeconds(3f);
@@ -71,3 +72,4 @@ namespace Ponito.Core.Tests
         }
     }
 }
+#endif
