@@ -5,7 +5,10 @@
 ### Changed
 
 ```csharp
-class PoTask.Yield() ~ Controls.Yield()
+PoTask.Yield()     ~ Controls.Yield()
+PoTask.Delay()     ~ Controls.Delay()
+PoTask.WaitUntil() ~ Controls.WaitUntil()
+PoTask.WaitWhile() ~ Controls.WaitWhile()
 ```
 
 ## 1.1.5 -> 1.1.6 (2024/07/29)
