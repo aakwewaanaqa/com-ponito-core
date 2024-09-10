@@ -1,5 +1,15 @@
 ﻿# CHANGELOG
 
+## 1.1.7 -> 1.1.8 (2024/09/10)
+
+### Added
+
+```csharp
+//                    盡量不要再複寫 Show 或 Hide 了，容易漏掉重要的檢查
+class PoTaskView.cs ~ PoTask InnerShow(object args, CancellationToken ct = default)
+                      PoTask InnerHide(object args, CancellationToken ct = default)
+```
+
 ## 1.1.6 -> 1.1.7 (2024/08/03)
 
 ### Changed
