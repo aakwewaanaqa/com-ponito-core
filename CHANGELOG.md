@@ -8,6 +8,8 @@
 //                    盡量不要再複寫 Show 或 Hide 了，容易漏掉重要的檢查
 class PoTaskView.cs ~ PoTask InnerShow(object args, CancellationToken ct = default)
                       PoTask InnerHide(object args, CancellationToken ct = default)
+//     特別的動畫，參照自 DOTween
+struct Punch.cs
 ```
 
 ## 1.1.6 -> 1.1.7 (2024/08/03)

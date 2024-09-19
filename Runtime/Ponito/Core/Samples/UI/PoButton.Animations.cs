@@ -1,6 +1,8 @@
 using System.Threading;
 using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.Ease;
+using Ponito.Core.Ease.SpecialEases;
+using Ponito.Core.Extensions;
 using UnityEngine;
 using static Ponito.Core.Ease.EaseType;
 
@@ -10,7 +12,7 @@ namespace Ponito.Core.Samples.UI
     {
         private Vector3                 originalScale { get; set; }
         private CancellationTokenSource cts           { get; set; }
-        
+
         private async PoTask PlayAudio(bool isPressed)
         {
             var clip = isPressed ? pointerDown : pointerUp;
@@ -19,10 +21,8 @@ namespace Ponito.Core.Samples.UI
 
         private async PoTask PlayAnimation(bool isPressed)
         {
-            cts?.Cancel();
-            cts = new CancellationTokenSource();
-            var ct = cts.Token;
-            
+            cts = cts.LinkAfterCancel(default, out var ct);
+
             var task = animationType switch
             {
                 AnimationType.None  => null,
@@ -35,6 +35,8 @@ namespace Ponito.Core.Samples.UI
 
         private async PoTask ScaleAnimation(bool isPressed, CancellationToken ct)
         {
+            if (ct.IsCancellationRequested) return;
+
             var from   = rectTransform.localScale;
             var to     = isPressed ? originalScale * 0.8f : originalScale;
             var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
@@ -44,20 +46,18 @@ namespace Ponito.Core.Samples.UI
 
         private async PoTask PunchAnimation(bool isPressed, CancellationToken ct)
         {
+            if (ct.IsCancellationRequested) return;
             if (isPressed) return;
-            
+
+            var ease = new Punch(0.5f, 0.2f, 2f, 0.4f).GetEaseFunction();
+            var from = originalScale;
+            var t    = 0f;
+            while (t < 0.2f)
             {
-                var from   = originalScale;
-                var to     = originalScale * 1.2f;
-                var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
-                await DoEase.To(from, to, setter, 0.1f, InSine, ct);
-            }
-            
-            {
-                var from   = originalScale * 1.2f;
-                var to     = originalScale;
-                var setter = new Setter<Vector3>(s => rectTransform.localScale = s);
-                await DoEase.To(from, to, setter, 0.1f, InSine, ct);
+                var s = from * (1f + ease(t));
+                rectTransform.localScale = s;
+                await Controls.Yield();
+                t += Time.deltaTime;
             }
         }
     }
