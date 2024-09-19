@@ -49,7 +49,7 @@ namespace Ponito.Core.Samples.UI
             if (ct.IsCancellationRequested) return;
             if (isPressed) return;
 
-            var ease = new Punch(0.5f, 0.2f, 2f, 0.4f).GetEaseFunction();
+            var ease = new Punch(0.2f, 0.35f, 10f, 1f).GetEaseFunction();
             var from = originalScale;
             var t    = 0f;
             while (t < 0.2f)
