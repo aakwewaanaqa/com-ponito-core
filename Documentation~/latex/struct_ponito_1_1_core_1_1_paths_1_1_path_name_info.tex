@@ -1,0 +1,95 @@
+\doxysection{Ponito.\+Core.\+Paths.\+Path\+Name\+Info 結構 參考文件}
+\hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}\index{Ponito.Core.Paths.PathNameInfo@{Ponito.Core.Paths.PathNameInfo}}
+
+
+便利的路徑名稱資訊  
+
+
+\doxysubsubsection*{公開方法(Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+override string \mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_ab03ad5948c9f0d48d1c1d6af5a82d4fb}{To\+String}} ()
+\begin{DoxyCompactList}\small\item\em 變成字串 \end{DoxyCompactList}\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_aa3418e49d274254bb92fef98772e3129}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_aa3418e49d274254bb92fef98772e3129} 
+\mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{Path\+Name\+Info}} {\bfseries Merge\+To} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{Path\+Name\+Info}} folder)
+\begin{DoxyCompactList}\small\item\em 把路徑合併到資料夾 \end{DoxyCompactList}\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a52f7eefa5038b297e310f831ede1ab93}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a52f7eefa5038b297e310f831ede1ab93} 
+bool {\bfseries Can\+Be\+Merge\+To} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{Path\+Name\+Info}} folder)
+\begin{DoxyCompactList}\small\item\em 檢查可不可以合併到資料夾 \end{DoxyCompactList}\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_aaa708751ffefcf034f40ee419ce2cc27}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_aaa708751ffefcf034f40ee419ce2cc27} 
+bool {\bfseries Is\+Relative\+To} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{Path\+Name\+Info}} folder)
+\begin{DoxyCompactList}\small\item\em 是不是在資料夾之下的路徑呢？ \end{DoxyCompactList}\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a7cafe79305f0cd7f154424f184c61ab8}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a7cafe79305f0cd7f154424f184c61ab8} 
+{\bfseries Path\+Name\+Info} (string path)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{靜態公開方法(Static Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a6a3b750b5f0f71768abb15f85596971c}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a6a3b750b5f0f71768abb15f85596971c} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{Path\+Name\+Info}} {\bfseries operator+} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{Path\+Name\+Info}} a, \mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{Path\+Name\+Info}} b)
+\begin{DoxyCompactList}\small\item\em 用加的可以把兩者變成同一個路徑 \end{DoxyCompactList}\item 
+static implicit \mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a7036392844f59bbf04adaf9eec328f2a}{operator string}} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{Path\+Name\+Info}} path\+Name)
+\begin{DoxyCompactList}\small\item\em 變成字串 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{屬性(properties)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a2984a1d6f6b6f007ccb6909ae1ccaa25}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a2984a1d6f6b6f007ccb6909ae1ccaa25} 
+string {\bfseries this\mbox{[}int index\mbox{]}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 取得元素名稱 \end{DoxyCompactList}\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_acdbec37856631a638dcc3d90e14a11ab}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_acdbec37856631a638dcc3d90e14a11ab} 
+string {\bfseries this\mbox{[}\+Index index\mbox{]}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 取得元素名稱 \end{DoxyCompactList}\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a368d9a8e7164b8d0d01e740cb36058f1}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a368d9a8e7164b8d0d01e740cb36058f1} 
+\mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{Path\+Name\+Info}} {\bfseries this\mbox{[}\+Range range\mbox{]}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 取得元素名稱 \end{DoxyCompactList}\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a014975b3b6446b8b7d8926b287fa4e7b}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a014975b3b6446b8b7d8926b287fa4e7b} 
+int {\bfseries Length}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 路徑總名稱長度 \end{DoxyCompactList}\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a9db3c40829dc398c2cb56afb43a8bf4b}\label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a9db3c40829dc398c2cb56afb43a8bf4b} 
+File\+Info {\bfseries File}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 轉換成 File\+Info \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳細描述}
+便利的路徑名稱資訊 
+
+\doxysubsection{函式成員說明文件}
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a7036392844f59bbf04adaf9eec328f2a}\index{Ponito.Core.Paths.PathNameInfo@{Ponito.Core.Paths.PathNameInfo}!operator string@{operator string}}
+\index{operator string@{operator string}!Ponito.Core.Paths.PathNameInfo@{Ponito.Core.Paths.PathNameInfo}}
+\doxysubsubsection{\texorpdfstring{operator string()}{operator string()}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_a7036392844f59bbf04adaf9eec328f2a} 
+static implicit Ponito.\+Core.\+Paths.\+Path\+Name\+Info.\+operator string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info}{Path\+Name\+Info}}}]{path\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+變成字串 
+
+
+\begin{DoxyParams}{參數}
+{\em path\+Name} & 本路徑資料\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{傳回值}
+字串
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_ab03ad5948c9f0d48d1c1d6af5a82d4fb}\index{Ponito.Core.Paths.PathNameInfo@{Ponito.Core.Paths.PathNameInfo}!ToString@{ToString}}
+\index{ToString@{ToString}!Ponito.Core.Paths.PathNameInfo@{Ponito.Core.Paths.PathNameInfo}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_paths_1_1_path_name_info_ab03ad5948c9f0d48d1c1d6af5a82d4fb} 
+override string Ponito.\+Core.\+Paths.\+Path\+Name\+Info.\+To\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+變成字串 
+
+\begin{DoxyReturn}{傳回值}
+路徑字串
+\end{DoxyReturn}
+
+
+此結構(structure) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/\+Paths/Path\+Name\+Info.\+cs\item 
+Runtime/\+Ponito/\+Core/\+Paths/Path\+Name\+Info.\+Ctors.\+cs\item 
+Runtime/\+Ponito/\+Core/\+Paths/Path\+Name\+Info.\+Fields.\+cs\item 
+Runtime/\+Ponito/\+Core/\+Paths/Path\+Name\+Info.\+Props.\+cs\end{DoxyCompactItemize}

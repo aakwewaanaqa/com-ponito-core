@@ -1,0 +1,84 @@
+\doxysection{Ponito.\+Core.\+Samples.\+UI 命名空間(Namespace)參考文件}
+\hypertarget{namespace_ponito_1_1_core_1_1_samples_1_1_u_i}{}\label{namespace_ponito_1_1_core_1_1_samples_1_1_u_i}\index{Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}}
+\doxysubsubsection*{複合項目}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_button}{Po\+Button}}
+\item 
+class \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_button_block_scope}{Po\+Button\+Block\+Scope}}
+\begin{DoxyCompactList}\small\item\em Blocks all \doxylink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_button}{Po\+Button} by using this scope in the scope. Please remember to Dispose or all \doxylink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_button}{Po\+Button}s remain disabled. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_button_data_scope}{Po\+Button\+Data\+Scope}}
+\item 
+class \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_canvas}{Po\+Canvas}}
+\begin{DoxyCompactList}\small\item\em If you wish to manage your \doxylink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i}{UI} by separate them by Canvas, use \doxylink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_canvas}{Po\+Canvas} instead. \textquotesingle{}Cause this help you name your Canvas and scale your Canvas. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Po\+Task\+View}}
+\begin{DoxyCompactList}\small\item\em 如果你不介意異步顯示、管理、切換顯示介面，可以繼承這個介面 \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_instance}{Po\+Task\+View\+Instance}}
+\item 
+class \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono}{Po\+Task\+View\+Mono}}
+\begin{DoxyCompactList}\small\item\em 本身就是 \doxylink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Po\+Task\+View} 基於要序列化，就繼承了 Mono\+Behaviour \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{列舉型態}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_aace072a895b64564e68e6a4d6df72303}\label{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_aace072a895b64564e68e6a4d6df72303} 
+enum {\bfseries Animation\+Type} \{ {\bfseries None}
+, {\bfseries Scale}
+, {\bfseries Punch}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_a769bf161075270778aaf33e18ef75560}{Match\+Mode}} \{ \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_a769bf161075270778aaf33e18ef75560a8098b34f582537833b36b58273c3545b}{Expand}} = Canvas\+Scaler.\+Screen\+Match\+Mode.\+Expand
+, \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_a769bf161075270778aaf33e18ef75560a1bb54971ab41a5a931b23159019fd73f}{Shrink}} = Canvas\+Scaler.\+Screen\+Match\+Mode.\+Shrink
+ \}
+\begin{DoxyCompactList}\small\item\em How to match the current content of the Po\+Canvas with Canvas \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8}{View\+State}} \{ \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8a7acdf85c69cc3c5305456a293524386e}{Hidden}} = 0
+, \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8a69a4b7185e3fbc9bfc0878876d7416cf}{Transitioning}} = 1
+, \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8ab4e6101378d2a08d80df7e5da0625128}{Showing}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em 常用顯示狀態 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{列舉型態說明文件}
+\Hypertarget{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_a769bf161075270778aaf33e18ef75560}\index{Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}!MatchMode@{MatchMode}}
+\index{MatchMode@{MatchMode}!Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}}
+\doxysubsubsection{\texorpdfstring{MatchMode}{MatchMode}}
+{\footnotesize\ttfamily \label{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_a769bf161075270778aaf33e18ef75560} 
+enum \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_a769bf161075270778aaf33e18ef75560}{Ponito.\+Core.\+Samples.\+UI.\+Match\+Mode}}}
+
+
+
+How to match the current content of the \doxylink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_canvas}{Po\+Canvas} with Canvas 
+
+\begin{DoxyEnumFields}[2]{列舉值}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Expand@{Expand}!Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}}\index{Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}!Expand@{Expand}}}\Hypertarget{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_a769bf161075270778aaf33e18ef75560a8098b34f582537833b36b58273c3545b}\label{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_a769bf161075270778aaf33e18ef75560} 
+Expand&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Shrink@{Shrink}!Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}}\index{Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}!Shrink@{Shrink}}}\Hypertarget{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_a769bf161075270778aaf33e18ef75560a1bb54971ab41a5a931b23159019fd73f}\label{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_a769bf161075270778aaf33e18ef75560} 
+Shrink&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8}\index{Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}!ViewState@{ViewState}}
+\index{ViewState@{ViewState}!Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}}
+\doxysubsubsection{\texorpdfstring{ViewState}{ViewState}}
+{\footnotesize\ttfamily \label{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8} 
+enum \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8}{Ponito.\+Core.\+Samples.\+UI.\+View\+State}}}
+
+
+
+常用顯示狀態 
+
+\begin{DoxyEnumFields}[2]{列舉值}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Hidden@{Hidden}!Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}}\index{Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}!Hidden@{Hidden}}}\Hypertarget{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8a7acdf85c69cc3c5305456a293524386e}\label{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8} 
+Hidden&不顯示的狀態 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Transitioning@{Transitioning}!Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}}\index{Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}!Transitioning@{Transitioning}}}\Hypertarget{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8a69a4b7185e3fbc9bfc0878876d7416cf}\label{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8} 
+Transitioning&轉場中 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Showing@{Showing}!Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}}\index{Ponito.Core.Samples.UI@{Ponito.Core.Samples.UI}!Showing@{Showing}}}\Hypertarget{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8ab4e6101378d2a08d80df7e5da0625128}\label{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8} 
+Showing&顯示中 \\
+\hline
+
+\end{DoxyEnumFields}

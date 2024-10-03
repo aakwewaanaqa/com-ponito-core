@@ -12,5 +12,5 @@
     "dependencies": {
         "com.unity.nuget.newtonsoft-json": "1.0.0"
     },
-    "type": "library"
+    "type": "Library"
 }

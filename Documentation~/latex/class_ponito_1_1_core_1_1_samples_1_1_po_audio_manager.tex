@@ -1,0 +1,123 @@
+\doxysection{Ponito.\+Core.\+Samples.\+Po\+Audio\+Manager 類別 參考文件}
+\hypertarget{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager}{}\label{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager}\index{Ponito.Core.Samples.PoAudioManager@{Ponito.Core.Samples.PoAudioManager}}
+
+
+Manages Audio\+Source by splitting into \doxylink{namespace_ponito_1_1_core_1_1_samples_a6604b92a95e9a84b6e54c4d74488dda6}{Audio\+Play\+Type}  
+
+
+類別\+Ponito.\+Core.\+Samples.\+Po\+Audio\+Manager的繼承圖\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開方法(Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+Audio\+Source \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_ab759a6f8fc20bc00670ddc0d25ab62c2}{Get\+Source}} (\mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_a6604b92a95e9a84b6e54c4d74488dda6}{Audio\+Play\+Type}} type=Audio\+Play\+Type.\+Music)
+\begin{DoxyCompactList}\small\item\em Gets Audio\+Source by type \end{DoxyCompactList}\item 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a19e93bdbd4d7f6750a6b47971a8a483a}{Stop}} (\mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_a6604b92a95e9a84b6e54c4d74488dda6}{Audio\+Play\+Type}} type=Audio\+Play\+Type.\+Music, float duration=DEFAULT\+\_\+\+FADE\+\_\+\+DURATION, Cancellation\+Token ct=default)
+\begin{DoxyCompactList}\small\item\em Stops the Audio\+Source in duration of seconds. \end{DoxyCompactList}\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a037da5749b105c2afd9e93d73ed00e52}\label{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a037da5749b105c2afd9e93d73ed00e52} 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} {\bfseries Play} (Audio\+Clip clip, \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_a6604b92a95e9a84b6e54c4d74488dda6}{Audio\+Play\+Type}} type=Audio\+Play\+Type.\+Music, bool is\+One\+Shot=false, Cancellation\+Token ct=default)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{靜態公開屬性}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a2d28b9fea58396ca596cd3fc78229769}\label{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a2d28b9fea58396ca596cd3fc78229769} 
+const float {\bfseries DEFAULT\+\_\+\+FADE\+\_\+\+DURATION} = 0.\+2f
+\end{DoxyCompactItemize}
+\doxysubsubsection*{保護方法(Protected Methods)}
+\begin{DoxyCompactItemize}
+\item 
+IQueryable$<$ Field\+Info $>$ \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a9714f980df65015e983377d5724bb4a2}{Get\+Fields}} ()
+\begin{DoxyCompactList}\small\item\em Gets every field of \mbox{[}Serialize\+Field\mbox{]}s. \end{DoxyCompactList}\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a0c78be8a1458752851cba397fd91ceec}\label{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a0c78be8a1458752851cba397fd91ceec} 
+override void {\bfseries Initialize} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{保護方法(\+Protected Methods) 繼承自 \mbox{\hyperlink{class_ponito_1_1_core_1_1_mono_singleton}{Ponito.\+Core.\+Mono\+Singleton$<$ Po\+Audio\+Manager $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries On\+Destroy} ()
+\begin{DoxyCompactList}\small\item\em Destroys instance also, to prevent memory leak of reference on this. \end{DoxyCompactList}\item 
+void {\bfseries Initialize} ()
+\begin{DoxyCompactList}\small\item\em To initialize in Create\+Instance \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{屬性(properties)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_ae43e0560d31e9ebfba1eb9d77ce9f965}\label{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_ae43e0560d31e9ebfba1eb9d77ce9f965} 
+override bool {\bfseries Is\+Initialized}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_ab9ed899f31f5dc2393d6c47683f85049}\label{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_ab9ed899f31f5dc2393d6c47683f85049} 
+override bool {\bfseries Is\+Dont\+Destroy\+On\+Load}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{屬性(properties) 繼承自 \mbox{\hyperlink{class_ponito_1_1_core_1_1_mono_singleton}{Ponito.\+Core.\+Mono\+Singleton$<$ Po\+Audio\+Manager $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries Is\+Initialized}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Checks whether it needs \doxylink{class_ponito_1_1_core_1_1_mono_singleton_ac4532efc4ebbd49843b15dfd005c343a}{Initialize} or not. \end{DoxyCompactList}\item 
+bool {\bfseries Is\+Dont\+Destroy\+On\+Load}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Checks whether it needs Mono\+Behaviour.\+Dont\+Destroy\+On\+Load or not. \end{DoxyCompactList}\item 
+static Lazy$<$ T $>$ {\bfseries instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Lazy$<$\+T$>$ calls Create\+Instance before accessing value \end{DoxyCompactList}\item 
+static T {\bfseries Singleton}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The instance of this singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳細描述}
+Manages Audio\+Source by splitting into \doxylink{namespace_ponito_1_1_core_1_1_samples_a6604b92a95e9a84b6e54c4d74488dda6}{Audio\+Play\+Type} 
+
+\doxysubsection{函式成員說明文件}
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a9714f980df65015e983377d5724bb4a2}\index{Ponito.Core.Samples.PoAudioManager@{Ponito.Core.Samples.PoAudioManager}!GetFields@{GetFields}}
+\index{GetFields@{GetFields}!Ponito.Core.Samples.PoAudioManager@{Ponito.Core.Samples.PoAudioManager}}
+\doxysubsubsection{\texorpdfstring{GetFields()}{GetFields()}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a9714f980df65015e983377d5724bb4a2} 
+IQueryable$<$ Field\+Info $>$ Ponito.\+Core.\+Samples.\+Po\+Audio\+Manager.\+Get\+Fields (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Gets every field of \mbox{[}Serialize\+Field\mbox{]}s. 
+
+\begin{DoxyReturn}{傳回值}
+
+\end{DoxyReturn}
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_ab759a6f8fc20bc00670ddc0d25ab62c2}\index{Ponito.Core.Samples.PoAudioManager@{Ponito.Core.Samples.PoAudioManager}!GetSource@{GetSource}}
+\index{GetSource@{GetSource}!Ponito.Core.Samples.PoAudioManager@{Ponito.Core.Samples.PoAudioManager}}
+\doxysubsubsection{\texorpdfstring{GetSource()}{GetSource()}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_ab759a6f8fc20bc00670ddc0d25ab62c2} 
+Audio\+Source Ponito.\+Core.\+Samples.\+Po\+Audio\+Manager.\+Get\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_a6604b92a95e9a84b6e54c4d74488dda6}{Audio\+Play\+Type}}}]{type}{ = {\ttfamily AudioPlayType\+:\+:Music}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets Audio\+Source by type 
+
+
+\begin{DoxyParams}{參數}
+{\em type} & the type of managed Audio\+Sources\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{傳回值}
+source
+\end{DoxyReturn}
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a19e93bdbd4d7f6750a6b47971a8a483a}\index{Ponito.Core.Samples.PoAudioManager@{Ponito.Core.Samples.PoAudioManager}!Stop@{Stop}}
+\index{Stop@{Stop}!Ponito.Core.Samples.PoAudioManager@{Ponito.Core.Samples.PoAudioManager}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_samples_1_1_po_audio_manager_a19e93bdbd4d7f6750a6b47971a8a483a} 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} Ponito.\+Core.\+Samples.\+Po\+Audio\+Manager.\+Stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_a6604b92a95e9a84b6e54c4d74488dda6}{Audio\+Play\+Type}}}]{type}{ = {\ttfamily AudioPlayType\+:\+:Music}, }\item[{float}]{duration}{ = {\ttfamily DEFAULT\+\_\+FADE\+\_\+DURATION}, }\item[{Cancellation\+Token}]{ct}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stops the Audio\+Source in duration of seconds. 
+
+
+\begin{DoxyParams}{參數}
+{\em type} & the type of managed Audio\+Sources\\
+\hline
+{\em duration} & delay in seconds\\
+\hline
+\end{DoxyParams}
+
+
+此類別(class) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/\+Samples/Po\+Audio\+Manager.\+cs\end{DoxyCompactItemize}

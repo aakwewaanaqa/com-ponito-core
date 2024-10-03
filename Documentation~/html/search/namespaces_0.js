@@ -1,0 +1,27 @@
+var searchData =
+    [
+        ['ponito_0', ['Ponito', ['../namespace_ponito.html', 1, '']]],
+        ['ponito_3a_3aanyparser_1', ['AnyParser', ['../namespace_ponito_1_1_any_parser.html', 1, 'Ponito']]],
+        ['ponito_3a_3aanyparser_3a_3aducksharp_2', ['DuckSharp', ['../namespace_ponito_1_1_any_parser_1_1_duck_sharp.html', 1, 'Ponito::AnyParser']]],
+        ['ponito_3a_3acore_3', ['Core', ['../namespace_ponito_1_1_core.html', 1, 'Ponito']]],
+        ['ponito_3a_3acore_3a_3aanimations_4', ['Animations', ['../namespace_ponito_1_1_core_1_1_animations.html', 1, 'Ponito::Core']]],
+        ['ponito_3a_3acore_3a_3aasyncs_5', ['Asyncs', ['../namespace_ponito_1_1_core_1_1_asyncs.html', 1, 'Ponito::Core']]],
+        ['ponito_3a_3acore_3a_3aasyncs_3a_3acompilations_6', ['Compilations', ['../namespace_ponito_1_1_core_1_1_asyncs_1_1_compilations.html', 1, 'Ponito::Core::Asyncs']]],
+        ['ponito_3a_3acore_3a_3aasyncs_3a_3aeditors_7', ['Editors', ['../namespace_ponito_1_1_core_1_1_asyncs_1_1_editors.html', 1, 'Ponito::Core::Asyncs']]],
+        ['ponito_3a_3acore_3a_3aasyncs_3a_3aextensions_8', ['Extensions', ['../namespace_ponito_1_1_core_1_1_asyncs_1_1_extensions.html', 1, 'Ponito::Core::Asyncs']]],
+        ['ponito_3a_3acore_3a_3aasyncs_3a_3ainterfaces_9', ['Interfaces', ['../namespace_ponito_1_1_core_1_1_asyncs_1_1_interfaces.html', 1, 'Ponito::Core::Asyncs']]],
+        ['ponito_3a_3acore_3a_3aasyncs_3a_3atasks_10', ['Tasks', ['../namespace_ponito_1_1_core_1_1_asyncs_1_1_tasks.html', 1, 'Ponito::Core::Asyncs']]],
+        ['ponito_3a_3acore_3a_3aasyncs_3a_3atasks_3a_3amovables_11', ['Movables', ['../namespace_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables.html', 1, 'Ponito::Core::Asyncs::Tasks']]],
+        ['ponito_3a_3acore_3a_3adebughelper_12', ['DebugHelper', ['../namespace_ponito_1_1_core_1_1_debug_helper.html', 1, 'Ponito::Core']]],
+        ['ponito_3a_3acore_3a_3aease_13', ['Ease', ['../namespace_ponito_1_1_core_1_1_ease.html', 1, 'Ponito::Core']]],
+        ['ponito_3a_3acore_3a_3aease_3a_3aspecialeases_14', ['SpecialEases', ['../namespace_ponito_1_1_core_1_1_ease_1_1_special_eases.html', 1, 'Ponito::Core::Ease']]],
+        ['ponito_3a_3acore_3a_3aextensions_15', ['Extensions', ['../namespace_ponito_1_1_core_1_1_extensions.html', 1, 'Ponito::Core']]],
+        ['ponito_3a_3acore_3a_3ajava_16', ['Java', ['../namespace_ponito_1_1_core_1_1_java.html', 1, 'Ponito::Core']]],
+        ['ponito_3a_3acore_3a_3apaths_17', ['Paths', ['../namespace_ponito_1_1_core_1_1_paths.html', 1, 'Ponito::Core']]],
+        ['ponito_3a_3acore_3a_3apools_18', ['Pools', ['../namespace_ponito_1_1_core_1_1_pools.html', 1, 'Ponito::Core']]],
+        ['ponito_3a_3acore_3a_3asamples_19', ['Samples', ['../namespace_ponito_1_1_core_1_1_samples.html', 1, 'Ponito::Core']]],
+        ['ponito_3a_3acore_3a_3asamples_3a_3aproviders_20', ['Providers', ['../namespace_ponito_1_1_core_1_1_samples_1_1_providers.html', 1, 'Ponito::Core::Samples']]],
+        ['ponito_3a_3acore_3a_3asamples_3a_3aui_21', ['UI', ['../namespace_ponito_1_1_core_1_1_samples_1_1_u_i.html', 1, 'Ponito::Core::Samples']]],
+        ['ponito_3a_3acore_3a_3atests_22', ['Tests', ['../namespace_ponito_1_1_core_1_1_tests.html', 1, 'Ponito::Core']]],
+        ['ponito_3a_3adiattributes_23', ['DIAttributes', ['../namespace_ponito_1_1_d_i_attributes.html', 1, 'Ponito']]]
+    ];

@@ -1,0 +1,1255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-Hant" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/xhtml;charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="IE=11" http-equiv="X-UA-Compatible"/>
+    <meta content="Doxygen 1.12.0" name="generator"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>com-ponito-core: Ponito.Core.FloatRange 結構 參考文件</title>
+    <link href="tabs.css" rel="stylesheet" type="text/css"/>
+    <script src="jquery.js" type="text/javascript"></script>
+    <script src="dynsections.js" type="text/javascript"></script>
+    <script src="clipboard.js" type="text/javascript"></script>
+    <link href="navtree.css" rel="stylesheet" type="text/css"/>
+    <script src="resize.js" type="text/javascript"></script>
+    <script src="cookie.js" type="text/javascript"></script>
+    <link href="search/search.css" rel="stylesheet" type="text/css"/>
+    <script src="search/searchdata.js" type="text/javascript"></script>
+    <script src="search/search.js" type="text/javascript"></script>
+    <link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+    <div id="titlearea">
+        <table cellpadding="0" cellspacing="0">
+            <tbody>
+            <tr id="projectrow">
+                <td id="projectalign">
+                    <div id="projectname">com-ponito-core<span id="projectnumber">&#160;1.1.8</span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- end header part -->
+    <!-- 產生者: Doxygen 1.12.0 -->
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        var searchBox = new SearchBox("searchBox", "search/", '.html');
+        /* @license-end */
+    </script>
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        $(function () {
+            codefold.init(0);
+        });
+        /* @license-end */
+    </script>
+    <script src="menudata.js" type="text/javascript"></script>
+    <script src="menu.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        $(function () {
+            initMenu('', true, false, 'search.php', '搜尋', false);
+            $(function () {
+                init_search();
+            });
+        });
+        /* @license-end */
+    </script>
+    <div id="main-nav"></div>
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        $(function () {
+            initResizable(false);
+        });
+        /* @license-end */
+    </script>
+    <!-- window showing the filter options -->
+    <div id="MSearchSelectWindow"
+         onkeydown="return searchBox.OnSearchSelectKey(event)"
+         onmouseout="return searchBox.OnSearchSelectHide()"
+         onmouseover="return searchBox.OnSearchSelectShow()">
+    </div>
+
+    <!-- iframe showing the search results (closed by default) -->
+    <div id="MSearchResultsWindow">
+        <div id="MSearchResults">
+            <div class="SRPage">
+                <div id="SRIndex">
+                    <div id="SRResults"></div>
+                    <div class="SRStatus" id="Loading">載入中...</div>
+                    <div class="SRStatus" id="Searching">搜尋中...</div>
+                    <div class="SRStatus" id="NoMatches">無符合項目</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navpath" id="nav-path">
+        <ul>
+            <li class="navelem"><a class="el" href="namespace_ponito.html">Ponito</a></li>
+            <li class="navelem"><a class="el" href="namespace_ponito_1_1_core.html">Core</a></li>
+            <li class="navelem"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a></li>
+        </ul>
+    </div>
+</div><!-- top -->
+<div id="doc-content">
+    <div class="header">
+        <div class="summary">
+            <a href="#pub-methods">公開方法(Public Methods)</a> &#124;
+            <a href="#pub-static-methods">靜態公開方法(Static Public Methods)</a> &#124;
+            <a href="#pub-attribs">公開屬性</a> &#124;
+            <a href="#properties">屬性(properties)</a> &#124;
+            <a href="struct_ponito_1_1_core_1_1_float_range-members.html">全部成員列表</a></div>
+        <div class="headertitle">
+            <div class="title">Ponito.Core.FloatRange 結構 參考文件</div>
+        </div>
+    </div><!--header-->
+    <div class="contents">
+
+        <p>uses <a class="el" href="#aeaac22f4680cc1964b87ee80d5034bab" title="gets a random value">GetRandom</a> to get random result, or
+            gives <a class="el" href="struct_ponito_1_1_core_1_1_float_mapper.html"
+                     title="Maps float from input range from to output range to">FloatMapper</a> as parameter
+            <a href="#details">更多...</a></p>
+        <table class="memberdecls">
+            <tr class="heading">
+                <td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+                    公開方法(Public Methods)</h2></td>
+            </tr>
+            <tr class="memitem:af880f29414f7e7157bd554153e0d3485" id="r_af880f29414f7e7157bd554153e0d3485">
+                <td align="right" class="memItemLeft" valign="top">&#160;</td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#af880f29414f7e7157bd554153e0d3485">FloatRange</a> (float <a
+                        class="el" href="#a7d00b7d9585412817ea1c810802b11af">min</a>, float <a class="el"
+                                                                                               href="#a144eb30bc293e4c77cf89604d24f8093">max</a>)
+                </td>
+            </tr>
+            <tr class="memdesc:af880f29414f7e7157bd554153e0d3485">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">constructs a <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                                                       title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a>
+                    <br/></td>
+            </tr>
+            <tr class="separator:af880f29414f7e7157bd554153e0d3485">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:aeaac22f4680cc1964b87ee80d5034bab" id="r_aeaac22f4680cc1964b87ee80d5034bab">
+                <td align="right" class="memItemLeft" valign="top">float&#160;</td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#aeaac22f4680cc1964b87ee80d5034bab">GetRandom</a> ()</td>
+            </tr>
+            <tr class="memdesc:aeaac22f4680cc1964b87ee80d5034bab">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">gets a random value <br/></td>
+            </tr>
+            <tr class="separator:aeaac22f4680cc1964b87ee80d5034bab">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:aed77539f0ab9f614029f849df1dd537a" id="r_aed77539f0ab9f614029f849df1dd537a">
+                <td align="right" class="memItemLeft" valign="top">float&#160;</td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#aed77539f0ab9f614029f849df1dd537a">GetClamp</a> (float input)
+                </td>
+            </tr>
+            <tr class="memdesc:aed77539f0ab9f614029f849df1dd537a">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">clamps the input in the <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                                                                  title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a>
+                    <br/></td>
+            </tr>
+            <tr class="separator:aed77539f0ab9f614029f849df1dd537a">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+        </table>
+        <table class="memberdecls">
+            <tr class="heading">
+                <td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+                    靜態公開方法(Static Public Methods)</h2></td>
+            </tr>
+            <tr class="memitem:afae2f837f79d6088827afcae902fb428" id="r_afae2f837f79d6088827afcae902fb428">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#afae2f837f79d6088827afcae902fb428">operator+</a> (<a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> r, float f)
+                </td>
+            </tr>
+            <tr class="memdesc:afae2f837f79d6088827afcae902fb428">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight"><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> + f and <a class="el"
+                                                                                                                                  href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                                  title="maximum">max</a>
+                    + f <br/></td>
+            </tr>
+            <tr class="separator:afae2f837f79d6088827afcae902fb428">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a1ef3e6652a1f3d50a79fefab2b040b6e" id="r_a1ef3e6652a1f3d50a79fefab2b040b6e">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a1ef3e6652a1f3d50a79fefab2b040b6e">operator-</a> (<a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> r, float f)
+                </td>
+            </tr>
+            <tr class="memdesc:a1ef3e6652a1f3d50a79fefab2b040b6e">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight"><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> - f and <a class="el"
+                                                                                                                                  href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                                  title="maximum">max</a>
+                    + f <br/></td>
+            </tr>
+            <tr class="separator:a1ef3e6652a1f3d50a79fefab2b040b6e">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a377caace12574a4923522565fc34fa2f" id="r_a377caace12574a4923522565fc34fa2f">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a377caace12574a4923522565fc34fa2f">operator*</a> (<a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> r, float f)
+                </td>
+            </tr>
+            <tr class="memdesc:a377caace12574a4923522565fc34fa2f">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight"><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> * f and <a class="el"
+                                                                                                                                  href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                                  title="maximum">max</a>
+                    + f <br/></td>
+            </tr>
+            <tr class="separator:a377caace12574a4923522565fc34fa2f">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:ad13d95f0866bce5a12f57cec9997a738" id="r_ad13d95f0866bce5a12f57cec9997a738">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#ad13d95f0866bce5a12f57cec9997a738">operator/</a> (<a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> r, float f)
+                </td>
+            </tr>
+            <tr class="memdesc:ad13d95f0866bce5a12f57cec9997a738">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight"><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> / f and <a class="el"
+                                                                                                                                  href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                                  title="maximum">max</a>
+                    + f <br/></td>
+            </tr>
+            <tr class="separator:ad13d95f0866bce5a12f57cec9997a738">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a7ed59c162bcbc2b0b8573ac032d6d952" id="r_a7ed59c162bcbc2b0b8573ac032d6d952">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a7ed59c162bcbc2b0b8573ac032d6d952">operator+</a> (float f, <a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> r)
+                </td>
+            </tr>
+            <tr class="memdesc:a7ed59c162bcbc2b0b8573ac032d6d952">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight"><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> + f and <a class="el"
+                                                                                                                                  href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                                  title="maximum">max</a>
+                    + f <br/></td>
+            </tr>
+            <tr class="separator:a7ed59c162bcbc2b0b8573ac032d6d952">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a126f97a0169ebcfbf30b1270251b5bd0" id="r_a126f97a0169ebcfbf30b1270251b5bd0">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a126f97a0169ebcfbf30b1270251b5bd0">operator-</a> (float f, <a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> r)
+                </td>
+            </tr>
+            <tr class="memdesc:a126f97a0169ebcfbf30b1270251b5bd0">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight"><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> - f and <a class="el"
+                                                                                                                                  href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                                  title="maximum">max</a>
+                    + f <br/></td>
+            </tr>
+            <tr class="separator:a126f97a0169ebcfbf30b1270251b5bd0">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a4f0913277dedffd2a4804a00335b4a56" id="r_a4f0913277dedffd2a4804a00335b4a56">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a4f0913277dedffd2a4804a00335b4a56">operator*</a> (float f, <a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> r)
+                </td>
+            </tr>
+            <tr class="memdesc:a4f0913277dedffd2a4804a00335b4a56">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight"><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> * f and <a class="el"
+                                                                                                                                  href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                                  title="maximum">max</a>
+                    + f <br/></td>
+            </tr>
+            <tr class="separator:a4f0913277dedffd2a4804a00335b4a56">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a636a6c1bb757a02ca109187d8d0fd72a" id="r_a636a6c1bb757a02ca109187d8d0fd72a">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a636a6c1bb757a02ca109187d8d0fd72a">operator/</a> (float f, <a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> r)
+                </td>
+            </tr>
+            <tr class="memdesc:a636a6c1bb757a02ca109187d8d0fd72a">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight"><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> / f and <a class="el"
+                                                                                                                                  href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                                  title="maximum">max</a>
+                    + f <br/></td>
+            </tr>
+            <tr class="separator:a636a6c1bb757a02ca109187d8d0fd72a">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a4b9fddebd6e463b28198e7ad0e15a556" id="r_a4b9fddebd6e463b28198e7ad0e15a556">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a4b9fddebd6e463b28198e7ad0e15a556">operator+</a> (<a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> a, <a class="el"
+                                                                                                           href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                    b)
+                </td>
+            </tr>
+            <tr class="memdesc:a4b9fddebd6e463b28198e7ad0e15a556">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">a.<a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> + b.<a class="el"
+                                                                                                                                href="#a7d00b7d9585412817ea1c810802b11af"
+                                                                                                                                title="minimum">min</a>
+                    and a.<a class="el" href="#a144eb30bc293e4c77cf89604d24f8093" title="maximum">max</a> + b.<a class="el"
+                                                                                                                 href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                 title="maximum">max</a>
+                    <br/></td>
+            </tr>
+            <tr class="separator:a4b9fddebd6e463b28198e7ad0e15a556">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a9316372fbf0161fc30763231ea9936a0" id="r_a9316372fbf0161fc30763231ea9936a0">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a9316372fbf0161fc30763231ea9936a0">operator-</a> (<a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> a, <a class="el"
+                                                                                                           href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                    b)
+                </td>
+            </tr>
+            <tr class="memdesc:a9316372fbf0161fc30763231ea9936a0">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">a.<a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> - b.<a class="el"
+                                                                                                                                href="#a7d00b7d9585412817ea1c810802b11af"
+                                                                                                                                title="minimum">min</a>
+                    and a.<a class="el" href="#a144eb30bc293e4c77cf89604d24f8093" title="maximum">max</a> - b.<a class="el"
+                                                                                                                 href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                 title="maximum">max</a>
+                    <br/></td>
+            </tr>
+            <tr class="separator:a9316372fbf0161fc30763231ea9936a0">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a5f14ff9a5f9098b0ff5870a0de99b928" id="r_a5f14ff9a5f9098b0ff5870a0de99b928">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a5f14ff9a5f9098b0ff5870a0de99b928">operator*</a> (<a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> a, <a class="el"
+                                                                                                           href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                    b)
+                </td>
+            </tr>
+            <tr class="memdesc:a5f14ff9a5f9098b0ff5870a0de99b928">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">a.<a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> * b.<a class="el"
+                                                                                                                                href="#a7d00b7d9585412817ea1c810802b11af"
+                                                                                                                                title="minimum">min</a>
+                    and a.<a class="el" href="#a144eb30bc293e4c77cf89604d24f8093" title="maximum">max</a> * b.<a class="el"
+                                                                                                                 href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                 title="maximum">max</a>
+                    <br/></td>
+            </tr>
+            <tr class="separator:a5f14ff9a5f9098b0ff5870a0de99b928">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:af6f897942b02c632e3151646eb403b11" id="r_af6f897942b02c632e3151646eb403b11">
+                <td align="right" class="memItemLeft" valign="top">static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#af6f897942b02c632e3151646eb403b11">operator/</a> (<a
+                        class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a> a, <a class="el"
+                                                                                                           href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                    b)
+                </td>
+            </tr>
+            <tr class="memdesc:af6f897942b02c632e3151646eb403b11">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">a.<a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> / b.<a class="el"
+                                                                                                                                href="#a7d00b7d9585412817ea1c810802b11af"
+                                                                                                                                title="minimum">min</a>
+                    and a.<a class="el" href="#a144eb30bc293e4c77cf89604d24f8093" title="maximum">max</a> / b.<a class="el"
+                                                                                                                 href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                                 title="maximum">max</a>
+                    <br/></td>
+            </tr>
+            <tr class="separator:af6f897942b02c632e3151646eb403b11">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:ad846189d752b6c687f55c7c1ccc124e9" id="r_ad846189d752b6c687f55c7c1ccc124e9">
+                <td align="right" class="memItemLeft" valign="top">static implicit&#160;</td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#ad846189d752b6c687f55c7c1ccc124e9">operator FloatRange</a>
+                    (float f)
+                </td>
+            </tr>
+            <tr class="memdesc:ad846189d752b6c687f55c7c1ccc124e9">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">takes float then gives <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                                                                 title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a>
+                    <br/></td>
+            </tr>
+            <tr class="separator:ad846189d752b6c687f55c7c1ccc124e9">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+        </table>
+        <table class="memberdecls">
+            <tr class="heading">
+                <td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+                    公開屬性</h2></td>
+            </tr>
+            <tr class="memitem:a144eb30bc293e4c77cf89604d24f8093" id="r_a144eb30bc293e4c77cf89604d24f8093">
+                <td align="right" class="memItemLeft" valign="top"><a id="a144eb30bc293e4c77cf89604d24f8093"
+                                                                      name="a144eb30bc293e4c77cf89604d24f8093"></a>
+                    readonly float&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><b>max</b></td>
+            </tr>
+            <tr class="memdesc:a144eb30bc293e4c77cf89604d24f8093">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">maximum <br/></td>
+            </tr>
+            <tr class="separator:a144eb30bc293e4c77cf89604d24f8093">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a7d00b7d9585412817ea1c810802b11af" id="r_a7d00b7d9585412817ea1c810802b11af">
+                <td align="right" class="memItemLeft" valign="top"><a id="a7d00b7d9585412817ea1c810802b11af"
+                                                                      name="a7d00b7d9585412817ea1c810802b11af"></a>
+                    readonly float&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><b>min</b></td>
+            </tr>
+            <tr class="memdesc:a7d00b7d9585412817ea1c810802b11af">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">minimum <br/></td>
+            </tr>
+            <tr class="separator:a7d00b7d9585412817ea1c810802b11af">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+        </table>
+        <table class="memberdecls">
+            <tr class="heading">
+                <td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+                    屬性(properties)</h2></td>
+            </tr>
+            <tr class="memitem:a8a33cb7072412a87e019ecbd5bfd4c31" id="r_a8a33cb7072412a87e019ecbd5bfd4c31">
+                <td align="right" class="memItemLeft" valign="top"><a id="a8a33cb7072412a87e019ecbd5bfd4c31"
+                                                                      name="a8a33cb7072412a87e019ecbd5bfd4c31"></a>
+                    float&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><b>Length</b><code> [get]</code></td>
+            </tr>
+            <tr class="memdesc:a8a33cb7072412a87e019ecbd5bfd4c31">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">magnitude of the <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                                                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a>
+                    <br/></td>
+            </tr>
+            <tr class="separator:a8a33cb7072412a87e019ecbd5bfd4c31">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:ad29dc3525c06d7f162ce03ff62d446e1" id="r_ad29dc3525c06d7f162ce03ff62d446e1">
+                <td align="right" class="memItemLeft" valign="top"><a id="ad29dc3525c06d7f162ce03ff62d446e1"
+                                                                      name="ad29dc3525c06d7f162ce03ff62d446e1"></a>
+                    static <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><b>One</b><code> [get]</code></td>
+            </tr>
+            <tr class="memdesc:ad29dc3525c06d7f162ce03ff62d446e1">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">a range always get 1 <br/></td>
+            </tr>
+            <tr class="separator:ad29dc3525c06d7f162ce03ff62d446e1">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+        </table>
+        <a id="details" name="details"></a>
+        <h2 class="groupheader">詳細描述</h2>
+        <div class="textblock"><p>uses <a class="el" href="#aeaac22f4680cc1964b87ee80d5034bab" title="gets a random value">GetRandom</a> to
+            get random result, or gives <a class="el" href="struct_ponito_1_1_core_1_1_float_mapper.html"
+                                           title="Maps float from input range from to output range to">FloatMapper</a> as parameter </p>
+            <dl class="section see">
+                <dt>參閱</dt>
+                <dd><a class="el" href="#aeaac22f4680cc1964b87ee80d5034bab" title="gets a random value">GetRandom</a>, <a class="el"
+                                                                                                                          href="#aed77539f0ab9f614029f849df1dd537a"
+                                                                                                                          title="clamps the input in the FloatRange">GetClamp</a>,
+                    <a class="el" href="struct_ponito_1_1_core_1_1_float_mapper.html"
+                       title="Maps float from input range from to output range to">FloatMapper</a></dd>
+            </dl>
+        </div>
+        <h2 class="groupheader">建構子與解構子說明文件</h2>
+        <a id="af880f29414f7e7157bd554153e0d3485" name="af880f29414f7e7157bd554153e0d3485"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#af880f29414f7e7157bd554153e0d3485">&#9670;&#160;</a></span>FloatRange()</h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">Ponito.Core.FloatRange.FloatRange</td>
+                                    <td>(</td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>min</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>constructs a <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                                   title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></p>
+                <dl class="params">
+                    <dt>參數</dt>
+                    <dd>
+                        <table class="params">
+                            <tr>
+                                <td class="paramname">min</td>
+                                <td>minimum <a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a></td>
+                            </tr>
+                            <tr>
+                                <td class="paramname">max</td>
+                                <td>maximum <a class="el" href="#a144eb30bc293e4c77cf89604d24f8093" title="maximum">max</a></td>
+                            </tr>
+                        </table>
+                    </dd>
+                </dl>
+
+            </div>
+        </div>
+        <h2 class="groupheader">函式成員說明文件</h2>
+        <a id="aed77539f0ab9f614029f849df1dd537a" name="aed77539f0ab9f614029f849df1dd537a"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#aed77539f0ab9f614029f849df1dd537a">&#9670;&#160;</a></span>GetClamp()</h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">float Ponito.Core.FloatRange.GetClamp</td>
+                                    <td>(</td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>input</em></span></td>
+                                    <td>)</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>clamps the input in the <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                                              title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a>
+                </p>
+                <dl class="params">
+                    <dt>參數</dt>
+                    <dd>
+                        <table class="params">
+                            <tr>
+                                <td class="paramname">input</td>
+                                <td>the source value</td>
+                            </tr>
+                        </table>
+                    </dd>
+                </dl>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd>the clamped result</dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="aeaac22f4680cc1964b87ee80d5034bab" name="aeaac22f4680cc1964b87ee80d5034bab"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#aeaac22f4680cc1964b87ee80d5034bab">&#9670;&#160;</a></span>GetRandom()</h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">float Ponito.Core.FloatRange.GetRandom</td>
+                                    <td>(</td>
+                                    <td class="paramname"><span class="paramname"><em></em></span></td>
+                                    <td>)</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>gets a random value </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd>the random number</dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="ad846189d752b6c687f55c7c1ccc124e9" name="ad846189d752b6c687f55c7c1ccc124e9"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#ad846189d752b6c687f55c7c1ccc124e9">&#9670;&#160;</a></span>operator
+            FloatRange()</h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static implicit Ponito.Core.FloatRange.operator <a class="el"
+                                                                                                           href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>f</em></span></td>
+                                    <td>)</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>takes float then gives <a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                                             title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a>
+                </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="a4f0913277dedffd2a4804a00335b4a56" name="a4f0913277dedffd2a4804a00335b4a56"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a4f0913277dedffd2a4804a00335b4a56">&#9670;&#160;</a></span>operator*() <span
+                class="overload">[1/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator*
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>f</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> * f and <a class="el"
+                                                                                                              href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                              title="maximum">max</a> + f
+                </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="a5f14ff9a5f9098b0ff5870a0de99b928" name="a5f14ff9a5f9098b0ff5870a0de99b928"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a5f14ff9a5f9098b0ff5870a0de99b928">&#9670;&#160;</a></span>operator*() <span
+                class="overload">[2/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator*
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>a</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>a.<a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> * b.<a class="el"
+                                                                                                            href="#a7d00b7d9585412817ea1c810802b11af"
+                                                                                                            title="minimum">min</a> and a.<a
+                        class="el" href="#a144eb30bc293e4c77cf89604d24f8093" title="maximum">max</a> * b.<a class="el"
+                                                                                                            href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                            title="maximum">max</a></p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="a377caace12574a4923522565fc34fa2f" name="a377caace12574a4923522565fc34fa2f"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a377caace12574a4923522565fc34fa2f">&#9670;&#160;</a></span>operator*() <span
+                class="overload">[3/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator*
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>r</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>f</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> * f and <a class="el"
+                                                                                                              href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                              title="maximum">max</a> + f
+                </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="a7ed59c162bcbc2b0b8573ac032d6d952" name="a7ed59c162bcbc2b0b8573ac032d6d952"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a7ed59c162bcbc2b0b8573ac032d6d952">&#9670;&#160;</a></span>operator+() <span
+                class="overload">[1/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator+
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>f</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> + f and <a class="el"
+                                                                                                              href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                              title="maximum">max</a> + f
+                </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="a4b9fddebd6e463b28198e7ad0e15a556" name="a4b9fddebd6e463b28198e7ad0e15a556"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a4b9fddebd6e463b28198e7ad0e15a556">&#9670;&#160;</a></span>operator+() <span
+                class="overload">[2/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator+
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>a</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>a.<a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> + b.<a class="el"
+                                                                                                            href="#a7d00b7d9585412817ea1c810802b11af"
+                                                                                                            title="minimum">min</a> and a.<a
+                        class="el" href="#a144eb30bc293e4c77cf89604d24f8093" title="maximum">max</a> + b.<a class="el"
+                                                                                                            href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                            title="maximum">max</a></p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="afae2f837f79d6088827afcae902fb428" name="afae2f837f79d6088827afcae902fb428"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#afae2f837f79d6088827afcae902fb428">&#9670;&#160;</a></span>operator+() <span
+                class="overload">[3/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator+
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>r</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>f</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> + f and <a class="el"
+                                                                                                              href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                              title="maximum">max</a> + f
+                </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="a126f97a0169ebcfbf30b1270251b5bd0" name="a126f97a0169ebcfbf30b1270251b5bd0"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a126f97a0169ebcfbf30b1270251b5bd0">&#9670;&#160;</a></span>operator-() <span
+                class="overload">[1/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator-
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>f</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> - f and <a class="el"
+                                                                                                              href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                              title="maximum">max</a> + f
+                </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="a9316372fbf0161fc30763231ea9936a0" name="a9316372fbf0161fc30763231ea9936a0"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a9316372fbf0161fc30763231ea9936a0">&#9670;&#160;</a></span>operator-() <span
+                class="overload">[2/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator-
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>a</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>a.<a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> - b.<a class="el"
+                                                                                                            href="#a7d00b7d9585412817ea1c810802b11af"
+                                                                                                            title="minimum">min</a> and a.<a
+                        class="el" href="#a144eb30bc293e4c77cf89604d24f8093" title="maximum">max</a> - b.<a class="el"
+                                                                                                            href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                            title="maximum">max</a></p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="a1ef3e6652a1f3d50a79fefab2b040b6e" name="a1ef3e6652a1f3d50a79fefab2b040b6e"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a1ef3e6652a1f3d50a79fefab2b040b6e">&#9670;&#160;</a></span>operator-() <span
+                class="overload">[3/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator-
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>r</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>f</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> - f and <a class="el"
+                                                                                                              href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                              title="maximum">max</a> + f
+                </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="a636a6c1bb757a02ca109187d8d0fd72a" name="a636a6c1bb757a02ca109187d8d0fd72a"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a636a6c1bb757a02ca109187d8d0fd72a">&#9670;&#160;</a></span>operator/() <span
+                class="overload">[1/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator/
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>f</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> / f and <a class="el"
+                                                                                                              href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                              title="maximum">max</a> + f
+                </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="af6f897942b02c632e3151646eb403b11" name="af6f897942b02c632e3151646eb403b11"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#af6f897942b02c632e3151646eb403b11">&#9670;&#160;</a></span>operator/() <span
+                class="overload">[2/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator/
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>a</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>a.<a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> / b.<a class="el"
+                                                                                                            href="#a7d00b7d9585412817ea1c810802b11af"
+                                                                                                            title="minimum">min</a> and a.<a
+                        class="el" href="#a144eb30bc293e4c77cf89604d24f8093" title="maximum">max</a> / b.<a class="el"
+                                                                                                            href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                            title="maximum">max</a></p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <a id="ad13d95f0866bce5a12f57cec9997a738" name="ad13d95f0866bce5a12f57cec9997a738"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#ad13d95f0866bce5a12f57cec9997a738">&#9670;&#160;</a></span>operator/() <span
+                class="overload">[3/3]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">static <a class="el"
+                                                                  href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                        Ponito.Core.FloatRange.operator/
+                                    </td>
+                                    <td>(</td>
+                                    <td class="paramtype"><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html">FloatRange</a>
+                                    </td>
+                                    <td class="paramname"><span class="paramname"><em>r</em></span>,</td>
+                                </tr>
+                                <tr>
+                                    <td class="paramkey"></td>
+                                    <td></td>
+                                    <td class="paramtype">float</td>
+                                    <td class="paramname"><span class="paramname"><em>f</em></span>&#160;)</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p><a class="el" href="#a7d00b7d9585412817ea1c810802b11af" title="minimum">min</a> / f and <a class="el"
+                                                                                                              href="#a144eb30bc293e4c77cf89604d24f8093"
+                                                                                                              title="maximum">max</a> + f
+                </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="struct_ponito_1_1_core_1_1_float_range.html"
+                           title="uses GetRandom to get random result, or gives FloatMapper as parameter">FloatRange</a></dd>
+                </dl>
+
+            </div>
+        </div>
+        <hr/>
+        此結構(structure) 文件是由下列檔案中產生:
+        <ul>
+            <li>Runtime/Ponito/Core/<b>FloatRange.cs</b></li>
+            <li>Runtime/Ponito/Core/<b>FloatRange.Operators.cs</b></li>
+        </ul>
+    </div><!-- contents -->
+    <!-- start footer part -->
+    <hr class="footer"/>
+    <address class="footer"><small>
+        產生者:&#160;<a href="https://www.doxygen.org/index.html"><img alt="doxygen" class="footer" height="31" src="doxygen.svg"
+                                                                       width="104"/></a> 1.12.0
+    </small></address>
+</div><!-- doc-content -->
+</body>
+</html>

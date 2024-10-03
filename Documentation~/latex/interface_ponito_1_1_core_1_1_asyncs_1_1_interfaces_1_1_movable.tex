@@ -1,0 +1,156 @@
+\doxysection{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable\texorpdfstring{$<$}{<} out T \texorpdfstring{$>$}{>} 介面 樣版 參考文件}
+\hypertarget{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{}\label{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}\index{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}}
+
+
+\doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 中每個被等待者的核心功能基本單位  
+
+
+類別\+Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable\texorpdfstring{$<$}{<} out T \texorpdfstring{$>$}{>}的繼承圖\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.647059cm]{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開方法(Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a0f7e6c883d62588eb11735b4bde10513}{Move\+Next}} ()
+\begin{DoxyCompactList}\small\item\em 把 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}往前推移的函式，通常為 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 使用。 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a550c07dba77fa13f851fb37b3208e79a}{Get\+Result}} ()
+\begin{DoxyCompactList}\small\item\em 取得結果！ C\# 編譯器會自動使用這個屬性 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}} \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a995664e380bd291b8889ed2394f03bc7}{Get\+Awaiter}} ()
+\begin{DoxyCompactList}\small\item\em 取得等待者。 C\# 編譯器會自動使用這個屬性 \end{DoxyCompactList}\item 
+new T \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a228307deda7dc115c04aa44d36c3790d}{Get\+Result}} ()
+\begin{DoxyCompactList}\small\item\em 取得結果！ \end{DoxyCompactList}\item 
+new \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}}$<$ T $>$ \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a79c36c9053e45db77e5c39a2c1508688}{Get\+Awaiter}} ()
+\begin{DoxyCompactList}\small\item\em 取得等待者。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{屬性(properties)}
+\begin{DoxyCompactItemize}
+\item 
+Exception \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a93b36b10984faeda8175fc4a662d871e}{Ex}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 任何在這個 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable} 中存在的 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a93b36b10984faeda8175fc4a662d871e}{Ex} 當涉及到 Po\+Task 時，可能會有內部例外...... \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a5da92b2c6fa45eb21ae7129db6bd603a}{Is\+Completed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 這個 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable} 是否已經完成移動？ C\# 編譯器會自動使用這個屬性 Po\+Task 會有已完成的內部 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳細描述}
+\doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 中每個被等待者的核心功能基本單位 
+
+
+
+\doxysubsection{函式成員說明文件}
+\Hypertarget{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a995664e380bd291b8889ed2394f03bc7}\index{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}!GetAwaiter@{GetAwaiter}}
+\index{GetAwaiter@{GetAwaiter}!Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}}
+\doxysubsubsection{\texorpdfstring{GetAwaiter()}{GetAwaiter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a995664e380bd291b8889ed2394f03bc7} 
+\mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}} \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable}}$<$ out T $>$.Get\+Awaiter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+取得等待者。 C\# 編譯器會自動使用這個屬性 
+
+\begin{DoxyReturn}{傳回值}
+等待者
+\end{DoxyReturn}
+
+
+實作於 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a554411745512248e7d4d97f344420c01}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}, 及 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_ae5bbdcb310add26cafd7f86ed3c37fb9}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}.
+
+\Hypertarget{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a79c36c9053e45db77e5c39a2c1508688}\index{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}!GetAwaiter@{GetAwaiter}}
+\index{GetAwaiter@{GetAwaiter}!Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}}
+\doxysubsubsection{\texorpdfstring{GetAwaiter()}{GetAwaiter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a79c36c9053e45db77e5c39a2c1508688} 
+new \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}}$<$ T $>$ \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable}}$<$ out T $>$.Get\+Awaiter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+取得等待者。 
+
+\begin{DoxyReturn}{傳回值}
+等待者
+\end{DoxyReturn}
+
+
+實作於 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a554411745512248e7d4d97f344420c01}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}, 及 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_ae5bbdcb310add26cafd7f86ed3c37fb9}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}.
+
+\Hypertarget{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a550c07dba77fa13f851fb37b3208e79a}\index{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}!GetResult@{GetResult}}
+\index{GetResult@{GetResult}!Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}}
+\doxysubsubsection{\texorpdfstring{GetResult()}{GetResult()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a550c07dba77fa13f851fb37b3208e79a} 
+void \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable}}$<$ out T $>$.Get\+Result (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+取得結果！ C\# 編譯器會自動使用這個屬性 
+
+
+
+實作於 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a77ac1a67445c9ce6e39b6d2b60fa26f0}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}, \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_afb98b53e9f4adcb092d210c49f26b0fe}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}, 及 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter_addfcca17d0e2ae5efd91687a68177dc2}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Po\+Task$<$ T $>$.\+Awaiter}}.
+
+\Hypertarget{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a228307deda7dc115c04aa44d36c3790d}\index{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}!GetResult@{GetResult}}
+\index{GetResult@{GetResult}!Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}}
+\doxysubsubsection{\texorpdfstring{GetResult()}{GetResult()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a228307deda7dc115c04aa44d36c3790d} 
+new T \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable}}$<$ out T $>$.Get\+Result (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+取得結果！ 
+
+
+
+實作於 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a77ac1a67445c9ce6e39b6d2b60fa26f0}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}, \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_afb98b53e9f4adcb092d210c49f26b0fe}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}, 及 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter_addfcca17d0e2ae5efd91687a68177dc2}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Po\+Task$<$ T $>$.\+Awaiter}}.
+
+\Hypertarget{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a0f7e6c883d62588eb11735b4bde10513}\index{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}!MoveNext@{MoveNext}}
+\index{MoveNext@{MoveNext}!Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}}
+\doxysubsubsection{\texorpdfstring{MoveNext()}{MoveNext()}}
+{\footnotesize\ttfamily \label{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a0f7e6c883d62588eb11735b4bde10513} 
+bool \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable}}$<$ out T $>$.Move\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+把 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}往前推移的函式，通常為 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 使用。 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}完成了沒？ 
+\end{DoxyReturn}
+
+
+實作於 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await_a811ef316bff3322e064c93ee5fc31f7b}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Cancel\+Await}}, \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a4fd61a43eec0dd4f3309fed5ec2d5b79}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}, \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter_a84c4619bb32cd14e872b9fb8eda92ef5}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Po\+Task$<$ T $>$.\+Awaiter}}, 及 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter_a84c4619bb32cd14e872b9fb8eda92ef5}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Po\+Task$<$ T $>$.\+Awaiter}}.
+
+
+
+\doxysubsection{屬性(property)說明文件}
+\Hypertarget{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a93b36b10984faeda8175fc4a662d871e}\index{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}!Ex@{Ex}}
+\index{Ex@{Ex}!Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}}
+\doxysubsubsection{\texorpdfstring{Ex}{Ex}}
+{\footnotesize\ttfamily \label{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a93b36b10984faeda8175fc4a662d871e} 
+Exception \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable}}$<$ out T $>$.Ex\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+任何在這個 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable} 中存在的 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a93b36b10984faeda8175fc4a662d871e}{Ex} 當涉及到 Po\+Task 時，可能會有內部例外...... 
+
+
+
+實作於 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_ad4df07bb9e21183f804e60434a248067}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}, 及 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter_a936005033c01cff03d8d2047e0b44e63}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Po\+Task$<$ T $>$.\+Awaiter}}.
+
+\Hypertarget{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a5da92b2c6fa45eb21ae7129db6bd603a}\index{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}!IsCompleted@{IsCompleted}}
+\index{IsCompleted@{IsCompleted}!Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$@{Ponito.Core.Asyncs.Interfaces.Movable$<$ out T $>$}}
+\doxysubsubsection{\texorpdfstring{IsCompleted}{IsCompleted}}
+{\footnotesize\ttfamily \label{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a5da92b2c6fa45eb21ae7129db6bd603a} 
+bool \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable}}$<$ out T $>$.Is\+Completed\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+這個 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable} 是否已經完成移動？ C\# 編譯器會自動使用這個屬性 Po\+Task 會有已完成的內部 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}。 
+
+
+
+實作於 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a86ed4aec0166fdaebfddafea1ddc9178}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}.
+
+
+
+此介面(interface) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/\+Asyncs/\+Interfaces/Movable.\+cs\end{DoxyCompactItemize}

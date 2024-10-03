@@ -1,0 +1,58 @@
+\doxysection{Ponito.\+Core.\+Mono\+Singleton\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} 類別 樣版 參考文件}
+\hypertarget{class_ponito_1_1_core_1_1_mono_singleton}{}\label{class_ponito_1_1_core_1_1_mono_singleton}\index{Ponito.Core.MonoSingleton$<$ T $>$@{Ponito.Core.MonoSingleton$<$ T $>$}}
+
+
+Basic class for singleton of Mono\+Behaviour  
+
+
+類別\+Ponito.\+Core.\+Mono\+Singleton\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}的繼承圖\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ponito_1_1_core_1_1_mono_singleton}
+\end{center}
+\end{figure}
+\doxysubsubsection*{保護方法(Protected Methods)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_mono_singleton_a93558a10d1e205b064f24943e61b2e25}\label{class_ponito_1_1_core_1_1_mono_singleton_a93558a10d1e205b064f24943e61b2e25} 
+void {\bfseries On\+Destroy} ()
+\begin{DoxyCompactList}\small\item\em Destroys instance also, to prevent memory leak of reference on this. \end{DoxyCompactList}\item 
+\Hypertarget{class_ponito_1_1_core_1_1_mono_singleton_ac4532efc4ebbd49843b15dfd005c343a}\label{class_ponito_1_1_core_1_1_mono_singleton_ac4532efc4ebbd49843b15dfd005c343a} 
+void {\bfseries Initialize} ()
+\begin{DoxyCompactList}\small\item\em To initialize in Create\+Instance \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{屬性(properties)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_mono_singleton_a3497531c3fd517534f2aa3253cba9fd0}\label{class_ponito_1_1_core_1_1_mono_singleton_a3497531c3fd517534f2aa3253cba9fd0} 
+bool {\bfseries Is\+Initialized}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Checks whether it needs \doxylink{class_ponito_1_1_core_1_1_mono_singleton_ac4532efc4ebbd49843b15dfd005c343a}{Initialize} or not. \end{DoxyCompactList}\item 
+\Hypertarget{class_ponito_1_1_core_1_1_mono_singleton_a62e11542e9c5542be6df63b3c50e4644}\label{class_ponito_1_1_core_1_1_mono_singleton_a62e11542e9c5542be6df63b3c50e4644} 
+bool {\bfseries Is\+Dont\+Destroy\+On\+Load}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Checks whether it needs Mono\+Behaviour.\+Dont\+Destroy\+On\+Load or not. \end{DoxyCompactList}\item 
+\Hypertarget{class_ponito_1_1_core_1_1_mono_singleton_a2a2c4027773cf6700f585c078e859c76}\label{class_ponito_1_1_core_1_1_mono_singleton_a2a2c4027773cf6700f585c078e859c76} 
+static Lazy$<$ T $>$ {\bfseries instance} = new(Create\+Instance)\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Lazy$<$\+T$>$ calls Create\+Instance before accessing value \end{DoxyCompactList}\item 
+\Hypertarget{class_ponito_1_1_core_1_1_mono_singleton_a682653691e816ef4ff59c4d7f62fba7f}\label{class_ponito_1_1_core_1_1_mono_singleton_a682653691e816ef4ff59c4d7f62fba7f} 
+static T {\bfseries Singleton}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The instance of this singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳細描述}
+Basic class for singleton of Mono\+Behaviour 
+
+
+\begin{DoxyTemplParams}{樣版參數}
+{\em T} & self\\
+\hline
+\end{DoxyTemplParams}
+
+
+Some\+Manager \+: \doxylink{class_ponito_1_1_core_1_1_mono_singleton}{Mono\+Singleton}\texorpdfstring{$<$}{<}Some\+Manager\texorpdfstring{$>$}{>}\begin{Desc}
+\item[型別限制條件]\begin{description}
+\item[{\em T} : {\em \mbox{\hyperlink{class_ponito_1_1_core_1_1_mono_singleton}{Mono\+Singleton}}$<$T$>$}]\end{description}
+\end{Desc}
+
+
+此類別(class) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/Mono\+Singleton.\+cs\end{DoxyCompactItemize}

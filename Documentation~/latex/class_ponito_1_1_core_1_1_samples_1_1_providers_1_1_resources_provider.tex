@@ -1,0 +1,122 @@
+\doxysection{Ponito.\+Core.\+Samples.\+Providers.\+Resources\+Provider 類別 參考文件}
+\hypertarget{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider}{}\label{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider}\index{Ponito.Core.Samples.Providers.ResourcesProvider@{Ponito.Core.Samples.Providers.ResourcesProvider}}
+類別\+Ponito.\+Core.\+Samples.\+Providers.\+Resources\+Provider的繼承圖\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.709677cm]{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開方法(Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}}$<$ T $>$ \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_aedae07101decfd85ca3ec963e5c1ce22}{Provide\+Async$<$ T $>$}} (object sub\+Key)
+\begin{DoxyCompactList}\small\item\em Provides T asynchronisely through certain method.
+
+
+\begin{DoxyParams}{參數}
+{\em sub\+Key} & the key\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{樣版參數}
+{\em T} & Object type\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{傳回值}
+task
+\end{DoxyReturn}
+
+
+make implementation async \end{DoxyCompactList}\item 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}}$<$ string $>$ \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a081d12a8bc647ffb87539fa5b284d7aa}{Make\+Path}} (object sub\+Key)
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a9d4ff03e0319017519bb6be737bc7025}\label{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a9d4ff03e0319017519bb6be737bc7025} 
+void {\bfseries Dispose} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{公開方法(\+Public Methods) 繼承自 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_samples_1_1_providers_1_1_async_provider}{Ponito.\+Core.\+Samples.\+Providers.\+Async\+Provider}}}
+\doxysubsubsection*{保護方法(Protected Methods)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a78819c86f28064deb379beadccce654f}\label{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a78819c86f28064deb379beadccce654f} 
+override void {\bfseries Initialize} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{保護方法(\+Protected Methods) 繼承自 \mbox{\hyperlink{class_ponito_1_1_core_1_1_mono_singleton}{Ponito.\+Core.\+Mono\+Singleton$<$ Resources\+Provider $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries On\+Destroy} ()
+\begin{DoxyCompactList}\small\item\em Destroys instance also, to prevent memory leak of reference on this. \end{DoxyCompactList}\item 
+void {\bfseries Initialize} ()
+\begin{DoxyCompactList}\small\item\em To initialize in Create\+Instance \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{屬性(properties)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a04b4ee0de25f4171f02373f8a435cba3}\label{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a04b4ee0de25f4171f02373f8a435cba3} 
+override bool {\bfseries Is\+Initialized}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a05701f97af60c894cc2052318d00f2a2}\label{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a05701f97af60c894cc2052318d00f2a2} 
+override bool {\bfseries Is\+Dont\+Destroy\+On\+Load}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{屬性(properties) 繼承自 \mbox{\hyperlink{class_ponito_1_1_core_1_1_mono_singleton}{Ponito.\+Core.\+Mono\+Singleton$<$ Resources\+Provider $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries Is\+Initialized}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Checks whether it needs \doxylink{class_ponito_1_1_core_1_1_mono_singleton_ac4532efc4ebbd49843b15dfd005c343a}{Initialize} or not. \end{DoxyCompactList}\item 
+bool {\bfseries Is\+Dont\+Destroy\+On\+Load}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Checks whether it needs Mono\+Behaviour.\+Dont\+Destroy\+On\+Load or not. \end{DoxyCompactList}\item 
+static Lazy$<$ T $>$ {\bfseries instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Lazy$<$\+T$>$ calls Create\+Instance before accessing value \end{DoxyCompactList}\item 
+static T {\bfseries Singleton}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The instance of this singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{函式成員說明文件}
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a081d12a8bc647ffb87539fa5b284d7aa}\index{Ponito.Core.Samples.Providers.ResourcesProvider@{Ponito.Core.Samples.Providers.ResourcesProvider}!MakePath@{MakePath}}
+\index{MakePath@{MakePath}!Ponito.Core.Samples.Providers.ResourcesProvider@{Ponito.Core.Samples.Providers.ResourcesProvider}}
+\doxysubsubsection{\texorpdfstring{MakePath()}{MakePath()}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_a081d12a8bc647ffb87539fa5b284d7aa} 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}}$<$ string $>$ Ponito.\+Core.\+Samples.\+Providers.\+Resources\+Provider.\+Make\+Path (\begin{DoxyParamCaption}\item[{object}]{sub\+Key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+
+
+
+
+實作 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_samples_1_1_providers_1_1_async_provider}{Ponito.\+Core.\+Samples.\+Providers.\+Async\+Provider}}.
+
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_aedae07101decfd85ca3ec963e5c1ce22}\index{Ponito.Core.Samples.Providers.ResourcesProvider@{Ponito.Core.Samples.Providers.ResourcesProvider}!ProvideAsync$<$ T $>$@{ProvideAsync$<$ T $>$}}
+\index{ProvideAsync$<$ T $>$@{ProvideAsync$<$ T $>$}!Ponito.Core.Samples.Providers.ResourcesProvider@{Ponito.Core.Samples.Providers.ResourcesProvider}}
+\doxysubsubsection{\texorpdfstring{ProvideAsync$<$ T $>$()}{ProvideAsync< T >()}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_samples_1_1_providers_1_1_resources_provider_aedae07101decfd85ca3ec963e5c1ce22} 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}}$<$ T $>$ Ponito.\+Core.\+Samples.\+Providers.\+Resources\+Provider.\+Provide\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{object}]{sub\+Key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Provides T asynchronisely through certain method.
+
+
+\begin{DoxyParams}{參數}
+{\em sub\+Key} & the key\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{樣版參數}
+{\em T} & Object type\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{傳回值}
+task
+\end{DoxyReturn}
+
+
+make implementation async 
+
+
+
+實作 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_samples_1_1_providers_1_1_async_provider_af420fd33b25c6a8e9d7429a82acc95ae}{Ponito.\+Core.\+Samples.\+Providers.\+Async\+Provider}}.
+
+
+
+此類別(class) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/\+Samples/\+Providers/Resources\+Provider.\+cs\end{DoxyCompactItemize}

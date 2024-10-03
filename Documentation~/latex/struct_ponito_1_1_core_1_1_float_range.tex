@@ -1,0 +1,302 @@
+\doxysection{Ponito.\+Core.\+Float\+Range 結構 參考文件}
+\hypertarget{struct_ponito_1_1_core_1_1_float_range}{}\label{struct_ponito_1_1_core_1_1_float_range}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+
+
+uses \doxylink{struct_ponito_1_1_core_1_1_float_range_aeaac22f4680cc1964b87ee80d5034bab}{Get\+Random} to get random result, or gives \doxylink{struct_ponito_1_1_core_1_1_float_mapper}{Float\+Mapper} as parameter  
+
+
+\doxysubsubsection*{公開方法(Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_af880f29414f7e7157bd554153e0d3485}{Float\+Range}} (float \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min}}, float \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max}})
+\begin{DoxyCompactList}\small\item\em constructs a \doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_aeaac22f4680cc1964b87ee80d5034bab}{Get\+Random}} ()
+\begin{DoxyCompactList}\small\item\em gets a random value \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_aed77539f0ab9f614029f849df1dd537a}{Get\+Clamp}} (float input)
+\begin{DoxyCompactList}\small\item\em clamps the input in the \doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{靜態公開方法(Static Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_afae2f837f79d6088827afcae902fb428}{operator+}} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} r, float f)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} + f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a1ef3e6652a1f3d50a79fefab2b040b6e}{operator-\/}} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} r, float f)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} -\/ f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a377caace12574a4923522565fc34fa2f}{operator\texorpdfstring{$\ast$}{*}}} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} r, float f)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} \texorpdfstring{$\ast$}{*} f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_ad13d95f0866bce5a12f57cec9997a738}{operator/}} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} r, float f)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} / f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a7ed59c162bcbc2b0b8573ac032d6d952}{operator+}} (float f, \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} r)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} + f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a126f97a0169ebcfbf30b1270251b5bd0}{operator-\/}} (float f, \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} r)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} -\/ f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a4f0913277dedffd2a4804a00335b4a56}{operator\texorpdfstring{$\ast$}{*}}} (float f, \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} r)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} \texorpdfstring{$\ast$}{*} f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a636a6c1bb757a02ca109187d8d0fd72a}{operator/}} (float f, \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} r)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} / f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a4b9fddebd6e463b28198e7ad0e15a556}{operator+}} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} a, \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} b)
+\begin{DoxyCompactList}\small\item\em a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} + b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} and a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a9316372fbf0161fc30763231ea9936a0}{operator-\/}} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} a, \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} b)
+\begin{DoxyCompactList}\small\item\em a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} -\/ b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} and a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} -\/ b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_a5f14ff9a5f9098b0ff5870a0de99b928}{operator\texorpdfstring{$\ast$}{*}}} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} a, \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} b)
+\begin{DoxyCompactList}\small\item\em a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} \texorpdfstring{$\ast$}{*} b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} and a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} \texorpdfstring{$\ast$}{*} b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_af6f897942b02c632e3151646eb403b11}{operator/}} (\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} a, \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} b)
+\begin{DoxyCompactList}\small\item\em a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} / b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} and a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} / b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} \end{DoxyCompactList}\item 
+static implicit \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range_ad846189d752b6c687f55c7c1ccc124e9}{operator Float\+Range}} (float f)
+\begin{DoxyCompactList}\small\item\em takes float then gives \doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{公開屬性}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}\label{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093} 
+readonly float {\bfseries max}
+\begin{DoxyCompactList}\small\item\em maximum \end{DoxyCompactList}\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}\label{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af} 
+readonly float {\bfseries min}
+\begin{DoxyCompactList}\small\item\em minimum \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{屬性(properties)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a8a33cb7072412a87e019ecbd5bfd4c31}\label{struct_ponito_1_1_core_1_1_float_range_a8a33cb7072412a87e019ecbd5bfd4c31} 
+float {\bfseries Length}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em magnitude of the \doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} \end{DoxyCompactList}\item 
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_ad29dc3525c06d7f162ce03ff62d446e1}\label{struct_ponito_1_1_core_1_1_float_range_ad29dc3525c06d7f162ce03ff62d446e1} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} {\bfseries One}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em a range always get 1 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳細描述}
+uses \doxylink{struct_ponito_1_1_core_1_1_float_range_aeaac22f4680cc1964b87ee80d5034bab}{Get\+Random} to get random result, or gives \doxylink{struct_ponito_1_1_core_1_1_float_mapper}{Float\+Mapper} as parameter 
+
+\begin{DoxySeeAlso}{參閱}
+\doxylink{struct_ponito_1_1_core_1_1_float_range_aeaac22f4680cc1964b87ee80d5034bab}{Get\+Random}, \doxylink{struct_ponito_1_1_core_1_1_float_range_aed77539f0ab9f614029f849df1dd537a}{Get\+Clamp}, \doxylink{struct_ponito_1_1_core_1_1_float_mapper}{Float\+Mapper}
+
+
+\end{DoxySeeAlso}
+
+
+\doxysubsection{建構子與解構子說明文件}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_af880f29414f7e7157bd554153e0d3485}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!FloatRange@{FloatRange}}
+\index{FloatRange@{FloatRange}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{FloatRange()}{FloatRange()}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_af880f29414f7e7157bd554153e0d3485} 
+Ponito.\+Core.\+Float\+Range.\+Float\+Range (\begin{DoxyParamCaption}\item[{float}]{min}{, }\item[{float}]{max}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+constructs a \doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+
+
+\begin{DoxyParams}{參數}
+{\em min} & minimum \doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min}\\
+\hline
+{\em max} & maximum \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max}\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{函式成員說明文件}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_aed77539f0ab9f614029f849df1dd537a}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!GetClamp@{GetClamp}}
+\index{GetClamp@{GetClamp}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{GetClamp()}{GetClamp()}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_aed77539f0ab9f614029f849df1dd537a} 
+float Ponito.\+Core.\+Float\+Range.\+Get\+Clamp (\begin{DoxyParamCaption}\item[{float}]{input}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+clamps the input in the \doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+
+
+\begin{DoxyParams}{參數}
+{\em input} & the source value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{傳回值}
+the clamped result
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_aeaac22f4680cc1964b87ee80d5034bab}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!GetRandom@{GetRandom}}
+\index{GetRandom@{GetRandom}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{GetRandom()}{GetRandom()}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_aeaac22f4680cc1964b87ee80d5034bab} 
+float Ponito.\+Core.\+Float\+Range.\+Get\+Random (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+gets a random value 
+
+\begin{DoxyReturn}{傳回值}
+the random number
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_ad846189d752b6c687f55c7c1ccc124e9}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator FloatRange@{operator FloatRange}}
+\index{operator FloatRange@{operator FloatRange}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator FloatRange()}{operator FloatRange()}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_ad846189d752b6c687f55c7c1ccc124e9} 
+static implicit Ponito.\+Core.\+Float\+Range.\+operator \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} (\begin{DoxyParamCaption}\item[{float}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+takes float then gives \doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a4f0913277dedffd2a4804a00335b4a56}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_a4f0913277dedffd2a4804a00335b4a56} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{float}]{f}{, }\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} \texorpdfstring{$\ast$}{*} f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a5f14ff9a5f9098b0ff5870a0de99b928}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_a5f14ff9a5f9098b0ff5870a0de99b928} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{a}{, }\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} \texorpdfstring{$\ast$}{*} b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} and a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} \texorpdfstring{$\ast$}{*} b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a377caace12574a4923522565fc34fa2f}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_a377caace12574a4923522565fc34fa2f} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{r}{, }\item[{float}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} \texorpdfstring{$\ast$}{*} f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a7ed59c162bcbc2b0b8573ac032d6d952}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator+@{operator+}}
+\index{operator+@{operator+}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_a7ed59c162bcbc2b0b8573ac032d6d952} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator+ (\begin{DoxyParamCaption}\item[{float}]{f}{, }\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} + f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a4b9fddebd6e463b28198e7ad0e15a556}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator+@{operator+}}
+\index{operator+@{operator+}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_a4b9fddebd6e463b28198e7ad0e15a556} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{a}{, }\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} + b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} and a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_afae2f837f79d6088827afcae902fb428}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator+@{operator+}}
+\index{operator+@{operator+}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_afae2f837f79d6088827afcae902fb428} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{r}{, }\item[{float}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} + f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a126f97a0169ebcfbf30b1270251b5bd0}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_a126f97a0169ebcfbf30b1270251b5bd0} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator-\/ (\begin{DoxyParamCaption}\item[{float}]{f}{, }\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} -\/ f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a9316372fbf0161fc30763231ea9936a0}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_a9316372fbf0161fc30763231ea9936a0} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator-\/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{a}{, }\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} -\/ b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} and a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} -\/ b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a1ef3e6652a1f3d50a79fefab2b040b6e}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_a1ef3e6652a1f3d50a79fefab2b040b6e} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator-\/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{r}{, }\item[{float}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} -\/ f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_a636a6c1bb757a02ca109187d8d0fd72a}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator/@{operator/}}
+\index{operator/@{operator/}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_a636a6c1bb757a02ca109187d8d0fd72a} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator/ (\begin{DoxyParamCaption}\item[{float}]{f}{, }\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} / f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_af6f897942b02c632e3151646eb403b11}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator/@{operator/}}
+\index{operator/@{operator/}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_af6f897942b02c632e3151646eb403b11} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{a}{, }\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} / b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} and a.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} / b.\doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+\Hypertarget{struct_ponito_1_1_core_1_1_float_range_ad13d95f0866bce5a12f57cec9997a738}\index{Ponito.Core.FloatRange@{Ponito.Core.FloatRange}!operator/@{operator/}}
+\index{operator/@{operator/}!Ponito.Core.FloatRange@{Ponito.Core.FloatRange}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{struct_ponito_1_1_core_1_1_float_range_ad13d95f0866bce5a12f57cec9997a738} 
+static \mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}} Ponito.\+Core.\+Float\+Range.\+operator/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range}}}]{r}{, }\item[{float}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\doxylink{struct_ponito_1_1_core_1_1_float_range_a7d00b7d9585412817ea1c810802b11af}{min} / f and \doxylink{struct_ponito_1_1_core_1_1_float_range_a144eb30bc293e4c77cf89604d24f8093}{max} + f 
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{struct_ponito_1_1_core_1_1_float_range}{Float\+Range} 
+\end{DoxyReturn}
+
+
+此結構(structure) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/Float\+Range.\+cs\item 
+Runtime/\+Ponito/\+Core/Float\+Range.\+Operators.\+cs\end{DoxyCompactItemize}

@@ -3,7 +3,7 @@ using System.Collections;
 using NUnit.Framework;
 using Ponito.Core.Asyncs.Extensions;
 using Ponito.Core.Extensions;
-using Ponito.Core.Samples;
+using Ponito.Core.Samples.Managers;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -31,18 +31,18 @@ namespace Ponito.Core.Tests
 
             var bClip = GetBClip();
             var aClip = GetAClip();
-            
+
             var sound = PoAudioManager.Singleton;
             _ = sound.Play(aClip);
             yield return (PoAudioManager.DEFAULT_FADE_DURATION / 2f).Delay().WaitAsCoroutine();
-            
+
             _ = sound.Play(bClip);
             yield return new WaitForSeconds(PoAudioManager.DEFAULT_FADE_DURATION);
 
             var source = sound.GetSource();
-            Assert.That(source.clip, Is.EqualTo(bClip));
+            Assert.That(source.clip,   Is.EqualTo(bClip));
             Assert.That(source.volume, Is.GreaterThan(0));
-            
+
             yield return new WaitForSeconds(5f);
         }
     }

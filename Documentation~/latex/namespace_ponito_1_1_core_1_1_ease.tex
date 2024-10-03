@@ -1,0 +1,99 @@
+\doxysection{Ponito.\+Core.\+Ease 命名空間(Namespace)參考文件}
+\hypertarget{namespace_ponito_1_1_core_1_1_ease}{}\label{namespace_ponito_1_1_core_1_1_ease}\index{Ponito.Core.Ease@{Ponito.Core.Ease}}
+\doxysubsubsection*{複合項目}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Do\+Ease}
+\begin{DoxyCompactList}\small\item\em Provides ease functions of Uni\+Task for interpolating values and performing easing animations. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_ponito_1_1_core_1_1_ease_1_1_easable}{Easable}}
+\item 
+class {\bfseries Easer}
+\item 
+class {\bfseries Easing\+Equations}
+\begin{DoxyCompactList}\small\item\em Contains all ease functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{列舉型態}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_ease_a574a775922daabba83854880446d5452}{Ease\+Type}} \{ \newline
+{\bfseries In\+Sine}
+, {\bfseries Out\+Sine}
+, {\bfseries In\+Out\+Sine}
+, {\bfseries In\+Quad}
+, \newline
+{\bfseries Out\+Quad}
+, {\bfseries In\+Out\+Quad}
+, {\bfseries In\+Cubic}
+, {\bfseries Out\+Cubic}
+, \newline
+{\bfseries In\+Out\+Cubic}
+, {\bfseries In\+Quart}
+, {\bfseries Out\+Quart}
+, {\bfseries In\+Out\+Quart}
+, \newline
+{\bfseries In\+Expo}
+, {\bfseries Out\+Expo}
+, {\bfseries In\+Out\+Expo}
+, {\bfseries In\+Circ}
+, \newline
+{\bfseries Out\+Circ}
+, {\bfseries In\+Out\+Circ}
+, {\bfseries In\+Elastic}
+, {\bfseries Out\+Elastic}
+, \newline
+{\bfseries In\+Out\+Elastic}
+, {\bfseries In\+Bounce}
+, {\bfseries Out\+Bounce}
+, {\bfseries In\+Out\+Bounce}
+ \}
+\begin{DoxyCompactList}\small\item\em Ease\+Function 的漸變類型。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{函式}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_ponito_1_1_core_1_1_ease_a8c81b27208dd063c0c368bde483f87d1}\label{namespace_ponito_1_1_core_1_1_ease_a8c81b27208dd063c0c368bde483f87d1} 
+delegate float {\bfseries Ease\+Function} (float t)
+\begin{DoxyCompactList}\small\item\em Gets 0 from 0, gets 1 from 1. \end{DoxyCompactList}\item 
+delegate T \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_ease_ae2582216b024c8122954345199164c55}{Lerper$<$ T $>$}} (T a, T b, float t)
+\begin{DoxyCompactList}\small\item\em Delegate for interpolation value T \end{DoxyCompactList}\item 
+\Hypertarget{namespace_ponito_1_1_core_1_1_ease_a4f497a5896d681d3793c7e4f41e36bdf}\label{namespace_ponito_1_1_core_1_1_ease_a4f497a5896d681d3793c7e4f41e36bdf} 
+delegate void {\bfseries Setter$<$ T $>$} (T value)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{列舉型態說明文件}
+\Hypertarget{namespace_ponito_1_1_core_1_1_ease_a574a775922daabba83854880446d5452}\index{Ponito.Core.Ease@{Ponito.Core.Ease}!EaseType@{EaseType}}
+\index{EaseType@{EaseType}!Ponito.Core.Ease@{Ponito.Core.Ease}}
+\doxysubsubsection{\texorpdfstring{EaseType}{EaseType}}
+{\footnotesize\ttfamily \label{namespace_ponito_1_1_core_1_1_ease_a574a775922daabba83854880446d5452} 
+enum \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_ease_a574a775922daabba83854880446d5452}{Ponito.\+Core.\+Ease.\+Ease\+Type}}}
+
+
+
+\doxylink{namespace_ponito_1_1_core_1_1_ease_a8c81b27208dd063c0c368bde483f87d1}{Ease\+Function} 的漸變類型。 
+
+In 會像是由慢到快； Out 會像是由快到慢。 
+
+\begin{DoxySeeAlso}{參閱}
+Easing\+Equations.\+Get\+Function
+
+
+\end{DoxySeeAlso}
+
+
+In\+Sine Out\+Sine In\+Out\+Sine In\+Quad Out\+Quad In\+Out\+Quad In\+Cubic Out\+Cubic In\+Out\+Cubic In\+Quart Out\+Quart In\+Out\+Quart In\+Expo Out\+Expo In\+Out\+Expo In\+Circ Out\+Circ In\+Out\+Circ In\+Elastic Out\+Elastic In\+Out\+Elastic In\+Bounce Out\+Bounce In\+Out\+Bounce 
+
+\doxysubsection{函式說明文件}
+\Hypertarget{namespace_ponito_1_1_core_1_1_ease_ae2582216b024c8122954345199164c55}\index{Ponito.Core.Ease@{Ponito.Core.Ease}!Lerper$<$ T $>$@{Lerper$<$ T $>$}}
+\index{Lerper$<$ T $>$@{Lerper$<$ T $>$}!Ponito.Core.Ease@{Ponito.Core.Ease}}
+\doxysubsubsection{\texorpdfstring{Lerper$<$ T $>$()}{Lerper< T >()}}
+{\footnotesize\ttfamily \label{namespace_ponito_1_1_core_1_1_ease_ae2582216b024c8122954345199164c55} 
+delegate T Ponito.\+Core.\+Ease.\+Lerper$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{a}{, }\item[{T}]{b}{, }\item[{float}]{t}{}\end{DoxyParamCaption})}
+
+
+
+Delegate for interpolation value T 
+
+
+\begin{DoxyTemplParams}{樣版參數}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}

@@ -1,0 +1,90 @@
+\doxysection{Ponito.\+Core.\+Asyncs.\+Movable\+Runner 類別 參考文件}
+\hypertarget{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{}\label{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}\index{Ponito.Core.Asyncs.MovableRunner@{Ponito.Core.Asyncs.MovableRunner}}
+
+
+運作 Movable.\+Move\+Next() 的核心  
+
+
+類別\+Ponito.\+Core.\+Asyncs.\+Movable\+Runner的繼承圖\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}
+\end{center}
+\end{figure}
+\doxysubsubsection*{複合項目}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_1_1_runner_item}{Runner\+Item}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{公開方法(Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_a35aa6df929218330b144d9ad6ac0927a}{Await\+Source}} (\mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} task, INotify\+Completion source, object name)
+\begin{DoxyCompactList}\small\item\em 先把 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_1_1_runner_item}{Runner\+Item} 加入 waitings 後等待 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{保護方法(Protected Methods)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_ac75e0d3b767d2b525fcf0a7fdc2de442}\label{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_ac75e0d3b767d2b525fcf0a7fdc2de442} 
+override void {\bfseries Initialize} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{保護方法(\+Protected Methods) 繼承自 \mbox{\hyperlink{class_ponito_1_1_core_1_1_mono_singleton}{Ponito.\+Core.\+Mono\+Singleton$<$ Movable\+Runner $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries On\+Destroy} ()
+\begin{DoxyCompactList}\small\item\em Destroys instance also, to prevent memory leak of reference on this. \end{DoxyCompactList}\item 
+void {\bfseries Initialize} ()
+\begin{DoxyCompactList}\small\item\em To initialize in Create\+Instance \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{屬性(properties)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_a992d8e5b9bfd4aa7af9ad7d60f5857c2}\label{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_a992d8e5b9bfd4aa7af9ad7d60f5857c2} 
+override bool {\bfseries Is\+Initialized}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_a7c14468ed45b4975db6db79cb77e0178}\label{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_a7c14468ed45b4975db6db79cb77e0178} 
+override bool {\bfseries Is\+Dont\+Destroy\+On\+Load}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_a47bbc07cb8e0ecd10142ebcf2d8efd02}\label{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_a47bbc07cb8e0ecd10142ebcf2d8efd02} 
+Span$<$ \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_1_1_runner_item}{Runner\+Item}} $>$ {\bfseries Items}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 取得所有 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_1_1_runner_item}{Runner\+Item} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{屬性(properties) 繼承自 \mbox{\hyperlink{class_ponito_1_1_core_1_1_mono_singleton}{Ponito.\+Core.\+Mono\+Singleton$<$ Movable\+Runner $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries Is\+Initialized}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Checks whether it needs \doxylink{class_ponito_1_1_core_1_1_mono_singleton_ac4532efc4ebbd49843b15dfd005c343a}{Initialize} or not. \end{DoxyCompactList}\item 
+bool {\bfseries Is\+Dont\+Destroy\+On\+Load}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Checks whether it needs Mono\+Behaviour.\+Dont\+Destroy\+On\+Load or not. \end{DoxyCompactList}\item 
+static Lazy$<$ T $>$ {\bfseries instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Lazy$<$\+T$>$ calls Create\+Instance before accessing value \end{DoxyCompactList}\item 
+static T {\bfseries Singleton}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The instance of this singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳細描述}
+運作 Movable.\+Move\+Next() 的核心 
+
+\doxysubsection{函式成員說明文件}
+\Hypertarget{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_a35aa6df929218330b144d9ad6ac0927a}\index{Ponito.Core.Asyncs.MovableRunner@{Ponito.Core.Asyncs.MovableRunner}!AwaitSource@{AwaitSource}}
+\index{AwaitSource@{AwaitSource}!Ponito.Core.Asyncs.MovableRunner@{Ponito.Core.Asyncs.MovableRunner}}
+\doxysubsubsection{\texorpdfstring{AwaitSource()}{AwaitSource()}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_a35aa6df929218330b144d9ad6ac0927a} 
+void Ponito.\+Core.\+Asyncs.\+Movable\+Runner.\+Await\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}}}]{task}{, }\item[{INotify\+Completion}]{source}{, }\item[{object}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+先把 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner_1_1_runner_item}{Runner\+Item} 加入 waitings 後等待 
+
+
+\begin{DoxyParams}{參數}
+{\em task} & 要加入的任務\\
+\hline
+{\em source} & 要加入的等待來源\\
+\hline
+{\em name} & Po\+Task的名字\\
+\hline
+\end{DoxyParams}
+
+
+此類別(class) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/\+Asyncs/Movable\+Runner.\+cs\item 
+Runtime/\+Ponito/\+Core/\+Asyncs/Movable\+Runner.\+Runner\+Item.\+cs\end{DoxyCompactItemize}

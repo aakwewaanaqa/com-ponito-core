@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Ponito.Core.Asyncs.Interfaces;
 using Ponito.Core.Asyncs.Tasks;
-using Ponito.Core.Asyncs.Tasks.Movables;
 using UnityEngine;
 
 namespace Ponito.Core.Asyncs.Extensions
@@ -68,10 +66,15 @@ namespace Ponito.Core.Asyncs.Extensions
             while (movable.MoveNext()) yield return eof;
             if (result != null) result.value = movable.GetResult();
         }
-        
+
         public static async PoTask Delay(this float seconds, CancellationToken ct = default)
         {
             await Controls.Delay(seconds, ct);
+        }
+
+        public static async PoTask Run(this PoTask task)
+        {
+            await task;
         }
     }
 }

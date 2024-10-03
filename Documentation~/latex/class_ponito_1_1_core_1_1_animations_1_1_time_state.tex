@@ -1,0 +1,90 @@
+\doxysection{Ponito.\+Core.\+Animations.\+Time\+State 類別 參考文件}
+\hypertarget{class_ponito_1_1_core_1_1_animations_1_1_time_state}{}\label{class_ponito_1_1_core_1_1_animations_1_1_time_state}\index{Ponito.Core.Animations.TimeState@{Ponito.Core.Animations.TimeState}}
+
+
+A well constructed class to store and play a round-\/animation-\/state-\/situation. Including cancel previous play, and storing previous time of the state.  
+
+
+\doxysubsubsection*{公開方法(Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} \mbox{\hyperlink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a6925c2ce76a807c0ac845b95fea02801}{Play}} (float duration, Action$<$ float $>$ on\+Animate, Cancellation\+Token ct=default)
+\begin{DoxyCompactList}\small\item\em Plays \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent} from 0f to 1f. \end{DoxyCompactList}\item 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} \mbox{\hyperlink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a732650410f7749b63280b2c401f8602d}{Play}} (float to, float duration, Action$<$ float $>$ on\+Animate, Cancellation\+Token ct=default)
+\begin{DoxyCompactList}\small\item\em Plays \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent} from Time to to \end{DoxyCompactList}\item 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} \mbox{\hyperlink{class_ponito_1_1_core_1_1_animations_1_1_time_state_aae4dbdf113b24855261e62b20b9e12f3}{Play}} (float from, float to, float duration, Action$<$ float $>$ on\+Animate, Cancellation\+Token ct=default)
+\begin{DoxyCompactList}\small\item\em Plays \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent} from from to to \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{公開屬性}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}\label{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb} 
+float {\bfseries percent}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent} of current state \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳細描述}
+A well constructed class to store and play a round-\/animation-\/state-\/situation. Including cancel previous play, and storing previous time of the state. 
+
+\doxysubsection{函式成員說明文件}
+\Hypertarget{class_ponito_1_1_core_1_1_animations_1_1_time_state_a6925c2ce76a807c0ac845b95fea02801}\index{Ponito.Core.Animations.TimeState@{Ponito.Core.Animations.TimeState}!Play@{Play}}
+\index{Play@{Play}!Ponito.Core.Animations.TimeState@{Ponito.Core.Animations.TimeState}}
+\doxysubsubsection{\texorpdfstring{Play()}{Play()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_animations_1_1_time_state_a6925c2ce76a807c0ac845b95fea02801} 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} Ponito.\+Core.\+Animations.\+Time\+State.\+Play (\begin{DoxyParamCaption}\item[{float}]{duration}{, }\item[{Action$<$ float $>$}]{on\+Animate}{, }\item[{Cancellation\+Token}]{ct}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Plays \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent} from 0f to 1f. 
+
+
+\begin{DoxyParams}{參數}
+{\em duration} & duration of this play\\
+\hline
+{\em on\+Animate} & the action to invoke passing \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent}\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ponito_1_1_core_1_1_animations_1_1_time_state_aae4dbdf113b24855261e62b20b9e12f3}\index{Ponito.Core.Animations.TimeState@{Ponito.Core.Animations.TimeState}!Play@{Play}}
+\index{Play@{Play}!Ponito.Core.Animations.TimeState@{Ponito.Core.Animations.TimeState}}
+\doxysubsubsection{\texorpdfstring{Play()}{Play()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_animations_1_1_time_state_aae4dbdf113b24855261e62b20b9e12f3} 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} Ponito.\+Core.\+Animations.\+Time\+State.\+Play (\begin{DoxyParamCaption}\item[{float}]{from}{, }\item[{float}]{to}{, }\item[{float}]{duration}{, }\item[{Action$<$ float $>$}]{on\+Animate}{, }\item[{Cancellation\+Token}]{ct}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Plays \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent} from from to to 
+
+
+\begin{DoxyParams}{參數}
+{\em from} & the starts of the \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent}\\
+\hline
+{\em to} & the target \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent}\\
+\hline
+{\em duration} & duration of this play\\
+\hline
+{\em on\+Animate} & the action to invoke passing \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent}\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ponito_1_1_core_1_1_animations_1_1_time_state_a732650410f7749b63280b2c401f8602d}\index{Ponito.Core.Animations.TimeState@{Ponito.Core.Animations.TimeState}!Play@{Play}}
+\index{Play@{Play}!Ponito.Core.Animations.TimeState@{Ponito.Core.Animations.TimeState}}
+\doxysubsubsection{\texorpdfstring{Play()}{Play()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_animations_1_1_time_state_a732650410f7749b63280b2c401f8602d} 
+async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} Ponito.\+Core.\+Animations.\+Time\+State.\+Play (\begin{DoxyParamCaption}\item[{float}]{to}{, }\item[{float}]{duration}{, }\item[{Action$<$ float $>$}]{on\+Animate}{, }\item[{Cancellation\+Token}]{ct}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Plays \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent} from Time to to 
+
+
+\begin{DoxyParams}{參數}
+{\em to} & the target \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent}\\
+\hline
+{\em duration} & duration of this play\\
+\hline
+{\em on\+Animate} & the action to invoke passing \doxylink{class_ponito_1_1_core_1_1_animations_1_1_time_state_a54582f481e81b6f24c1d544c4c75f3fb}{percent}\\
+\hline
+\end{DoxyParams}
+
+
+此類別(class) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/\+Animations/Time\+State.\+cs\end{DoxyCompactItemize}

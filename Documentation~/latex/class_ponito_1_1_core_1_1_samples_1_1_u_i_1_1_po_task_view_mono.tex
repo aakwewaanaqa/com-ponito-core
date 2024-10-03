@@ -1,0 +1,135 @@
+\doxysection{Ponito.\+Core.\+Samples.\+UI.\+Po\+Task\+View\+Mono 類別 參考文件}
+\hypertarget{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono}{}\label{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono}\index{Ponito.Core.Samples.UI.PoTaskViewMono@{Ponito.Core.Samples.UI.PoTaskViewMono}}
+
+
+本身就是 \doxylink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Po\+Task\+View} 基於要序列化，就繼承了 Mono\+Behaviour  
+
+
+類別\+Ponito.\+Core.\+Samples.\+UI.\+Po\+Task\+View\+Mono的繼承圖\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開方法(Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+virtual async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_a4790e21b08668572e755a5a93d23f523}{Show}} (object state, Cancellation\+Token ct=default)
+\begin{DoxyCompactList}\small\item\em 異步地顯示 \doxylink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Po\+Task\+View}
+
+
+\begin{DoxyParams}{參數}
+{\em state} & 任意自訂參數\\
+\hline
+{\em ct} & 萬一過程需要取消的鏢旗\\
+\hline
+\end{DoxyParams}
+ \end{DoxyCompactList}\item 
+virtual async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_a4de8dd533974396098ecbd9d96f89e0d}{Hide}} (object state, Cancellation\+Token ct=default)
+\begin{DoxyCompactList}\small\item\em 異步地隱藏 \doxylink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Po\+Task\+View}
+
+
+\begin{DoxyParams}{參數}
+{\em state} & 任意自訂參數\\
+\hline
+{\em ct} & 萬一過程需要取消的鏢旗\\
+\hline
+\end{DoxyParams}
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{公開方法(\+Public Methods) 繼承自 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Ponito.\+Core.\+Samples.\+UI.\+Po\+Task\+View}}}
+\doxysubsubsection*{保護方法(Protected Methods)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_aedd597f7c71d4f778b85648f8c9a2190}\label{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_aedd597f7c71d4f778b85648f8c9a2190} 
+\mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} {\bfseries Inner\+Show} (object args, Cancellation\+Token ct=default)
+\begin{DoxyCompactList}\small\item\em 複寫這個方法來實現顯示的邏輯，比複寫 \doxylink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_a4790e21b08668572e755a5a93d23f523}{Show} 更加不易漏掉重要的邏輯檢查 ~\newline
+ \end{DoxyCompactList}\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_ac64c29f2cca52fe08a35b7efe6cef437}\label{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_ac64c29f2cca52fe08a35b7efe6cef437} 
+\mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} {\bfseries Inner\+Hide} (object args, Cancellation\+Token ct=default)
+\begin{DoxyCompactList}\small\item\em 複寫這個方法來實現隱藏的邏輯，比複寫 \doxylink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_a4de8dd533974396098ecbd9d96f89e0d}{Hide} 更加不易漏掉重要的邏輯檢查 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{保護屬性}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_ad814794fa46609e8076623218842952e}\label{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_ad814794fa46609e8076623218842952e} 
+Cancellation\+Token\+Source {\bfseries inner\+Cts}
+\begin{DoxyCompactList}\small\item\em 用來取消自身矛盾的動畫狀態，但又能基於外部的取消令牌進行取消 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{屬性(properties)}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8}{View\+State}} \mbox{\hyperlink{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_ac30988fa358f01fca60e3a2d407244de}{State}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, protected set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 取得 \doxylink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Po\+Task\+View} 的狀態 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{屬性(properties) 繼承自 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Ponito.\+Core.\+Samples.\+UI.\+Po\+Task\+View}}}
+
+
+\doxysubsection{詳細描述}
+本身就是 \doxylink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Po\+Task\+View} 基於要序列化，就繼承了 Mono\+Behaviour 
+
+\doxysubsection{函式成員說明文件}
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_a4de8dd533974396098ecbd9d96f89e0d}\index{Ponito.Core.Samples.UI.PoTaskViewMono@{Ponito.Core.Samples.UI.PoTaskViewMono}!Hide@{Hide}}
+\index{Hide@{Hide}!Ponito.Core.Samples.UI.PoTaskViewMono@{Ponito.Core.Samples.UI.PoTaskViewMono}}
+\doxysubsubsection{\texorpdfstring{Hide()}{Hide()}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_a4de8dd533974396098ecbd9d96f89e0d} 
+virtual async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} Ponito.\+Core.\+Samples.\+UI.\+Po\+Task\+View\+Mono.\+Hide (\begin{DoxyParamCaption}\item[{object}]{state}{, }\item[{Cancellation\+Token}]{ct}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+異步地隱藏 \doxylink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Po\+Task\+View}
+
+
+\begin{DoxyParams}{參數}
+{\em state} & 任意自訂參數\\
+\hline
+{\em ct} & 萬一過程需要取消的鏢旗\\
+\hline
+\end{DoxyParams}
+ 
+
+
+
+實作 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_a8210e1ec49b873cd8d2a0f907c77fba0}{Ponito.\+Core.\+Samples.\+UI.\+Po\+Task\+View}}.
+
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_a4790e21b08668572e755a5a93d23f523}\index{Ponito.Core.Samples.UI.PoTaskViewMono@{Ponito.Core.Samples.UI.PoTaskViewMono}!Show@{Show}}
+\index{Show@{Show}!Ponito.Core.Samples.UI.PoTaskViewMono@{Ponito.Core.Samples.UI.PoTaskViewMono}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_a4790e21b08668572e755a5a93d23f523} 
+virtual async \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task}{Po\+Task}} Ponito.\+Core.\+Samples.\+UI.\+Po\+Task\+View\+Mono.\+Show (\begin{DoxyParamCaption}\item[{object}]{state}{, }\item[{Cancellation\+Token}]{ct}{ = {\ttfamily default}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+異步地顯示 \doxylink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Po\+Task\+View}
+
+
+\begin{DoxyParams}{參數}
+{\em state} & 任意自訂參數\\
+\hline
+{\em ct} & 萬一過程需要取消的鏢旗\\
+\hline
+\end{DoxyParams}
+ 
+
+
+
+實作 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_a302bec0b5a0c2ffc596f4658079d208e}{Ponito.\+Core.\+Samples.\+UI.\+Po\+Task\+View}}.
+
+
+
+\doxysubsection{屬性(property)說明文件}
+\Hypertarget{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_ac30988fa358f01fca60e3a2d407244de}\index{Ponito.Core.Samples.UI.PoTaskViewMono@{Ponito.Core.Samples.UI.PoTaskViewMono}!State@{State}}
+\index{State@{State}!Ponito.Core.Samples.UI.PoTaskViewMono@{Ponito.Core.Samples.UI.PoTaskViewMono}}
+\doxysubsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_mono_ac30988fa358f01fca60e3a2d407244de} 
+virtual \mbox{\hyperlink{namespace_ponito_1_1_core_1_1_samples_1_1_u_i_ae6ec3c406221508a1ad4f409f23822f8}{View\+State}} Ponito.\+Core.\+Samples.\+UI.\+Po\+Task\+View\+Mono.\+State\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [protected set]}}
+
+
+
+取得 \doxylink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view}{Po\+Task\+View} 的狀態 
+
+
+
+實作 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_samples_1_1_u_i_1_1_po_task_view_a9376de9d22850ed7f227b07958e472a2}{Ponito.\+Core.\+Samples.\+UI.\+Po\+Task\+View}}.
+
+
+
+此類別(class) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/\+Samples/\+UI/Po\+Task\+View\+Mono.\+cs\end{DoxyCompactItemize}

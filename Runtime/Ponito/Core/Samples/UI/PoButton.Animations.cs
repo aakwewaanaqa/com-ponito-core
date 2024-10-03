@@ -3,6 +3,7 @@ using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.Ease;
 using Ponito.Core.Ease.SpecialEases;
 using Ponito.Core.Extensions;
+using Ponito.Core.Samples.Managers;
 using UnityEngine;
 using static Ponito.Core.Ease.EaseType;
 

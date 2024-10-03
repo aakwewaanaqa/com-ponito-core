@@ -1,0 +1,520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-Hant" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/xhtml;charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="IE=11" http-equiv="X-UA-Compatible"/>
+    <meta content="Doxygen 1.12.0" name="generator"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>com-ponito-core: Ponito.Core.Asyncs.Interfaces.Movable&lt; out T &gt; 介面 樣版 參考文件</title>
+    <link href="tabs.css" rel="stylesheet" type="text/css"/>
+    <script src="jquery.js" type="text/javascript"></script>
+    <script src="dynsections.js" type="text/javascript"></script>
+    <script src="clipboard.js" type="text/javascript"></script>
+    <link href="navtree.css" rel="stylesheet" type="text/css"/>
+    <script src="resize.js" type="text/javascript"></script>
+    <script src="cookie.js" type="text/javascript"></script>
+    <link href="search/search.css" rel="stylesheet" type="text/css"/>
+    <script src="search/searchdata.js" type="text/javascript"></script>
+    <script src="search/search.js" type="text/javascript"></script>
+    <link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+    <div id="titlearea">
+        <table cellpadding="0" cellspacing="0">
+            <tbody>
+            <tr id="projectrow">
+                <td id="projectalign">
+                    <div id="projectname">com-ponito-core<span id="projectnumber">&#160;1.1.8</span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- end header part -->
+    <!-- 產生者: Doxygen 1.12.0 -->
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        var searchBox = new SearchBox("searchBox", "search/", '.html');
+        /* @license-end */
+    </script>
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        $(function () {
+            codefold.init(0);
+        });
+        /* @license-end */
+    </script>
+    <script src="menudata.js" type="text/javascript"></script>
+    <script src="menu.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        $(function () {
+            initMenu('', true, false, 'search.php', '搜尋', false);
+            $(function () {
+                init_search();
+            });
+        });
+        /* @license-end */
+    </script>
+    <div id="main-nav"></div>
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        $(function () {
+            initResizable(false);
+        });
+        /* @license-end */
+    </script>
+    <!-- window showing the filter options -->
+    <div id="MSearchSelectWindow"
+         onkeydown="return searchBox.OnSearchSelectKey(event)"
+         onmouseout="return searchBox.OnSearchSelectHide()"
+         onmouseover="return searchBox.OnSearchSelectShow()">
+    </div>
+
+    <!-- iframe showing the search results (closed by default) -->
+    <div id="MSearchResultsWindow">
+        <div id="MSearchResults">
+            <div class="SRPage">
+                <div id="SRIndex">
+                    <div id="SRResults"></div>
+                    <div class="SRStatus" id="Loading">載入中...</div>
+                    <div class="SRStatus" id="Searching">搜尋中...</div>
+                    <div class="SRStatus" id="NoMatches">無符合項目</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navpath" id="nav-path">
+        <ul>
+            <li class="navelem"><a class="el" href="namespace_ponito.html">Ponito</a></li>
+            <li class="navelem"><a class="el" href="namespace_ponito_1_1_core.html">Core</a></li>
+            <li class="navelem"><a class="el" href="namespace_ponito_1_1_core_1_1_asyncs.html">Asyncs</a></li>
+            <li class="navelem"><a class="el" href="namespace_ponito_1_1_core_1_1_asyncs_1_1_interfaces.html">Interfaces</a></li>
+            <li class="navelem"><a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Movable</a></li>
+        </ul>
+    </div>
+</div><!-- top -->
+<div id="doc-content">
+    <div class="header">
+        <div class="summary">
+            <a href="#pub-methods">公開方法(Public Methods)</a> &#124;
+            <a href="#properties">屬性(properties)</a> &#124;
+            <a href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable-members.html">全部成員列表</a></div>
+        <div class="headertitle">
+            <div class="title">Ponito.Core.Asyncs.Interfaces.Movable&lt; out T &gt; 介面 樣版 參考文件</div>
+        </div>
+    </div><!--header-->
+    <div class="contents">
+
+        <p><a class="el" href="class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner.html" title="運作 Movable.MoveNext() 的核心">MovableRunner</a>
+            中每個被等待者的核心功能基本單位
+            <a href="#details">更多...</a></p>
+        <div class="dynheader">
+            類別Ponito.Core.Asyncs.Interfaces.Movable&lt; out T &gt;的繼承圖:
+        </div>
+        <div class="dyncontent">
+            <div class="center">
+                <img alt=""
+                     src="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.png" usemap="#Ponito.Core.Asyncs.Interfaces.Movable_3C_20out_20T_20_3E_map"/>
+                <map id="Ponito.Core.Asyncs.Interfaces.Movable_3C_20out_20T_20_3E_map"
+                     name="Ponito.Core.Asyncs.Interfaces.Movable_3C_20out_20T_20_3E_map">
+                    <area alt="Ponito.Core.Asyncs.Interfaces.ProgressMovable"
+                          coords="171,112,503,136"
+                          href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_progress_movable.html" shape="rect" title="MovableRunner 中每個被等待者的核心功能基本單位，並且可以回報進度"/>
+                    <area alt="Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt; T &gt;"
+                          coords="513,112,845,136" href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html"
+                          shape="rect" title="Movable 異步來源基礎 MovableRunner"/>
+                    <area alt="Ponito.Core.Asyncs.Tasks.Movables.CancelAwait"
+                          coords="171,168,503,192" href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await.html" shape="rect"/>
+                    <area alt="Ponito.Core.Asyncs.Tasks.PoTask&lt; T &gt;.Awaiter"
+                          coords="513,168,845,192" href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter.html" shape="rect"
+                          title="可以用來表示PoTask當前狀態的等待者。"/>
+                    <area alt="Ponito.Core.Asyncs.Tasks.PoTask&lt; T &gt;.Awaiter"
+                          coords="855,168,1187,192" href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter.html" shape="rect"
+                          title="可以用來表示PoTask當前狀態的等待者。"/>
+                </map>
+            </div>
+        </div>
+        <table class="memberdecls">
+            <tr class="heading">
+                <td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+                    公開方法(Public Methods)</h2></td>
+            </tr>
+            <tr class="memitem:a0f7e6c883d62588eb11735b4bde10513" id="r_a0f7e6c883d62588eb11735b4bde10513">
+                <td align="right" class="memItemLeft" valign="top">bool&#160;</td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a0f7e6c883d62588eb11735b4bde10513">MoveNext</a> ()</td>
+            </tr>
+            <tr class="memdesc:a0f7e6c883d62588eb11735b4bde10513">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">把 <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html"
+                                             title="MovableRunner 中每個被等待者的核心功能基本單位">Movable</a>往前推移的函式，通常為 <a
+                        class="el" href="class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner.html" title="運作 Movable.MoveNext() 的核心">MovableRunner</a>
+                    使用。 <br/></td>
+            </tr>
+            <tr class="separator:a0f7e6c883d62588eb11735b4bde10513">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a550c07dba77fa13f851fb37b3208e79a" id="r_a550c07dba77fa13f851fb37b3208e79a">
+                <td align="right" class="memItemLeft" valign="top">void&#160;</td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a550c07dba77fa13f851fb37b3208e79a">GetResult</a> ()</td>
+            </tr>
+            <tr class="memdesc:a550c07dba77fa13f851fb37b3208e79a">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">取得結果！ C# 編譯器會自動使用這個屬性 <br/></td>
+            </tr>
+            <tr class="separator:a550c07dba77fa13f851fb37b3208e79a">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a995664e380bd291b8889ed2394f03bc7" id="r_a995664e380bd291b8889ed2394f03bc7">
+                <td align="right" class="memItemLeft" valign="top"><a class="el"
+                                                                      href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Movable</a>&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a995664e380bd291b8889ed2394f03bc7">GetAwaiter</a> ()</td>
+            </tr>
+            <tr class="memdesc:a995664e380bd291b8889ed2394f03bc7">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">取得等待者。 C# 編譯器會自動使用這個屬性 <br/></td>
+            </tr>
+            <tr class="separator:a995664e380bd291b8889ed2394f03bc7">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a228307deda7dc115c04aa44d36c3790d" id="r_a228307deda7dc115c04aa44d36c3790d">
+                <td align="right" class="memItemLeft" valign="top">new T&#160;</td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a228307deda7dc115c04aa44d36c3790d">GetResult</a> ()</td>
+            </tr>
+            <tr class="memdesc:a228307deda7dc115c04aa44d36c3790d">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">取得結果！ <br/></td>
+            </tr>
+            <tr class="separator:a228307deda7dc115c04aa44d36c3790d">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a79c36c9053e45db77e5c39a2c1508688" id="r_a79c36c9053e45db77e5c39a2c1508688">
+                <td align="right" class="memItemLeft" valign="top">new <a class="el"
+                                                                          href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Movable</a>&lt;
+                    T &gt;&#160;
+                </td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a79c36c9053e45db77e5c39a2c1508688">GetAwaiter</a> ()</td>
+            </tr>
+            <tr class="memdesc:a79c36c9053e45db77e5c39a2c1508688">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">取得等待者。 <br/></td>
+            </tr>
+            <tr class="separator:a79c36c9053e45db77e5c39a2c1508688">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+        </table>
+        <table class="memberdecls">
+            <tr class="heading">
+                <td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+                    屬性(properties)</h2></td>
+            </tr>
+            <tr class="memitem:a93b36b10984faeda8175fc4a662d871e" id="r_a93b36b10984faeda8175fc4a662d871e">
+                <td align="right" class="memItemLeft" valign="top">Exception&#160;</td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a93b36b10984faeda8175fc4a662d871e">Ex</a><code> [get,
+                    set]</code></td>
+            </tr>
+            <tr class="memdesc:a93b36b10984faeda8175fc4a662d871e">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">任何在這個 <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html"
+                                                     title="MovableRunner 中每個被等待者的核心功能基本單位">Movable</a> 中存在的 <a
+                        class="el" href="#a93b36b10984faeda8175fc4a662d871e"
+                        title="任何在這個 Movable 中存在的 Ex 當涉及到 PoTask 時，可能會有內部例外......">Ex</a> 當涉及到 PoTask
+                    時，可能會有內部例外...... <br/></td>
+            </tr>
+            <tr class="separator:a93b36b10984faeda8175fc4a662d871e">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+            <tr class="memitem:a5da92b2c6fa45eb21ae7129db6bd603a" id="r_a5da92b2c6fa45eb21ae7129db6bd603a">
+                <td align="right" class="memItemLeft" valign="top">bool&#160;</td>
+                <td class="memItemRight" valign="bottom"><a class="el" href="#a5da92b2c6fa45eb21ae7129db6bd603a">IsCompleted</a><code>
+                    [get]</code></td>
+            </tr>
+            <tr class="memdesc:a5da92b2c6fa45eb21ae7129db6bd603a">
+                <td class="mdescLeft">&#160;</td>
+                <td class="mdescRight">這個 <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html"
+                                               title="MovableRunner 中每個被等待者的核心功能基本單位">Movable</a> 是否已經完成移動？ C#
+                    編譯器會自動使用這個屬性 PoTask 會有已完成的內部 <a class="el"
+                                                                        href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html"
+                                                                        title="MovableRunner 中每個被等待者的核心功能基本單位">Movable</a>。
+                    <br/></td>
+            </tr>
+            <tr class="separator:a5da92b2c6fa45eb21ae7129db6bd603a">
+                <td class="memSeparator" colspan="2">&#160;</td>
+            </tr>
+        </table>
+        <a id="details" name="details"></a>
+        <h2 class="groupheader">詳細描述</h2>
+        <div class="textblock"><p><a class="el" href="class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner.html"
+                                     title="運作 Movable.MoveNext() 的核心">MovableRunner</a> 中每個被等待者的核心功能基本單位 </p>
+        </div>
+        <h2 class="groupheader">函式成員說明文件</h2>
+        <a id="a995664e380bd291b8889ed2394f03bc7" name="a995664e380bd291b8889ed2394f03bc7"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a995664e380bd291b8889ed2394f03bc7">&#9670;&#160;</a></span>GetAwaiter() <span
+                class="overload">[1/2]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="memname">
+                    <tr>
+                        <td class="memname"><a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Movable</a>
+                            <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Ponito.Core.Asyncs.Interfaces.Movable</a>&lt;
+                            out T &gt;.GetAwaiter
+                        </td>
+                        <td>(</td>
+                        <td class="paramname"><span class="paramname"><em></em></span></td>
+                        <td>)</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>取得等待者。 C# 編譯器會自動使用這個屬性 </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd>等待者</dd>
+                </dl>
+
+                <p>實作於 <a class="el"
+                             href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#a554411745512248e7d4d97f344420c01">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                    T &gt;</a>, 及 <a class="el"
+                                      href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#ae5bbdcb310add26cafd7f86ed3c37fb9">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                    T &gt;</a>.</p>
+
+            </div>
+        </div>
+        <a id="a79c36c9053e45db77e5c39a2c1508688" name="a79c36c9053e45db77e5c39a2c1508688"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a79c36c9053e45db77e5c39a2c1508688">&#9670;&#160;</a></span>GetAwaiter() <span
+                class="overload">[2/2]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="memname">
+                    <tr>
+                        <td class="memname">new <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Movable</a>&lt;
+                            T &gt; <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Ponito.Core.Asyncs.Interfaces.Movable</a>&lt;
+                            out T &gt;.GetAwaiter
+                        </td>
+                        <td>(</td>
+                        <td class="paramname"><span class="paramname"><em></em></span></td>
+                        <td>)</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>取得等待者。 </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd>等待者</dd>
+                </dl>
+
+                <p>實作於 <a class="el"
+                             href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#a554411745512248e7d4d97f344420c01">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                    T &gt;</a>, 及 <a class="el"
+                                      href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#ae5bbdcb310add26cafd7f86ed3c37fb9">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                    T &gt;</a>.</p>
+
+            </div>
+        </div>
+        <a id="a550c07dba77fa13f851fb37b3208e79a" name="a550c07dba77fa13f851fb37b3208e79a"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a550c07dba77fa13f851fb37b3208e79a">&#9670;&#160;</a></span>GetResult() <span
+                class="overload">[1/2]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="memname">
+                    <tr>
+                        <td class="memname">void <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Ponito.Core.Asyncs.Interfaces.Movable</a>&lt;
+                            out T &gt;.GetResult
+                        </td>
+                        <td>(</td>
+                        <td class="paramname"><span class="paramname"><em></em></span></td>
+                        <td>)</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>取得結果！ C# 編譯器會自動使用這個屬性 </p>
+
+                <p>實作於 <a class="el"
+                             href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#a77ac1a67445c9ce6e39b6d2b60fa26f0">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                    T &gt;</a>, <a class="el"
+                                   href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#afb98b53e9f4adcb092d210c49f26b0fe">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                    T &gt;</a>, 及 <a class="el"
+                                      href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter.html#addfcca17d0e2ae5efd91687a68177dc2">Ponito.Core.Asyncs.Tasks.PoTask&lt;
+                    T &gt;.Awaiter</a>.</p>
+
+            </div>
+        </div>
+        <a id="a228307deda7dc115c04aa44d36c3790d" name="a228307deda7dc115c04aa44d36c3790d"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a228307deda7dc115c04aa44d36c3790d">&#9670;&#160;</a></span>GetResult() <span
+                class="overload">[2/2]</span></h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="memname">
+                    <tr>
+                        <td class="memname">new T <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Ponito.Core.Asyncs.Interfaces.Movable</a>&lt;
+                            out T &gt;.GetResult
+                        </td>
+                        <td>(</td>
+                        <td class="paramname"><span class="paramname"><em></em></span></td>
+                        <td>)</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>取得結果！ </p>
+
+                <p>實作於 <a class="el"
+                             href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#a77ac1a67445c9ce6e39b6d2b60fa26f0">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                    T &gt;</a>, <a class="el"
+                                   href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#afb98b53e9f4adcb092d210c49f26b0fe">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                    T &gt;</a>, 及 <a class="el"
+                                      href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter.html#addfcca17d0e2ae5efd91687a68177dc2">Ponito.Core.Asyncs.Tasks.PoTask&lt;
+                    T &gt;.Awaiter</a>.</p>
+
+            </div>
+        </div>
+        <a id="a0f7e6c883d62588eb11735b4bde10513" name="a0f7e6c883d62588eb11735b4bde10513"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a0f7e6c883d62588eb11735b4bde10513">&#9670;&#160;</a></span>MoveNext()</h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="memname">
+                    <tr>
+                        <td class="memname">bool <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Ponito.Core.Asyncs.Interfaces.Movable</a>&lt;
+                            out T &gt;.MoveNext
+                        </td>
+                        <td>(</td>
+                        <td class="paramname"><span class="paramname"><em></em></span></td>
+                        <td>)</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>把 <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html"
+                         title="MovableRunner 中每個被等待者的核心功能基本單位">Movable</a>往前推移的函式，通常為 <a class="el"
+                                                                                                                    href="class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner.html"
+                                                                                                                    title="運作 Movable.MoveNext() 的核心">MovableRunner</a>
+                    使用。 </p>
+                <dl class="section return">
+                    <dt>傳回值</dt>
+                    <dd><a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html"
+                           title="MovableRunner 中每個被等待者的核心功能基本單位">Movable</a>完成了沒？
+                    </dd>
+                </dl>
+
+                <p>實作於 <a class="el"
+                             href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await.html#a811ef316bff3322e064c93ee5fc31f7b">Ponito.Core.Asyncs.Tasks.Movables.CancelAwait</a>,
+                    <a class="el"
+                       href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#a4fd61a43eec0dd4f3309fed5ec2d5b79">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                        T &gt;</a>, <a class="el"
+                                       href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter.html#a84c4619bb32cd14e872b9fb8eda92ef5">Ponito.Core.Asyncs.Tasks.PoTask&lt;
+                        T &gt;.Awaiter</a>, 及 <a class="el"
+                                                  href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter.html#a84c4619bb32cd14e872b9fb8eda92ef5">Ponito.Core.Asyncs.Tasks.PoTask&lt;
+                        T &gt;.Awaiter</a>.</p>
+
+            </div>
+        </div>
+        <h2 class="groupheader">屬性(property)說明文件</h2>
+        <a id="a93b36b10984faeda8175fc4a662d871e" name="a93b36b10984faeda8175fc4a662d871e"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a93b36b10984faeda8175fc4a662d871e">&#9670;&#160;</a></span>Ex</h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">Exception <a class="el"
+                                                                     href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Ponito.Core.Asyncs.Interfaces.Movable</a>&lt;
+                                        out T &gt;.Ex
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>任何在這個 <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html"
+                                 title="MovableRunner 中每個被等待者的核心功能基本單位">Movable</a> 中存在的 <a class="el"
+                                                                                                                href="#a93b36b10984faeda8175fc4a662d871e"
+                                                                                                                title="任何在這個 Movable 中存在的 Ex 當涉及到 PoTask 時，可能會有內部例外......">Ex</a>
+                    當涉及到 PoTask 時，可能會有內部例外...... </p>
+
+                <p>實作於 <a class="el"
+                             href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#ad4df07bb9e21183f804e60434a248067">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                    T &gt;</a>, 及 <a class="el"
+                                      href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_po_task_1_1_awaiter.html#a936005033c01cff03d8d2047e0b44e63">Ponito.Core.Asyncs.Tasks.PoTask&lt;
+                    T &gt;.Awaiter</a>.</p>
+
+            </div>
+        </div>
+        <a id="a5da92b2c6fa45eb21ae7129db6bd603a" name="a5da92b2c6fa45eb21ae7129db6bd603a"></a>
+        <h2 class="memtitle"><span class="permalink"><a href="#a5da92b2c6fa45eb21ae7129db6bd603a">&#9670;&#160;</a></span>IsCompleted</h2>
+
+        <div class="memitem">
+            <div class="memproto">
+                <table class="mlabels">
+                    <tr>
+                        <td class="mlabels-left">
+                            <table class="memname">
+                                <tr>
+                                    <td class="memname">bool <a class="el"
+                                                                href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html">Ponito.Core.Asyncs.Interfaces.Movable</a>&lt;
+                                        out T &gt;.IsCompleted
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="mlabels-right">
+                            <span class="mlabels"><span class="mlabel">get</span></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="memdoc">
+
+                <p>這個 <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html"
+                           title="MovableRunner 中每個被等待者的核心功能基本單位">Movable</a> 是否已經完成移動？ C# 編譯器會自動使用這個屬性
+                    PoTask 會有已完成的內部 <a class="el" href="interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable.html"
+                                               title="MovableRunner 中每個被等待者的核心功能基本單位">Movable</a>。 </p>
+
+                <p>實作於 <a class="el"
+                             href="class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base.html#a86ed4aec0166fdaebfddafea1ddc9178">Ponito.Core.Asyncs.Tasks.Movables.MovableBase&lt;
+                    T &gt;</a>.</p>
+
+            </div>
+        </div>
+        <hr/>
+        此介面(interface) 文件是由下列檔案中產生:
+        <ul>
+            <li>Runtime/Ponito/Core/Asyncs/Interfaces/<b>Movable.cs</b></li>
+        </ul>
+    </div><!-- contents -->
+    <!-- start footer part -->
+    <hr class="footer"/>
+    <address class="footer"><small>
+        產生者:&#160;<a href="https://www.doxygen.org/index.html"><img alt="doxygen" class="footer" height="31" src="doxygen.svg"
+                                                                       width="104"/></a> 1.12.0
+    </small></address>
+</div><!-- doc-content -->
+</body>
+</html>

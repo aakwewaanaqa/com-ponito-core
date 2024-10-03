@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-Hant" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/xhtml;charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="IE=11" http-equiv="X-UA-Compatible"/>
+    <meta content="Doxygen 1.12.0" name="generator"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>com-ponito-core: CHANGELOG</title>
+    <link href="tabs.css" rel="stylesheet" type="text/css"/>
+    <script src="jquery.js" type="text/javascript"></script>
+    <script src="dynsections.js" type="text/javascript"></script>
+    <script src="clipboard.js" type="text/javascript"></script>
+    <link href="navtree.css" rel="stylesheet" type="text/css"/>
+    <script src="resize.js" type="text/javascript"></script>
+    <script src="cookie.js" type="text/javascript"></script>
+    <link href="search/search.css" rel="stylesheet" type="text/css"/>
+    <script src="search/searchdata.js" type="text/javascript"></script>
+    <script src="search/search.js" type="text/javascript"></script>
+    <link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+    <div id="titlearea">
+        <table cellpadding="0" cellspacing="0">
+            <tbody>
+            <tr id="projectrow">
+                <td id="projectalign">
+                    <div id="projectname">com-ponito-core<span id="projectnumber">&#160;1.1.8</span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- end header part -->
+    <!-- 產生者: Doxygen 1.12.0 -->
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        var searchBox = new SearchBox("searchBox", "search/", '.html');
+        /* @license-end */
+    </script>
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        $(function () {
+            codefold.init(0);
+        });
+        /* @license-end */
+    </script>
+    <script src="menudata.js" type="text/javascript"></script>
+    <script src="menu.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        $(function () {
+            initMenu('', true, false, 'search.php', '搜尋', false);
+            $(function () {
+                init_search();
+            });
+        });
+        /* @license-end */
+    </script>
+    <div id="main-nav"></div>
+    <script type="text/javascript">
+        /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+        $(function () {
+            initResizable(false);
+        });
+        /* @license-end */
+    </script>
+    <!-- window showing the filter options -->
+    <div id="MSearchSelectWindow"
+         onkeydown="return searchBox.OnSearchSelectKey(event)"
+         onmouseout="return searchBox.OnSearchSelectHide()"
+         onmouseover="return searchBox.OnSearchSelectShow()">
+    </div>
+
+    <!-- iframe showing the search results (closed by default) -->
+    <div id="MSearchResultsWindow">
+        <div id="MSearchResults">
+            <div class="SRPage">
+                <div id="SRIndex">
+                    <div id="SRResults"></div>
+                    <div class="SRStatus" id="Loading">載入中...</div>
+                    <div class="SRStatus" id="Searching">搜尋中...</div>
+                    <div class="SRStatus" id="NoMatches">無符合項目</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- top -->
+<div id="doc-content">
+    <div>
+        <div class="header">
+            <div class="headertitle">
+                <div class="title">CHANGELOG</div>
+            </div>
+        </div><!--header-->
+        <div class="contents">
+            <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
+                <h1><a class="anchor" id="autotoc_md1"></a>
+                    1.1.7 -&gt; 1.1.8 (2024/09/10)</h1>
+                <h2><a class="anchor" id="autotoc_md2"></a>
+                    Added</h2>
+                <div class="fragment">
+                    <div class="line"><span class="comment">//                    盡量不要再複寫 Show 或 Hide 了，容易漏掉重要的檢查</span>
+                    </div>
+                    <div class="line"><span class="keyword">class </span>PoTaskView.cs ~ PoTask InnerShow(object args, CancellationToken ct
+                        = <span class="keywordflow">default</span>)
+                    </div>
+                    <div class="line"> PoTask InnerHide(<span class="keywordtype">object</span> args, CancellationToken ct = <span
+                            class="keywordflow">default</span>)
+                    </div>
+                    <div class="line"><span class="comment">//     特別的動畫，參照自 DOTween</span></div>
+                    <div class="line"><span class="keyword">struct </span>Punch.cs</div>
+                </div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+                    1.1.6 -&gt; 1.1.7 (2024/08/03)</h1>
+                <h2><a class="anchor" id="autotoc_md4"></a>
+                    Changed</h2>
+                <div class="fragment">
+                    <div class="line">PoTask.Yield() ~ Controls.Yield()</div>
+                    <div class="line">PoTask.Delay() ~ Controls.Delay()</div>
+                    <div class="line">PoTask.WaitUntil() ~ Controls.WaitUntil()</div>
+                    <div class="line">PoTask.WaitWhile() ~ Controls.WaitWhile()</div>
+                </div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+                    1.1.5 -&gt; 1.1.6 (2024/07/29)</h1>
+                <h2><a class="anchor" id="autotoc_md6"></a>
+                    Added</h2>
+                <div class="fragment">
+                    <div class="line"><span class="comment">//    提供預先取消的 Movable</span></div>
+                    <div class="line"><span class="keyword">class </span>CancelAwait.cs</div>
+                </div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+                    Changed</h2>
+                <div class="fragment">
+                    <div class="line">README.md ~ <span class="comment">// 更新說明文件</span></div>
+                    <div class="line"><span class="keyword">class </span>AsyncsTests.cs ~ <span class="comment">// 整理不會過的測試</span>
+                    </div>
+                    <div class="line">class AsyncsTestsMono.cs ~ <span class="comment">// 新增取消的測試</span></div>
+                    <div class="line">class PoTask.Factory.cs ~ Yield(CancellationToken ct = <span class="keywordflow">default</span>)</div>
+                    <div class="line"> Delay(<span class="keywordtype">int</span> milliseconds, CancellationToken ct = <span
+                            class="keywordflow">default</span>)
+                    </div>
+                    <div class="line"> Delay(<span class="keywordtype">float</span> seconds, CancellationToken ct = <span
+                            class="keywordflow">default</span>)
+                    </div>
+                    <div class="line"> WaitWhile(Func&lt;bool&gt; predicate, CancellationToken ct = <span class="keywordflow">default</span>)
+                    </div>
+                    <div class="line"> WaitUntil(Func&lt;bool&gt; predicate, CancellationToken ct = <span class="keywordflow">default</span>)
+                    </div>
+                    <div class="line"> Create(IEnumerator ie, CancellationToken ct = <span class="keywordflow">default</span>)</div>
+                    <div class="line"><span class="keyword">struct </span>PathNameInfo.cs ~ <span class="comment">// 修正命名空間</span>
+                    </div>
+                </div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+                    1.1.4 -&gt; 1.1.5 (2024/07/28)</h1>
+                <h2><a class="anchor" id="autotoc_md9"></a>
+                    Added</h2>
+                <div class="fragment">
+                    <div class="line"><span class="comment">//    給與 WaitAsCoroutine 擁有回傳值的方式</span></div>
+                    <div class="line"><span class="keyword">class </span>CoroutineResult.cs</div>
+                    <div class="line"><span class="comment">//    把測試加入 Monobehaviour 比單純在 Editor 中測試更有說服力</span></div>
+                    <div class="line">class AsyncsTestsMono.cs</div>
+                </div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
+                    Changed</h2>
+                <div class="fragment">
+                    <div class="line"><span class="comment">//    把測試加入 Monobehaviour 比單純在 Editor 中測試更有說服力</span></div>
+                    <div class="line"><span class="keyword">class </span>AsyncsTests.cs</div>
+                </div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+                    Removed</h2>
+                <div class="fragment">
+                    <div class="line"><span class="comment">//        非常明確不再使用的類別</span></div>
+                    <div class="line"><span class="keyword">class     </span>Promise.cs</div>
+                    <div class="line">class Promise&lt;T&gt;.cs</div>
+                    <div class="line">class PromiseException.cs</div>
+                    <div class="line">interface PromiseState.cs</div>
+                    <div class="line">class UnityWebResponse.cs</div>
+                    <div class="line">class CoroutineRunner.cs</div>
+                    <div class="line"></div>
+                    <div class="line">class ReflectAwait.cs</div>
+                    <div class="line">class TaskAwait.cs</div>
+                    <div class="line">class ValueTaskAwait.cs</div>
+                    <div class="line">class ValueTaskAwait&lt;T&gt;.cs</div>
+                </div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
+                    1.1.3 -&gt; 1.1.4 (2024/07/27)</h1>
+                <h2><a class="anchor" id="autotoc_md13"></a>
+                    Added</h2>
+                <div class="fragment">
+                    <div class="line"><span class="keyword">class </span>MovableRunnerEditor.cs</div>
+                    <div class="line">interface ProgressMovalbe.cs</div>
+                </div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
+                    1.1.2 -&gt; 1.1.3 (2024/07/23)</h1>
+                <h2><a class="anchor" id="autotoc_md15"></a>
+                    Added</h2>
+                <div class="fragment">
+                    <div class="line"></div>
+                    <div class="line"><span class="keyword">class </span>Exts.cs ~ async Delay(this float seconds, CancellationToken ct)
+                    </div>
+                    <div class="line">{</div>
+                    <div class="line"> var cts = <span class="keyword">new</span> CancellationTokenSource(); <span class="comment">// 建立一個取消標旗</span>
+                    </div>
+                    <div class="line"> await 1.5f.Delay(cts.Token); <span class="comment">// 1.5 秒後執行，或是取消後立即執行</span></div>
+                    <div class="line">}</div>
+                </div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
+                    Changed</h2>
+                <div class="fragment">
+                    <div class="line"></div>
+                    <div class="line"><span class="keyword">class </span>TimeState.cs ~ async Play(float duration, Action&lt;float&gt;
+                        onAnimate, CancellationToken ct)
+                    </div>
+                    <div class="line"> async Play(float to, float duration, Action&lt;float&gt; onAnimate, CancellationToken ct)</div>
+                    <div class="line"> async Play(float from, float to, float duration, Action&lt;float&gt; onAnimate, CancellationToken
+                        ct)
+                    </div>
+                    <div class="line">class PoAudioManager.cs ~ async Play(AudioClip clip, AudioPlayType type, bool isOneShot,
+                        CancellationToken ct)
+                    </div>
+                    <div class="line"> async Stop(AudioPlayType type, float duration, CancellationToken ct)</div>
+                </div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
+                    1.1.1 -&gt; 1.1.2 (2024/07/20)</h1>
+                <h2><a class="anchor" id="autotoc_md18"></a>
+                    Added</h2>
+                <div class="fragment">
+                    <div class="line"><span class="keyword">struct </span>YieldAwait.cs + CancellationTokenSource</div>
+                    <div class="line">struct DelayAwait.cs + CancellationTokenSource</div>
+                    <div class="line">struct PredicateAwait.cs + CancellationTokenSource</div>
+                    <div class="line">class Exts.cs + Chain (this PoTask t)</div>
+                    <div class="line"> + Chain&lt;T&gt;(this PoTask t)</div>
+                </div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
+                    Changed</h2>
+                <div class="fragment">
+                    <div class="line"></div>
+                    <div class="line"><span class="keyword">class </span>Exts.cs ~ async AsPoTask (this ValueTask vt) =&gt; PoTask</div>
+                    <div class="line"> ~ async AsPoTask&lt;T&gt;(<span class="keyword">this</span> ValueTask&lt;T&gt; vt) =&gt; PoTask&lt;T&gt;
+                    </div>
+                    <div class="line"> ~ async AsPoTask (<span class="keyword">this</span> Task t) =&gt; PoTask</div>
+                    <div class="line"> ~ async AsPoTask&lt;T&gt;(<span class="keyword">this</span> Task&lt;T&gt; t) =&gt; PoTask&lt;T&gt;
+                    </div>
+                </div><!-- fragment --><h1><a class="anchor" id="autotoc_md20"></a>
+                    1.1.0 -&gt; 1.1.1 (2024/07/19)</h1>
+                <h2><a class="anchor" id="autotoc_md21"></a>
+                    Added</h2>
+                <div class="fragment">
+                    <div class="line"></div>
+                    <div class="line"><span class="keyword">class </span>PoTaskViewMono.cs</div>
+                </div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
+                    Changed</h2>
+                <div class="fragment">
+                    <div class="line"><span class="keyword">interface </span>rename AsyncView =&gt; PoTaskView</div>
+                </div><!-- fragment --> </div>
+        </div><!-- contents -->
+    </div><!-- PageDoc -->
+    <!-- start footer part -->
+    <hr class="footer"/>
+    <address class="footer"><small>
+        產生者:&#160;<a href="https://www.doxygen.org/index.html"><img alt="doxygen" class="footer" height="31" src="doxygen.svg"
+                                                                       width="104"/></a> 1.12.0
+    </small></address>
+</div><!-- doc-content -->
+</body>
+</html>

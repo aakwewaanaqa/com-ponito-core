@@ -1,0 +1,35 @@
+\chapter{讀我}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{讀我@{讀我}}
+\label{md__r_e_a_d_m_e_autotoc_md23}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md23}%
+\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysection{\texorpdfstring{第三方功能參考}{第三方功能參考}}\label{md__r_e_a_d_m_e_autotoc_md24}
+請注意，這是一個收集資源的包，用於創建可能派上用場的庫。 ~\newline
+ 由作者編寫的，但作者參考與蒐集原本的程式碼與資源。 ~\newline
+ 如果您有任何更高級的功能，請訪問來源項目。 ~\newline
+
+
+
+\begin{DoxyEnumerate}
+\item 漸變函式 \+: \href{https://gizma.com/easing/}{\texttt{ https\+://gizma.\+com/easing/}}
+\item 解析設計模式 \+: \href{https://youtu.be/klHyc9HQnNQ}{\texttt{ https\+://youtu.\+be/kl\+Hyc9\+HQn\+NQ}}
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md25}{}\doxysection{\texorpdfstring{銘謝清單}{銘謝清單}}\label{md__r_e_a_d_m_e_autotoc_md25}
+感謝您在網上開源提供的所有知識或腳本。
+
+
+\begin{DoxyEnumerate}
+\item Uni 異步任務 \+: Yoshifumi Kawai, CEO/\+CTO of Cysharp, Inc.
+\item 漸變函式 \+: Nic Mulvaney
+\item 解析設計模式 in C\# \+: Nicholas Blumhardt \+: NDC \{ Oslo \}
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysection{\texorpdfstring{問題與雷坑}{問題與雷坑}}\label{md__r_e_a_d_m_e_autotoc_md26}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md27}{}\doxysubsection{\texorpdfstring{1. 取消 Po\+Task.\+Yield()}{1. 取消 Po\+Task.\+Yield()}}\label{md__r_e_a_d_m_e_autotoc_md27}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ before\ =\ Time.frameCount;}
+\DoxyCodeLine{var\ cts\ \ \ \ =\ \textcolor{keyword}{new}\ CancellationTokenSource();}
+\DoxyCodeLine{cts.Cancel();}
+\DoxyCodeLine{\textcolor{comment}{//\ 這條程式碼是行不通的，還是會等待一幀，因為\ yield\ return\ 的緣故}}
+\DoxyCodeLine{\textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 5;\ i++)\ yield\ \textcolor{keywordflow}{return}\ PoTask.Yield(cts.Token).WaitAsCoroutine();}
+\DoxyCodeLine{Assert.That(Time.frameCount,\ Is.EqualTo(before));}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,48 @@
+\doxysection{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Progress\+Movable 介面 參考文件}
+\hypertarget{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_progress_movable}{}\label{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_progress_movable}\index{Ponito.Core.Asyncs.Interfaces.ProgressMovable@{Ponito.Core.Asyncs.Interfaces.ProgressMovable}}
+
+
+\doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 中每個被等待者的核心功能基本單位，並且可以回報進度  
+
+
+類別\+Ponito.\+Core.\+Asyncs.\+Interfaces.\+Progress\+Movable的繼承圖\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.872910cm]{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_progress_movable}
+\end{center}
+\end{figure}
+\doxysubsubsection*{屬性(properties)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_progress_movable_aba2456c0bf129793c2143f72696205e5}\label{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_progress_movable_aba2456c0bf129793c2143f72696205e5} 
+float {\bfseries Progress}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 回報等候的進度 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{屬性(properties) 繼承自 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable$<$ out T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+Exception \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a93b36b10984faeda8175fc4a662d871e}{Ex}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 任何在這個 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable} 中存在的 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a93b36b10984faeda8175fc4a662d871e}{Ex} 當涉及到 Po\+Task 時，可能會有內部例外...... \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a5da92b2c6fa45eb21ae7129db6bd603a}{Is\+Completed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 這個 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable} 是否已經完成移動？ C\# 編譯器會自動使用這個屬性 Po\+Task 會有已完成的內部 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{額外的繼承成員}
+\doxysubsection*{公開方法(\+Public Methods) 繼承自 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable$<$ out T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a0f7e6c883d62588eb11735b4bde10513}{Move\+Next}} ()
+\begin{DoxyCompactList}\small\item\em 把 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}往前推移的函式，通常為 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 使用。 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a550c07dba77fa13f851fb37b3208e79a}{Get\+Result}} ()
+\begin{DoxyCompactList}\small\item\em 取得結果！ C\# 編譯器會自動使用這個屬性 \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}} \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a995664e380bd291b8889ed2394f03bc7}{Get\+Awaiter}} ()
+\begin{DoxyCompactList}\small\item\em 取得等待者。 C\# 編譯器會自動使用這個屬性 \end{DoxyCompactList}\item 
+new T \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a228307deda7dc115c04aa44d36c3790d}{Get\+Result}} ()
+\begin{DoxyCompactList}\small\item\em 取得結果！ \end{DoxyCompactList}\item 
+new \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}}$<$ T $>$ \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a79c36c9053e45db77e5c39a2c1508688}{Get\+Awaiter}} ()
+\begin{DoxyCompactList}\small\item\em 取得等待者。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳細描述}
+\doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 中每個被等待者的核心功能基本單位，並且可以回報進度 
+
+此介面(interface) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/\+Asyncs/\+Interfaces/Progress\+Movable.\+cs\end{DoxyCompactItemize}

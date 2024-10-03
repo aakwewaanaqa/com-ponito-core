@@ -1,0 +1,123 @@
+\doxysection{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Cancel\+Await 類別 參考文件}
+\hypertarget{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await}{}\label{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await}\index{Ponito.Core.Asyncs.Tasks.Movables.CancelAwait@{Ponito.Core.Asyncs.Tasks.Movables.CancelAwait}}
+類別\+Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Cancel\+Await的繼承圖\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.317647cm]{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開方法(Public Methods)}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await_a50f5be2cbc68e07d692b92f75a395d0c}{On\+Completed}} (Action \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_acb328062793e55f070bce4972bc5f53b}{continuation}})
+\begin{DoxyCompactList}\small\item\em C\# 編譯器會自動使用這個函數在 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a554411745512248e7d4d97f344420c01}{Get\+Awaiter} 之後 把後續的執行被變成 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_acb328062793e55f070bce4972bc5f53b}{continuation} \end{DoxyCompactList}\item 
+override bool \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await_a811ef316bff3322e064c93ee5fc31f7b}{Move\+Next}} ()
+\begin{DoxyCompactList}\small\item\em 把 Movable往前推移的函式，通常為 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 使用。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{公開方法(\+Public Methods) 繼承自 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a77ac1a67445c9ce6e39b6d2b60fa26f0}{Get\+Result}} ()
+\begin{DoxyCompactList}\small\item\em C\# 編譯器會自動使用這個函數在完成工作之後 \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a4fd61a43eec0dd4f3309fed5ec2d5b79}{Move\+Next}} ()
+\begin{DoxyCompactList}\small\item\em 把 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}往前推移的函式，通常為 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 使用。
+
+\begin{DoxyReturn}{傳回值}
+\doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}完成了沒？ 
+\end{DoxyReturn}
+ \end{DoxyCompactList}\item 
+virtual void {\bfseries Dispose} ()
+\begin{DoxyCompactList}\small\item\em 標註捨棄 \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}} \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a554411745512248e7d4d97f344420c01}{Get\+Awaiter}} ()
+\begin{DoxyCompactList}\small\item\em 取得等待者。 C\# 編譯器會自動使用這個屬性
+
+\begin{DoxyReturn}{傳回值}
+等待者
+\end{DoxyReturn}
+ \end{DoxyCompactList}\item 
+new T \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_afb98b53e9f4adcb092d210c49f26b0fe}{Get\+Result}} ()
+\begin{DoxyCompactList}\small\item\em 取得結果！ C\# 編譯器會自動使用這個屬性 \end{DoxyCompactList}\item 
+new \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}}$<$ T $>$ \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_ae5bbdcb310add26cafd7f86ed3c37fb9}{Get\+Awaiter}} ()
+\begin{DoxyCompactList}\small\item\em 取得等待者。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{公開方法(\+Public Methods) 繼承自 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable$<$ out T $>$}}}
+\doxysubsection*{公開方法(\+Public Methods) 繼承自 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a0f7e6c883d62588eb11735b4bde10513}{Move\+Next}} ()
+\begin{DoxyCompactList}\small\item\em 把 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}往前推移的函式，通常為 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 使用。 \end{DoxyCompactList}\item 
+void {\bfseries Get\+Result} ()
+\begin{DoxyCompactList}\small\item\em 取得結果！ C\# 編譯器會自動使用這個屬性 \end{DoxyCompactList}\item 
+new T {\bfseries Get\+Result} ()
+\begin{DoxyCompactList}\small\item\em 取得結果！ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}} \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a995664e380bd291b8889ed2394f03bc7}{Get\+Awaiter}} ()
+\begin{DoxyCompactList}\small\item\em 取得等待者。 C\# 編譯器會自動使用這個屬性 \end{DoxyCompactList}\item 
+new \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}}$<$ T $>$ \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a79c36c9053e45db77e5c39a2c1508688}{Get\+Awaiter}} ()
+\begin{DoxyCompactList}\small\item\em 取得等待者。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{額外的繼承成員}
+\doxysubsection*{保護方法(\+Protected Methods) 繼承自 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a6003fb33fb7300cc3094de213b9390ab}{Continue\+Move\+Next}} ()
+\begin{DoxyCompactList}\small\item\em 先完成後續然後為 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 標註完成 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{屬性(properties) 繼承自 \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+Cancellation\+Token {\bfseries Ct}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 儲存內部取消用旗幟，可以在後續動作取消這個異步任務來源 Movable 會擲出 Operation\+Canceled\+Exception. \end{DoxyCompactList}\item 
+Action {\bfseries continuation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 後續的執行 \end{DoxyCompactList}\item 
+virtual Exception \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_ad4df07bb9e21183f804e60434a248067}{Ex}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 任何在這個 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable} 中存在的 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a93b36b10984faeda8175fc4a662d871e}{Ex} 當涉及到 Po\+Task 時，可能會有內部例外...... \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a86ed4aec0166fdaebfddafea1ddc9178}{Is\+Completed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, protected set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 這個 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable} 是否已經完成移動？ C\# 編譯器會自動使用這個屬性 Po\+Task 會有已完成的內部 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{屬性(properties) 繼承自 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable$<$ out T $>$}}}
+\doxysubsection*{屬性(properties) 繼承自 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+Exception {\bfseries Ex}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 任何在這個 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable} 中存在的 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a93b36b10984faeda8175fc4a662d871e}{Ex} 當涉及到 Po\+Task 時，可能會有內部例外...... \end{DoxyCompactList}\item 
+bool {\bfseries Is\+Completed}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em 這個 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable} 是否已經完成移動？ C\# 編譯器會自動使用這個屬性 Po\+Task 會有已完成的內部 \doxylink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable}{Movable}。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{函式成員說明文件}
+\Hypertarget{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await_a811ef316bff3322e064c93ee5fc31f7b}\index{Ponito.Core.Asyncs.Tasks.Movables.CancelAwait@{Ponito.Core.Asyncs.Tasks.Movables.CancelAwait}!MoveNext@{MoveNext}}
+\index{MoveNext@{MoveNext}!Ponito.Core.Asyncs.Tasks.Movables.CancelAwait@{Ponito.Core.Asyncs.Tasks.Movables.CancelAwait}}
+\doxysubsubsection{\texorpdfstring{MoveNext()}{MoveNext()}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await_a811ef316bff3322e064c93ee5fc31f7b} 
+override bool Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Cancel\+Await.\+Move\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+把 Movable往前推移的函式，通常為 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_movable_runner}{Movable\+Runner} 使用。 
+
+\begin{DoxyReturn}{傳回值}
+Movable完成了沒？ 
+\end{DoxyReturn}
+
+
+實作 \mbox{\hyperlink{interface_ponito_1_1_core_1_1_asyncs_1_1_interfaces_1_1_movable_a0f7e6c883d62588eb11735b4bde10513}{Ponito.\+Core.\+Asyncs.\+Interfaces.\+Movable$<$ out T $>$}}.
+
+\Hypertarget{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await_a50f5be2cbc68e07d692b92f75a395d0c}\index{Ponito.Core.Asyncs.Tasks.Movables.CancelAwait@{Ponito.Core.Asyncs.Tasks.Movables.CancelAwait}!OnCompleted@{OnCompleted}}
+\index{OnCompleted@{OnCompleted}!Ponito.Core.Asyncs.Tasks.Movables.CancelAwait@{Ponito.Core.Asyncs.Tasks.Movables.CancelAwait}}
+\doxysubsubsection{\texorpdfstring{OnCompleted()}{OnCompleted()}}
+{\footnotesize\ttfamily \label{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_cancel_await_a50f5be2cbc68e07d692b92f75a395d0c} 
+override void Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Cancel\+Await.\+On\+Completed (\begin{DoxyParamCaption}\item[{Action}]{continuation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+C\# 編譯器會自動使用這個函數在 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a554411745512248e7d4d97f344420c01}{Get\+Awaiter} 之後 把後續的執行被變成 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_acb328062793e55f070bce4972bc5f53b}{continuation} 
+
+
+\begin{DoxyParams}{參數}
+{\em continuation} & C\# 編譯器會後續的執行被變成 \doxylink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_acb328062793e55f070bce4972bc5f53b}{continuation} \\
+\hline
+\end{DoxyParams}
+
+
+依據\mbox{\hyperlink{class_ponito_1_1_core_1_1_asyncs_1_1_tasks_1_1_movables_1_1_movable_base_a7ff36b8921c73dd9593dbbf36820e4b5}{Ponito.\+Core.\+Asyncs.\+Tasks.\+Movables.\+Movable\+Base$<$ T $>$}}重新實作.
+
+
+
+此類別(class) 文件是由下列檔案中產生\+:\begin{DoxyCompactItemize}
+\item 
+Runtime/\+Ponito/\+Core/\+Asyncs/\+Tasks/\+Movables/Cancel\+Await.\+cs\end{DoxyCompactItemize}
