@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Codice.Client.Common.WebApi;
+using Ponito.Core.Extensions;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -41,32 +42,33 @@ namespace Ponito
                 return;
             }
 
-            if (targetEditor != null)
-            {
-                targetEditor.DrawHeader();
+            if (targetEditor.IsNull()) return;
 
-                EditorGUILayout.BeginVertical(style);
+            targetEditor.DrawHeader();
 
-                scroll = EditorGUILayout.BeginScrollView(scroll);
-                targetEditor.OnInspectorGUI();
-                EditorGUILayout.EndScrollView();
+            EditorGUILayout.BeginVertical(style);
 
-                EditorGUILayout.EndFoldoutHeaderGroup();
+            scroll = EditorGUILayout.BeginScrollView(scroll);
+            targetEditor.OnInspectorGUI();
+            EditorGUILayout.EndScrollView();
 
-                var title = targetEditor.GetInfoString();
-                EditorGUILayout.LabelField(title);
+            EditorGUILayout.EndFoldoutHeaderGroup();
 
-                EditorGUILayout.EndVertical();
-            }
+            var title = targetEditor.GetInfoString();
+            EditorGUILayout.LabelField(title);
+
+            EditorGUILayout.EndVertical();
         }
 
         private static void RefreshTarget()
         {
+            if (activeGameObject.IsNull()) return;
+
             var comps = activeGameObject.GetComponents<Component>();
             targetIndex = Mathf.Clamp(targetIndex, 0, comps.Length - 1);
             target      = comps[targetIndex];
             if (targetEditor != null) DestroyImmediate(targetEditor);
-            targetEditor = Editor.CreateEditorWithContext(new Object[] { target }, target);
+            targetEditor          = Editor.CreateEditorWithContext(new Object[] { target }, target);
             instance.titleContent = new GUIContent(target ? target.GetType().Name : "Po Editor");
         }
 

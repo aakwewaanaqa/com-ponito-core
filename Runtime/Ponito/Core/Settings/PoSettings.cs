@@ -10,7 +10,7 @@ namespace Ponito.Core.Settings
     {
         private static readonly Lazy<PoSettings> instance = new(Create);
 
-        public PoSettings Singleton => instance.Value;
+        public static PoSettings Singleton => instance.Value;
 
         private static PoSettings Create()
         {
@@ -24,6 +24,12 @@ namespace Ponito.Core.Settings
             AssetDatabase.SaveAssets();
 #endif
             return instance;
+        }
+
+        [RuntimeInitializeOnLoadMethod]
+        public static void RuntimeInitailize()
+        {
+            _ = Singleton;
         }
     }
 }

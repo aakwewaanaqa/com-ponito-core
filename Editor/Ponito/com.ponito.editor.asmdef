@@ -4,6 +4,7 @@
     "references": [
         "com.ponito.di",
         "com.ponito.core",
+        "com.ponito.core.samples",
         "com.ponito.core.exts"
     ],
     "includePlatforms": [

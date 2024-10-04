@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Ponito.Core.Extensions;
@@ -17,11 +18,11 @@ namespace Ponito.Core.Samples.Managers
         ///     Gets every field of [<see cref="SerializeField" />]s
         /// </summary>
         /// <returns></returns>
-        private static IQueryable<FieldInfo> GetFields()
+        private static IEnumerable<FieldInfo> GetFields()
         {
-            var flags = BindingFlags.NonPublic | BindingFlags.Instance;
+            const BindingFlags FLAGS = BindingFlags.NonPublic | BindingFlags.Instance;
             return typeof(PoAudioManager)
-               .GetFields(flags)
+               .GetFields(FLAGS)
                .Where(f => f.GetCustomAttribute<SerializeField>() is object)
                .AsQueryable();
         }

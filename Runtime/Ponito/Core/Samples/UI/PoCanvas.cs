@@ -16,31 +16,41 @@ namespace Ponito.Core.Samples.UI
     public class PoCanvas : MonoBehaviour
     {
         /// <summary>
-        ///     The name of the <see cref="PoCanvas" /> to identify between <see cref="PoCanvas" />es
+        ///     名字
         /// </summary>
+        [Tooltip("名字")]
         [SerializeField] private string id;
 
         /// <summary>
-        ///     The rendering order
+        ///     渲染順序，數字越大越在上面
         /// </summary>
+        [Tooltip("渲染順序，數字越大越在上面")]
         [SerializeField] private int order;
 
         /// <summary>
-        ///     Uses <see cref="GraphicRaycaster" /> or not
+        ///     自動設定為有標籤的攝影機，因為有時候會在 prefab 裡面，所以開始時也會設置好。
         /// </summary>
+        [Tooltip("自動設定為有標籤的攝影機，因為有時候會在 prefab 裡面，所以開始時也會設置好。")]
+        [SerializeField] private string cameraTag = "MainCamera";
+
+        /// <summary>
+        ///     可不可以互動，會開關 GraphicRaycaster
+        /// </summary>
+        [Tooltip("可不可以互動，會開關 GraphicRaycaster")]
         [SerializeField] private bool isInteractable = true;
 
-        /// <inheritdoc cref="CanvasScaler.uiScaleMode" />
-        /// <remarks>
-        ///     Uses <see cref="MatchMode.Expand" /> on content smaller than screen <br />
-        ///     Uses <see cref="MatchMode.Shrink" /> on content or background bigger than screen
-        /// </remarks>
+        /// <summary>
+        ///     使用 Expand 來延伸小的內容來填滿螢幕，使用 Shrink 來縮小內容以符合螢幕像是背景一樣
+        /// </summary>
+        [Tooltip("使用 Expand 來延伸小的內容來填滿螢幕，使用 Shrink 來縮小內容以符合螢幕像是背景一樣")]
         [SerializeField] private MatchMode screenMatchMode = MatchMode.Expand;
 
-        /// <inheritdoc cref="CanvasScaler.referenceResolution" />
+        /// <summary>
+        ///     對齊美術製作時的尺寸
+        /// </summary>
+        [Tooltip("對齊美術製作時的尺寸")]
         [SerializeField] private Vector2 referenceResolution = new(1920, 1080);
 
-        /// <inheritdoc cref="isInteractable" />
         public bool IsInteractable
         {
             get => isInteractable;
@@ -56,7 +66,7 @@ namespace Ponito.Core.Samples.UI
 
 #if UNITY_EDITOR
         /// <summary>
-        ///     This will active when something change in <see cref="Editor" />
+        ///     This will activate when something change in <see cref="Editor" />
         /// </summary>
         private void OnValidate()
         {

@@ -6,7 +6,7 @@ namespace Ponito.Core.Samples.Managers
 {
     public partial class PoStateManager
     {
-        private readonly struct StateBind : IEnumerable<StateWatcher>
+        public readonly struct StateBind : IEnumerable<StateWatcher>
         {
             public readonly Statable           state;
             public readonly ISet<StateWatcher> watchers;
