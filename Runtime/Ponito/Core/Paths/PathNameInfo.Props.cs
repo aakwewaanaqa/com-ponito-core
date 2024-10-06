@@ -33,8 +33,13 @@ namespace Ponito.Core.Paths
         public int Length => names.Count;
 
         /// <summary>
-        ///     轉換成 <see cref="FileInfo" />
+        ///     以檔案位置方式輸出
         /// </summary>
         public FileInfo File => new(ToString());
+
+        /// <summary>
+        ///     以路徑方式輸出
+        /// </summary>
+        public DirectoryInfo Directory => new DirectoryInfo(this[..1]);
     }
 }

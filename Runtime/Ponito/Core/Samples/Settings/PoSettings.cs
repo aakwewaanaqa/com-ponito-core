@@ -1,10 +1,11 @@
 using System;
+using Ponito.Core.Paths;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace Ponito.Core.Settings
+namespace Ponito.Core.Samples.Settings
 {
     public class PoSettings : ScriptableObject
     {
@@ -14,22 +15,16 @@ namespace Ponito.Core.Settings
 
         private static PoSettings Create()
         {
-            var instance = Resources.Load<PoSettings>(Def.PO_SETTINGS_ASSET_PATH);
+            var instance = Resources.Load<PoSettings>(SettingsDef.PO_SETTINGS_ASSET_PATH);
 #if UNITY_EDITOR
-            instance = AssetDatabase.LoadAssetAtPath<PoSettings>(Def.PO_SETTINGS_ASSET_PATH);
+            instance = AssetDatabase.LoadAssetAtPath<PoSettings>(SettingsDef.PO_SETTINGS_ASSET_PATH);
             if (instance) return instance;
 
             instance = CreateInstance<PoSettings>();
-            AssetDatabase.CreateAsset(instance, Def.PO_SETTINGS_ASSET_PATH);
+            AssetDatabase.CreateAsset(instance, SettingsDef.PO_SETTINGS_ASSET_PATH);
             AssetDatabase.SaveAssets();
 #endif
             return instance;
-        }
-
-        [RuntimeInitializeOnLoadMethod]
-        public static void RuntimeInitailize()
-        {
-            _ = Singleton;
         }
     }
 }

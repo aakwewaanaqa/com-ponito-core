@@ -6,24 +6,24 @@ using UnityEngine;
 namespace Ponito.Core
 {
     [Serializable]
-    public class SerializableSet<K, V> : IDictionary<K, V>
+    public class SerializableSet<TKey, TValue> : IDictionary<TKey, TValue>
     {
-        [SerializeField] private List<K> keys;
-        [SerializeField] private List<V> values;
+        [SerializeField] private List<TKey>   keys;
+        [SerializeField] private List<TValue> values;
 
         public SerializableSet(int capcity = 0)
         {
-            keys   = new List<K>(capcity);
-            values = new List<V>(capcity);
+            keys   = new List<TKey>(capcity);
+            values = new List<TValue>(capcity);
         }
 
-        public IEnumerator<KeyValuePair<K, V>> GetEnumerator()
+        public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
         {
             for (var i = 0; i < keys.Count; i++)
             {
                 var k = keys[i];
                 var v = values[i];
-                yield return new KeyValuePair<K, V>(k, v);
+                yield return new KeyValuePair<TKey, TValue>(k, v);
             }
         }
 
@@ -32,7 +32,7 @@ namespace Ponito.Core
             return GetEnumerator();
         }
 
-        public void Add(KeyValuePair<K, V> item)
+        public void Add(KeyValuePair<TKey, TValue> item)
         {
             if (keys.Contains(item.Key)) return;
 
@@ -46,19 +46,20 @@ namespace Ponito.Core
             values.Clear();
         }
 
-        public bool Contains(KeyValuePair<K, V> item)
+        public bool Contains(KeyValuePair<TKey, TValue> item)
         {
             var hasKey   = keys.Contains(item.Key);
             var hasValue = values.Contains(item.Value);
             return hasKey && hasValue;
         }
 
-        public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex)
+        public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
         {
-            for (var i = 0; i < keys.Count; i++) array[arrayIndex + i] = new KeyValuePair<K, V>(keys[i], values[i]);
+            for (var i = 0; i < keys.Count; i++)
+                array[arrayIndex + i] = new KeyValuePair<TKey, TValue>(keys[i], values[i]);
         }
 
-        public bool Remove(KeyValuePair<K, V> item)
+        public bool Remove(KeyValuePair<TKey, TValue> item)
         {
             throw new NotImplementedException();
         }
@@ -66,7 +67,7 @@ namespace Ponito.Core
         public int  Count      => keys.Count;
         public bool IsReadOnly => false;
 
-        public void Add(K key, V value)
+        public void Add(TKey key, TValue value)
         {
             if (keys.Contains(key)) return;
 
@@ -74,12 +75,12 @@ namespace Ponito.Core
             values.Add(value);
         }
 
-        public bool ContainsKey(K key)
+        public bool ContainsKey(TKey key)
         {
             return keys.Contains(key);
         }
 
-        public bool Remove(K key)
+        public bool Remove(TKey key)
         {
             var index = keys.IndexOf(key);
             if (index == -1) return false;
@@ -89,7 +90,7 @@ namespace Ponito.Core
             return true;
         }
 
-        public bool TryGetValue(K key, out V value)
+        public bool TryGetValue(TKey key, out TValue value)
         {
             var index = keys.IndexOf(key);
             if (index == -1)
@@ -102,7 +103,7 @@ namespace Ponito.Core
             return true;
         }
 
-        public V this[K key]
+        public TValue this[TKey key]
         {
             get => values[keys.IndexOf(key)];
             set
@@ -119,7 +120,7 @@ namespace Ponito.Core
             }
         }
 
-        public ICollection<K> Keys   => keys;
-        public ICollection<V> Values => values;
+        public ICollection<TKey>   Keys   => keys;
+        public ICollection<TValue> Values => values;
     }
 }
