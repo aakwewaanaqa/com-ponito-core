@@ -1,3 +1,4 @@
+using System;
 using Ponito.Core.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,11 +58,19 @@ namespace Ponito.Core.Samples.UI
             set
             {
                 isInteractable = value;
-                this.EnsureComponent(out GraphicRaycaster _, it =>
-                {
-                    it.enabled = isInteractable;
-                });
+                this.EnsureComponent(out GraphicRaycaster _, it => { it.enabled = isInteractable; });
             }
+        }
+
+        private void OnEnable()
+        {
+            GetComponent<Canvas>().Apply(it =>
+            {
+                if (!it.worldCamera.IsNull()) return;
+
+                var cameraObject = GameObject.FindGameObjectWithTag(cameraTag);
+                it.worldCamera = cameraObject.GetComponent<Camera>();
+            });
         }
 
 #if UNITY_EDITOR
@@ -76,7 +85,8 @@ namespace Ponito.Core.Samples.UI
             {
                 it.sortingOrder = order;
                 it.renderMode   = RenderMode.ScreenSpaceCamera;
-                it.worldCamera  = Camera.main;
+                var cameraObject = GameObject.FindGameObjectWithTag(cameraTag);
+                it.worldCamera = cameraObject.GetComponent<Camera>();
             });
 
             GetComponent<GraphicRaycaster>().Apply(it => { it.enabled = isInteractable; });
