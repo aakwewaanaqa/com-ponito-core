@@ -11,17 +11,17 @@ namespace Ponito.Core
     /// <seealso cref="GetClamp" />
     /// <seealso cref="FloatMapper" />
     [Serializable]
-    public readonly partial struct FloatRange
+    public partial struct FloatRange
     {
         /// <summary>
         ///     maximum
         /// </summary>
-        public readonly float max;
+        [SerializeField] public float max;
 
         /// <summary>
         ///     minimum
         /// </summary>
-        public readonly float min;
+        [SerializeField] public float min;
 
         /// <summary>
         ///     constructs a <see cref="FloatRange" />

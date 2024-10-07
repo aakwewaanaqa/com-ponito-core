@@ -1,6 +1,6 @@
 ﻿namespace Ponito.Core
 {
-    public readonly partial struct FloatRange
+    public partial struct FloatRange
     {
         /// <summary>
         ///     <see cref="min" /> + <see cref="f" /> and <see cref="max" /> + <see cref="f" />
