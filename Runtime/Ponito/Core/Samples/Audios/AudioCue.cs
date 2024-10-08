@@ -10,6 +10,14 @@ namespace Ponito.Core.Samples.Audios
         public FloatRange volume;
         public FloatRange pitch;
         public AudioClip  clip;
+
+        public AudioCue(AudioClip clip)
+        {
+            odds = 0;
+            volume = new FloatRange(1, 1);
+            pitch = new FloatRange(1, 1);
+            this.clip = clip;
+        }
     }
 
     public enum CueType

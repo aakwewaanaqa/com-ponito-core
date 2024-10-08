@@ -3,7 +3,9 @@ using Ponito.Core.Asyncs.Tasks;
 using Ponito.Core.Ease;
 using Ponito.Core.Ease.SpecialEases;
 using Ponito.Core.Extensions;
+using Ponito.Core.Samples.Audios;
 using Ponito.Core.Samples.Managers;
+using Ponito.Core.Samples.Settings;
 using UnityEngine;
 using static Ponito.Core.Ease.EaseType;
 
@@ -14,16 +16,18 @@ namespace Ponito.Core.Samples.UI
         private Vector3                 originalScale { get; set; }
         private CancellationTokenSource cts           { get; set; }
 
-        private async PoTask PlayAudio(bool isPressed)
+        private async PoTask PlayAudio(bool isPressed, CancellationToken ct = default)
         {
-            var clip = isPressed ? pointerDown : pointerUp;
-            await PoAudioManager.Singleton.Play(clip, AudioPlayType.UI, true);
+            if (isPressed) return;
+            if (ct.IsCancellationRequested) return;
+            var cue = PoAudioSettings.Singleton.GetCue(CueType.UI, onClickCue);
+            var manager = PoAudioManager.Singleton;
+            manager.SetSettings(AudioPlayType.UI, cue.volume, cue.pitch);
+            await manager.Play(cue.clip, AudioPlayType.UI, ct: ct);
         }
 
-        private async PoTask PlayAnimation(bool isPressed)
+        private async PoTask PlayAnimation(bool isPressed, CancellationToken ct = default)
         {
-            cts = cts.LinkAfterCancel(default, out var ct);
-
             var task = animationType switch
             {
                 AnimationType.None  => null,

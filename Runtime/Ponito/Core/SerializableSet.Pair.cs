@@ -6,7 +6,7 @@ namespace Ponito.Core
     public partial class SerializableSet<TKey, TValue>
     {
         [Serializable]
-        public struct Pair : IComparable<Pair>
+        public struct Pair : IComparable<Pair>, IEquatable<TKey>
         {
             public TKey   key;
             public TValue value;
@@ -21,13 +21,23 @@ namespace Ponito.Core
                 return new Pair
                 {
                     key   = pair.Key,
-                    value = pair.Value,
+                    value = pair.Value
                 };
+            }
+
+            public bool Equals(TKey other)
+            {
+                return key.Equals(other);
+            }
+
+            public override int GetHashCode()
+            {
+                return key.GetHashCode();
             }
 
             public int CompareTo(Pair other)
             {
-                return key.GetHashCode().CompareTo(other.key.GetHashCode());
+                return GetHashCode().CompareTo(other.GetHashCode());
             }
         }
     }

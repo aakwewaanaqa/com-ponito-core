@@ -10,9 +10,9 @@ namespace Ponito.Core
     {
         [SerializeField] private List<Pair> pairs;
 
-        public SerializableSet(int capcity = 0)
+        public SerializableSet(int capacity = 0)
         {
-            pairs = new List<Pair>(capcity);
+            pairs = new List<Pair>(capacity);
         }
 
         public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
@@ -69,8 +69,8 @@ namespace Ponito.Core
 
         public bool Remove(TKey key)
         {
-            if (!ContainsKey(key)) return false;
             var index = pairs.FindIndex(p => p.key.Equals(key));
+            if (index == -1) return false;
             pairs.RemoveAt(index);
             return true;
         }
@@ -78,14 +78,15 @@ namespace Ponito.Core
         public bool TryGetValue(TKey key, out TValue value)
         {
             value = default;
-            if (!ContainsKey(key)) return false;
-            value = pairs.Find(p => p.key.Equals(key)).value;
+            var index = pairs.FindIndex(p => p.key.Equals(key));
+            if (index == -1) return false;
+            value = pairs[index].value;
             return true;
         }
 
         public TValue this[TKey key]
         {
-            get => pairs.Find(p => p.key.Equals(key)).value;
+            get => TryGetValue(key, out var value) ? value : throw new KeyNotFoundException();
             set
             {
                 if (!ContainsKey(key))

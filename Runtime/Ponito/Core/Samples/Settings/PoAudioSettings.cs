@@ -1,4 +1,5 @@
 using System;
+using Ponito.Core.Extensions;
 using Ponito.Core.Samples.Audios;
 using UnityEditor;
 using UnityEngine;
@@ -17,10 +18,11 @@ namespace Ponito.Core.Samples.Settings
 
         private static PoAudioSettings Create()
         {
-            var instance = Resources.Load<PoAudioSettings>(SettingsDef.PO_SETTINGS_ASSET_PATH);
+            var instance = Resources.Load<PoAudioSettings>(SettingsDef.PO_AUDIO_SETTINGS_RESOURCE_PATH);
 #if UNITY_EDITOR
+            if (instance.IsObject()) return instance;
             instance = AssetDatabase.LoadAssetAtPath<PoAudioSettings>(SettingsDef.PO_SETTINGS_ASSET_PATH);
-            if (instance) return instance;
+            if (instance.IsObject()) return instance;
 
             instance = CreateInstance<PoAudioSettings>();
             AssetDatabase.CreateAsset(instance, SettingsDef.PO_SETTINGS_ASSET_PATH);

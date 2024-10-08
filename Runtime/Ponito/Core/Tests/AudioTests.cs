@@ -3,7 +3,9 @@ using System.Collections;
 using NUnit.Framework;
 using Ponito.Core.Asyncs.Extensions;
 using Ponito.Core.Extensions;
+using Ponito.Core.Samples.Audios;
 using Ponito.Core.Samples.Managers;
+using Ponito.Core.Samples.Settings;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -44,6 +46,18 @@ namespace Ponito.Core.Tests
             Assert.That(source.volume, Is.GreaterThan(0));
 
             yield return new WaitForSeconds(5f);
+        }
+
+        [UnityTest]
+        public IEnumerator GetCue()
+        {
+            var settings = PoAudioSettings.Singleton;
+            Assert.That(settings, Is.Not.Null);
+            Assert.That(settings.uiBinds, Is.Not.Null);
+            Assert.That(settings.uiBinds.Count, Is.GreaterThan(0));
+            var cue = settings.GetCue(CueType.UI, "button big");
+            Assert.That(cue.clip, Is.Not.Null);
+            yield break;
         }
     }
 }

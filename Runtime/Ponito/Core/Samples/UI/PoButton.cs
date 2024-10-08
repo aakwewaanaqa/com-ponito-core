@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Ponito.Core.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,12 +12,13 @@ namespace Ponito.Core.Samples.UI
     [AddComponentMenu("Ponito/Core/Samples/UI/Po Button")]
     public partial class PoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
-        [SerializeField] private bool          isInteractable = true;
-        [SerializeField] private Graphic       image;
-        [SerializeField] private AnimationType animationType = AnimationType.Scale;
-        [SerializeField] private AudioClip     pointerDown;
-        [SerializeField] private AudioClip     pointerUp;
-        [SerializeField] public  UnityEvent    onClick = new();
+        [SerializeField]            private bool          isInteractable = true;
+        [SerializeField]            private Graphic       image;
+        [SerializeField]            private AnimationType animationType = AnimationType.Scale;
+        [SerializeField] [Obsolete] private AudioClip     pointerDown;
+        [SerializeField] [Obsolete] private AudioClip     pointerUp;
+        [SerializeField]            private string        onClickCue;
+        [SerializeField]            public  UnityEvent    onClick = new();
 
         private RectTransform     rectTransform;
         private PoButtonDataScope dataScope;
@@ -37,10 +39,7 @@ namespace Ponito.Core.Samples.UI
 
         private void OnEnable()
         {
-            this.EnsureComponent(out rectTransform, it =>
-            {
-                originalScale = it.localScale;
-            });
+            this.EnsureComponent(out rectTransform, it => { originalScale = it.localScale; });
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -56,8 +55,10 @@ namespace Ponito.Core.Samples.UI
             if (!isInteractable) return;
             if (PoButtonBlockScope.IsBlock) return;
             dataScope = new PoButtonDataScope(this);
-            _         = PlayAudio(true);
-            _         = PlayAnimation(true);
+
+            cts = cts.LinkAfterCancel(default, out var ct);
+            _ = PlayAudio(true, ct);
+            _ = PlayAnimation(true, ct);
         }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -65,8 +66,10 @@ namespace Ponito.Core.Samples.UI
             if (!isInteractable) return;
             if (PoButtonBlockScope.IsBlock) return;
             dataScope?.Dispose();
-            _ = PlayAudio(false);
-            _ = PlayAnimation(false);
+
+            cts = cts.LinkAfterCancel(default, out var ct);
+            _   = PlayAudio(false, ct);
+            _   = PlayAnimation(false, ct);
         }
 
 

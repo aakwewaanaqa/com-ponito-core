@@ -13,7 +13,7 @@ namespace Ponito.Core.Samples.Managers
     [AddComponentMenu("Ponito/Core/Samples/Managers/Po Audio Manager")]
     public partial class PoAudioManager : MonoBehaviour
     {
-        public const float DEFAULT_FADE_DURATION = 0.2f;
+        public const float DEFAULT_FADE_DURATION = 0.04f;
 
         [SerializeField] private AudioSource music;
         [SerializeField] private AudioSource fx;
@@ -62,17 +62,23 @@ namespace Ponito.Core.Samples.Managers
         {
             if (ct.IsCancellationRequested) return;
 
-            var source = GetSource(type);
-            if (!source.isPlaying) { source.volume = 0f; }
-            else
+            var source         = GetSource(type);
+            var originalVolume = source.volume;
+            if (!source.isPlaying) return;
+
+            var from   = source.volume;
+            var to     = 0f;
+            var setter = new Setter<float>(v => source.volume = v);
+            await DoEase.To(from, to, setter, duration, EaseType.InOutSine, ct);
+
+            if (ct.IsCancellationRequested)
             {
-                var from   = source.volume;
-                var to     = 0f;
-                var setter = new Setter<float>(v => source.volume = v);
-                await DoEase.To(from, to, setter, duration, EaseType.InOutSine, ct);
+                source.volume = originalVolume;
+                return;
             }
 
             source.Stop();
+            source.volume = originalVolume;
         }
 
         public async PoTask Play(
@@ -95,6 +101,13 @@ namespace Ponito.Core.Samples.Managers
             else source.Play();
 
             await clip.length.Delay(innerCt);
+        }
+
+        public void SetSettings(AudioPlayType type, FloatRange volume, FloatRange pitch)
+        {
+            var source = GetSource(type);
+            source.volume = volume.GetRandom();
+            source.pitch  = pitch.GetRandom();
         }
     }
 }
